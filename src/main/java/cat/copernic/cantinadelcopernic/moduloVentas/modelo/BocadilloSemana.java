@@ -4,10 +4,17 @@
  */
 package cat.copernic.cantinadelcopernic.moduloVentas.modelo;
 
+import java.util.Date;
+import lombok.Data;
+
 /**
  *
- * @author Enric
+ * @author marku
  */
-public class modeloProva {
-    
+@Data
+public class BocadilloSemana {
+    private Double precio;
+    private Date fecha;
+    private String imagen;
+    private Bocadillo bocadillo;
 }
