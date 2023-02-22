@@ -4,8 +4,6 @@
  */
 package cat.copernic.cantinadelcopernic.moduloDeudas.controladores;
 
-import cat.copernic.cantinadelcopernic.moduloRRHH.modelo.Profesor;
-import java.util.ArrayList;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,20 +13,12 @@ import org.springframework.web.bind.annotation.GetMapping;
  * @author Enric
  */
 @Controller
-public class ControladorListarProfesores {
-
+public class ControladorListarDeudasProfesor {
     
-    @GetMapping("/listarProfesores")
+    @GetMapping("/listarDeudasProfesor")
     public String inici(Model model) {
         
-        /*
-        var profesores = new ArrayList<Profesor>();
-        Profesor ejemplo  = new Profesor();
-        ejemplo.setCorreo("correoProfesorEjemplo@gmail.com");
-        profesores.add(ejemplo);
-        model.addAttribute("profesores", profesores);
-        */
         
-        return "/paginasDeudas/listarProfesores"; 
+        return "/paginasDeudas/listarDeudasProfesor"; 
     }
 }
