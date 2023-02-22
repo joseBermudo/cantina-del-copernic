@@ -2,12 +2,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package cat.copernic.cantinadelcopernic.moduloProduccion.controladores;
+package cat.copernic.cantinadelcopernic.moduloPromocion.modelo;
+
+import lombok.Data;
 
 /**
  *
- * @author Enric
+ * @author joseb
  */
-public class controllerProva {
+@Data
+public class Promocion {
+    private int id;
+    private String desc;
+    private int condicio;
     
 }

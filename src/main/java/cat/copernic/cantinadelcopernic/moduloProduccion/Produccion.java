@@ -6,7 +6,7 @@ package cat.copernic.cantinadelcopernic.moduloProduccion;
 
 /**
  *
- * @author Enric
+ * @author joseb
  */
 public class Produccion {
     

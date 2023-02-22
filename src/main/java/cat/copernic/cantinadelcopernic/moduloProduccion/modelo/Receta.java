@@ -4,10 +4,18 @@
  */
 package cat.copernic.cantinadelcopernic.moduloProduccion.modelo;
 
+import java.util.ArrayList;
+import lombok.Data;
+
 /**
  *
- * @author Enric
+ * @author joseb
  */
-public class modeloProva {
-    
+@Data
+public class Receta {
+    private String nombre;
+    private String descripcion;
+    private ArrayList<String> lista_ingredientes;
 }
+
+
