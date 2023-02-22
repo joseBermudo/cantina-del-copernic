@@ -19,7 +19,7 @@ public class ControladorPedidosAdministrador {
 
     /*La interface Model d'Spring Boot ens permet transferir dades entre el controlador i la vista
      */
-    @GetMapping("/crearDeuda")
+    @GetMapping("/pedidosAdministrador")
     public String inici(Model model) {
 
         return "/paginasVentas/ventasAdministrador/pedidosAdministrador"; //Retorna la pàgina iniciEnviarDades

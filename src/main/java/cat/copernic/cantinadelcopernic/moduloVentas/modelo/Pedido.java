@@ -12,6 +12,6 @@ import lombok.Data;
 @Data
 public class Pedido {
     private BocadilloSemana bocadilloSemana;
-    private Bebida bebida;
+//    private Bebida bebida;
     private String correo;
 }

@@ -19,10 +19,10 @@ public class ControladorhacerPedido {
 
     /*La interface Model d'Spring Boot ens permet transferir dades entre el controlador i la vista
      */
-    @GetMapping("/crearDeuda")
+    @GetMapping("/hacerPedidoCliente")
     public String inici(Model model) {
 
-        return "/paginasDeudas/crearDeuda"; //Retorna la pàgina iniciEnviarDades
+        return "/paginasVentas/ventasCliente/hacerPedidoCliente"; //Retorna la pàgina iniciEnviarDades
     }
     
     
