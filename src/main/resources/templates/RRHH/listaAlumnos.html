@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Lista alumnos</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <div>
+            <button>Alumnes</button>
+            <button>Profesores</button>
+        </div>
+        <div>
+             <ul th:each="alumno: ${alumnos}">
+             <li th:text="${alumno.correo}"></li>  
+            </ul>
+        </div>
+        <div>
+            <button>Nou alumne</button>
+        </div>
+    </body>
+</html>
