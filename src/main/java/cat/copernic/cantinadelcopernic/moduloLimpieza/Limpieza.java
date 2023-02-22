@@ -4,10 +4,15 @@
  */
 package cat.copernic.cantinadelcopernic.moduloLimpieza;
 
+import java.util.Date;
+import lombok.Data;
+
 /**
  *
- * @author Enric
+ * @author marku
  */
+@Data
 public class Limpieza {
-    
+    private Date fechaDeLimpieza;
+    private String nombreAlumno;
 }
