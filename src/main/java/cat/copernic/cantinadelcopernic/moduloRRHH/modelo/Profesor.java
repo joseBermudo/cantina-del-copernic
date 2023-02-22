@@ -5,11 +5,13 @@
 package cat.copernic.cantinadelcopernic.moduloRRHH.modelo;
 
 import java.util.ArrayList;
+import lombok.Data;
 
 /**
  *
  * @author andre
  */
+@Data
 public class Profesor extends Usuario{
     
     private ArrayList<Boolean> intolerancias;

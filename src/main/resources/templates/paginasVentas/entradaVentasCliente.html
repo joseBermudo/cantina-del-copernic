@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Crear Pedido</title>
+</head>
+<body>
+	<h1>Crear Pedido</h1>
+
+	<form>
+		<label for="correo-cliente">Correo del Cliente:</label>
+		<input type="email" id="correo-cliente" name="correo-cliente" required><br>
+
+		<label for="entrepas-setmana">Entrepà de la setmana:</label>
+		<select id="entrepas-setmana" name="entrepas-setmana" required>
+			<option value="">Selecciona un entrepà</option>
+			<option value="Entrepà de pollastre">Entrepà de pollastre</option>
+			<option value="Entrepà de pernil">Entrepà de pernil</option>
+			<option value="Entrepà vegetarià">Entrepà vegetarià</option>
+		</select><br>
+
+		<label for="beguda">Beguda:</label>
+		<input type="text" id="beguda" name="beguda" required><br>
+
+		<label for="preu-total">Preu total de la Comanda:</label>
+		<input type="number" id="preu-total" name="preu-total" required><br>
+
+		<button type="submit">Crear Pedido</button>
+	</form>
+</body>
+</html>

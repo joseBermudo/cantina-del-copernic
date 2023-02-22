@@ -2,19 +2,21 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package cat.copernic.cantinadelcopernic.moduloRRHH.modelo;
+package cat.copernic.cantinadelcopernic.moduloUtensilios.modelo;
 
 import lombok.Data;
 
 /**
  *
- * @author andre
+ * @author marku
  */
-@Data 
-public class Usuario {
-    
-    private String correo;
+@Data
+public class Utensilio {
     private String nombre;
-    private String apellidos;
+    private int cantidad;
     
+    public static void editarUtensilio() {
+        
+    }
 }
+ 

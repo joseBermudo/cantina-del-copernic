@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>COMANDA</title>
+  </head>
+  <body>
+    <form>
+      <label for="entrepasemana">Entrepà de la semana:</label>
+      <input type="text" id="entrepasemana" name="entrepasemana" readonly><br>Entrepà pernil<br>
+      
+      <label for="beguda">Beguda:</label>
+      <input type="text" id="beguda" name="beguda" readonly><br><br>
+      
+      <label for="preutotal">Preu Total:</label>
+      <input type="text" id="preutotal" name="preutotal" readonly><br><br>
+      
+      <input type="button" value="ESBORRAR COMANDA" onclick="document.getElementById('entrepasemana').value=''; document.getElementById('beguda').value=''; document.getElementById('preutotal').value='';">
+    </form>
+  </body>
+</html>
