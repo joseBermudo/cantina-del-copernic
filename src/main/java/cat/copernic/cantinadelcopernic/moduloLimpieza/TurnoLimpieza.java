@@ -4,10 +4,15 @@
  */
 package cat.copernic.cantinadelcopernic.moduloLimpieza;
 
+import java.sql.Timestamp;
+import lombok.Data;
+
 /**
  *
  * @author Enric
  */
-public class Limpieza {
-    
+@Data
+public class TurnoLimpieza {
+    Alumno alumno;
+    Timestamp horario;
 }
