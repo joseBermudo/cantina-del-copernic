@@ -4,6 +4,7 @@
  */
 package cat.copernic.cantinadelcopernic.moduloVentas.modelo;
 
+import cat.copernic.cantinadelcopernic.moduloProduccion.modelo.Receta;
 import java.util.Date;
 import lombok.Data;
 
@@ -16,6 +17,5 @@ public class BocadilloSemana {
     private Double precio;
     private Date fecha;
     private String imagen;
-//    private Bocadillo bocadillo;
- 
+    private Receta receta;
 }
