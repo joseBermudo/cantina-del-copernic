@@ -4,10 +4,16 @@
  */
 package cat.copernic.cantinadelcopernic.moduloProduccion.modelo;
 
+import lombok.Data;
+
 /**
  *
- * @author Enric
+ * @author joseb
  */
-public class modeloProva {
-    
+@Data
+public class Bebida {
+
+    private String nombre;
+    private String desc;
+    private Double precio;
 }
