@@ -8,6 +8,6 @@ package cat.copernic.cantinadelcopernic.moduloUtensilios.controladores;
  *
  * @author Enric
  */
-public class controllerProva {
+public class ControladorUtensilioNuevo {
     
 }
