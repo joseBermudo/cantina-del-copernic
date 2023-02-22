@@ -2,12 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package cat.copernic.cantinadelcopernic.moduloProduccion.controladores;
+package cat.copernic.cantinadelcopernic.moduloProduccion;
 
 /**
  *
- * @author Enric
+ * @author joseb
  */
-public class controllerProva {
+public class Produccion {
     
 }
