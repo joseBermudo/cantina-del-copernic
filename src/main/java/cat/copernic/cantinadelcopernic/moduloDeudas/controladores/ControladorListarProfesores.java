@@ -4,6 +4,7 @@
  */
 package cat.copernic.cantinadelcopernic.moduloDeudas.controladores;
 
+import java.util.ArrayList;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,13 +14,15 @@ import org.springframework.web.bind.annotation.GetMapping;
  * @author Enric
  */
 @Controller
-public class ControladorCrearDeuda {
+public class ControladorListarProfesores {
 
-    /*La interface Model d'Spring Boot ens permet transferir dades entre el controlador i la vista
-     */
-    @GetMapping("/crearDeuda")
+    
+    @GetMapping("/listarProfesores")
     public String inici(Model model) {
 
-        return "/paginasDeudas/crearDeuda"; //Retorna la pàgina iniciEnviarDades
+        //var profesores = new ArrayList<Profesor>();
+        //model.addAttribute("profesores", profesores);
+        
+        return "/paginasDeudas/listarProfesores"; 
     }
 }

@@ -8,21 +8,48 @@
         <h1>Llistat Professors</h1>
 
         <table border="1">
-            <tr> 
-                <td><img th:src="@{'/imagenes/fotoPerfil.png'}" width='50' height='50'/></td>
-                <th>correoElectronico@ejemplo.com</th>
-                <td><img th:src="@{'/imagenes/visibilityIcon.png'}" width='50' height='50'/></td>
+            <tr>
+                <th>Imagen Perfil</th>
+                <th>Correo electrónico</th>
+                <th>Ver</th>
             </tr>
             <tr> 
                 <td><img th:src="@{'/imagenes/fotoPerfil.png'}" width='50' height='50'/></td>
                 <th>correoElectronico@ejemplo.com</th>
-                <td><img th:src="@{'/imagenes/visibilityIcon.png'}" width='50' height='50'/></td>
+                <td><img th:src="@{'/imagenes/visibilityIcon.webp'}" width='50' height='50'/></td>
             </tr>
             <tr> 
                 <td><img th:src="@{'/imagenes/fotoPerfil.png'}" width='50' height='50'/></td>
                 <th>correoElectronico@ejemplo.com</th>
-                <td><img th:src="@{'/imagenes/visibilityIcon.png'}" width='50' height='50'/></td>
+                <td><img th:src="@{'/imagenes/visibilityIcon.webp'}" width='50' height='50'/></td>
+            </tr>
+            <tr> 
+                <td><img th:src="@{'/imagenes/fotoPerfil.png'}" width='50' height='50'/></td>
+                <th>correoElectronico@ejemplo.com</th>
+                <td><img th:src="@{'/imagenes/visibilityIcon.webp'}" width='50' height='50'/></td>
             </tr>
         </table>
+        
+        <!-- <div th:if="${profesores!=null && !profesores.empty}">
+            
+            <table border="1">
+                <tr>
+                    <th>Nom</th>
+                    <th>Edat</th>
+                    <th>Sexe</th>
+                </tr>
+                
+                <tr th:each="i : ${profesores}"> 
+                    <td th:text="${i.nom}"></td> 
+                    <td th:text="${i.edat}"></td> 
+                    <td th:text="${i.sexe}"></td>
+                </tr>
+            </table>
+           
+        </div>
+        
+        <div th:if="${profesores==null || profesores.empty}">
+            No hi ha professors a la llista.
+        </div> -->
     </body>
 </html>
