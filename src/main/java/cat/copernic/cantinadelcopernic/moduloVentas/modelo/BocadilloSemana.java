@@ -17,4 +17,5 @@ public class BocadilloSemana {
     private Date fecha;
     private String imagen;
     private Bocadillo bocadillo;
+ 
 }
