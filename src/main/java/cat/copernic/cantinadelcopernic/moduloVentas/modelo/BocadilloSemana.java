@@ -16,5 +16,6 @@ public class BocadilloSemana {
     private Double precio;
     private Date fecha;
     private String imagen;
-    private Bocadillo bocadillo;
+//    private Bocadillo bocadillo;
+ 
 }
