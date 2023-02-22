@@ -4,17 +4,13 @@
  */
 package cat.copernic.cantinadelcopernic.moduloRRHH.modelo;
 
-import lombok.Data;
+
 
 /**
  *
  * @author andre
  */
-@Data 
-public class Usuario {
-    
-    private String correo;
-    private String nombre;
-    private String apellidos;
+
+public class Alumno extends Usuario{
     
 }
