@@ -13,6 +13,6 @@ import lombok.Data;
  */
 @Data
 public class TurnoLimpieza {
-    Alumno alumno;
+    //Alumno alumno;
     Timestamp horario;
 }
