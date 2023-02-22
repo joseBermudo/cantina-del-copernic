@@ -4,10 +4,11 @@
  */
 package cat.copernic.cantinadelcopernic.moduloLimpieza.modelo;
 
+import java.util.ArrayList;
 /**
  *
  * @author Enric
  */
-public class modeloProva {
-    
+public class Horario {
+    ArrayList<TurnoLimpieza> listaTurnosLimpieza = new ArrayList<>();
 }

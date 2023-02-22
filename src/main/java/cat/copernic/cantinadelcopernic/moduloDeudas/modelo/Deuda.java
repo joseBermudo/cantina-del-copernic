@@ -4,10 +4,17 @@
  */
 package cat.copernic.cantinadelcopernic.moduloDeudas.modelo;
 
+import java.util.Date;
+import lombok.Data;
+
 /**
  *
  * @author Enric
  */
-public class modeloProva {
-    
+@Data
+public class Deuda {
+    private float cantidad;
+    private String correo; //El id del usuario
+    private Date fechaDeLaDeuda;
+    private boolean pagado;
 }
