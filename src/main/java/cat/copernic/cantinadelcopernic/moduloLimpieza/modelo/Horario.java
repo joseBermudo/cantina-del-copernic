@@ -2,17 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package cat.copernic.cantinadelcopernic.moduloLimpieza;
+package cat.copernic.cantinadelcopernic.moduloLimpieza.modelo;
 
-import java.util.Date;
-import lombok.Data;
-
+import java.util.ArrayList;
 /**
  *
- * @author marku
+ * @author Enric
  */
-@Data
-public class Limpieza {
-    private Date fechaDeLimpieza;
-    private String nombreAlumno;
+public class Horario {
+    private ArrayList<TurnoLimpieza> listaTurnosLimpieza = new ArrayList<>();
 }

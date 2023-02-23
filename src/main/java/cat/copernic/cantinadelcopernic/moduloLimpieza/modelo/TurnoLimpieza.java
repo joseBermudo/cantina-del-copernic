@@ -4,10 +4,17 @@
  */
 package cat.copernic.cantinadelcopernic.moduloLimpieza.modelo;
 
+import cat.copernic.cantinadelcopernic.moduloRRHH.modelo.Alumno;
+import java.sql.Timestamp;
+import lombok.Data;
+
 /**
  *
  * @author Enric
  */
-public class modeloProva {
-    
+@Data
+public class TurnoLimpieza {
+    private int idTurno;
+    private Alumno alumno;
+    private Timestamp horario;
 }

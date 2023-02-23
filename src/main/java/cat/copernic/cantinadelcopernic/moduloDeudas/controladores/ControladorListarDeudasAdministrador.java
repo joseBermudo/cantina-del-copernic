@@ -13,11 +13,11 @@ import org.springframework.web.bind.annotation.GetMapping;
  * @author Enric
  */
 @Controller
-public class ControladorCrearDeuda {
-    
-    @GetMapping("/crearDeuda")
+public class ControladorListarDeudasAdministrador {
+
+    @GetMapping("/listarDeudasAdministrador")
     public String inici(Model model) {
 
-        return "/paginasDeudas/crearDeuda"; 
+        return "/paginasDeudas/listarDeudasAdministrador"; 
     }
 }
