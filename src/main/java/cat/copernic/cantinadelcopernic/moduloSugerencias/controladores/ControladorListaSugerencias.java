@@ -36,6 +36,6 @@ public class ControladorListaSugerencias {
         sugerencias.add(sugerencia2);
         
         model.addAttribute("sugerencias", sugerencias);
-        return "/Sugerencias/listaSugerencias"; 
+        return "/paginasSugerencias/listaSugerencias"; 
     }
 }

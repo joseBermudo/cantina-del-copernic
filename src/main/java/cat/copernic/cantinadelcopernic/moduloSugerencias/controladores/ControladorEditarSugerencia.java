@@ -25,6 +25,6 @@ public class ControladorEditarSugerencia {
 
         model.addAttribute("sugerencia", sugerencia);
 
-        return "/Sugerencias/EDITARSugerencia";
+        return "/paginasSugerencias/EDITARSugerencia";
     }
 }
