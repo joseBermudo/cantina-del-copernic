@@ -13,6 +13,7 @@ import lombok.Data;
  */
 @Data
 public class Deuda {
+    private int idDeuda;
     private float cantidad;
     private String correo; //El id del usuario
     private Date fechaDeLaDeuda;

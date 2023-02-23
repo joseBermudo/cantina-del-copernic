@@ -14,6 +14,7 @@ import lombok.Data;
  */
 @Data
 public class TurnoLimpieza {
-    Alumno alumno;
-    Timestamp horario;
+    private int idTurno;
+    private Alumno alumno;
+    private Timestamp horario;
 }

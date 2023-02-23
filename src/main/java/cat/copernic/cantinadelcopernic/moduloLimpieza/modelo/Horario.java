@@ -10,5 +10,5 @@ import java.util.ArrayList;
  * @author Enric
  */
 public class Horario {
-    ArrayList<TurnoLimpieza> listaTurnosLimpieza = new ArrayList<>();
+    private ArrayList<TurnoLimpieza> listaTurnosLimpieza = new ArrayList<>();
 }
