@@ -33,6 +33,6 @@ public class ControladorlistaProfesors {
         profesores.add(profesor2);
         
         model.addAttribute("profesores", profesores);
-        return "/RRHH/listaProfesores";
+        return "/paginasRRHH/listaProfesores";
     }
 }

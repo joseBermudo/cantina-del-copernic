@@ -32,6 +32,6 @@ public class ControladorlistaAlumnos {
         alumnos.add(alumno);
         
         model.addAttribute("alumnos", alumnos);
-        return "/RRHH/listaAlumnos"; 
+        return "/paginasRRHH/listaAlumnos"; 
     }
 }
