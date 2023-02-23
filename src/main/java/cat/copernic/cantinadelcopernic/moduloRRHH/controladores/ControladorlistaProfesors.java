@@ -5,7 +5,7 @@
 package cat.copernic.cantinadelcopernic.moduloRRHH.controladores;
 
 
-import cat.copernic.cantinadelcopernic.moduloRRHH.modelo.Profesor;
+import cat.copernic.cantinadelcopernic.modelo.Profesor;
 import java.util.ArrayList;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
