@@ -7,7 +7,7 @@ package cat.copernic.cantinadelcopernic.moduloSugerencias.controladores;
 
 
 
-import cat.copernic.cantinadelcopernic.moduloSugerencias.modelo.Sugerencia;
+import cat.copernic.cantinadelcopernic.modelo.Sugerencia;
 import java.util.ArrayList;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

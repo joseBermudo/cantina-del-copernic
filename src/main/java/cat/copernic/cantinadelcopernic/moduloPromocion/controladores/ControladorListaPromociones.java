@@ -4,7 +4,7 @@
  */
 package cat.copernic.cantinadelcopernic.moduloPromocion.controladores;
 
-import cat.copernic.cantinadelcopernic.moduloPromocion.modelo.Promocion;
+import cat.copernic.cantinadelcopernic.modelo.Promocion;
 import java.util.ArrayList;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

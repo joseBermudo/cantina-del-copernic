@@ -2,12 +2,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package cat.copernic.cantinadelcopernic.moduloGestionModulos.modelo;
+package cat.copernic.cantinadelcopernic.modelo;
+
+
 
 /**
  *
- * @author Enric
+ * @author andre
  */
-public class modeloProva {
+
+public class Alumno extends Usuario{
     
 }

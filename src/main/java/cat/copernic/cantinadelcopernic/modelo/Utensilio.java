@@ -2,19 +2,17 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package cat.copernic.cantinadelcopernic.moduloRRHH.modelo;
-
-import java.util.ArrayList;
+package cat.copernic.cantinadelcopernic.modelo;
 import lombok.Data;
-
 /**
  *
- * @author andre
+ * @author marku
  */
 @Data
-public class Profesor extends Usuario{
+public class Utensilio {
+    private String nombre;
+    private int cantidad;
     
-    private ArrayList<Boolean> intolerancias;
-    
-    private String observaciones;
+
 }
+ 
