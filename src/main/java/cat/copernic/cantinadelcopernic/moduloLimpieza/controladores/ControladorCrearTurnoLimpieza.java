@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package cat.copernic.cantinadelcopernic.moduloDeudas.controladores;
+package cat.copernic.cantinadelcopernic.moduloLimpieza.controladores;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,11 +13,10 @@ import org.springframework.web.bind.annotation.GetMapping;
  * @author Enric
  */
 @Controller
-public class ControladorCrearDeuda {
+public class ControladorCrearTurnoLimpieza {
     
-    @GetMapping("/crearDeuda")
+    @GetMapping("/crearTurnoLimpieza")
     public String inici(Model model) {
-
-        return "/paginasDeudas/crearDeuda"; 
+        return "/paginasLimpieza/crearTurnoLimpieza"; 
     }
 }
