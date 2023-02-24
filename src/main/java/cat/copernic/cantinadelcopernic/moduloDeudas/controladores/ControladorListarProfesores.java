@@ -21,13 +21,23 @@ public class ControladorListarProfesores {
     @GetMapping("/listarProfesores")
     public String inici(Model model) {
         
+        model.addAttribute("atrasWord", "Enrrere");
+        model.addAttribute("listadoProfesoresWord", "Llistat professors");
+        model.addAttribute("deudasWord", "Deutes");
+        model.addAttribute("deudaWord", "Deuda");
+        model.addAttribute("correoWord", "Email");
+        model.addAttribute("noHayProfesoresWord", "No hi ha professors");
+        model.addAttribute("verWord", "Veure");
+        
+        var listadoProfesores = new ArrayList<Profesor>();
         /*
-        var profesores = new ArrayList<Profesor>();
-        Profesor ejemplo  = new Profesor();
-        ejemplo.setCorreo("correoProfesorEjemplo@gmail.com");
-        profesores.add(ejemplo);
-        model.addAttribute("profesores", profesores);
+        Profesor datosProfesor = new Profesor();
+        datosProfesor.setCorreo("correo@ejemplo.com");
+        datosProfesor.setNombre("Juan");
+        datosProfesor.setApellidos("Pérez García");
+        listadoProfesores.add(datosProfesor);
         */
+        model.addAttribute("listadoProfesores", listadoProfesores);
         
         return "/paginasDeudas/listarProfesores"; 
     }

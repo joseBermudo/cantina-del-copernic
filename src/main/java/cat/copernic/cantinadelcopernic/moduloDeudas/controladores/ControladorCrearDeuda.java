@@ -17,7 +17,12 @@ public class ControladorCrearDeuda {
     
     @GetMapping("/crearDeuda")
     public String inici(Model model) {
-
+        model.addAttribute("atrasWord", "Enrrere");
+        model.addAttribute("crearDeudaWord", "Crear deute");
+        model.addAttribute("quantitatWord", "Quantitat:");
+        model.addAttribute("dataWord", "Data:");
+        model.addAttribute("cancelarWord", "Cancel·lar");
+        
         return "/paginasDeudas/crearDeuda"; 
     }
 }

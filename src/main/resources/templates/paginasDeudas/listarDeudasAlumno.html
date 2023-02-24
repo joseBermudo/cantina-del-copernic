@@ -1,53 +1,29 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Listado de deudas</title>
+        <title th:text="${listadoDeudasWord}"></title>
     </head>
     <body>
-        <button id="atras">Enrrere</button>
-        <h1>Deudas</h1>
+        <button id="atras" th:text="${atrasWord}"></button>
+        <h1 th:text="${deudasWord}"></h1>
 
-        <table border="1">
-            <tr>
-                <th>Data</th>
-                <th>Deute</th>
-            </tr>
-            <tr> 
-                <th>06-04-2022</th>
-                <th>2,25€</th>
-            </tr>
-            <tr> 
-                <th>13-04-2022</th>
-                <th>3,25€</th>
-            </tr>
-            <tr> 
-                <th>20-04-2022</th>
-                <th>2,75€</th>
-            </tr>
-        </table>
-        <!-- <div th:if="${gossos!=null && !gossos.empty}">
-                
-                <table border="1">
-                    <tr>
-                        <th>Data</th>
-                        <th>Deute</th>
-                        <th>Marcar com a pagada</th>
-                    </tr>
-                    
-                    <tr th:each="gos : ${gossos}"> 
-                        <td th:text="${gos.nom}"></td> 
-                        <td th:text="${gos.edat}"></td>
-                        <td th:text="${gos.sexe}"></td> 
-                    </tr>
-                </table>
-               
-            </div>
-            
-            <div th:if="${gossos==null || gossos.empty}">
-                
-                No hi ha deutes a la llista.
-            </div>-->
-      <p>Profesor: Pepe</p>
-      <p>Emal: pepe@gmail.com</p>
+
+        <div th:if="${listadoDeudas!=null && !listadoDeudas.empty}">    
+            <table border="1">
+                <tr>
+                    <th th:text="${fechaWord}"></th>
+                    <th th:text="${deudaWord}"></th>
+                </tr>
+                <tr th:each="i : ${listadoDeudas}"> 
+                    <td th:text="${i.fechaDeLaDeuda}"></td>
+                    <td th:text="${i.cantidad}"></td>
+                </tr>
+            </table>
+        </div>
+
+        <div th:if="${listadoDeudas==null || listadoDeudas.empty}" th:text = "${noHayDeudasWord}"></div>
+        <p th:text="${profesorWord + ' ' + datosProfesor.nombre + ' ' + datosProfesor.apellidos}"></p>
+        <p th:text="${correoWord + ' ' + datosProfesor.correo}"></p>
+        
     </body>
 </html>

@@ -4,7 +4,7 @@
  */
 package cat.copernic.cantinadelcopernic.modelo;
 
-import java.util.Date;
+import java.sql.Date;
 import lombok.Data;
 
 /**
@@ -18,4 +18,5 @@ public class Deuda {
     private String correo; //El id del usuario
     private Date fechaDeLaDeuda;
     private boolean pagado;
+
 }
