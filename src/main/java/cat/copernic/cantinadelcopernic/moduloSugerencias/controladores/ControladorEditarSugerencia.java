@@ -4,7 +4,7 @@
  */
 package cat.copernic.cantinadelcopernic.moduloSugerencias.controladores;
 
-import cat.copernic.cantinadelcopernic.moduloSugerencias.modelo.Sugerencia;
+import cat.copernic.cantinadelcopernic.modelo.Sugerencia;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,6 +25,6 @@ public class ControladorEditarSugerencia {
 
         model.addAttribute("sugerencia", sugerencia);
 
-        return "/Sugerencias/EDITARSugerencia";
+        return "/paginasSugerencias/EDITARSugerencia";
     }
 }

@@ -5,7 +5,7 @@
 package cat.copernic.cantinadelcopernic.moduloRRHH.controladores;
 
 
-import cat.copernic.cantinadelcopernic.moduloRRHH.modelo.Alumno;
+import cat.copernic.cantinadelcopernic.modelo.Alumno;
 import java.util.ArrayList;
 import org.springframework.ui.Model;
 import org.springframework.stereotype.Controller;
@@ -32,6 +32,6 @@ public class ControladorlistaAlumnos {
         alumnos.add(alumno);
         
         model.addAttribute("alumnos", alumnos);
-        return "/RRHH/listaAlumnos"; 
+        return "/paginasRRHH/listaAlumnos"; 
     }
 }

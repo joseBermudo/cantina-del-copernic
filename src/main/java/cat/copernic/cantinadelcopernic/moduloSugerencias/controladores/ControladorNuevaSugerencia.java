@@ -16,6 +16,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class ControladorNuevaSugerencia {
     @GetMapping("/nouSuggeriment")
     public String inici(Model model){
-        return "/Sugerencias/nuevaSugerencia"; 
+        return "/paginasSugerencias/nuevaSugerencia"; 
     }
 }

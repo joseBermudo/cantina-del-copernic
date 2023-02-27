@@ -4,7 +4,7 @@
  */
 package cat.copernic.cantinadelcopernic.moduloProduccion.controladores;
 
-import cat.copernic.cantinadelcopernic.moduloProduccion.modelo.Receta;
+import cat.copernic.cantinadelcopernic.modelo.Receta;
 import java.util.ArrayList;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
