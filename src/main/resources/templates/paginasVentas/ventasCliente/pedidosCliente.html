@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
   <head>
-    <title>Entrepa de la setmana</title>
+    <title  th:text="${entrSemana}"></title>
   </head>
   <body>
-    <h1>L'entrepà de pernil</h1>
-    <h2>Entrepa de la setmana</h2>
+    <h1 th:text="${entrSemana}"></h1>
+    <h2 th:text="${entrSemana}"></h2>
     <img src="ruta-de-la-imagen.jpg" alt="Imagen del Bocadillo Fantástico">
     <br>
-    <p>Descripció l'entrepà de pernil: Aquest deliciós entrepà està fet amb pa acabat de fer, enciam, tomàquet, pernil, format i una exquisida salsa secreta. És la combinació perfecta de sabors i textures que et deixarà amb ganes de més.</p>
+    <p th:text="${descEntrepa}"></p>
     <br>
-    <button>Fer comanda</button>
+    <button th:text="${btnComanda}"></button>
   </body>
 </html>

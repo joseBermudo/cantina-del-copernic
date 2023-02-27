@@ -1,19 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
   <head>
-    <title>Crear Entrepà de la setmana</title>
+    <title th:text="${crearES}"></title>
   </head>
   <body>
-    <h1>Crear Entrepà de la setmana</h1>
+    <h1 th:text="${crearES}"></h1>
     <img src="ruta-de-la-imagen.jpg" alt="Imagen del Entrepà de la setmana">
     <br>
     <button>Pujar Imatge</button>
     <br>
     <label for="receta">Recpta:</label>
     <select id="receta">
-      <option value="opcion1">Opción 1</option>
-      <option value="opcion2">Opción 2</option>
-      <option value="opcion3">Opción 3</option>
+      <option th:each="a: ${recetas}" th:text="${a.nombre}"></option>
     </select>
     <br>
     <label for="precio">Preu:</label>
@@ -23,7 +21,7 @@
     <br>
     <textarea id="descripcion" name="descripcion" rows="4" cols="50"></textarea>
     <br>
-    <button>Guardar</button>
+    <button ><a href="/hacerPedidoCliente">Guardar</a></button>
     <button>Cancelar</button>
   </body>
 </html>
