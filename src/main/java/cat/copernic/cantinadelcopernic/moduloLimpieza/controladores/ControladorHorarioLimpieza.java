@@ -17,6 +17,16 @@ public class ControladorHorarioLimpieza {
 
     @GetMapping("/horarioLimpieza")
     public String inici(Model model) {
+        model.addAttribute("crearTurnoLimpiezaWord", "Crear torn de neteja");
+        model.addAttribute("lunesWord", "Dilluns");
+        model.addAttribute("martesWord", "Dimarts");
+        model.addAttribute("miercolesWord", "Dimecres");
+        model.addAttribute("juevesWord", "Dijous");
+        model.addAttribute("viernesWord", "Divendres");
+        model.addAttribute("sabadoWord", "Dissabte");
+        model.addAttribute("domingoWord", "Diumenge");
+        model.addAttribute("horarioWord", "Horari");
+        
         return "/paginasLimpieza/horarioLimpieza";
     }
 }

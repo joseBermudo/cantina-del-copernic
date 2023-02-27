@@ -17,6 +17,13 @@ public class ControladorCrearTurnoLimpieza {
     
     @GetMapping("/crearTurnoLimpieza")
     public String inici(Model model) {
+        
+        model.addAttribute("atrasWord", "Enrrere");
+        model.addAttribute("crearTornNetejaWord", "Crear Torn de Neteja");
+        model.addAttribute("dataWord", "Data:");
+        model.addAttribute("cancelarWord", "Cancel·lar");
+        model.addAttribute("nomNetejadorWord", "Nom del netejador:");
+        
         return "/paginasLimpieza/crearTurnoLimpieza"; 
     }
 }
