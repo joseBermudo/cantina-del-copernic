@@ -13,13 +13,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
             <ul th:each="promocio: ${promociones}">
                 <li th:text="${promocio.id}"></li> 
                 <li th:text="${promocio.desc}"></li>
-                <button>Edita</button>
+                <button><a href="/editarPromocion">Edita</a></button>
                 <button>Elimina</button>
-                <button>Usuaris</button>
+                <button><a href="/detallesPromocion">Usuaris</a></button>
             </ul>
         </div>
         <div>
-            <button>Nova promoció</button>
+            <button><a href="/crearPromocion">Nova promomoció</a></button>
         </div>
     </body>
 </html>
