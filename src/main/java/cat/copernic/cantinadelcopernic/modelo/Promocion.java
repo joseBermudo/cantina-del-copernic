@@ -34,6 +34,6 @@ public class Promocion implements Serializable {
     @Column(name = "condicion")
     private int condicio;
     
-    private HashMap<Profesor,Integer> profesores;
+    //private HashMap<Profesor,Integer> profesores;
 
 }

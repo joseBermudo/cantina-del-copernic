@@ -35,5 +35,5 @@ public class Receta implements Serializable {
     private String descripcion;
     
     
-    private ArrayList<String> lista_ingredientes;
+    //private ArrayList<String> lista_ingredientes;
 }
