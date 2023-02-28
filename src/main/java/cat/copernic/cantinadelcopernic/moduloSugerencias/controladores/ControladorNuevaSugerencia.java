@@ -16,6 +16,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class ControladorNuevaSugerencia {
     @GetMapping("/nouSuggeriment")
     public String inici(Model model){
+        
+        var titulo = "CREAR SUGGERIMENT";
+        var tituloSugerencia = "Titul del suggeriment:";
+        var descripcionSugerencia = "Descripció del suggeriment:";
+        
+        model.addAttribute("titulo", titulo);
+        model.addAttribute("tituloSugerencia", tituloSugerencia);
+        model.addAttribute("descripcionSugerencia", descripcionSugerencia);
+        
         return "/paginasSugerencias/nuevaSugerencia"; 
     }
 }

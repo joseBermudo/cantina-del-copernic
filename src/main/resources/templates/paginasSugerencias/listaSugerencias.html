@@ -11,11 +11,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
     <body>
         <div>
              <ul th:each="sugerencia: ${sugerencias}">
-             <li th:text="${sugerencia.titulo}"></li>  
+             <li th:text="${sugerencia.titulo}" onclick="location.href='verSuggeriment'"></li>  
             </ul>
         </div>
         <div>
-            <button>Nou suggeriment</button>
+            <button onclick="location.href='nouSuggeriment'">Nou suggeriment</button>
         </div>
     </body>
 </html>

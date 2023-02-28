@@ -22,8 +22,19 @@ public class ControladorEditarSugerencia {
         var sugerencia = new Sugerencia();
         sugerencia.setTitulo("titulo sugerencia");
         sugerencia.setDescripcion("descripción sugerencia");
-
+        
+        
         model.addAttribute("sugerencia", sugerencia);
+        
+        var titulo = "EDITAR SUGGERIMENT";
+        var tituloSugerencia = "Titul del suggeriment:";
+        var descripcionSugerencia = "Descripció del suggeriment:";
+        
+        model.addAttribute("titulo", titulo);
+        
+        model.addAttribute("tituloSugerencia", tituloSugerencia);
+        
+        model.addAttribute("descripcionSugerencia", descripcionSugerencia);
 
         return "/paginasSugerencias/EDITARSugerencia";
     }

@@ -4,6 +4,12 @@
  */
 package cat.copernic.cantinadelcopernic.modelo;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import java.util.Date;
 import lombok.Data;
 
@@ -12,9 +18,25 @@ import lombok.Data;
  * @author marku
  */
 @Data
+@Entity
+@Table(name = "bocadillo_semana")
 public class BocadilloSemana {
-    private Double precio;
-    private Date fecha;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "idbocadillo_semana")
+    private int idbocadillo_semana;
+
+    @Column(name = "precio")
+    private double precio;
+
+    @Column(name = "imagen")
     private String imagen;
-    private Receta receta;
+
+    @Column(name = "fecha")
+    private Date fecha;
+
+    @Column(name = "receta_idreceta")
+    private int receta_idreceta;
+
 }
