@@ -48,23 +48,9 @@ public class ControladorVerPedidoAdministrador {
         re.setNombre("Pernil");
         re.setDescripcion("desssssssssssss");
 
-        var ing = new ArrayList<String>();
-        ing.add("queso");
-        ing.add("lechuga");
-        re.setLista_ingredientes(ing);
-        bos.setReceta(re);
-
-        var be = new Bebida();
-        be.setNombre("Aigua");
-        be.setDesc("aigua de tota la vida");
-        be.setPrecio(5.0);
-
-        var pe = new Pedido();
-        pe.setBocadilloSemana(bos);
-        pe.setBebida(be);
-        pe.setCorreo("aa@gmail.com");
+       // model.addAttribute("gossos", gosDao.findAll());
         
-        model.addAttribute("pedido", pe);
+        //model.addAttribute("pedido", pe);
 
         return "/paginasVentas/ventasAdministrador/verPedidoAdministrador"; //Retorna la pàgina iniciEnviarDades
     }
