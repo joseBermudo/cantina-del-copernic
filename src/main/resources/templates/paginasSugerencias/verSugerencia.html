@@ -5,18 +5,18 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 -->
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
-        <title>Crear Suggeriment</title>
+        <title>Veure Suggeriment</title>
         <meta charset="UTF-8">
     </head>
     <body>
         <div>
-            <h1>CREAR SUGGERIMENT</h1>
+            <h1>VEURE SUGGERIMENT</h1>
         </div> 
         <div>
                 
-                <p>Titulo de la sugerencia:</p>
+                <p th:text="${tituloSugerencia}"></p>
                 <p th:text="${sugerencia.titulo}"></p>
-                <p>Descripción de la sugerencia:</p>
+                <p th:text="${descripcioSuggerimrnt}"></p>
                 <p th:text="${sugerencia.descripcion}"></p>
 
              
