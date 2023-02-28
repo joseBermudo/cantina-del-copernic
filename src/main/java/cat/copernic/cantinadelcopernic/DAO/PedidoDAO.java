@@ -27,5 +27,5 @@ public interface PedidoDAO extends CrudRepository<Pedido,Integer>{
     
     //Aqui podrem afegir altres mètodes que necessitem i que no estiguin definits a la interface CrudRepository,
     //com el següent mètode, findByNom que retornarà els gossos amb el nom passat per paràmetre
-    List<Pedido> findByNom(String nom);
+
 }
