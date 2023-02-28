@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-	<title>COMANDA</title>
+	<title th:text="${comanda}"></title>
 </head>
 <body>
-	<h1>COMANDA</h1>
+	<h1  th:text="${comanda}"></h1>
 	<form>
 		<label for="entrepasetmana">Entrepà de la setmana:</label>
 		<input type="text" id="entrepasetmana" name="entrepasetmana" value="Entrepà Mediterrani" readonly><br><br>
