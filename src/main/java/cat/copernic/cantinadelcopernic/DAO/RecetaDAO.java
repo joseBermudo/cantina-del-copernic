@@ -13,5 +13,5 @@ import org.springframework.data.repository.CrudRepository;
  * @author joseb
  */
 public interface RecetaDAO extends CrudRepository<Receta,Integer> {
-    List<Receta> findByNom(String nom);
+    List<Receta> findByNombre(String nombre);
 }

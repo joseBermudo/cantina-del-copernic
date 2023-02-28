@@ -13,5 +13,5 @@ import org.springframework.data.repository.CrudRepository;
  * @author joseb
  */
 public interface PromocionDAO extends CrudRepository<Promocion,Integer> {
-    List<Promocion> findByNom(String nom);
+
 }
