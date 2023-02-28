@@ -5,6 +5,7 @@
 package cat.copernic.cantinadelcopernic.moduloRRHH.controladores;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 /**
@@ -14,7 +15,25 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class ControladorNuevoProfesor {
    @GetMapping("/nouProfessor")
-    public String inici(){
+    public String inici(Model model){
+        
+        var tituloPagina = "REGISTRAR PROFESSOR";
+        
+        var correo = "Correu electronic:";
+        
+        var contrasenya = "Contrasenya:";
+        
+        var confirmarContrasenya = "Confirmar contrasenya:";
+        
+        model.addAttribute("tituloPagina", tituloPagina);
+        
+        model.addAttribute("correo", correo);
+        
+        model.addAttribute("contrasenya", contrasenya);
+        
+        model.addAttribute("confirmarContrasenya", confirmarContrasenya);
+        
+        
         return "/paginasRRHH/nuevoProfesor";
     } 
 }

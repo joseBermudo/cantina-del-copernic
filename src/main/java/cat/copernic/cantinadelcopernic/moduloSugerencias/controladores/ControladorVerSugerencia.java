@@ -25,6 +25,18 @@ public class ControladorVerSugerencia {
         
         model.addAttribute("sugerencia", sugerencia);
         
+        var titulo = "VEURE SUGGERIMENT";
+        
+        var tituloSugerencia = "Titul del suggeriment:";
+        
+        var descripcioSuggerimrnt = "Descripció del suggeriment:";
+        
+        model.addAttribute("titulo", titulo);
+        
+        model.addAttribute("tituloSugerencia", tituloSugerencia);
+        
+        model.addAttribute("descripcioSuggerimrnt", descripcioSuggerimrnt);
+        
         return "/paginasSugerencias/verSugerencia"; 
     }
 }
