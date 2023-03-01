@@ -10,36 +10,16 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import java.io.Serializable;
 import java.sql.Date;
 import lombok.Data;
 
-/**
- *
- * @author Enric
- */
-@Data
-public class Deuda {
-    
-    
-    
-    private int idDeuda;
-    
-    private Date fechaDeLaDeuda;
-    
-    private float cantidad;
-    
-    private String correo; //El id del usuario
-
-}
-
-
-
-/*
 @Data
 @Entity
 @Table(name = "deuda")
-public class Deuda {
+public class Deuda implements Serializable{
     
+    private static final long serialVersionUID = 1L; 
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -56,4 +36,4 @@ public class Deuda {
     private String correo; //El id del usuario
 
 }
-*/
+

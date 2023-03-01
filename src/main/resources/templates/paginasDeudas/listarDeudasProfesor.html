@@ -19,5 +19,7 @@
             </table>
         </div>
         <div th:if="${listadoDeudas==null || listadoDeudas.empty}" th:text = "${noHayDeudasWord}"></div>
+        <br>
+        <button th:text="${cancelarWord}" onclick="window.location.href='/listarProfesores'"></button>
     </body>
 </html>

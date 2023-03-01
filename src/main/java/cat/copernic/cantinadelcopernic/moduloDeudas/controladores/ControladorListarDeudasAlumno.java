@@ -4,10 +4,12 @@
  */
 package cat.copernic.cantinadelcopernic.moduloDeudas.controladores;
 
+import cat.copernic.cantinadelcopernic.DAO.DeudaDAO;
 import cat.copernic.cantinadelcopernic.modelo.Deuda;
 import cat.copernic.cantinadelcopernic.modelo.Profesor;
 import java.sql.Date;
 import java.util.ArrayList;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +21,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class ControladorListarDeudasAlumno {
     
+    @Autowired
+    DeudaDAO deudaDAO;
     @GetMapping("/listarDeudasAlumno")
     public String inici(Model model) {
         
@@ -35,8 +39,7 @@ public class ControladorListarDeudasAlumno {
         model.addAttribute("profesorWord", "Professor:");
         model.addAttribute("correoWord", "Email: ");
         
-        var listadoDeudas = new ArrayList<Deuda>();
-        model.addAttribute("listadoDeudas", listadoDeudas);
+        model.addAttribute("listadoDeudas", deudaDAO.findAll());
         
         Profesor datosProfesor = new Profesor();
         datosProfesor.setCorreo("correo@ejemplo.com");

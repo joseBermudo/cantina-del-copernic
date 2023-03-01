@@ -21,14 +21,16 @@
                     <td><input type="checkbox"></td> 
                 </tr>
             </table>
-            <button id="aplicar-cambios" th:text="${aplicarCambiosWord}"></button>
+            <button th:text="${aplicarCambiosWord}"></button>
         </div>
 
         <div th:if="${listadoDeudas==null || listadoDeudas.empty}" th:text = "${noHayDeudasWord}"></div>
 
+        
         <p th:text="${profesorWord + ' ' + datosProfesor.nombre + ' ' + datosProfesor.apellidos}"></p>
-        <p th:text="${correoWord + ' ' + datosProfesor.correo}"></p>
+        <p th:text="${correoWord + ' ' + datosProfesor.correo}"></p> 
+        
         <button th:text="${crearDeuteWord}" onclick="window.location.href='/crearDeuda'"></button>
-        <button id="cancelar" th:text="${cancelarWord}" onclick="window.location.href='/listarProfesores'"></button>
+        <button th:text="${cancelarWord}" onclick="window.location.href='/listarProfesores'"></button>
     </body>
 </html>
