@@ -5,8 +5,10 @@
 package cat.copernic.cantinadelcopernic.moduloRRHH.controladores;
 
 
+import cat.copernic.cantinadelcopernic.DAO.ProfesorDAO;
 import cat.copernic.cantinadelcopernic.modelo.Profesor;
 import java.util.ArrayList;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,10 +20,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class ControladorlistaProfesors {
     
+    @Autowired
+    private ProfesorDAO ProfesorDao;
     @GetMapping("/listaProfesors")
    public String inici(Model model){
         
-        var profesor = new Profesor();
+         /* var profesor = new Profesor();
         profesor.setCorreo("ftsdtdtt");
         var profesor2 = new Profesor();
         profesor2.setCorreo("tdtsndtn");
@@ -30,9 +34,10 @@ public class ControladorlistaProfesors {
         var profesores = new ArrayList<Profesor>();
         
         profesores.add(profesor);
-        profesores.add(profesor2);
+        profesores.add(profesor2);*/
         
-        model.addAttribute("profesores", profesores);
+        model.addAttribute("profesores", ProfesorDao.findAll());
+       
         return "/paginasRRHH/listaProfesores";
     }
 }
