@@ -13,11 +13,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
             <h1 th:text="${titulo}"></h1>
         </div> 
         <div>
-            <form action="" method="POST">    
+             <form action="" method="POST" th:object="${sugerencia}">    
                 <label for="titulo" th:text="${tituloSugerencia}"></label><br>
-                <input type="text" id="titulo" name="titulo"><br>
+                <input type="text" id="titulo" name="titulo"  th:field="*{titulo}"/><br>
                 <label for="descripcion" th:text="${descripcionSugerencia}"></label><br>
-                <input type="text" id="descripcion" name="descripcion"><br>
+                <input type="text" id="descripcion" name="descripcion"  th:field="*{descripcion}"/><br>
             </form>
              
             <button>Guardar canvis</button>

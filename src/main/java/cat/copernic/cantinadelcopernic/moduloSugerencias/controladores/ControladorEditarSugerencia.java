@@ -4,7 +4,9 @@
  */
 package cat.copernic.cantinadelcopernic.moduloSugerencias.controladores;
 
+import cat.copernic.cantinadelcopernic.DAO.SugerenciaDAO;
 import cat.copernic.cantinadelcopernic.modelo.Sugerencia;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,16 +17,22 @@ import org.springframework.web.bind.annotation.GetMapping;
  */
 @Controller
 public class ControladorEditarSugerencia {
+    
+     @Autowired
+     private SugerenciaDAO SugerenciaDao;
 
     @GetMapping("/editarSuggeriment")
     public String inici(Model model) {
 
-        var sugerencia = new Sugerencia();
+        /*var sugerencia = new Sugerencia();
         sugerencia.setTitulo("titulo sugerencia");
-        sugerencia.setDescripcion("descripción sugerencia");
+        sugerencia.setDescripcion("descripción sugerencia");*/
         
+        var sugerencia = SugerenciaDao.findById(4);
         
-        model.addAttribute("sugerencia", sugerencia);
+        var sugerencia2 = sugerencia.get();
+        
+        model.addAttribute("sugerencia", sugerencia2);
         
         var titulo = "EDITAR SUGGERIMENT";
         var tituloSugerencia = "Titul del suggeriment:";
