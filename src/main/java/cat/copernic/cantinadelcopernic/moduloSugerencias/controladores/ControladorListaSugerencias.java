@@ -7,8 +7,10 @@ package cat.copernic.cantinadelcopernic.moduloSugerencias.controladores;
 
 
 
+import cat.copernic.cantinadelcopernic.DAO.SugerenciaDAO;
 import cat.copernic.cantinadelcopernic.modelo.Sugerencia;
 import java.util.ArrayList;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,10 +21,14 @@ import org.springframework.web.bind.annotation.GetMapping;
  */
 @Controller
 public class ControladorListaSugerencias {
+    
+    @Autowired
+     private SugerenciaDAO SugerenciaDao;
+    
     @GetMapping("/listaSuggeriments")
     public String inici(Model model){
         
-        var sugerencia = new Sugerencia();
+         /*var sugerencia = new Sugerencia();
         sugerencia.setTitulo("titulo");
         sugerencia.setDescripcion("Descripción");
       
@@ -33,9 +39,11 @@ public class ControladorListaSugerencias {
         var sugerencias = new ArrayList<Sugerencia>();
         
         sugerencias.add(sugerencia);
-        sugerencias.add(sugerencia2);
+        sugerencias.add(sugerencia2);*/
         
-        model.addAttribute("sugerencias", sugerencias);
+        
+        model.addAttribute("sugerencias", SugerenciaDao.findAll());
+        
         return "/paginasSugerencias/listaSugerencias"; 
     }
 }
