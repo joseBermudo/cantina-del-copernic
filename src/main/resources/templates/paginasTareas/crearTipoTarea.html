@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title th:text="${crearTipoTareaWord}"></title>
+    </head>
+    <body>
+        <!-- <button id="atras" th:text="${atrasWord}"></button> -->
+        <h1 th:text="${crearTipoTareaWord}"></h1>
+        <form>
+            <label for="c" th:text="${nombreTipoTareaWord}"></label>
+            <input type="text" name="c"><br>
+            <!--
+            <label for="fecha" th:text="${dataWord}"></label>
+            <input type="date" id="fecha" name="fecha"><br><br>
+            -->
+        </form>
+        <button th:text="${crearTipoTareaWord}" ></button>
+        <button th:text="${cancelarWord}" onclick="window.location.href='/listarTiposTarea'"></button>
+    </body>
+</html>

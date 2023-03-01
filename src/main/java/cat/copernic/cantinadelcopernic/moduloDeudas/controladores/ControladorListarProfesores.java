@@ -4,8 +4,10 @@
  */
 package cat.copernic.cantinadelcopernic.moduloDeudas.controladores;
 
+import cat.copernic.cantinadelcopernic.DAO.ProfesorDAO;
 import cat.copernic.cantinadelcopernic.modelo.Profesor;
 import java.util.ArrayList;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,17 +19,21 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class ControladorListarProfesores {
 
-    
+    @Autowired
+    ProfesorDAO profesorDAO;
     @GetMapping("/listarProfesores")
     public String inici(Model model) {
         
-        /*
-        var profesores = new ArrayList<Profesor>();
-        Profesor ejemplo  = new Profesor();
-        ejemplo.setCorreo("correoProfesorEjemplo@gmail.com");
-        profesores.add(ejemplo);
-        model.addAttribute("profesores", profesores);
-        */
+        model.addAttribute("atrasWord", "Enrrere");
+        model.addAttribute("listadoProfesoresWord", "Llistat professors");
+        model.addAttribute("deudasWord", "Deutes");
+        model.addAttribute("deudaWord", "Deuda");
+        model.addAttribute("correoWord", "Email");
+        model.addAttribute("noHayProfesoresWord", "No hi ha professors");
+        model.addAttribute("verWord", "Veure");
+        
+        
+        model.addAttribute("listadoProfesores", profesorDAO.findAll());
         
         return "/paginasDeudas/listarProfesores"; 
     }

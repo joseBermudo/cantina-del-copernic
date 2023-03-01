@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Calendario</title>
+        <title th:text="horarioWord"></title>
         <style>
             table {
                 border-collapse: collapse;
@@ -23,17 +23,17 @@
         </style>
     </head>
     <body>
-        <h1>Calendario</h1>
-        <table id="calendario">
+        <h1 th:text="${horarioWord}"></h1>
+        <table id="horario">
             <thead>
                 <tr>
-                    <th>Lunes</th>
-                    <th>Martes</th>
-                    <th>Miércoles</th>
-                    <th>Jueves</th>
-                    <th>Viernes</th>
-                    <th>Sábado</th>
-                    <th>Domingo</th>
+                    <th th:text="${lunesWord}"></th>
+                    <th th:text="${martesWord}"></th>
+                    <th th:text="${miercolesWord}"></th>
+                    <th th:text="${juevesWord}"></th>
+                    <th th:text="${viernesWord}"></th>
+                    <th th:text="${sabadoWord}"></th>
+                    <th th:text="${domingoWord}"></th>
                 </tr>
             </thead>
             <tbody>
@@ -89,6 +89,6 @@
                 }
             }
         </script>
-        <button id="crear-deuda">Crear torn neteja</button>
+        <button th:text="${listaTareasWord}" onclick="window.location.href='/listarTareas'"></button>
     </body>
 </html>
