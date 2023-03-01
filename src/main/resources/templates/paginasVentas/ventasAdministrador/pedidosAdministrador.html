@@ -1,20 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-	<title>Ejemplo de imagen, descripción y lista con botones</title>
+	<title th:text="${com1}"></title>
 </head>
 <body>
 
 	<!-- Título de entrepa de la semana -->
-	<h1>Entrepa de la setmana</h1>
+	<h1 th:text="${entrs}"></h1>
 
 	<!-- Imagen y descripción -->
 	<img src="ruta/a/la/imagen.jpg">
         
-	<p>Descripció de l'entrepà de la setmana</p>
+	<p th:text="${descEntr}"></p>
 
         <!-- Título de la lista de pedidos -->
-	<h2>Pedidos</h2>
+	<h2 th:text="${comand}"></h2>
 
 	<!-- Lista con botones -->
 	<ul>

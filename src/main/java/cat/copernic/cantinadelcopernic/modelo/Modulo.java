@@ -4,11 +4,17 @@
  */
 package cat.copernic.cantinadelcopernic.modelo;
 
-import java.util.ArrayList;
+import lombok.Data;
+
 /**
  *
- * @author Enric
+ * @author andre
  */
-public class Horario {
-    private ArrayList<TurnoLimpieza> listaTurnosLimpieza = new ArrayList<>();
+@Data
+public class Modulo {
+    
+    private String nombreModulo;
+    private boolean visibleCliente;
+    private boolean visibleAlumno;
+    private boolean habilitado;
 }

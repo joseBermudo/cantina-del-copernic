@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-	<title>Pantalla con campos de texto</title>
+	<title th:text="${com1}"></title>
 </head>
 <body>
-	<h2>Formulario</h2>
+	<h2 th:text="${ent}"></h2>
 	<form>
 		<label for="campo1">Correo:</label>
 		<input type="text" id="campo1" readonly><br>

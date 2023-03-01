@@ -1,29 +1,28 @@
 <!DOCTYPE html>
 <html>
-    <head>
+    <html xmlns:th="http://www.thymeleaf.org">
         <title>Llista de móduls</title>
+        <meta charset="UTF-8">
     </head>
     <body>
-        <button id="atras">Enrrere</button>
-        <h1>Deudas</h1>
-
-        <table border="1">
-            <tr>
-                <th>Data</th>
-                <th>Deute</th>
-            </tr>
-            <tr> 
-                <th>06-04-2022</th>
-                <th>2,25€</th>
-            </tr>
-            <tr> 
-                <th>13-04-2022</th>
-                <th>3,25€</th>
-            </tr>
-            <tr> 
-                <th>20-04-2022</th>
-                <th>2,75€</th>
-            </tr>
-        </table>
+        <div> 
+            <table border="1">
+                <tr>
+                    <th>Modul</th>
+                    <th>Alumne</th>
+                    <th>Cliente</th>
+                    <th>Habilitado</th>
+                </tr>
+                <tr th:each="modulo : ${modulos}"> 
+                    <th th:text="${modulo.nombreModulo}"></th>
+                    <th><input type="checkbox" th:checked="${modulo.visibleAlumno}" name="option1" value="1"></th>
+                    <th><input type="checkbox" th:checked="${modulo.visibleCliente}" name="option1" value="1"></th>
+                    <th><input type="checkbox" th:checked="${modulo.habilitado}" name="option1" value="1"></th>
+                </tr>
+            </table>
+        </div>
+        <div>
+            <button>Guardar canvis</button>
+        </div>
     </body>
 </html>

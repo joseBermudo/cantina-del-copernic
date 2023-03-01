@@ -10,19 +10,19 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
     </head>
     <body>
         <div>
-            <button>Receptes</button>
+            <button><a href="/listaRecetas">>Edita</a></button>
             <button>Begudes</button>
         </div>
         <div>
             <ul th:each="bebida: ${bebidas}">
                 <li th:text="${bebida.nombre}"></li> 
                 <li th:text="${bebida.precio}"></li>
-                <button>Edita</button>
+                <button><a href="/editarBebida">Edita</a></button>
                 <button>Elimina</button>
             </ul>
         </div>
         <div>
-            <button>Nova beguda</button>
+            <button><a href="/crearBebida">Nova beguda</a></button>
         </div>
     </body>
 </html>

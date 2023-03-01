@@ -22,7 +22,16 @@ public class ControladorPedidosCliente {
     @GetMapping("/pedidosCliente")
     public String inici(Model model) {
 
-        return "ChacerPedidoCliente"; //Retorna la pàgina iniciEnviarDades
+        String es="Entrepa de la setmana";
+        model.addAttribute("entrSemana", es);
+        
+        String descEntrepa="Descripció l'entrepà de pernil: Aquest deliciós entrepà està fet amb pa acabat de fer, enciam, tomàquet, pernil, format i una exquisida salsa secreta. És la combinació perfecta de sabors i textures que et deixarà amb ganes de més.";
+        model.addAttribute("descEntrepa", descEntrepa);
+        
+        String btn="Fer comanda";
+        model.addAttribute("btnComanda", btn);
+        
+        return "/paginasVentas/ventasCliente/pedidosCliente"; //Retorna la pàgina iniciEnviarDades
     }
     
     

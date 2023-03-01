@@ -4,8 +4,6 @@
  */
 package cat.copernic.cantinadelcopernic.moduloVentas.controladores.Admin;
 
-
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,8 +20,19 @@ public class ControladorPedidosAdministrador {
     @GetMapping("/pedidosAdministrador")
     public String inici(Model model) {
 
+        String com = "Comandes";
+        model.addAttribute("com1", com);
+        
+        String entSemana = "Entrepa de la setmana";
+        model.addAttribute("entrs", entSemana);
+        
+        String descEnSemana = "Descripció de l'entrepà de la setmana";
+        model.addAttribute("descEntr", entSemana);
+        
+        String Comandes = "Comandes";
+        model.addAttribute("comand", Comandes);
+
         return "/paginasVentas/ventasAdministrador/pedidosAdministrador"; //Retorna la pàgina iniciEnviarDades
     }
-    
-    
+
 }
