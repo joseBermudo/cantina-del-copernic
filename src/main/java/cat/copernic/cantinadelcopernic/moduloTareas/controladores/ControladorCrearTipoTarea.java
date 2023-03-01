@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package cat.copernic.cantinadelcopernic.moduloDeudas.controladores;
+package cat.copernic.cantinadelcopernic.moduloTareas.controladores;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,16 +13,16 @@ import org.springframework.web.bind.annotation.GetMapping;
  * @author Enric
  */
 @Controller
-public class ControladorCrearDeuda {
+public class ControladorCrearTipoTarea {
     
-    @GetMapping("/crearDeuda")
+    @GetMapping("/crearTipoTarea")
     public String inici(Model model) {
+        
+        model.addAttribute("crearTipoTareaWord", "Crear tipus de tasca");
         model.addAttribute("atrasWord", "Enrrere");
-        model.addAttribute("crearDeudaWord", "Crear deute");
-        model.addAttribute("quantitatWord", "Quantitat:");
-        model.addAttribute("dataWord", "Data:");
+        model.addAttribute("nombreTipoTareaWord", "Nom tipus de tasca");
         model.addAttribute("cancelarWord", "Cancel·lar");
         
-        return "/paginasDeudas/crearDeuda"; 
+        return "/paginasTareas/crearTipoTarea"; 
     }
 }

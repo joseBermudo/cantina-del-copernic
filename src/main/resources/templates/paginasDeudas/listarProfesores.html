@@ -1,62 +1,26 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Listado de deudas</title>
+        <title th:text="${listadoDeudasWord}"></title>
     </head>
     <body>
-        <button id="atras">Enrrere</button>
-        <h1>Llistat Professors</h1>
+        <!-- <button th:text="${atrasWord}"></button> -->
+        <h1 th:text="${listadoProfesoresWord}"></h1>
 
-        <table border="1">
-            <tr>
-                <th>Imagen Perfil</th>
-                <th>Correo electrónico</th>
-                <th>Ver</th>
-            </tr>
-            <tr> 
-                <td><img th:src="@{'/imagenes/fotoPerfil.png'}" width='50' height='50'/></td>
-                <th>correoElectronico@ejemplo.com</th>
-                <td><img th:src="@{'/imagenes/visibilityIcon.webp'}" width='50' height='50'/></td>
-            </tr>
-            <tr> 
-                <td><img th:src="@{'/imagenes/fotoPerfil.png'}" width='50' height='50'/></td>
-                <th>correoElectronico@ejemplo.com</th>
-                <td><img th:src="@{'/imagenes/visibilityIcon.webp'}" width='50' height='50'/></td>
-            </tr>
-            <tr> 
-                <td><img th:src="@{'/imagenes/fotoPerfil.png'}" width='50' height='50'/></td>
-                <th>correoElectronico@ejemplo.com</th>
-                <td><img th:src="@{'/imagenes/visibilityIcon.webp'}" width='50' height='50'/></td>
-            </tr>
-        </table>
-        
-        <div th:if="${profesores!=null && !profesores.empty}"><!--Si l'ArrayList de professors està inicialitzat i té contingut-->
-            
-            <!-- Mostrem en una taula les dades del professors creats en el controlador ControladorEnviarDades -->
+        <div th:if="${listadoProfesores!=null && !listadoProfesores.empty}">    
             <table border="1">
                 <tr>
-                    <th>Imagen Perfil</th>
-                    <th>Correo electrónico</th>
-                    <th>Ver</th>
+                    <th th:text="${correoWord}"></th>
+                    <th th:text="${verWord}"></th>
                 </tr>
-                
-                <!-- El component each de Thymeleaf és per crear una estructuta iterativa. El valor que li assignem és la 
-                     condició d'iteració. En el nostre cas fem servir el operador : on professor és la variable on guardarem 
-                     cadascun dels professors de l'ArrayList professors que hem creat en el controlador-->
-                
-                <!-- Recorregut dels professors. Cada professor de l'ArrayList professors es guarda en la variable professor-->
-                <tr th:each="i : ${profesores}"> 
-                    <td><img th:src="@{'/imagenes/fotoPerfil.png'}" width='50' height='50'/></td>
-                    <td th:text="${i.correo}"></td> <!-- Valor de l'atribut edat del professor actual -->
+                <tr th:each="i : ${listadoProfesores}"> 
+                    <td th:text="${i.correo}"></td>
                     <td><img th:src="@{'/imagenes/visibilityIcon.webp'}" width='50' height='50'/></td>
-            </tr>
+                </tr>
             </table>
-           
         </div>
+
+        <div th:if="${listadoProfesores==null || listadoProfesores.empty}" th:text = "${noHayProfesoresWord}"></div>
         
-        <div th:if="${profesores==null || profesores.empty}"><!--Si l'ArrayList de professors no està inicialitzat o no té contingut-->
-            <!-- Mostrem missatge-->
-            No hi ha professors a la llista.
-        </div>
     </body>
 </html>
