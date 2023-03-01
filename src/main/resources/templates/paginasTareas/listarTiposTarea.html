@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title th:text="${listadoTipoTareaWord}"></title>
+    </head>
+    <body>
+        <!-- <button th:text="${atrasWord}"></button> -->
+        <h1 th:text="${listadoTipoTareaWord}"></h1>
+
+        <div th:if="${listadoTiposTarea!=null && !listadoTiposTarea.empty}">    
+            <table border="1">
+                <tr>
+                    <th th:text="${tiposTareaWord}"></th>
+                    <th th:text="${eliminarWord}"></th>
+                </tr>
+                <tr th:each="i : ${listadoTiposTarea}"> 
+                    <td th:text="${i.nombre}"></td>
+                    <td><img th:src="@{'/imagenes/basuraTipoTarea.png'}" width='50' height='50'/></td>
+                    </tr>
+            </table>
+        </div>
+
+        <div th:if="${listadoTiposTarea==null || listadoTiposTarea.empty}" th:text = "${noHayTiposTareaWord}"></div>
+        <button th:text="${listaTareasWord}" onclick="window.location.href='/listarTareas'"></button>
+        <button th:text="${crearTipoTareaWord}" onclick="window.location.href='/crearTipoTarea'"></button>
+    </body>
+</html>

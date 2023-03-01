@@ -23,17 +23,17 @@
         </style>
     </head>
     <body>
-        <h1 th:text="horarioWord"></h1>
+        <h1 th:text="${horarioWord}"></h1>
         <table id="horario">
             <thead>
                 <tr>
-                    <th th:text="lunesWord"></th>
-                    <th th:text="martesWord"></th>
-                    <th th:text="miercolesWord"></th>
-                    <th th:text="juevesWord"></th>
-                    <th th:text="viernesWord"></th>
-                    <th th:text="sabadoWord"></th>
-                    <th th:text="domingoWord"></th>
+                    <th th:text="${lunesWord}"></th>
+                    <th th:text="${martesWord}"></th>
+                    <th th:text="${miercolesWord}"></th>
+                    <th th:text="${juevesWord}"></th>
+                    <th th:text="${viernesWord}"></th>
+                    <th th:text="${sabadoWord}"></th>
+                    <th th:text="${domingoWord}"></th>
                 </tr>
             </thead>
             <tbody>
@@ -89,6 +89,6 @@
                 }
             }
         </script>
-        <button id="crear-deuda" th:text="crearTurnoLimpieza"></button>
+        <button th:text="${listaTareasWord}" onclick="window.location.href='/listarTareas'"></button>
     </body>
 </html>

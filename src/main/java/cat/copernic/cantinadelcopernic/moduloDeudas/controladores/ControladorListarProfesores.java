@@ -31,10 +31,11 @@ public class ControladorListarProfesores {
         
         var listadoProfesores = new ArrayList<Profesor>();
         /*
+        //Ejemplo
         Profesor datosProfesor = new Profesor();
         datosProfesor.setCorreo("correo@ejemplo.com");
-        datosProfesor.setNombre("Juan");
-        datosProfesor.setApellidos("Pérez García");
+        datosProfesor.setNombre("Nombre");
+        datosProfesor.setApellidos("Apellido1 Apellido2");
         listadoProfesores.add(datosProfesor);
         */
         model.addAttribute("listadoProfesores", listadoProfesores);

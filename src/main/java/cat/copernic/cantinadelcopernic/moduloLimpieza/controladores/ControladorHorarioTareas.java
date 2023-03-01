@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.GetMapping;
  * @author Enric
  */
 @Controller
-public class ControladorHorarioLimpieza {
+public class ControladorHorarioTareas {
 
-    @GetMapping("/horarioLimpieza")
+    @GetMapping("/horarioTareas")
     public String inici(Model model) {
         model.addAttribute("crearTurnoLimpiezaWord", "Crear torn de neteja");
         model.addAttribute("lunesWord", "Dilluns");
@@ -27,6 +27,9 @@ public class ControladorHorarioLimpieza {
         model.addAttribute("domingoWord", "Diumenge");
         model.addAttribute("horarioWord", "Horari");
         
-        return "/paginasLimpieza/horarioLimpieza";
+        model.addAttribute("listaTareasWord", "Llista de tasques");
+        model.addAttribute("crearTareaWord", "Crear tasca");
+        
+        return "/paginasTareas/horarioTareas";
     }
 }

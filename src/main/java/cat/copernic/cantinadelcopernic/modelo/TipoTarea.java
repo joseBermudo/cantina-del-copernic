@@ -10,7 +10,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import java.sql.Date;
 import lombok.Data;
 
 /**
@@ -18,42 +17,27 @@ import lombok.Data;
  * @author Enric
  */
 @Data
-public class Deuda {
+public class TipoTarea {
     
+    private int id;
     
-    
-    private int idDeuda;
-    
-    private Date fechaDeLaDeuda;
-    
-    private float cantidad;
-    
-    private String correo; //El id del usuario
-
+    private String nombre;
 }
-
 
 
 /*
 @Data
 @Entity
-@Table(name = "deuda")
-public class Deuda {
-    
+@Table(name = "tipo_tarea")
+public class TipoTarea {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "iddeuda")
-    private int idDeuda;
+    @Column(name = "idtipo_tarea")
+    private int id;
     
-    @Column(name = "fecha")
-    private Date fechaDeLaDeuda;
-    
-    @Column(name = "cantidad")
-    private float cantidad;
-    
-    @Column(name = "usuarios_correo")
-    private String correo; //El id del usuario
-
+    @Column(name = "nombre")
+    private String nombre;
 }
 */
+

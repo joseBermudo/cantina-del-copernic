@@ -13,17 +13,16 @@ import org.springframework.web.bind.annotation.GetMapping;
  * @author Enric
  */
 @Controller
-public class ControladorCrearTurnoLimpieza {
+public class ControladorCrearTipoTarea {
     
-    @GetMapping("/crearTurnoLimpieza")
+    @GetMapping("/crearTipoTarea")
     public String inici(Model model) {
         
+        model.addAttribute("crearTipoTareaWord", "Crear tipus de tasca");
         model.addAttribute("atrasWord", "Enrrere");
-        model.addAttribute("crearTornNetejaWord", "Crear Torn de Neteja");
-        model.addAttribute("dataWord", "Data:");
+        model.addAttribute("nombreTipoTareaWord", "Nom tipus de tasca");
         model.addAttribute("cancelarWord", "Cancel·lar");
-        model.addAttribute("nomNetejadorWord", "Nom del netejador:");
         
-        return "/paginasLimpieza/crearTurnoLimpieza"; 
+        return "/paginasTareas/crearTipoTarea"; 
     }
 }

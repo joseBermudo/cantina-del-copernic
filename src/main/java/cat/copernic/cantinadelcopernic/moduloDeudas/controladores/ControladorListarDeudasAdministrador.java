@@ -38,10 +38,11 @@ public class ControladorListarDeudasAdministrador {
         var listadoDeudas = new ArrayList<Deuda>();
         model.addAttribute("listadoDeudas", listadoDeudas);
         
+        //Exemple
         Profesor datosProfesor = new Profesor();
         datosProfesor.setCorreo("correo@ejemplo.com");
-        datosProfesor.setNombre("Juan");
-        datosProfesor.setApellidos("Pérez García");
+        datosProfesor.setNombre("Nombre");
+        datosProfesor.setApellidos("Apellido1 Apellido2");
         
         model.addAttribute("datosProfesor", datosProfesor);
         
