@@ -4,8 +4,10 @@
  */
 package cat.copernic.cantinadelcopernic.moduloProduccion.controladores;
 
+import cat.copernic.cantinadelcopernic.DAO.BebidaDAO;
 import cat.copernic.cantinadelcopernic.modelo.Bebida;
-import java.util.ArrayList;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,18 +17,17 @@ import org.springframework.web.bind.annotation.GetMapping;
  * @author joseb
  */
 @Controller
+@Slf4j
 public class ControladorListaBebidas {
+    
+    @Autowired
+    BebidaDAO bebidaDAO;
     
     @GetMapping("/listaBebidas")
     public String inici(Model model) {
-        ArrayList<Bebida> bebidas = new ArrayList<>();
-        for (int i = 0; i < 7; i++) {
-            Bebida bebida = new Bebida();
-            bebida.setNombre("Cocacola");
-            bebida.setPrecio(12.4);
-            bebidas.add(bebida);
-        }
-        model.addAttribute("bebidas", bebidas);
+        
+       
+        model.addAttribute("bebidas", bebidaDAO.findAll());
         return "/paginasProduccion/listaBebidas";
     }
     
