@@ -13,7 +13,7 @@ import org.springframework.data.repository.CrudRepository;
  *
  * @author andre
  */
-public interface ProfesorDAO  extends CrudRepository<Profesor,Integer> {
+public interface ProfesorDAO  extends CrudRepository<Profesor,String> {
     
      
 }
