@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+
+
+<!-- <!DOCTYPE html>
 <html>
     <head>
         <title th:text="horarioWord"></title>
@@ -39,56 +41,55 @@
             <tbody>
             </tbody>
         </table>
-
-        <script>
-            // Obtener la fecha actual
-            var hoy = new Date();
-            var turnosLimpieza = {}
-
-            // Obtener el mes y el año actual
-            var mesActual = hoy.getMonth();
-            var anioActual = hoy.getFullYear();
-
-            // Obtener el número de días del mes actual
-            var diasEnMes = new Date(anioActual, mesActual + 1, 0).getDate();
-
-            // Obtener el primer día de la semana
-            var primerDiaSemana = new Date(anioActual, mesActual, 1).getDay();
-            if (primerDiaSemana === 0) {
-                // El primer día de la semana es domingo, así que ajustamos para que sea lunes
-                primerDiaSemana = 6;
-            } else {
-                // Restamos 1 para que el primer día de la semana sea 0 (lunes) en vez de 1 (martes) y así sucesivamente
-                primerDiaSemana--;
+        <button th:text="${listaTareasWord}" onclick="window.location.href='/listarTareas'"></button>
+    </body>
+</html> -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title th:text="${horarioWord}"></title>
+        <style>
+            table {
+                border-collapse: collapse;
+                margin: 0 auto;
             }
-
-            // Obtener la tabla del calendario
-            var tablaCalendario = document.getElementById("calendario").getElementsByTagName('tbody')[0];
-
-            // Generar las filas y columnas del calendario
-            var dia = 1;
-            for (var i = 0; i < 6; i++) {
-                var fila = tablaCalendario.insertRow();
-
-                for (var j = 0; j < 7; j++) {
-                    if (i === 0 && j < primerDiaSemana) {
-                        // Espacio en blanco para los días previos al primer día del mes
-                        var celda = fila.insertCell();
-                    } else if (dia > diasEnMes) {
-                        // Espacio en blanco para los días posteriores al último día del mes
-                        var celda = fila.insertCell();
-                    } else {
-                        // Celda con el día actual
-                        var celda = fila.insertCell();
-                        celda.innerHTML = dia;
-                        if (dia === hoy.getDate() && mesActual === hoy.getMonth() && anioActual === hoy.getFullYear()) {
-                            celda.classList.add("today");
-                        }
-                        dia++;
-                    }
-                }
+            th, td {
+                border: 1px solid black;
+                padding: 10px;
             }
-        </script>
+            th {
+                background-color: #ccc;
+            }
+            td {
+                text-align: center;
+            }
+            .today {
+                background-color: #ff0;
+            }
+        </style>
+    </head>
+    <body>
+        <h1 th:text="${horarioWord}"></h1>
+        <table id="horario">
+            <thead>
+                <tr>
+                    <th th:text="${lunesWord}"></th>
+                    <th th:text="${martesWord}"></th>
+                    <th th:text="${miercolesWord}"></th>
+                    <th th:text="${juevesWord}"></th>
+                    <th th:text="${viernesWord}"></th>
+                    <th th:text="${sabadoWord}"></th>
+                    <th th:text="${domingoWord}"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Generar las filas de la tabla -->
+                <tr th:each="fila : ${tablaHorario}">
+                    <!-- Generar las celdas de cada fila -->
+                    <td th:each="celda : ${fila}" th:text="${celda}" th:class="${celda.contains('avui') ? 'today' : ''}"></td>
+                </tr>
+            </tbody>
+        </table>
         <button th:text="${listaTareasWord}" onclick="window.location.href='/listarTareas'"></button>
     </body>
 </html>
