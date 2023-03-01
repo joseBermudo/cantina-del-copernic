@@ -9,6 +9,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import java.util.Date;
 import lombok.Data;
@@ -18,35 +20,23 @@ import lombok.Data;
  * @author Enric
  */
 @Data
-public class Tarea {
-    
-    private int id;
-    
-    private String alumno;
-    
-    private Date fecha;
-    
-    private TipoTarea tipo;
-}
-
-/*
-@Data
 @Entity
 @Table(name = "tarea")
 public class Tarea {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idtarea")
     private int id;
-    
+
     @Column(name = "alumno")
     private String alumno;
-    
+
     @Column(name = "fecha")
     private Date fecha;
-    
-    @Column(name = "tipo_tarea_idtipo_tarea")
+
+    @ManyToOne
+    @JoinColumn(name = "tipo_tarea_idtipo_tarea")
     private TipoTarea tipo;
+
 }
-*/

@@ -4,8 +4,10 @@
  */
 package cat.copernic.cantinadelcopernic.moduloTareas.controladores;
 
+import cat.copernic.cantinadelcopernic.DAO.TipoTareaDAO;
 import cat.copernic.cantinadelcopernic.modelo.TipoTarea;
 import java.util.ArrayList;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,20 +19,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class ControladorListarTiposTarea {
 
+    @Autowired
+    TipoTareaDAO tipoTareaDAO;
     @GetMapping("/listarTiposTarea")
     public String inici(Model model) {
-
+        
         model.addAttribute("listadoTipoTareaWord", "Llistat tipus de tasques");
         model.addAttribute("atrasWord", "Enrrere");
         model.addAttribute("eliminarWord", "Eliminar");
         
-        TipoTarea tipoTareaEjemplo = new TipoTarea();
-        tipoTareaEjemplo.setId(1);
-        tipoTareaEjemplo.setNombre("Ejemplo de nombre para tipo de tarea");
-        ArrayList<TipoTarea> listadoTiposTarea = new ArrayList<>();
-        listadoTiposTarea.add(tipoTareaEjemplo); // Agregar el objeto a la lista
-
-        model.addAttribute("listadoTiposTarea", listadoTiposTarea);
+        model.addAttribute("listadoTiposTarea", tipoTareaDAO.findAll());
 
         model.addAttribute("tiposTareaWord", "Tipus de tasques");
         model.addAttribute("noHayTiposTareaWord", "No hi ha tipus de tasques");

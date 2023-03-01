@@ -17,16 +17,6 @@ import lombok.Data;
  * @author Enric
  */
 @Data
-public class TipoTarea {
-    
-    private int id;
-    
-    private String nombre;
-}
-
-
-/*
-@Data
 @Entity
 @Table(name = "tipo_tarea")
 public class TipoTarea {
@@ -39,5 +29,5 @@ public class TipoTarea {
     @Column(name = "nombre")
     private String nombre;
 }
-*/
+
 

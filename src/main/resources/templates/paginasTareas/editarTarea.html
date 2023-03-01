@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title th:text="${editarTareaWord}"></title>
+    </head>
+    <body>
+        <!-- <button id="atras" th:text="${atrasWord}"></button> -->
+        <h1 th:text="${editarTareaWord}"></h1>
+        <form>
+            <label for="c" th:text="${alumneWord}"></label>
+            <input type="text" name="c"><br><br>
+            <label for="fecha" th:text="${fechaWord}"></label>
+            <input type="date" id="fecha" name="fecha"><br><br>
+            
+            <label for="tipoTarea" th:text="${tipoTareaWord}"></label>
+            <select name="tipoTarea" id="tipoTarea">
+                <option th:each="tipoTarea : ${listaTiposTarea}" th:value="${tipoTarea.id}" th:text="${tipoTarea.nombre}"></option>
+            </select><br><br>
+        </form>
+        <button th:text="${editarTareaWord}" ></button>
+        <button th:text="${cancelarWord}" onclick="window.location.href='/listarTareas'"></button>
+    </body>
+</html>
