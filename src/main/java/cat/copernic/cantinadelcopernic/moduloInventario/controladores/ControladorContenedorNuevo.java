@@ -4,6 +4,10 @@
  */
 package cat.copernic.cantinadelcopernic.moduloInventario.controladores;
 
+import cat.copernic.cantinadelcopernic.DAO.ContenedorDAO;
+import cat.copernic.cantinadelcopernic.DAO.UtensilioDAO;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -11,11 +15,25 @@ import org.springframework.web.bind.annotation.GetMapping;
  *
  * @author Enric
  */
+@Controller
 public class ControladorContenedorNuevo {
-     @GetMapping("/contenedorNuevo")
+
+    @Autowired
+    private ContenedorDAO contDAO;
+
+    @Autowired
+    private UtensilioDAO utenDAO;
+
+    @GetMapping("/contenedorNuevo")
     public String inici(Model model) {
-        
-        
-        return "/paginasUtensilios/contenedorNuevo";
+
+        var contenedor = contDAO.findAll();
+        model.addAttribute("contenedor", contenedor);
+
+        var utensilios = utenDAO.findAll();
+        model.addAttribute("utensilios", utensilios);
+
+        return "/paginasInventario/contenedorNuevo";
     }
 }
+

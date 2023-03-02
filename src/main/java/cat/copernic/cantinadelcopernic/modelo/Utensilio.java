@@ -34,6 +34,5 @@ public class Utensilio {
     private int cantidad;
     
     @Column(name= "contenedor_idcontenedor") 
-    private int id_contenedor;
+    private String id_contenedor;
 }
- 

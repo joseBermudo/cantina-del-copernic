@@ -24,11 +24,11 @@ public class Contenedor {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idcontenedor")
-    private int idcontenedor;
+    private String idcontenedor;
 
 
    // private Utensilio ArrayListUtensilio;
 
 }
+
