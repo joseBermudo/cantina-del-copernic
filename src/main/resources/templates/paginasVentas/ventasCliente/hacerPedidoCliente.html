@@ -7,7 +7,10 @@
 	<h1 th:text="${ferComanda}"></h1>
 	<form>
 		<label for="entrepasetmana">Entrepà de la setmana:</label>
-		<input type="text" id="entrepasetmana" name="entrepasetmana"><br><br>
+		<select id="entrepas_setmana">
+			<option th:each="a: ${bocsemana}" th:text="${a.nombre}"></option>
+			
+		</select><br><br>
 		
 		<label for="beguda">Beguda:</label>
 		<select id="beguda">
@@ -18,8 +21,9 @@
 		<label for="preutotal">Preu Total:</label>
 		<input type="text" id="preutotal" name="preutotal"><br><br>
 		
-		<input type="submit" value="FER COMANDA">
+		 <button><a href="/pedidosCliente">Fer Comanda</a></button>
 	</form>
         
 </body>
 </html>
+

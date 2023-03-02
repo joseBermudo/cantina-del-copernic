@@ -4,12 +4,12 @@
     <title  th:text="${entrSemana}"></title>
   </head>
   <body>
-    <h1 th:text="${entrSemana}"></h1>
+    <h1 th:text="${bocSemana.nombre}"></h1>
     <h2 th:text="${entrSemana}"></h2>
-    <img src="ruta-de-la-imagen.jpg" alt="Imagen del Bocadillo Fantástico">
+    <img th:src="${bocSemana.imagen}" alt="Imagen del Bocadillo Fantástico">
     <br>
-    <p th:text="${descEntrepa}"></p>
+    <p th:text="${bocSemana.desc}"></p>
     <br>
-    <button th:text="${btnComanda}"></button>
+    <button><a href="/hacerPedidoCliente">Fer Comanda</a></button>
   </body>
 </html>

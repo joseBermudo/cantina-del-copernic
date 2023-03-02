@@ -1,43 +1,27 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-	<title th:text="${com1}"></title>
-</head>
-<body>
-
-	<!-- Título de entrepa de la semana -->
-	<h1 th:text="${entrs}"></h1>
-
-	<!-- Imagen y descripción -->
-	<img src="ruta/a/la/imagen.jpg">
-        
-	<p th:text="${descEntr}"></p>
-
+    <head>
+        <title th:text="${com1}"></title>
+    </head>
+    <body>
         <!-- Título de la lista de pedidos -->
-	<h2 th:text="${comand}"></h2>
+        <h2 th:text="${comand}"></h2>
 
-	<!-- Lista con botones -->
-	<ul>
-		<li>
-			<h3>Nombre del primer elemento</h3>
-			<button>visualitzar</button>
-			<button>Eliminar</button>
-		</li>
-		<li>
-			<h3>Nombre del segundo elemento</h3>
-			<button>visualitzar</button>
-			<button>Eliminar</button>
-		</li>
-		<li>
-			<h3>Nombre del tercer elemento</h3>
-			<button>visualitzar</button>
-			<button>Eliminar</button>
-		</li>
-	</ul>
+        <!-- Lista con botones -->	
+        <ul th:each="p: ${pedidos}">
+            <li>
+                <span th:text="${p.id_bocadilloSemana}"></span>
 
-	<!-- Botones nou entrepa y editar entrepa -->
-	<button id="nou-entrepa">Nou entrepa</button>
-	<button id="editar-entrepa">Editar entrepa</button>
+                <div>
+                    <button><a href="/verPedidoAdministrador">Visualitzar</a></button>
+                    <button>Eliminar</button>
+                </div>
+            </li>
+        </ul>
 
-</body>
+        <!-- Botones nou entrepa y editar entrepa -->
+        <button id="nou-entrepa"><a href="/crearBocadilloDeLaSemana">Nou entrepa</a></button>
+        <button id="editar-entrepa"><a href="/crearBocadilloDeLaSemana">Editar entrepa</a></button>
+
+    </body>
 </html>

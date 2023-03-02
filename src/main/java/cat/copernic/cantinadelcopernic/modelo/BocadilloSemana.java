@@ -26,7 +26,8 @@ public class BocadilloSemana {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idbocadillo_semana")
     private int idbocadillo_semana;
-
+     
+    
     @Column(name = "precio")
     private double precio;
 
@@ -38,5 +39,18 @@ public class BocadilloSemana {
 
     @Column(name = "receta_idreceta")
     private int receta_idreceta;
+    
+    
+//    @Column(name = "receta_idreceta")
+//    private Receta receta;
+   
+    @Column(name = "nombre")
+    private String nombre;
+    
+    @Column(name = "desc")
+    private String desc;
+    
+    
 
 }
+
