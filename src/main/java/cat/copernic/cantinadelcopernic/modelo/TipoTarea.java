@@ -14,21 +14,20 @@ import lombok.Data;
 
 /**
  *
- * @author marku
+ * @author Enric
  */
 @Data
 @Entity
-@Table(name = "contenedor")
-public class Contenedor {
-
-    private static final long serialVersionUID = 1L;
-
+@Table(name = "tipo_tarea")
+public class TipoTarea {
+    
     @Id
-    @Column(name = "idcontenedor")
-    private String idcontenedor;
-
-
-   // private Utensilio ArrayListUtensilio;
-
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "idtipo_tarea")
+    private int id;
+    
+    @Column(name = "nombre")
+    private String nombre;
 }
+
 

@@ -1,21 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Crear deuda</title>
+    <title th:text="${crearDeudaWord}"></title>
 </head>
 <body>
-    <button id="atras">Enrrere</button>
-    <h1>Crear deuda</h1>
+    <!-- <button th:text="${atrasWord}"></button> -->
+    <h1 th:text="${crearDeudaWord}"></h1>
     <form>
-        <label for="cantidad">Cantidad:</label>
-        <input type="number" id="cantidad" name="cantidad"><br>
-        <label for="fecha">Fecha:</label>
-        <input type="date" id="fecha" name="fecha"><br><br>
+        <label for="c" th:text="${quantitatWord}"></label>
+        <input type="number" name="c"><br>
+        <label for="f" th:text="${dataWord}"></label>
+        <input type="date" name="f"><br><br>
     </form>
     
-    <button id="crear-deuda">Crear deute</button>
-    <button id="cancelar">Cancel·lar</button>
-    
-    
+    <button id="crear-deuda" th:text="${crearDeudaWord}"></button>
+    <button id="cancelar" th:text="${cancelarWord}"></button>
 </body>
 </html>

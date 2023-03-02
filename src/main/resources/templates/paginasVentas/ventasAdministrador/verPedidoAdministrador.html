@@ -1,30 +1,32 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-	<title th:text="${com1}"></title>
-</head>
-<body>
-	<h2 th:text="${ent}"></h2>
-	<form>
-		<label for="campo1">Correo:</label>
-		<input type="text" id="campo1" readonly><br>
+    <head>
+        <title th:text="${com1.nombre}"></title>
+    </head>
+    <body>
+        <form action="" method="POST" th:object="${pedido}">
+            <label for="campo1" th:text="${correostr}"></label>
+            <input type="text" id="campo1" th:field="*{correo}"><br>
+            <br><br>
+            <label for="campo2" th:text="${entrepastr}"></label>
+            <select id="entrepas_setmana">
+                <option th:each="a: ${bocsemana}" th:text="${a.nombre}"></option>		
+            </select><br><br>
 
-		<label for="campo2">Entrepà de la setmana:</label>
-		<input type="text" id="campo2" readonly><br>
+            <label for="beguda">Beguda:</label>
+            <select id="beguda">
+                <option th:each="a: ${begudes}" th:text="${a.nombre}"></option>			
+            </select><br><br>
+            
+            <label for="campo5">Preu total:</label>
+            <input type="text" id="campo5"><br>
+            <br><br>
+            <label for="observaciones">Observacions:</label><br>
+            <textarea id="observaciones" rows="4" cols="50"></textarea><br>
 
-		<label for="campo3">Beguda:</label>
-		<input type="text" id="campo3" readonly><br>
+            <button><a href="/pedidosAdministrador">Esborrar Comanda</a></button>
+        </form>
 
-		<label for="campo4">Campo 4:</label>
-		<input type="text" id="campo4" readonly><br>
-
-		<label for="campo5">Preu total:</label>
-		<input type="text" id="campo5" readonly><br>
-
-		<label for="observaciones">Observacions:</label><br>
-		<textarea id="observaciones" rows="4" cols="50" readonly></textarea><br>
-
-		<button type="reset">Esborrar comanda</button>
-	</form>
-</body>
+  
+    </body>
 </html>

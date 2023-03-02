@@ -1,20 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
   <head>
-    <title>NOU CONTENIDOR</title>
+    <title>Listado De Contenedores</title>
   </head>
   <body>
-    <h1>NOU CONTENIDOR</h1>
-    <label for="codi">Codi:</label>
-    <input type="text" id="codi" name="codi"><br><br>
-    <label>Utensilios:</label>
-    <ul id="utensilios">
-      <li>Cuchara</li>
-      <li>Tenedor</li>
-      <li>Cuchillo</li>
-    </ul>
-    <button id="agregar-utensilio">+</button>
-    <br><br>
-    <button id="crear-contenedor">CREAR CONTENEDOR</button>
+      <h1>Listado De Contenedores</h1>
+    <ul th:each="c: ${contenedor}">
+            <li>
+                <span th:text="${c.idcontenedor}"></span>
+
+                <div>
+                    <button><a href="/contenedorNuevo">Editar</a></button>
+                    <button>Eliminar</button>
+                </div>
+            </li>
+        </ul>
+    <button><a href="/contenedorNuevo">Nou Contenidor</a></button>
   </body>
 </html>
+

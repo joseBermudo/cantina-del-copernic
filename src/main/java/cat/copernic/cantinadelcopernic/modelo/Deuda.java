@@ -4,18 +4,36 @@
  */
 package cat.copernic.cantinadelcopernic.modelo;
 
-import java.util.Date;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import java.io.Serializable;
+import java.sql.Date;
 import lombok.Data;
 
-/**
- *
- * @author Enric
- */
 @Data
-public class Deuda {
+@Entity
+@Table(name = "deuda")
+public class Deuda implements Serializable{
+    
+    private static final long serialVersionUID = 1L; 
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "iddeuda")
     private int idDeuda;
-    private float cantidad;
-    private String correo; //El id del usuario
+    
+    @Column(name = "fecha")
     private Date fechaDeLaDeuda;
-    private boolean pagado;
+    
+    @Column(name = "cantidad")
+    private float cantidad;
+    
+    @Column(name = "usuarios_correo")
+    private String correo; //El id del usuario
+
 }
+

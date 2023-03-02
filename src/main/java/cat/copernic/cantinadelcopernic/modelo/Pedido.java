@@ -27,10 +27,28 @@ public class Pedido {
     @Column(name= "bebida_idbebida")   
     private int id_bebida;
     
+//    @Id
+//    @GeneratedValue(strategy=GenerationType.IDENTITY)
+//    @Column(name= "bebida_idbebida")   
+//    private Bebida bebida;
+    
+    
+
     @Column(name= "bocadillo_semana_idbocadillo_semana")
     private int id_bocadilloSemana;
     
+//    @Id
+//    @GeneratedValue(strategy=GenerationType.IDENTITY)
+//    @Column(name= "bocadillo_semana_idbocadillo_semana")
+//    private BocadilloSemana bocadilloSemana;
+    
+    
+    
     @Column(name= "usuarios_correo")
     private String correo;
+    
+//    @Id
+//    @Column(name= "usuarios_correo")
+//    private Usuario usuario;
 
 }
