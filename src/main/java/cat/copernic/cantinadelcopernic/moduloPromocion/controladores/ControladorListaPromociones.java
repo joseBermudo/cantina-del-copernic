@@ -4,8 +4,10 @@
  */
 package cat.copernic.cantinadelcopernic.moduloPromocion.controladores;
 
+import cat.copernic.cantinadelcopernic.DAO.PromocionDAO;
 import cat.copernic.cantinadelcopernic.modelo.Promocion;
 import java.util.ArrayList;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,16 +18,15 @@ import org.springframework.web.bind.annotation.GetMapping;
  */
 @Controller
 public class ControladorListaPromociones {
-     @GetMapping("/listaPromociones")
+    
+    @Autowired
+    private PromocionDAO promocionDAO;
+
+    @GetMapping("/listaPromociones")
     public String inici(Model model) {
-        ArrayList<Promocion> promociones = new ArrayList<>();
-        for (int i = 1; i < 8; i++) {
-            Promocion promocion = new Promocion();
-            promocion.setId(i);
-            promocion.setDesc("Compra 4 rep 1 Cafè");
-            promociones.add(promocion);
-        }
-        model.addAttribute("promociones", promociones);
+
+       
+        model.addAttribute("promociones", promocionDAO.findAll());
         return "/paginasPromocion/listaPromociones";
     }
 }

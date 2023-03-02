@@ -4,13 +4,10 @@
  */
 package cat.copernic.cantinadelcopernic.moduloVentas.controladores.Admin;
 
-import cat.copernic.cantinadelcopernic.modelo.Bebida;
-import cat.copernic.cantinadelcopernic.modelo.BocadilloSemana;
-import cat.copernic.cantinadelcopernic.modelo.Pedido;
-import cat.copernic.cantinadelcopernic.modelo.Receta;
-import java.text.DateFormat;
-import java.util.ArrayList;
-import java.util.Date;
+import cat.copernic.cantinadelcopernic.DAO.BebidaDAO;
+import cat.copernic.cantinadelcopernic.DAO.BocadilloSemanaDAO;
+import cat.copernic.cantinadelcopernic.DAO.PedidoDAO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,35 +19,52 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class ControladorVerPedidoAdministrador {
 
-    /*La interface Model d'Spring Boot ens permet transferir dades entre el controlador i la vista
-     */
+    @Autowired
+    private BocadilloSemanaDAO bsDAO;
+
+    @Autowired
+    private PedidoDAO pedDAO;
+    
+     @Autowired
+    private BebidaDAO bebDAO;
+     
+     // @Autowired
+    //private RRHHDAO bebDAO;
+     
+     
+
+    /*La interface Model d'Spring Boot ens permet transferir dades entre el controlador i la vista*/
     @GetMapping("/verPedidoAdministrador")
     public String inici(Model model) {
 
-        String com = "Comanda 1";
-        model.addAttribute("com1", com);
+        var pedidoPorId = pedDAO.findById(1);
+        var pedido = pedidoPorId.get();
+        model.addAttribute("pedido", pedido);
 
-        String entrepa = "Entrepa de pernil";
-        model.addAttribute("ent", entrepa);
-
-        var bos = new BocadilloSemana();
-        bos.setPrecio(5.00);
-
-        Date date = new Date();
-
-        //Fecha en formato SHORT: 6/10/12
-        DateFormat formateadorFechaCorta = DateFormat.getDateInstance(DateFormat.SHORT);
-
-        bos.setFecha(date);
-        bos.setImagen("Aigua");
-
-        var re = new Receta();
-        re.setNombre("Pernil");
-        re.setDescripcion("desssssssssssss");
-
-       // model.addAttribute("gossos", gosDao.findAll());
+        var bocadilloPorId = bsDAO.findById(pedido.getId_bocadilloSemana());
+        model.addAttribute("com1", bocadilloPorId.get());
         
-        //model.addAttribute("pedido", pe);
+        
+        //bocadillosSemana
+         var bocadillosDeLaSemana = bsDAO.findAll();
+        
+         //bebidas
+         var bebidas = bebDAO.findAll(); 
+        model.addAttribute("bocsemana", bocadillosDeLaSemana);
+        model.addAttribute("begudes", bebidas);
+        
+        
+        
+        //ver observaciones del usuario que ha hecho el pedido:
+        //var usuario = bebDAO.findById(pedido.getCorreo()); 
+        //var observ = usuario.get().getObservaciones;
+        // model.addAttribute("observaciones", observ);
+        
+        String correoStr="Correo:";
+        model.addAttribute("correostr", correoStr);
+        
+        String entrepaStr="Entrepà de la setmana:";
+        model.addAttribute("entrepastr", entrepaStr);
 
         return "/paginasVentas/ventasAdministrador/verPedidoAdministrador"; //Retorna la pàgina iniciEnviarDades
     }

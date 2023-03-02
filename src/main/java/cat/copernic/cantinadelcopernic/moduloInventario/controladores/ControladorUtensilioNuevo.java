@@ -19,6 +19,7 @@ public class ControladorUtensilioNuevo {
     public String inici(Model model) {
         
         
-        return "/paginasUtensilios/UtensilioNuevo";
+        return "/paginasInventario/UtensilioNuevo";
     }
 }
+
