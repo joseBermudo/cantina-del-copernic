@@ -4,8 +4,10 @@
  */
 package cat.copernic.cantinadelcopernic.moduloTareas.controladores;
 
+import cat.copernic.cantinadelcopernic.DAO.TipoTareaDAO;
 import cat.copernic.cantinadelcopernic.modelo.TipoTarea;
 import java.util.ArrayList;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,29 +19,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class ControladorCrearTarea {
 
+    @Autowired
+    TipoTareaDAO tipoTareaDAO;
     @GetMapping("/crearTarea")
     public String inici(Model model) {
         
-        //EJEMPLO
-        ArrayList<TipoTarea> listaTiposTarea = new ArrayList<>();
-        TipoTarea tipoTarea1 = new TipoTarea();
-        TipoTarea tipoTarea2 = new TipoTarea();
-        tipoTarea1.setId(1);
-        tipoTarea2.setId(2);
-        tipoTarea1.setNombre("Fregar");
-        tipoTarea2.setNombre("Barrer");
-        
-        listaTiposTarea.add(tipoTarea1);
-        listaTiposTarea.add(tipoTarea2);
-        //EJEMPLO
-        
-        
+        model.addAttribute("listaTiposTarea", tipoTareaDAO.findAll());
+
         model.addAttribute("crearTareaWord", "Crear nova tasca");
         model.addAttribute("alumneWord", "Alumne: ");
         model.addAttribute("fechaWord", "Data: ");
         model.addAttribute("tipoTareaWord", "Tipus de tasca: ");
         model.addAttribute("cancelarWord", "Cancel·lar");
-        model.addAttribute("listaTiposTarea", listaTiposTarea);
         
         return "/paginasTareas/crearTarea";
     }
