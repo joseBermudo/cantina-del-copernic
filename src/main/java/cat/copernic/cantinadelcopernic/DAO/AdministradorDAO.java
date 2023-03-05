@@ -4,12 +4,10 @@
  */
 package cat.copernic.cantinadelcopernic.DAO;
 
-
 /**
  *
  * @author andre
  */
-public interface ProfesorDAO  extends UsuarioDAO {
+public interface AdministradorDAO extends AlumnoDAO {
     
-     
 }
