@@ -4,10 +4,13 @@
  */
 package cat.copernic.cantinadelcopernic.modelo;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import java.io.Serializable;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 import java.util.ArrayList;
+import java.util.List;
 import lombok.Data;
 
 /**
@@ -34,4 +37,8 @@ public class Profesor extends Usuario {
     
     @Column(name = "obs")
     private String observaciones;
+    
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "correo") 
+    private List<Sugerencia> sugerencias = new ArrayList<>();
 }

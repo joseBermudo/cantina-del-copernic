@@ -5,11 +5,13 @@
 package cat.copernic.cantinadelcopernic.DAO;
 
 
+import cat.copernic.cantinadelcopernic.modelo.Usuario;
+import org.springframework.data.repository.CrudRepository;
+
 /**
  *
  * @author andre
  */
-public interface ProfesorDAO  extends UsuarioDAO {
+public interface UsuarioDAO   extends CrudRepository<Usuario,String>{
     
-     
 }
