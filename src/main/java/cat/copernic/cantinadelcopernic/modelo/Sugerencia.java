@@ -9,6 +9,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import java.io.Serializable;
 import lombok.Data;
@@ -29,8 +31,8 @@ public class Sugerencia implements Serializable {
     @Column(name = "idsugerencia")
     private int idSugerencia;
     
-    @Column(name = "usuarios_correo")
-    private String correoprofesor;
+    /*@Column(name = "usuarios_correo")
+    private String correoprofesor;*/
     
     private String titulo;
     
@@ -38,4 +40,8 @@ public class Sugerencia implements Serializable {
     private String descripcion;
     
     private Boolean leida;
+    
+    @ManyToOne
+    @JoinColumn(name = "usuarios_correo") 
+    private Profesor Profesor;
 }
