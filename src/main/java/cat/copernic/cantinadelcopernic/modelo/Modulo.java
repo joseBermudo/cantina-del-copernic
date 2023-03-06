@@ -35,7 +35,8 @@ public class Modulo implements Serializable{
     @Column(name = "visible_cliente")
     private boolean visibleCliente;
     
-    @Column(name = "visible_alumno")
+    @Column(name = "visible"
+            + "_alumno")
     private boolean visibleAlumno;
     
     @Column(name = "habilitado")

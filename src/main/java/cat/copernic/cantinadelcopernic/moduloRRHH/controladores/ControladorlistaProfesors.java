@@ -6,8 +6,6 @@ package cat.copernic.cantinadelcopernic.moduloRRHH.controladores;
 
 
 import cat.copernic.cantinadelcopernic.DAO.ProfesorDAO;
-import cat.copernic.cantinadelcopernic.modelo.Profesor;
-import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
