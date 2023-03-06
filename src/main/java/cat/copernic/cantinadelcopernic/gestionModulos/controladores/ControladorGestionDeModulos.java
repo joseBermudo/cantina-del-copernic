@@ -5,8 +5,10 @@
 package cat.copernic.cantinadelcopernic.gestionModulos.controladores;
 
 import cat.copernic.cantinadelcopernic.DAO.ModuloDAO;
+import cat.copernic.cantinadelcopernic.gestionModulos.servicios.GestionModulosService;
 import cat.copernic.cantinadelcopernic.modelo.Modulo;
 import java.util.ArrayList;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,24 +21,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class ControladorGestionDeModulos {
     
-     @Autowired
-     private ModuloDAO ModuloDao;
+     private GestionModulosService servModulos;
     
      @GetMapping("/gestioModuls")
       public String inici(Model model){
           
-           /*var modulo = new Modulo();
-          
-          modulo.setNombreModulo("modulo");
-          modulo.setHabilitado(true);
-          modulo.setVisibleAlumno(true);
-          modulo.setVisibleCliente(false);
-          
-          var modulos = new ArrayList<Modulo>();
-          
-          modulos.add(modulo);*/
-          
-          model.addAttribute("modulos", ModuloDao.findAll());
+          List<Modulo> modulos = servModulos.listarModulos();
+          model.addAttribute("modulos",modulos);
       
           return "/paginasGestionModulos/listadoModulos"; 
       }

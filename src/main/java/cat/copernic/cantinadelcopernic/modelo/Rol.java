@@ -9,39 +9,32 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.io.Serializable;
 import java.util.List;
-import java.util.Map;
 import lombok.Data;
 
 /**
  *
- * @author andre
+ * @author joseb
  */
 @Data
 @Entity
-@Table(name = "modulos")
-public class Modulo implements Serializable{
-    
+@Table(name = "roles")
+public class Rol implements Serializable {
+
     private static final long serialVersionUID = 1L;
     
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    @Column(name = "idmodulos")
-    private int idModulo;
+    @Column(name = "idroles")
+    private int id;
     
-    @Column(name = "nombre_modulo")
-    private String nombreModulo;
+    private String nombre;
     
-    @Column(name = "habilitado")
-    private boolean habilitado;
-    
-    @OneToMany(mappedBy="modulo")
+    @OneToMany(mappedBy = "rol")
     private List<ModuloRol> modulosRoles;
-    
+
 }

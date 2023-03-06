@@ -6,12 +6,13 @@ package cat.copernic.cantinadelcopernic.DAO;
 
 
 import cat.copernic.cantinadelcopernic.modelo.Modulo;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.CrudRepository;
 
 /**
  *
  * @author andre
  */
-public interface ModuloDAO extends CrudRepository<Modulo,Integer> {
+public interface ModuloDAO extends JpaRepository<Modulo,Integer> {
     
 }
