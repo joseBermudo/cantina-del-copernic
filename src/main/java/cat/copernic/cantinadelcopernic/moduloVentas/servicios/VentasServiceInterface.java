@@ -6,6 +6,7 @@ package cat.copernic.cantinadelcopernic.moduloVentas.servicios;
 
 import cat.copernic.cantinadelcopernic.modelo.BocadilloSemana;
 import cat.copernic.cantinadelcopernic.modelo.Pedido;
+import cat.copernic.cantinadelcopernic.modelo.Receta;
 import java.util.List;
 
 /**
@@ -31,4 +32,7 @@ public interface VentasServiceInterface {
     public void eliminarBocadilloSemana(BocadilloSemana bocaSemana); //Mètode que implementarem per eliminar un Entrepans de la Setmana
 
     public BocadilloSemana buscarBocadilloSemana(BocadilloSemana bocadilloSemana); //Mètode que implementarem per cercar un Entrepans de la Setmana
+    
+    //Pedidos
+    public List<Receta> listarRecetas(); //Mètode que implementarem per llistar Recetas
 }

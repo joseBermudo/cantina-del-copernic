@@ -6,8 +6,10 @@ package cat.copernic.cantinadelcopernic.moduloVentas.servicios;
 
 import cat.copernic.cantinadelcopernic.DAO.BocadilloSemanaDAO;
 import cat.copernic.cantinadelcopernic.DAO.PedidoDAO;
+import cat.copernic.cantinadelcopernic.DAO.RecetaDAO;
 import cat.copernic.cantinadelcopernic.modelo.BocadilloSemana;
 import cat.copernic.cantinadelcopernic.modelo.Pedido;
+import cat.copernic.cantinadelcopernic.modelo.Receta;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,9 @@ public class VentasService implements VentasServiceInterface {
 
     @Autowired
     private BocadilloSemanaDAO bocaSemanaDAO;
+
+    @Autowired
+    private RecetaDAO recetaDAO;
 
     @Override
     @Transactional(readOnly = true)
@@ -49,7 +54,7 @@ public class VentasService implements VentasServiceInterface {
     @Transactional(readOnly = true)
     public Pedido buscarPedido(Pedido pedido) {
 
-        return this.pedidoDAO.findById(pedido.getId_bebida()).orElse(null);
+        return this.pedidoDAO.findById(pedido.getId_pedido()).orElse(null);
     }
 
     @Override
@@ -78,6 +83,13 @@ public class VentasService implements VentasServiceInterface {
     public BocadilloSemana buscarBocadilloSemana(BocadilloSemana bocadilloSemana) {
 
         return this.bocaSemanaDAO.findById(bocadilloSemana.getIdbocadillo_semana()).orElse(null);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<Receta> listarRecetas() {
+
+        return (List<Receta>) recetaDAO.findAll();
     }
 
 }
