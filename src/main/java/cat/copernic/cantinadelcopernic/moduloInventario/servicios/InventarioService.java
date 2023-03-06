@@ -10,12 +10,14 @@ import cat.copernic.cantinadelcopernic.modelo.Contenedor;
 import cat.copernic.cantinadelcopernic.modelo.Utensilio;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
  * @author marku
  */
+@Service 
 public class InventarioService implements InventarioServiceInterface {
 
     @Autowired
@@ -69,6 +71,6 @@ public class InventarioService implements InventarioServiceInterface {
     @Override
     @Transactional(readOnly = true)
     public Utensilio buscarUtensilio(Utensilio utensilio) {
-        return this.utenDAO.findById(utensilio.getId()).orElse(null);
+        return this.utenDAO.findById(utensilio.getIdutensilio()).orElse(null);
     }
 }

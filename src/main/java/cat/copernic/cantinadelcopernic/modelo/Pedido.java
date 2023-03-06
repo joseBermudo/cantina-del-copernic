@@ -34,15 +34,21 @@ public class Pedido implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_pedido;
 
-    @ManyToOne
-    @MapsId("idbebida")
+
+    
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "bebida_idbebida") 
     private Bebida bedia;
 
-    @ManyToOne
-    @MapsId("idbocadillo_semana")
+
+    
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "bocadillo_semana_idbocadillo_semana") 
     private BocadilloSemana bocadilloSemana;
 
-    @ManyToOne
-    @MapsId("correo")
+
+    
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "usuarios_correo") 
     private Profesor profesores;
 }

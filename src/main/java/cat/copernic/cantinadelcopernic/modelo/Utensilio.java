@@ -34,7 +34,7 @@ public class Utensilio implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idutensilio")
-    private int id;
+    private int idutensilio;
 
     @Column(name = "nombre")
     private String nombre;

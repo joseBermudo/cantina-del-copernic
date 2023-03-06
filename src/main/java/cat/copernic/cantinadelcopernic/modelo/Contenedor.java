@@ -32,6 +32,6 @@ public class Contenedor implements Serializable {
     @Column(name = "idcontenedor")
     private String idcontenedor;
 
-    @OneToMany(mappedBy = "utensilio", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "idutensilio", cascade = CascadeType.ALL)
     private List<Utensilio> utensilios = new ArrayList<>();
 }

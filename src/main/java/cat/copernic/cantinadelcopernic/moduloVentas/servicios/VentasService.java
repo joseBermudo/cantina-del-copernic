@@ -13,11 +13,13 @@ import cat.copernic.cantinadelcopernic.modelo.Receta;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author marku
  */
+@Service 
 public class VentasService implements VentasServiceInterface {
 
     @Autowired

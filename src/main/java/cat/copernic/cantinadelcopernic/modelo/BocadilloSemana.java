@@ -11,6 +11,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.io.Serializable;
@@ -41,8 +42,6 @@ public class BocadilloSemana implements Serializable{
     @Column(name = "fecha")
     private Date fecha;
 
-    @Column(name = "receta_idreceta")
-    private int receta_idreceta;
     
     @Column(name = "nombre")
     private String nombre;
@@ -50,7 +49,9 @@ public class BocadilloSemana implements Serializable{
     @Column(name = "desc")
     private String desc;
       
-    @OneToMany(mappedBy = "receta", cascade = CascadeType.ALL)
+   
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "receta_idreceta") 
     private Receta receta;
 
 }
