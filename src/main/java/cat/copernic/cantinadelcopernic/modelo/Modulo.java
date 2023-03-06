@@ -32,12 +32,6 @@ public class Modulo implements Serializable{
     @Column(name = "nombre_modulo")
     private String nombreModulo;
     
-    @Column(name = "visible_cliente")
-    private boolean visibleCliente;
-    
-    @Column(name = "visible_alumno")
-    private boolean visibleAlumno;
-    
     @Column(name = "habilitado")
     private boolean habilitado;
 }
