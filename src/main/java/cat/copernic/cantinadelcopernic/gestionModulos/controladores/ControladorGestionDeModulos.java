@@ -21,14 +21,20 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class ControladorGestionDeModulos {
     
-     private GestionModulosService servModulos;
+    @Autowired
+    private GestionModulosService servModulos;
+    
+    private String nombreBoton = "Guardar cambis";
+    private String tituloPagina="Llista de móduls";
     
      @GetMapping("/gestioModuls")
       public String inici(Model model){
           
           List<Modulo> modulos = servModulos.listarModulos();
+         
           model.addAttribute("modulos",modulos);
-      
+          model.addAttribute("nombreBoton",nombreBoton);
+          model.addAttribute("tituloPagina",tituloPagina);
           return "/paginasGestionModulos/listadoModulos"; 
       }
 }

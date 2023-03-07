@@ -33,7 +33,7 @@ public class Modulo implements Serializable{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "idmodulos")
-    private int idModulo;
+    private int idmodulos;
     
     @Column(name = "nombre_modulo")
     private String nombreModulo;

@@ -4,10 +4,13 @@
  */
 package cat.copernic.cantinadelcopernic.moduloProduccion.servicios;
 
+import org.springframework.stereotype.Service;
+
 /**
  *
  * @author joseb
  */
+@Service
 public class ProduccionService implements ProduccionServiceInterface{
     
 }

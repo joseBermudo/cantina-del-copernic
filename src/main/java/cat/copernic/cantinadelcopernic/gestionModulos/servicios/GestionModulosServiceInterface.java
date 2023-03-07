@@ -5,6 +5,7 @@
 package cat.copernic.cantinadelcopernic.gestionModulos.servicios;
 
 import cat.copernic.cantinadelcopernic.modelo.Modulo;
+import cat.copernic.cantinadelcopernic.modelo.Rol;
 import java.util.List;
 
 /**
@@ -13,4 +14,6 @@ import java.util.List;
  */
 public interface GestionModulosServiceInterface {
     public List<Modulo> listarModulos();
+    
+    public List<Rol> listarRoles();
 }

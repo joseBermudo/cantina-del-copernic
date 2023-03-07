@@ -4,10 +4,13 @@
  */
 package cat.copernic.cantinadelcopernic.moduloPromocion.servicios;
 
+import org.springframework.stereotype.Service;
+
 /**
  *
  * @author joseb
  */
+@Service
 public class PromocionService implements PromocionServiceInterface {
     
 }

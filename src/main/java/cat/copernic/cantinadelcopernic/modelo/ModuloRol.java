@@ -7,6 +7,7 @@ package cat.copernic.cantinadelcopernic.modelo;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.IdClass;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.MapsId;
 import jakarta.persistence.Table;
@@ -26,11 +27,13 @@ public class ModuloRol implements Serializable {
     private ModuloRolId id;
     
     @ManyToOne
-    @MapsId("idModulo")
+    @MapsId("modulosIdModulos")
+    @JoinColumn(name = "modulos_idmodulos", insertable = false, updatable = false)
     private Modulo modulo;
     
     @ManyToOne
-    @MapsId("idRol")
+    @MapsId("rolesIdRoles")
+    @JoinColumn(name = "roles_idroles", insertable = false, updatable = false)
     private Rol rol;
     
     private Boolean visible;

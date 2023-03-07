@@ -13,12 +13,12 @@ import java.io.Serializable;
  * @author joseb
  */
 @Embeddable
-public class ModuloRolId implements Serializable{
-    
-    @Column(name="modulos_idmodulos")
-    private int idModulo;
-    
-    @Column(name="roles_idroles")
-    private int idRol;
-    
+public class ModuloRolId implements Serializable {
+
+    @Column(name = "modulos_idmodulos")
+    private int modulosIdModulos;
+
+    @Column(name = "roles_idroles")
+    private int rolesIdRoles;
+
 }
