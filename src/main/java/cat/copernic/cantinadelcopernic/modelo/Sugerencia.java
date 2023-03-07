@@ -6,6 +6,7 @@ package cat.copernic.cantinadelcopernic.modelo;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -32,16 +33,16 @@ public class Sugerencia implements Serializable {
     private int idSugerencia;
     
     /*@Column(name = "usuarios_correo")
-    private String correoprofesor;*/
+    private String correoProfesor;*/
     
     private String titulo;
     
-    @Column(name = "desc")
+    @Column(name = "des")
     private String descripcion;
     
-    private Boolean leida;
+    private Boolean leida = false;
     
-    @ManyToOne
-    @JoinColumn(name = "usuarios_correo") 
-    private Profesor Profesor;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "usuarios_correo")
+    private Profesor profesor;
 }

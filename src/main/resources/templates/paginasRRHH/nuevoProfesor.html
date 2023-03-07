@@ -13,15 +13,21 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
             <h1 th:text="${tituloPagina}"></h1>
         </div> 
         <div>
-            <form action="" method="POST">
-                 <label for="correu" th:text="${correo}"></label><br>
-                <input type="text" id="correu" name="correu"><br>
-                <label for="contrasenya" th:text="${contrasenya}"></label><br>
-                <input type="password" id="contrasenya" name="contrasenya"><br>
-                <label for="contrasenya" th:text="${confirmarContrasenya}"></label><br>
-                <input type="password" id="confirmar_contrasenya" name="confirmar_contrasenya"><br>     
+            <form th:action="@{/guardarProfesor}" method="post" th:object="${profesor}">
+                <p>
+                <label for="correu" th:text="${correo}"></label>
+                <input type="text" id="correu" name="correu" th:field="*{correo}">
+                </p>
+                <p>
+                <label for="contrasenya" th:text="${contrasenya}"></label>
+                <input type="password" id="contrasenya" name="contrasenya">
+                </p>
+                <p>
+                <label for="contrasenya" th:text="${confirmarContrasenya}"></label>
+                <input type="password" id="confirmar_contrasenya" name="confirmar_contrasenya">
+                </p>
+                 <input type="submit" name="enviar" value="Registrar profesor"/>
             </form>
-            <button>Registrar profesor</button>
         </div>
     </body>
 </html>
