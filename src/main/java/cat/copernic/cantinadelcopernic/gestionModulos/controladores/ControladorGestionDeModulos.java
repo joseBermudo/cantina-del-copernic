@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 /**
  *
@@ -20,21 +21,27 @@ import org.springframework.web.bind.annotation.GetMapping;
  */
 @Controller
 public class ControladorGestionDeModulos {
-    
+
     @Autowired
     private GestionModulosService servModulos;
-    
+
     private String nombreBoton = "Guardar cambis";
-    private String tituloPagina="Llista de móduls";
-    
-     @GetMapping("/gestioModuls")
-      public String inici(Model model){
-          
-          List<Modulo> modulos = servModulos.listarModulos();
-         
-          model.addAttribute("modulos",modulos);
-          model.addAttribute("nombreBoton",nombreBoton);
-          model.addAttribute("tituloPagina",tituloPagina);
-          return "/paginasGestionModulos/listadoModulos"; 
-      }
+    private String tituloPagina = "Llista de móduls";
+
+    @GetMapping("/gestioModuls")
+    public String inici(Model model) {
+
+        List<Modulo> modulos = servModulos.listarModulos();
+
+        model.addAttribute("modulos", modulos);
+        model.addAttribute("nombreBoton", nombreBoton);
+        model.addAttribute("tituloPagina", tituloPagina);
+        return "/paginasGestionModulos/listadoModulos";
+    }
+
+    @PostMapping("/actualizaModuls")
+    public String actualizarModuls(List<Modulo> modulos) {
+        servModulos.actualizarModulos(modulos);
+        return "redirect:/gestioModuls";
+    }
 }

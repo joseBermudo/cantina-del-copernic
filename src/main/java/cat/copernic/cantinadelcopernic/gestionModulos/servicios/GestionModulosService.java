@@ -36,5 +36,10 @@ public class GestionModulosService implements  GestionModulosServiceInterface{
     public List<Rol> listarRoles() {
         return rolDAO.findAll();
     }
+
+    @Override
+    public void actualizarModulos(List<Modulo> modulos) {
+        moduloDAO.saveAll(modulos);
+    }
     
 }
