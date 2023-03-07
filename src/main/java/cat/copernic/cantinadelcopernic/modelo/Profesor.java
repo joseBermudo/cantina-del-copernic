@@ -12,6 +12,8 @@ import jakarta.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
 import lombok.Data;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 /**
  *
@@ -38,7 +40,8 @@ public class Profesor extends Usuario {
     @Column(name = "obs")
     private String observaciones;
     
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "correo") 
-    private List<Sugerencia> sugerencias = new ArrayList<>();
+    @OneToMany(mappedBy = "profesor", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private List<Sugerencia> sugerencias;
+   
 }
