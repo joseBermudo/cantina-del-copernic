@@ -12,7 +12,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <div>
             <h1>VEURE SUGGERIMENT</h1>
         </div> 
-        <div>
+        <div th:if="${sugerencia!=null}">
                 
                 <p th:text="${tituloSugerencia}"></p>
                 <p th:text="${sugerencia.titulo}"></p>
@@ -21,7 +21,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 
              
             <button>Marcar llegit</button>
-            <button>Borrar</button>
+            <button><a th:href="@{/eliminarSuggeriment/}+${sugerencia.idSugerencia}"/> Borrar</button>
         </div>
+       
     </body>
 </html>

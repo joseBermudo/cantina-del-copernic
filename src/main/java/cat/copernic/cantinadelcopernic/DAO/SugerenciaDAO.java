@@ -7,13 +7,14 @@ package cat.copernic.cantinadelcopernic.DAO;
 
 
 import cat.copernic.cantinadelcopernic.modelo.Sugerencia;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
+
 
 /**
  *
  * @author andre
  */
-public interface SugerenciaDAO extends CrudRepository<Sugerencia,Integer>{
+public interface SugerenciaDAO extends JpaRepository<Sugerencia,Integer>{
     
      
 }

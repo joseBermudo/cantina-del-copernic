@@ -13,14 +13,20 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
             <h1 th:text="${titulo}"></h1>
         </div> 
         <div>
-            <form action="" method="POST">
-                <label for="titulo" th:text="${tituloSugerencia}"> </label><br>
-                <input type="text" id="titulo" name="titulo"><br>
-                <label for="descripcion" th:text="${descripcionSugerencia}"></label><br>
-                <input type="text" id="descripcion" name="descripcion"><br>
+            <form th:action="@{/guardarSuggeriment}" method="post" th:object="${sugerencia}">
+                <input type="hidden" name="idsugerencia" th:field="*{idSugerencia}"/>
+                <p>
+                <label for="titulo" th:text="${tituloSugerencia}"> </label>
+                <input type="text" id="titulo" name="titulo" th:field="*{titulo}">
+                </p>
+                <p>
+                <label for="descripcion" th:text="${descripcionSugerencia}"></label>
+                <input type="text" id="descripcion" name="descripcion" th:field="*{descripcion}">
+                </p>
+                <input type="submit" name="enviar" value="Crear suggeriment"/>
             </form>
-            <button>Crear suggeriment</button>
-            <button>Cancela</button>
+           
+            <button><a th:href="@{/listaSuggeriments}"/> Cancela</button>
         </div>
     </body>
 </html>
