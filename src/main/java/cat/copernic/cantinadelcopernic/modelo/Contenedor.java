@@ -4,12 +4,17 @@
  */
 package cat.copernic.cantinadelcopernic.modelo;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
 import lombok.Data;
 
 /**
@@ -19,7 +24,7 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name = "contenedor")
-public class Contenedor {
+public class Contenedor implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -27,8 +32,6 @@ public class Contenedor {
     @Column(name = "idcontenedor")
     private String idcontenedor;
 
-
-   // private Utensilio ArrayListUtensilio;
-
+    @OneToMany(mappedBy = "idutensilio", cascade = CascadeType.ALL)
+    private List<Utensilio> utensilios = new ArrayList<>();
 }
-

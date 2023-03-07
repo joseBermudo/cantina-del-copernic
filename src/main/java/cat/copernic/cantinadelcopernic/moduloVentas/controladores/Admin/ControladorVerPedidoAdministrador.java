@@ -41,7 +41,7 @@ public class ControladorVerPedidoAdministrador {
         var pedido = pedidoPorId.get();
         model.addAttribute("pedido", pedido);
 
-        var bocadilloPorId = bsDAO.findById(pedido.getId_bocadilloSemana());
+        var bocadilloPorId = bsDAO.findById(pedido.getId_pedido());
         model.addAttribute("com1", bocadilloPorId.get());
         
         

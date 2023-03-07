@@ -4,31 +4,34 @@
         <title th:text="${crearES}"></title>
     </head>
     <body>
-        <h1 th:text="${crearES}"></h1>
-        <img th:src="${bocSemana.imagen}" alt="Imagen del Entrepà de la setmana">
-        <br>
-        <button>Pujar Imatge</button>
-        <br>
-        <label for="precio">Nom:</label>
-        <input type="text" id="Nombre" name="nombre">
-        <br>
-        <label for="receta">Recpta:</label>
-        <select id="receta">
-            <option th:each="a: ${recetas}" th:text="${a.nombre}"></option>
-        </select>
-        <br>
-        <label for="precio">Preu:</label>
-        <input type="text" id="precio" name="precio">
-        <br>
-        <label for="descripcion">Descripció:</label>
-        <br>
-        <textarea id="descripcion" name="descripcion" rows="4" cols="50"></textarea>
-        <br>
-        <label for="fecha">Selecciona una data limit de l'entrepà:</label>
-        <input type="date" id="fecha" name="fecha">
-        <br>
-        <button ><a href="/pedidosAdministrador">Guardar</a></button>
-        <button><a href="/pedidosAdministrador">Cancelar</a></button>
+        
+        <form th:action="@{/guardarBocaSemana}" method="POST" method="post" th:object="${bocadillosemana}">
+            <h1><span th:text="${crearES}"></span></h1>
+            <img th:src="${b}" alt="Imagen del Entrepà de la setmana">
+            <br>
+            <button>Pujar Imatge</button>
+            <br>
+            <label for="nombre">Nom:</label>
+            <input type="text" id="nombre" name="nombre" th:field="*{nombre}"/>
+            <br>
+            <label for="receta">Recpta:</label>
+            <select id="receta" name="receta">
+                <option th:each="receta: ${listrecetas}" th:text="${receta.nombre}"></option>
+            </select>
+            <br>
+            <label for="precio">Preu:</label>
+            <input type="text" id="precio" name="precio" th:field="*{precio}"/>
+            <br>
+            <label for="descripcion">Descripció:</label>
+            <br>
+            <textarea id="descripcion" name="descripcion" rows="4" cols="50" th:field="*{sexe}"></textarea>
+            <br>
+            <label for="fecha">Selecciona una data limit de l'entrepà:</label>
+            <input type="date" id="fecha" name="fecha" th:field="*{fecha}">
+            <br>
+            <button type="submit">Guardar</button>
+            <input type="submit" name="enviar" value="Enviar Dades"/>
+        </form>
     </body>
 </html>
 
