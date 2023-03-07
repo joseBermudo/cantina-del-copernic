@@ -4,10 +4,13 @@
  */
 package cat.copernic.cantinadelcopernic.modelo;
 
+import jakarta.persistence.Entity;
+
 /**
  *
  * @author andre
  */
+@Entity
 public class Administrador extends Alumno {
-    
+    private static final long serialVersionUID = 1L;
 }

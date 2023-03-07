@@ -4,6 +4,7 @@
  */
 package cat.copernic.cantinadelcopernic.moduloRRHH.controladores;
 
+import cat.copernic.cantinadelcopernic.modelo.Profesor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,8 +15,9 @@ import org.springframework.web.bind.annotation.GetMapping;
  */
 @Controller
 public class ControladorNuevoProfesor {
+    
    @GetMapping("/nouProfessor")
-    public String inici(Model model){
+    public String inici(Profesor profesor, Model model){
         
         var tituloPagina = "REGISTRAR PROFESSOR";
         

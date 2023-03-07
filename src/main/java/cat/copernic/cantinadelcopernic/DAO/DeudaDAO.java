@@ -5,12 +5,12 @@
 package cat.copernic.cantinadelcopernic.DAO;
 
 import cat.copernic.cantinadelcopernic.modelo.Deuda;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  *
  * @author Enric
  */
-public interface DeudaDAO extends CrudRepository<Deuda,Integer>{
+public interface DeudaDAO extends JpaRepository<Deuda,Integer>{
     
 }

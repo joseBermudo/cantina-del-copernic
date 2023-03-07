@@ -5,8 +5,9 @@
 package cat.copernic.cantinadelcopernic.moduloRRHH.controladores;
 
 
-import cat.copernic.cantinadelcopernic.DAO.ProfesorDAO;
+
 import cat.copernic.cantinadelcopernic.modelo.Profesor;
+import cat.copernic.cantinadelcopernic.moduloRRHH.servicios.ProfesorService;
 import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,7 +22,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class ControladorlistaProfesors {
     
     @Autowired
-    private ProfesorDAO ProfesorDao;
+    private ProfesorService profesorService;
     @GetMapping("/listaProfesors")
    public String inici(Model model){
         
@@ -36,7 +37,7 @@ public class ControladorlistaProfesors {
         profesores.add(profesor);
         profesores.add(profesor2);*/
         
-        model.addAttribute("profesores", ProfesorDao.findAll());
+        model.addAttribute("profesores", profesorService.listarProfesores());
        
         return "/paginasRRHH/listaProfesores";
     }

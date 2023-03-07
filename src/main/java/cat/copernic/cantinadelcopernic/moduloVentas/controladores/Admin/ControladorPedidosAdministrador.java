@@ -4,6 +4,9 @@
  */
 package cat.copernic.cantinadelcopernic.moduloVentas.controladores.Admin;
 
+import cat.copernic.cantinadelcopernic.DAO.BocadilloSemanaDAO;
+import cat.copernic.cantinadelcopernic.DAO.PedidoDAO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +18,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class ControladorPedidosAdministrador {
 
+    @Autowired
+    private BocadilloSemanaDAO bsDAO;
+
+    @Autowired
+    private PedidoDAO pedDAO;
+
     /*La interface Model d'Spring Boot ens permet transferir dades entre el controlador i la vista
      */
     @GetMapping("/pedidosAdministrador")
@@ -22,12 +31,11 @@ public class ControladorPedidosAdministrador {
 
         String com = "Comandes";
         model.addAttribute("com1", com);
+
+        var pedidos = pedDAO.findAll();
+        model.addAttribute("pedidos", pedidos);
+
         
-        String entSemana = "Entrepa de la setmana";
-        model.addAttribute("entrs", entSemana);
-        
-        String descEnSemana = "Descripció de l'entrepà de la setmana";
-        model.addAttribute("descEntr", entSemana);
         
         String Comandes = "Comandes";
         model.addAttribute("comand", Comandes);

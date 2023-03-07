@@ -10,22 +10,18 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
     </head>
     <body>
         <div>
-            <button>Alumnes</button>
-            <button>Profesors</button>
-        </div>
-        <div>
              <ul th:each="profesor: ${profesores}">
                 <li>
                 <span th:text="${profesor.correo}"></span>
 
                 <div>
-                    <button>Eliminar</button>
+                    <button><a th:href="@{/eliminarProfesor/}+${profesor.correo}"/> Eliminar</button>
                 </div>
             </li>
             </ul>
         </div>
         <div>
-            <button  onclick="location.href='nouProfessor'">Nou Profesor</button>
+            <button><a th:href="@{/nouProfessor}"/>Nou Profesor</button>
         </div>
     </body>
 </html>
