@@ -30,7 +30,6 @@ public class BocadilloSemana implements Serializable{
    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idbocadillo_semana")
     private int idbocadillo_semana;
        
     @Column(name = "precio")

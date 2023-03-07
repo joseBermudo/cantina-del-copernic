@@ -32,24 +32,45 @@ public class ControladorCrearBocadilloDeLaSemana {
 
         //bocadilloSemana
         var bocadillosDeLaSemana = ventasSer.listarBocadilloSemana();
-        
+
         var b = bocadillosDeLaSemana.get(1).getImagen();
         //recetas
         var recetas = ventasSer.listarRecetas();
 
         model.addAttribute("listboca", bocadillosDeLaSemana);
         model.addAttribute("listrecetas", recetas);
-         model.addAttribute("imagen", b);
+        model.addAttribute("imagen", b);
 
-        return "/paginasVentas/ventasAdministrador/crearBocadilloDeLaSemana"; //Retorna la pàgina iniciEnviarDades
+        return "/paginasVentas/ventasAdministrador/crearBocadilloDeLaSemana";
     }
+
+    @PostMapping("/guardarBocaSemana") 
+    public String guardarBocadilloSemana(BocadilloSemana bocasemana) {
+
+        ventasSer.addBocadilloSemana(bocasemana); 
+
+        return "redirect:/pedidosAdministrador"; 
+    }
+
     
-    @PostMapping("/guardarBocaSemana") //action=guardarGos
-    public String guardarGos(BocadilloSemana bocaSemana) {
+    
+    @GetMapping("/editar/{idbocadillo_semana}")
 
-        ventasSer.addBocadilloSemana(bocaSemana); //Afegim el gos passat per paràmetre a la base de dades
+    public String editarBocadilloSemana(BocadilloSemana bocadilloSemana, Model model) {
 
-        return "redirect:/pedidosAdministrador"; //Retornem a la pàgina inicial dels gossos mitjançant redirect
+        model.addAttribute("bocadilloSemana", ventasSer.buscarBocadilloSemana(bocadilloSemana));
+
+        return "formularioBocadilloSemana";
+    }
+
+    
+    
+    @GetMapping("/eliminar/{idbocadillo_semana}")
+    public String eliminarBocadilloSemana(BocadilloSemana bocadilloSemana) {
+
+        ventasSer.eliminarBocadilloSemana(bocadilloSemana);
+
+        return "redirect:/listadoBocadilloSemana";
     }
 
 }

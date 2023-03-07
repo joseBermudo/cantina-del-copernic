@@ -5,7 +5,10 @@
     </head>
     <body>
         
-        <form th:action="@{/guardarBocaSemana}" method="POST" method="post" th:object="${bocadillosemana}">
+        <form th:action="@{/guardarBocaSemana}" method="post" th:object="${bocasemana}">
+            
+            <input type="hidden" name="idbocadillo_seman" th:field="*{idbocadillo_semana}"/>
+            
             <h1><span th:text="${crearES}"></span></h1>
             <img th:src="${b}" alt="Imagen del Entrepà de la setmana">
             <br>
