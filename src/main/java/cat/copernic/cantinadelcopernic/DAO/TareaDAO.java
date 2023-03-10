@@ -5,12 +5,16 @@
 package cat.copernic.cantinadelcopernic.DAO;
 
 import cat.copernic.cantinadelcopernic.modelo.Tarea;
-import org.springframework.data.repository.CrudRepository;
+import java.util.List;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 /**
  *
  * @author Enric
  */
-public interface TareaDAO extends CrudRepository<Tarea,Integer>{
+public interface TareaDAO extends JpaRepository<Tarea, Integer> {
     
+    @Query(value = "SELECT * FROM tareas WHERE MONTH(fecha) = ?1", nativeQuery = true)
+    List<Tarea> findTareasDelMesActual(int mesActual);
 }

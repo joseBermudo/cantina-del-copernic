@@ -6,6 +6,10 @@ package cat.copernic.cantinadelcopernic.moduloTareas.controladores;
 
 import cat.copernic.cantinadelcopernic.DAO.TareaDAO;
 import cat.copernic.cantinadelcopernic.modelo.Tarea;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -39,58 +43,38 @@ public class ControladorHorarioTareas {
         model.addAttribute("listaTareasWord", "Llista de tasques");
         model.addAttribute("crearTareaWord", "Crear tasca");
 
-        Date hoy = new Date();
-        Calendar hor = Calendar.getInstance();
-        hor.setTime(hoy);
-        int mesActual = hor.get(Calendar.MONTH);
-        int anioActual = hor.get(Calendar.YEAR);
+        int[][] calendario = new int[6][7];
+        int mesActual = LocalDate.now().getMonthValue();
+        List<Tarea> tareas = tareaDAO.findTareasDelMesActual(mesActual);
 
-        // Obtener el número de días del mes actual
-        int diasEnMes = hor.getActualMaximum(Calendar.DAY_OF_MONTH);
+        LocalDate fecha = LocalDate.now().withDayOfMonth(1);
+        int diasEnMes = fecha.lengthOfMonth();
+        ArrayList<ArrayList<Tarea>> tablaTareas = new ArrayList<>(diasEnMes);
 
-        // Obtener el primer día de la semana
-        int primerDiaSemana = hor.get(Calendar.DAY_OF_WEEK);
-        if (primerDiaSemana == Calendar.SUNDAY) {
-            // El primer día de la semana es domingo, así que ajustamos para que sea lunes
-            primerDiaSemana = Calendar.MONDAY;
-        } else {
-            // Restamos 1 para que el primer día de la semana sea 0 (lunes) en vez de 1 (martes) y así sucesivamente
-            primerDiaSemana--;
+        for (int i = 0; i < diasEnMes; i++) {
+            tablaTareas.add(new ArrayList<>());
         }
+        for (Tarea j : tareas) {
+            int diaDeLaTarea = j.getFecha().toInstant().atZone(ZoneId.systemDefault()).toLocalDate().getDayOfMonth();
+            tablaTareas.get(diaDeLaTarea - 1).add(j);
+        }
+        DayOfWeek diaInicio = fecha.getDayOfWeek();
+        int desplazamiento = diaInicio.getValue() - DayOfWeek.MONDAY.getValue();
+        fecha = fecha.minusDays(desplazamiento);
 
-        // Generar los datos para la tabla del horario
-        String[][] tablaHorario = new String[6][7];
-        int dia = hor.get(Calendar.DAY_OF_MONTH);
         for (int i = 0; i < 6; i++) {
             for (int j = 0; j < 7; j++) {
-                if (i == 0 && j + 1 < primerDiaSemana) {
-                    // Espacio en blanco para los días previos al primer día del mes
-                    tablaHorario[i][j] = "";
-                } else if (dia > diasEnMes) {
-                    // Espacio en blanco para los días posteriores al último día del mes
-                    tablaHorario[i][j] = "";
+                if (fecha.getMonthValue() == LocalDate.now().getMonthValue()) {
+                    calendario[i][j] = fecha.getDayOfMonth();
                 } else {
-                    // Celda con el día actual
-                    tablaHorario[i][j] = Integer.toString(dia);
-                    List<Tarea> tareas = (List<Tarea>) tareaDAO.findAll();
-                    for (Tarea tarea : tareas) {
-                        if (tarea.getFecha().getDate() == dia) {
-                            tablaHorario[i][j] += " " + tarea.getAlumno();
-                        }
-                    }
-
-
-                    if (dia == hor.get(Calendar.DAY_OF_MONTH) && mesActual == hor.get(Calendar.MONTH)
-                            && anioActual == hor.get(Calendar.YEAR)) {
-                        // Si es el día actual, añadir la clase "today"
-                        tablaHorario[i][j] += " avui";
-                    }
-                    dia++;
+                    calendario[i][j] = 0;
                 }
+                fecha = fecha.plusDays(1);
             }
-
         }
-        model.addAttribute("tablaHorario",tablaHorario);
+        model.addAttribute("calendario",calendario);
+        model.addAttribute("tablaTareas",tablaTareas);
+        
         return "/paginasTareas/horarioTareas";
 
     }

@@ -52,4 +52,15 @@ public class ControladorListarDeudasAdministrador {
         
         return "/paginasDeudas/listarDeudasAdministrador";
     }
+    
+    @GetMapping("/crearDeuda")
+    public String crearDeuda(Model model) {
+        model.addAttribute("atrasWord", "Enrrere");
+        model.addAttribute("crearDeudaWord", "Crear deute");
+        model.addAttribute("quantitatWord", "Quantitat:");
+        model.addAttribute("dataWord", "Data:");
+        model.addAttribute("cancelarWord", "Cancel·lar");
+        
+        return "/paginasDeudas/crearDeuda"; 
+    }
 }
