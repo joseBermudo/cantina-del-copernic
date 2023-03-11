@@ -42,7 +42,7 @@ public class Sugerencia implements Serializable {
     
     private Boolean leida = false;
     
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "usuarios_correo")
     private Profesor profesor;
 }
