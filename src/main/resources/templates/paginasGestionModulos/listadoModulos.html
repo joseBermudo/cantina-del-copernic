@@ -1,38 +1,25 @@
 <!DOCTYPE html>
 <html>
     <html xmlns:th="http://www.thymeleaf.org">
-        <title th:text="${tituloPagina}"></title>
-        <meta charset="UTF-8">
-    </head>
-    <body>
-        <div> 
-            <table th:each="modul : ${modulos}" border="1" width="420">
-                <tbody>
-                    <tr>
-                        <th th:text="${modul.nombreModulo}"  width="200">
-                        <th th:text="Visible"width="60">                                           
-                    </tr>                                          
-                    <tr th:each="modulRol : ${#lists.isEmpty(modul.modulosRoles) ? null : modul.modulosRoles}">
-                        <td th:text="${modulRol.rol.nombre ?: ''}"></td>
-                        <td>
-                            <input type="checkbox" th:checked="${modulRol.visible ?: ''}" name="option1" value="1">
-                        </td>
-                    </tr>    
-                    <tr>
-                        <th th:text="Activat"width="60"colspan="2"> 
+        <head>
+            <title th:text="${tituloPagina}"></title>
+            <meta charset="UTF-8">
+        </head>
+        <body>
+            <div> 
+
+                <table border="1" width="420">
+                    <tr th:each="modul : ${modulos}" >
+                        <td th:text="${modul.nombreModulo}"></td>
+                        <td><a th:href="@{/modificar/}+${modul.idmodulos}" th:text="Modificar"/></td>
                     </tr>
-                    <tr>
-                        <td colspan="2">
-                            <input type="checkbox" th:checked="${modul.habilitado}" name="option1" value="1">
-                        </td>
-                    </tr>
-                </tbody>
-                <br>
-            </table>
-        </div>
-        <br>
-        <div>
-            <button th:text="${nombreBoton}"></button>
-        </div>
-    </body>
-</html>
+                </table>
+            </div>
+            <br>
+            <div th:if="${modulos==null || modulos.empty}">
+
+                No hi ha moduls disponibles.
+            </div>
+
+        </body>
+    </html>

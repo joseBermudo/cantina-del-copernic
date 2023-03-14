@@ -17,5 +17,7 @@ public interface GestionModulosServiceInterface {
     
     public List<Rol> listarRoles();
     
-    public void  actualizarModulos(List<Modulo> modulos);
+    public Modulo buscarModulo(Modulo modulo);
+    
+    public void guardarModulo(Modulo modulo);
 }

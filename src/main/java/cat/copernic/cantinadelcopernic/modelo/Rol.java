@@ -4,6 +4,7 @@
  */
 package cat.copernic.cantinadelcopernic.modelo;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -34,7 +35,7 @@ public class Rol implements Serializable {
     
     private String nombre;
     
-    @OneToMany(mappedBy = "rol")
+    @OneToMany(mappedBy = "rol",cascade = CascadeType.ALL)
     private List<ModuloRol> modulosRoles;
 
 }

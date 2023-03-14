@@ -7,11 +7,13 @@ package cat.copernic.cantinadelcopernic.modelo;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import java.io.Serializable;
+import lombok.Data;
 
 /**
  *
  * @author joseb
  */
+@Data
 @Embeddable
 public class ModuloRolId implements Serializable {
 
@@ -20,5 +22,13 @@ public class ModuloRolId implements Serializable {
 
     @Column(name = "roles_idroles")
     private int rolesIdRoles;
+
+    public ModuloRolId() {
+    }
+
+    public ModuloRolId(int modulosIdModulos, int rolesIdRoles) {
+        this.modulosIdModulos = modulosIdModulos;
+        this.rolesIdRoles = rolesIdRoles;
+    }
 
 }

@@ -38,8 +38,20 @@ public class GestionModulosService implements  GestionModulosServiceInterface{
     }
 
     @Override
-    public void actualizarModulos(List<Modulo> modulos) {
-        moduloDAO.saveAll(modulos);
+    public Modulo buscarModulo(Modulo modulo) {
+       return moduloDAO.findById(modulo.getIdmodulos()).orElse(null);
     }
+
+    @Override
+    @Transactional() 
+    public void guardarModulo(Modulo modulo) {
+        moduloDAO.save(modulo);
+    }
+
+    
+    
+    
+
+    
     
 }

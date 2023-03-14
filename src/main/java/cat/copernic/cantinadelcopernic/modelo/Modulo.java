@@ -4,6 +4,7 @@
  */
 package cat.copernic.cantinadelcopernic.modelo;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -41,7 +42,7 @@ public class Modulo implements Serializable{
     @Column(name = "habilitado")
     private boolean habilitado;
     
-    @OneToMany(mappedBy="modulo")
+    @OneToMany(mappedBy="modulo",cascade = CascadeType.ALL)
     private List<ModuloRol> modulosRoles;
     
 }
