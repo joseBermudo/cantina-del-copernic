@@ -4,7 +4,14 @@
  */
 package cat.copernic.cantinadelcopernic.moduloProduccion.servicios;
 
+import cat.copernic.cantinadelcopernic.DAO.BebidaDAO;
+import cat.copernic.cantinadelcopernic.DAO.RecetaDAO;
+import cat.copernic.cantinadelcopernic.modelo.Bebida;
+import cat.copernic.cantinadelcopernic.modelo.Receta;
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
@@ -12,5 +19,38 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class ProduccionService implements ProduccionServiceInterface{
+    
+    @Autowired
+    RecetaDAO recetaDAO;
+    
+    @Autowired
+    BebidaDAO bebidaDAO;
+    
+    @Override
+    @Transactional(readOnly=true) 
+    public List<Receta> obtenerRecetas() {
+        return recetaDAO.findAll();
+    }
+
+    @Override
+    @Transactional(readOnly=true) 
+    public List<Bebida> obtenerBebidas() {
+        return bebidaDAO.findAll();
+    }
+
+    @Override
+    @Transactional
+    public void guardarBebida(Bebida bebida) {
+        bebidaDAO.save(bebida);
+    }
+
+    @Override
+    @Transactional(readOnly=true) 
+    public Bebida buscarBebida(Bebida bebida) {
+        return bebidaDAO.findById(bebida.getId()).orElse(null);
+        
+    }
+    
+    
     
 }

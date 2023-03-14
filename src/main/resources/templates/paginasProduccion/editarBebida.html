@@ -5,24 +5,26 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 -->
 <html>
     <head>
-        <title>Editar beguda</title>
+        <title th:text="${titulo}"></title>
         <meta charset="UTF-8">
     </head>
     <body>
         <div>
-            <h1>EDITAR BEGUDA</h1>
+            <h1 th:text="${titulo}"></h1>
         </div> 
         <div>
-            <form action="" method="POST">
+            <form action="/guardarBebida" method="post" th:object="${bebida}">
+                <input type="hidden" name="id" th:field="*{id}"/>
                 <label for="nom">Nom:</label><br>
-                <input type="text" id="nom" name="nom"><br>
-                <label for="preu">Preu:</label><br>
-                <input type="number" id="preu" name="preu"><br>
-                <label for="descripcio">Descripció:</label><br>
-                <textarea id="descripcio" name="descripcio" rows="4" cols="50"></textarea><br>  
+                <input type="text" id="nom" name="nom" th:field="*{nombre}"><br>
+                <label for="precio">Preu:</label><br>
+                <input type="number" id="precio" step="any" name="precio"th:field="*{precio}"><br>
+                <label for="desc">Descripció:</label><br>
+                <textarea id="desc" name="desc" th:field="*{desc}" rows="4" cols="50"></textarea><br>  
+                <input type="submit" name="guardar" value="Guardar beguda"/> 
             </form>
-            <button><a href="/listaBebidas">Guardar</a></button>
-            <button><a href="/listaBebidas">Cancelar</a></button>
+    
+            <a href="/listaBebidas">Cancelar</a>
         </div>
     </body>
 </html>

@@ -4,10 +4,22 @@
  */
 package cat.copernic.cantinadelcopernic.moduloProduccion.servicios;
 
+import cat.copernic.cantinadelcopernic.modelo.Bebida;
+import cat.copernic.cantinadelcopernic.modelo.Receta;
+import java.util.List;
+
 /**
  *
  * @author joseb
  */
 public interface ProduccionServiceInterface {
+    
+    public List<Receta> obtenerRecetas();
+    
+    public List<Bebida> obtenerBebidas();
+    
+    public void guardarBebida(Bebida bebida);
+    
+    public Bebida buscarBebida(Bebida bebida);
     
 }

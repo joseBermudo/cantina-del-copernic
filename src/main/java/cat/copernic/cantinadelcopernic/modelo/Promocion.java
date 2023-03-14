@@ -28,7 +28,7 @@ public class Promocion implements Serializable {
     @Column(name = "idpromocion")
     private int id;
     
-    @Column(name = "desc")
+    @Column(name = "descripcion")
     private String desc;
     
     @Column(name = "condicion")

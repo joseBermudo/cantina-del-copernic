@@ -32,7 +32,7 @@ public class Bebida implements Serializable {
     @Column(name="nombre")
     private String nombre;
     
-    @Column(name="desc")
+    @Column(name="descripcion")
     private String desc;
     
     @Column(name="precio")
