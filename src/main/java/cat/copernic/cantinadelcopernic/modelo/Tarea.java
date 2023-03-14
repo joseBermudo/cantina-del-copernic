@@ -12,6 +12,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import java.time.LocalDate;
 import java.util.Date;
 import lombok.Data;
 
@@ -33,7 +34,7 @@ public class Tarea {
     private String alumno;
 
     @Column(name = "fecha")
-    private Date fecha;
+    private LocalDate fecha;
 
     @ManyToOne
     @JoinColumn(name = "tipo_tarea_idtipo_tarea")

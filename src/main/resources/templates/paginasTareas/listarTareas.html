@@ -4,7 +4,6 @@
         <title th:text="${listadoTareaWord}"></title>
     </head>
     <body>
-        <!-- <button th:text="${atrasWord}"></button> -->
         <h1 th:text="${listadoTareaWord}"></h1>
 
         <div th:if="${listadoTarea!=null && !listadoTarea.empty}">    
@@ -18,7 +17,7 @@
                 <tr th:each="i : ${listadoTarea}"> 
                     <td th:text="${i.tipo.nombre}"></td>
                     <td th:text="${i.alumno}"></td>
-                    <td th:text="${#dates.format(i.fecha, 'dd-MM-yyyy')}"></td>
+                    <td th:text="${#temporals.format(i.fecha, 'dd/MM/yyyy')}"></td>
                     <td><img th:src="@{'/imagenes/visibilityIcon.webp'}" width='50' height='50'/></td>
                 </tr>
             </table>

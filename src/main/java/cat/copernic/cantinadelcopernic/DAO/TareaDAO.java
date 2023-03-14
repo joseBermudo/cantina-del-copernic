@@ -15,6 +15,6 @@ import org.springframework.data.jpa.repository.Query;
  */
 public interface TareaDAO extends JpaRepository<Tarea, Integer> {
     
-    @Query(value = "SELECT * FROM tareas WHERE MONTH(fecha) = ?1", nativeQuery = true)
-    List<Tarea> findTareasDelMesActual(int mesActual);
+    @Query(value = "SELECT * FROM tarea WHERE YEAR(fecha) = ?2 AND MONTH(fecha) = ?1", nativeQuery = true)
+    List<Tarea> findTareasDelMesActual(int mesActual, int anyoActual);
 }
