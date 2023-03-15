@@ -4,11 +4,8 @@
  */
 package cat.copernic.cantinadelcopernic.moduloDeudas.controladores;
 
-import cat.copernic.cantinadelcopernic.DAO.DeudaDAO;
-import cat.copernic.cantinadelcopernic.modelo.Deuda;
 import cat.copernic.cantinadelcopernic.modelo.Profesor;
 import cat.copernic.cantinadelcopernic.moduloDeudas.servicios.DeudaService;
-import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
