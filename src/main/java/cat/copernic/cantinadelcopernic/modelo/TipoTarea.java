@@ -24,10 +24,14 @@ public class TipoTarea {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idtipo_tarea")
-    private int id;
+    public int id;
     
     @Column(name = "nombre")
     private String nombre;
+    
+    public TipoTarea(int id) {
+        this.id = id;
+    }
+    
+    public TipoTarea() {}
 }
-
-

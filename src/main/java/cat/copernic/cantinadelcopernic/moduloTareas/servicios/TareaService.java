@@ -18,50 +18,51 @@ import org.springframework.transaction.annotation.Transactional;
  * @author Enric
  */
 @Service
-public class TareaService implements TareaServiceInterface{
+public class TareaService implements TareaServiceInterface {
 
     @Autowired
     private TareaDAO tarea;
-    private TipoTareaDAO tipoTarea;
     
+    @Autowired
+    private TipoTareaDAO tipoTarea;
+
     @Override
-    public List<Tarea> findTareasDelMesActual(int mesActual, int anyoActual)
-    {
+    public List<Tarea> findTareasDelMesActual(int mesActual, int anyoActual) {
         return tarea.findTareasDelMesActual(mesActual, anyoActual);
     }
-    
+
     /////////////TIPO TAREA/////////////
     @Override
     @Transactional(readOnly=true) 
     public List<TipoTarea> llistarTipoTarea() {
         return (List<TipoTarea>) tipoTarea.findAll(); 
     }
-    
+
     @Override
     @Transactional
     public void afegirTipoTarea(TipoTarea tipoTarea) {
         this.tipoTarea.save(tipoTarea);
     }
-    
+
     @Override
-    @Transactional //Igual que en el mètode afegirGos, modifiquem la informació de la BBDD
+    @Transactional 
     public void eliminarTipoTarea(TipoTarea tipoTarea) {
         this.tipoTarea.delete(tipoTarea);
     }
-    
+
     @Override
     @Transactional(readOnly=true)
     public TipoTarea cercarTipoTarea(TipoTarea tipoTarea) {
         return this.tipoTarea.findById(tipoTarea.getId()).orElse(null);
     }
-    
+
     /////////////TAREA/////////////
     @Override
     @Transactional(readOnly=true) 
     public List<Tarea> llistarTareas() {
         return (List<Tarea>) tarea.findAll(); 
     }
-    
+
     @Override
     public void afegirTarea(Tarea tarea) {
         this.tarea.save(tarea);
