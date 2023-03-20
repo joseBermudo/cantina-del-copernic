@@ -5,6 +5,7 @@
 package cat.copernic.cantinadelcopernic.moduloProduccion.controladores;
 
 import cat.copernic.cantinadelcopernic.DAO.RecetaDAO;
+
 import cat.copernic.cantinadelcopernic.modelo.Receta;
 import cat.copernic.cantinadelcopernic.moduloProduccion.servicios.ProduccionService;
 import java.util.ArrayList;
@@ -13,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -22,6 +24,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @Slf4j
 public class ControladorListaRecetas {
+    
+    private String tituloCrear = "Nova recepta";
+    private String tituloEditar = "Editar recepta";
+    
     @Autowired 
     private ProduccionService proServ;
     @GetMapping("/listaRecetas")
@@ -29,6 +35,26 @@ public class ControladorListaRecetas {
         
         model.addAttribute("recetas", proServ.obtenerRecetas());
         return "/paginasProduccion/listaRecetas";
+    }
+    
+    @GetMapping("/crearReceta")
+    public String formularioRceta(Receta bebida,Model model) {
+        model.addAttribute("titulo", tituloCrear);
+        return "/paginasProduccion/editarReceta";
+    }
+    
+    @GetMapping("/editarReceta/{id}")
+    public String editarReceta(Receta receta, Model model){
+   
+        model.addAttribute("receta", proServ.buscarReceta(receta));
+        model.addAttribute("titulo",tituloEditar);
+        return "/paginasProduccion/editarReceta";
+    }
+    
+    @PostMapping("/guardarReceta")
+    public String guardarReceta(Receta receta){
+        proServ.guardarReceta(receta);
+        return "redirect:/listaRecetas";
     }
 
 }

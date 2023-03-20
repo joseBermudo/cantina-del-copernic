@@ -22,4 +22,9 @@ public interface ProduccionServiceInterface {
     
     public Bebida buscarBebida(Bebida bebida);
     
+    
+    public void guardarReceta(Receta receta);
+    
+    public Receta buscarReceta(Receta receta);
+    
 }

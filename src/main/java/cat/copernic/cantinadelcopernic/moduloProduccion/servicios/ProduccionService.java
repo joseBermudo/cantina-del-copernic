@@ -18,22 +18,22 @@ import org.springframework.transaction.annotation.Transactional;
  * @author joseb
  */
 @Service
-public class ProduccionService implements ProduccionServiceInterface{
-    
+public class ProduccionService implements ProduccionServiceInterface {
+
     @Autowired
     RecetaDAO recetaDAO;
-    
+
     @Autowired
     BebidaDAO bebidaDAO;
-    
+
     @Override
-    @Transactional(readOnly=true) 
+    @Transactional(readOnly = true)
     public List<Receta> obtenerRecetas() {
         return recetaDAO.findAll();
     }
 
     @Override
-    @Transactional(readOnly=true) 
+    @Transactional(readOnly = true)
     public List<Bebida> obtenerBebidas() {
         return bebidaDAO.findAll();
     }
@@ -45,12 +45,20 @@ public class ProduccionService implements ProduccionServiceInterface{
     }
 
     @Override
-    @Transactional(readOnly=true) 
+    @Transactional(readOnly = true)
     public Bebida buscarBebida(Bebida bebida) {
         return bebidaDAO.findById(bebida.getId()).orElse(null);
-        
+
     }
-    
-    
-    
+
+    @Override
+    public void guardarReceta(Receta receta) {
+        recetaDAO.save(receta);
+    }
+
+    @Override
+    public Receta buscarReceta(Receta receta) {
+        return recetaDAO.findById(receta.getId()).orElse(null);
+    }
+
 }
