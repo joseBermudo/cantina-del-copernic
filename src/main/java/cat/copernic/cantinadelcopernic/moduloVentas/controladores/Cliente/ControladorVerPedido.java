@@ -6,7 +6,11 @@ package cat.copernic.cantinadelcopernic.moduloVentas.controladores.Cliente;
 
 
 
+import cat.copernic.cantinadelcopernic.DAO.BebidaDAO;
 import cat.copernic.cantinadelcopernic.modelo.Bebida;
+import cat.copernic.cantinadelcopernic.modelo.Pedido;
+import cat.copernic.cantinadelcopernic.moduloVentas.servicios.VentasService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,24 +24,26 @@ public class ControladorVerPedido {
 
     /*La interface Model d'Spring Boot ens permet transferir dades entre el controlador i la vista
      */
-    @GetMapping("/verPedidoCliente")
-    public String inici(Model model) {
+    @Autowired
+    private VentasService serVentas;
+    
+    @Autowired
+   private BebidaDAO bebDAO;
+    
+    @GetMapping("/verPedidoClient/{id_pedido}")
+    public String inici(Model model, Pedido pedido) {
         
-        String com="COMANDA";
+        String com="COMANDA: "+ pedido.getId_pedido();
         model.addAttribute("comanda", com);
-        
-        String tituloBocataSemana="Entrepà de la setmana:";
-        model.addAttribute("bocataSemana", tituloBocataSemana);
+       
         
         
-        var be = new Bebida();
-        be.setNombre("Aigua");
-        be.setDesc("aigua de tota la vida");
-        be.setPrecio(5.0);
+        pedido=serVentas.buscarPedido(pedido);
         
+        model.addAttribute("precio",pedido.getBebida().getPrecio()+ pedido.getBocadilloSemana().getPrecio());     
         
-        String preu="10€";
-
+        model.addAttribute("pedido", serVentas.buscarPedido(pedido));
+ 
         return "/paginasVentas/ventasCliente/verPedidoCliente"; //Retorna la pàgina iniciEnviarDades
     }
     

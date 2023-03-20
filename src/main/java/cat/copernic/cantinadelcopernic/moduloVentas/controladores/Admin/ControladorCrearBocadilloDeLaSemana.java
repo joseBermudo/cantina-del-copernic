@@ -4,6 +4,7 @@
  */
 package cat.copernic.cantinadelcopernic.moduloVentas.controladores.Admin;
 
+import cat.copernic.cantinadelcopernic.DAO.RecetaDAO;
 import cat.copernic.cantinadelcopernic.modelo.BocadilloSemana;
 import cat.copernic.cantinadelcopernic.moduloVentas.servicios.VentasService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+
 
 /**
  *
@@ -23,54 +25,55 @@ public class ControladorCrearBocadilloDeLaSemana {
      */
     @Autowired
     private VentasService ventasSer;
+    
+       @Autowired
+    private RecetaDAO recDADO;
 
-    @GetMapping("/crearBocadilloDeLaSemana")
-    public String inici(Model model) {
 
-        String ces = "Crear Entrepà de la setmana";
-        model.addAttribute("crearES", ces);
-
-        //bocadilloSemana
-        var bocadillosDeLaSemana = ventasSer.listarBocadilloSemana();
-
-        var b = bocadillosDeLaSemana.get(1).getImagen();
-        //recetas
-        var recetas = ventasSer.listarRecetas();
-
-        model.addAttribute("listboca", bocadillosDeLaSemana);
-        model.addAttribute("listrecetas", recetas);
-        model.addAttribute("imagen", b);
+    @GetMapping("/crearFormularioBocadilloSemana")
+    public String crearFormularioBocadilloSemana(BocadilloSemana bocadillosemana, Model model) {
+        model.addAttribute("recetas", recDADO.findAll());
+        model.addAttribute("bocadillosemana", new BocadilloSemana());
 
         return "/paginasVentas/ventasAdministrador/crearBocadilloDeLaSemana";
     }
 
-    @PostMapping("/guardarBocaSemana") 
-    public String guardarBocadilloSemana(BocadilloSemana bocasemana) {
+    @PostMapping("/guardarBocaSemana")
+    public String guardarBocadilloSemana(BocadilloSemana bocadilloSemana){
+//        try {
+//            // Guardar la imagen en el sistema de archivos
+//            Files.write(Paths.get("/imagenes/imagen.jpg"), bocadilloSemana.getImagen().getBytes());
+            bocadilloSemana.setImagen("asdasdasdasdasdasdasdasd");
+            
+            
+            var receta= recDADO.findById(bocadilloSemana.getReceta().getId()).get();
+            
+            bocadilloSemana.setReceta(receta);
+            ventasSer.addBocadilloSemana(bocadilloSemana);
+//            return "redirect:/listadoBocadilloSemana";
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//            return "Error al guardar la imagen";
+//        }
 
-        ventasSer.addBocadilloSemana(bocasemana); 
-
-        return "redirect:/pedidosAdministrador"; 
+        return "redirect:/listaBocadilloSemana";
+      
     }
 
-    
-    
     @GetMapping("/editar/{idbocadillo_semana}")
-
     public String editarBocadilloSemana(BocadilloSemana bocadilloSemana, Model model) {
+        
+        model.addAttribute("recetas", recDADO.findAll());
+        model.addAttribute("bocadillosemana", ventasSer.buscarBocadilloSemana(bocadilloSemana));
 
-        model.addAttribute("bocadilloSemana", ventasSer.buscarBocadilloSemana(bocadilloSemana));
-
-        return "formularioBocadilloSemana";
+        return "/paginasVentas/ventasAdministrador/crearBocadilloDeLaSemana";
     }
-
-    
-    
-    @GetMapping("/eliminar/{idbocadillo_semana}")
+     @GetMapping("/eliminarbocadillo/{idbocadillo_semana}")
     public String eliminarBocadilloSemana(BocadilloSemana bocadilloSemana) {
-
-        ventasSer.eliminarBocadilloSemana(bocadilloSemana);
-
-        return "redirect:/listadoBocadilloSemana";
+    
+     var bocadilloeliminar= ventasSer.buscarBocadilloSemana(bocadilloSemana);      
+        ventasSer.eliminarBocadilloSemana(bocadilloeliminar);
+        return "redirect:/listaBocadilloSemana";
     }
 
 }

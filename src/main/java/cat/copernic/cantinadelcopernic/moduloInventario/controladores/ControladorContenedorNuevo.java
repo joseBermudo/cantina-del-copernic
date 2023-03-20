@@ -6,10 +6,13 @@ package cat.copernic.cantinadelcopernic.moduloInventario.controladores;
 
 import cat.copernic.cantinadelcopernic.DAO.ContenedorDAO;
 import cat.copernic.cantinadelcopernic.DAO.UtensilioDAO;
+import cat.copernic.cantinadelcopernic.modelo.Contenedor;
+import cat.copernic.cantinadelcopernic.moduloInventario.servicios.InventarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 /**
  *
@@ -17,23 +20,33 @@ import org.springframework.web.bind.annotation.GetMapping;
  */
 @Controller
 public class ControladorContenedorNuevo {
-
+    
     @Autowired
-    private ContenedorDAO contDAO;
-
-    @Autowired
-    private UtensilioDAO utenDAO;
-
+    private InventarioService invSer;
+    
     @GetMapping("/contenedorNuevo")
-    public String inici(Model model) {
-
-        var contenedor = contDAO.findAll();
-        model.addAttribute("contenedor", contenedor);
-
-        var utensilios = utenDAO.findAll();
-        model.addAttribute("utensilios", utensilios);
-
+    public String inici(Model model,Contenedor contenedor) { 
+        model.addAttribute("contenedor",new Contenedor());
         return "/paginasInventario/contenedorNuevo";
     }
+    
+    @PostMapping("/guardarContenedor")
+    public String guardarContenedor(Contenedor contenedor) {
+        invSer.addContenedor(contenedor);
+        return "redirect:/listadoDeContenedores";
+    }
+    
+    @GetMapping("/editarContenedor/{idcontenedor}")
+    public String editarContenedor(Contenedor contenedor, Model model) {  
+        model.addAttribute("contenedor", invSer.buscarContenedor(contenedor));
+        return "/paginasInventario/contenedorNuevo";
+    }
+    
+    @GetMapping("/eliminarContenedor/{idcontenedor}")
+    public String eliminarContenedor(Contenedor contenedor) {
+        var elimContenedor = invSer.buscarContenedor(contenedor);
+        invSer.eliminarContenedor(elimContenedor);
+        return "redirect:/listadoDeContenedores";
+    }
+    
 }
-

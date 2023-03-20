@@ -7,6 +7,7 @@ package cat.copernic.cantinadelcopernic.modelo;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -15,8 +16,11 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.io.Serializable;
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.List;
+
 import lombok.Data;
 
 /**
@@ -32,26 +36,24 @@ public class BocadilloSemana implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idbocadillo_semana;
        
-    @Column(name = "precio")
     private double precio;
 
-    @Column(name = "imagen")
     private String imagen;
 
-    @Column(name = "fecha")
-    private Date fecha;
+    private LocalDate fecha;
 
-    
-    @Column(name = "nombre")
     private String nombre;
     
-    @Column(name = "desc")
-    private String desc;
+    private String descripcion;
       
-   
-    @ManyToOne(cascade = CascadeType.ALL)
+
+    @ManyToOne()
     @JoinColumn(name = "receta_idreceta") 
     private Receta receta;
+    
 
+    
+    @OneToMany(mappedBy = "bocadilloSemana", cascade = CascadeType.REMOVE) 
+    private List<Pedido> pedido;
 }
 

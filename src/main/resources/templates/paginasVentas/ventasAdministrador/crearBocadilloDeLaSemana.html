@@ -4,37 +4,41 @@
         <title th:text="${crearES}"></title>
     </head>
     <body>
-        
-        <form th:action="@{/guardarBocaSemana}" method="post" th:object="${bocasemana}">
-            
-            <input type="hidden" name="idbocadillo_seman" th:field="*{idbocadillo_semana}"/>
-            
-            <h1><span th:text="${crearES}"></span></h1>
-            <img th:src="${b}" alt="Imagen del Entrepà de la setmana">
+
+        <form th:action="@{/guardarBocaSemana}" method="post" th:object="${bocadillosemana}">
+
+            <input type="hidden" name="idbocadillo_semana" th:field="*{idbocadillo_semana}"/>
+
+            <h1><span th:text="${crearES}"></span></h1>           
             <br>
-            <button>Pujar Imatge</button>
+            <!--<label for="imagen">Cargar imagen:</label>
+            <input type="file" name="imagen" />--> 
+            <br>
             <br>
             <label for="nombre">Nom:</label>
-            <input type="text" id="nombre" name="nombre" th:field="*{nombre}"/>
-            <br>
-            <label for="receta">Recpta:</label>
-            <select id="receta" name="receta">
-                <option th:each="receta: ${listrecetas}" th:text="${receta.nombre}"></option>
+            <input type="text" id="nombre" name="nombre" th:field="*{nombre} "/>
+            <br>   
+            
+            <label for="receta">Receta:</label>
+            <select th:field="*{receta}">
+                <option th:each="r : ${recetas}" th:value="${r.id}" th:text="${r.nombre}">
+                </option>
             </select>
             <br>
             <label for="precio">Preu:</label>
             <input type="text" id="precio" name="precio" th:field="*{precio}"/>
             <br>
+            <br>
             <label for="descripcion">Descripció:</label>
             <br>
-            <textarea id="descripcion" name="descripcion" rows="4" cols="50" th:field="*{sexe}"></textarea>
+            <textarea id="descripcion" name="descripcion" rows="4" cols="50" th:field="*{descripcion}"></textarea>
             <br>
             <label for="fecha">Selecciona una data limit de l'entrepà:</label>
-            <input type="date" id="fecha" name="fecha" th:field="*{fecha}">
+            <input type="date" id="fecha" name="fecha" th:field="*{fecha}" required>
             <br>
-            <button type="submit">Guardar</button>
-            <input type="submit" name="enviar" value="Enviar Dades"/>
+            <input type="submit" name="enviar" value="Enviar Dades"/>           
         </form>
+        <button><a th:href="@{/listaBocadilloSemana}">Enrrere</a></button>
     </body>
 </html>
 

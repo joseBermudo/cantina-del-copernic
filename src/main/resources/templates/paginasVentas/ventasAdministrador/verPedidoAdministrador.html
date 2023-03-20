@@ -1,32 +1,29 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
-        <title th:text="${com1.nombre}"></title>
+        <title th:text="${pedido.bocadilloSemana.nombre}"></title>
     </head>
     <body>
-        <form action="" method="POST" th:object="${pedido}">
+        <h1 th:text="${pedido.bocadilloSemana.nombre}"></h1>
+        
+        <form action="@{/navega}" method="post" th:object="${pedido}"  readonly>
             <label for="campo1" th:text="${correostr}"></label>
-            <input type="text" id="campo1" th:field="*{correo}"><br>
-            <br><br>
+            <input type="text" id="campo1" th:field="*{profesores.correo}"  readonly><br>
+            <br>
             <label for="campo2" th:text="${entrepastr}"></label>
-            <select id="entrepas_setmana">
-                <option th:each="a: ${bocsemana}" th:text="${a.nombre}"></option>		
-            </select><br><br>
-
+            <input type="text" id="campo1" th:field="*{bocadilloSemana.nombre}"  readonly><br>
+            <br>
             <label for="beguda">Beguda:</label>
-            <select id="beguda">
-                <option th:each="a: ${begudes}" th:text="${a.nombre}"></option>			
-            </select><br><br>
-            
+            <input type="text" id="campo1" th:field="*{bebida.nombre}"  readonly><br>
+             <br>
             <label for="campo5">Preu total:</label>
-            <input type="text" id="campo5"><br>
+            <input type="text" id="campo5" th:value="${preciototal}"  readonly><br>
             <br><br>
             <label for="observaciones">Observacions:</label><br>
-            <textarea id="observaciones" rows="4" cols="50"></textarea><br>
+            <textarea id="observaciones" rows="4" cols="50" th:field="*{profesores.observaciones}"></textarea><br>
 
-            <button><a href="/pedidosAdministrador">Esborrar Comanda</a></button>
         </form>
+        <button><a th:href="@{/eliminarPedido/}+${pedido.id_pedido}"/> Borrar</button>
 
-  
     </body>
 </html>

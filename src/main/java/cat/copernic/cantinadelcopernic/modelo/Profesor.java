@@ -7,6 +7,7 @@ package cat.copernic.cantinadelcopernic.modelo;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import java.util.ArrayList;
@@ -43,5 +44,9 @@ public class Profesor extends Usuario {
     @OneToMany(mappedBy = "profesor", cascade = CascadeType.ALL, orphanRemoval = true)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private List<Sugerencia> sugerencias;
+    
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "pedido_id_pedido")
+    private List<Pedido> pedido;
    
 }

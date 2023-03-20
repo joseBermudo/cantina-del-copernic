@@ -29,9 +29,8 @@ public class Contenedor implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @Column(name = "idcontenedor")
     private String idcontenedor;
 
-    @OneToMany(mappedBy = "idutensilio", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "contenedor", cascade = CascadeType.REMOVE)
     private List<Utensilio> utensilios = new ArrayList<>();
 }

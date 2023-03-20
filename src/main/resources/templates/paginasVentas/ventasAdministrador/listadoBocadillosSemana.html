@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title th:text="${com1}"></title>
+    </head>
+    <body>
+        <!-- Título de la lista de pedidos -->
+        <h2 th:text="${com1}"></h2>
+
+        <!-- Lista con botones -->	
+        <ul th:each="bocata: ${bocadillos}">
+            <li>
+                <span th:text="${bocata.nombre}"></span>
+
+                <div>
+                     <button><a th:href="@{/editar/}+${bocata.idbocadillo_semana}"/>Editar</button>
+                    <button><a th:href="@{/eliminarbocadillo/}+${bocata.idbocadillo_semana}"/> Borrar</button>
+                </div>
+            </li>
+        </ul>
+
+        <!-- Botones nou entrepa y editar entrepa -->
+        <button><a th:href="@{/crearFormularioBocadilloSemana}"/>Nou entrepa</button>
+        <button><a th:href="@{/pedidosAdministrador}"/>Comandes</button>
+    </body>
+</html>

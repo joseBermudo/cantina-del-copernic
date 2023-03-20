@@ -7,6 +7,9 @@ package cat.copernic.cantinadelcopernic.moduloVentas.controladores.Admin;
 import cat.copernic.cantinadelcopernic.DAO.BebidaDAO;
 import cat.copernic.cantinadelcopernic.DAO.BocadilloSemanaDAO;
 import cat.copernic.cantinadelcopernic.DAO.PedidoDAO;
+import cat.copernic.cantinadelcopernic.modelo.Pedido;
+import cat.copernic.cantinadelcopernic.modelo.Sugerencia;
+import cat.copernic.cantinadelcopernic.moduloVentas.servicios.VentasService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,53 +23,28 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class ControladorVerPedidoAdministrador {
 
     @Autowired
-    private BocadilloSemanaDAO bsDAO;
-
-    @Autowired
-    private PedidoDAO pedDAO;
-    
-     @Autowired
-    private BebidaDAO bebDAO;
-     
-     // @Autowired
-    //private RRHHDAO bebDAO;
-     
-     
+    private VentasService ventasSer;
 
     /*La interface Model d'Spring Boot ens permet transferir dades entre el controlador i la vista*/
-    @GetMapping("/verPedidoAdministrador")
-    public String inici(Model model) {
+    @GetMapping("/verPedidoAdministrador/{id_pedido}")
+    public String inici(Model model, Pedido pedido) {
 
-        var pedidoPorId = pedDAO.findById(1);
-        var pedido = pedidoPorId.get();
-        model.addAttribute("pedido", pedido);
-
-        var bocadilloPorId = bsDAO.findById(pedido.getId_pedido());
-        model.addAttribute("com1", bocadilloPorId.get());
-        
-        
-        //bocadillosSemana
-         var bocadillosDeLaSemana = bsDAO.findAll();
-        
-         //bebidas
-         var bebidas = bebDAO.findAll(); 
-        model.addAttribute("bocsemana", bocadillosDeLaSemana);
-        model.addAttribute("begudes", bebidas);
-        
-        
-        
-        //ver observaciones del usuario que ha hecho el pedido:
-        //var usuario = bebDAO.findById(pedido.getCorreo()); 
-        //var observ = usuario.get().getObservaciones;
-        // model.addAttribute("observaciones", observ);
-        
-        String correoStr="Correo:";
-        model.addAttribute("correostr", correoStr);
-        
-        String entrepaStr="Entrepà de la setmana:";
-        model.addAttribute("entrepastr", entrepaStr);
-
+       double  precioBebida = ventasSer.buscarPedido(pedido).getBebida().getPrecio();
+       double precioBocata = ventasSer.buscarPedido(pedido).getBocadilloSemana().getPrecio();
+       double precioTotal = precioBebida + precioBocata;
+        model.addAttribute("pedido", ventasSer.buscarPedido(pedido));
+        model.addAttribute("preciototal", precioTotal);
         return "/paginasVentas/ventasAdministrador/verPedidoAdministrador"; //Retorna la pàgina iniciEnviarDades
     }
+
+    @GetMapping("/eliminarPedido/{id_pedido}")
+    public String eliminar(Pedido pedido) {
+
+        ventasSer.eliminarPedido(pedido);
+
+        return "redirect:/pedidosAdministrador";
+    }
+    
+    
 
 }

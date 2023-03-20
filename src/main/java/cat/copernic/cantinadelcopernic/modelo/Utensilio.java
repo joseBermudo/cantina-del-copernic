@@ -43,7 +43,7 @@ public class Utensilio implements Serializable {
     private int cantidad;
 
     @ManyToOne
-    @MapsId("idcontenedor")
+    @JoinColumn(name = "contenedor_idcontenedor") 
     private Contenedor contenedor;
 
 }

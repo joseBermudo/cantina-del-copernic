@@ -1,29 +1,33 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-	<title th:text="${ferComanda}"></title>
-</head>
-<body>
-	<h1 th:text="${ferComanda}"></h1>
-	<form>
-		<label for="entrepasetmana">Entrepà de la setmana:</label>
-		<select id="entrepas_setmana">
-			<option th:each="a: ${bocsemana}" th:text="${a.nombre}"></option>
-			
-		</select><br><br>
-		
-		<label for="beguda">Beguda:</label>
-		<select id="beguda">
-			<option th:each="a: ${begudes}" th:text="${a.nombre}"></option>
-			
-		</select><br><br>
-		
-		<label for="preutotal">Preu Total:</label>
-		<input type="text" id="preutotal" name="preutotal"><br><br>
-		
-		 <button><a href="/pedidosCliente">Fer Comanda</a></button>
-	</form>
-        
-</body>
+    <head>
+        <title th:text="${ferComanda}"></title>
+    </head>
+    <body>
+        <h1 th:text="${ferComanda}"></h1>
+        <form th:action="@{/guardarPedido}" method="post" th:object="${pedido}">
+
+            <input type="hidden" name="id_pedido" th:field="*{id_pedido}"/>
+
+            <label for="entrepasetmana">Entrepà de la setmana:</label>
+            <select th:field="*{bocadilloSemana}">
+                <option th:each="boc : ${bocsemana}" th:value="${boc.idbocadillo_semana}" th:text="${boc.nombre}">
+                </option>
+            </select>
+            <br><br>
+
+            <label for="bebida">Beguda:</label>
+            <select th:field="*{bebida}">
+                <option th:each="b : ${bebidas}" th:value="${b.id}" th:text="${b.nombre}">
+                </option>   
+            </select>
+            <br><br>
+
+            <label for="preutotal">Preu Total:</label>
+            <input type="text" id="preutotal" name="preutotal" readonly><br><br>
+            <input type="submit" name="enviar" value="Fer Comanda"/>           
+        </form>
+
+    </body>
 </html>
 

@@ -10,12 +10,12 @@
                 <span th:text="${c.idcontenedor}"></span>
 
                 <div>
-                    <button><a href="/contenedorNuevo">Editar</a></button>
-                    <button>Eliminar</button>
+                    <button><a th:href="@{/editarContenedor/}+${c.idcontenedor}">Editar</a></button>
+                    <button><a th:href="@{/eliminarContenedor/}+${c.idcontenedor}">Eliminar</a></button>
                 </div>
             </li>
         </ul>
-    <button><a href="/contenedorNuevo">Nou Contenidor</a></button>
+    <button><a th:href="@{/contenedorNuevo}">Nou Contenidor</a></button>
   </body>
 </html>
 
