@@ -4,12 +4,15 @@
  */
 package cat.copernic.cantinadelcopernic.moduloDeudas.controladores;
 
+import cat.copernic.cantinadelcopernic.modelo.Deuda;
 import cat.copernic.cantinadelcopernic.modelo.Profesor;
 import cat.copernic.cantinadelcopernic.moduloDeudas.servicios.DeudaService;
+import cat.copernic.cantinadelcopernic.moduloRRHH.servicios.ProfesorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 /**
  *
@@ -20,8 +23,12 @@ public class ControladorListarDeudasAdministrador {
 
     @Autowired
     private DeudaService deudaService;
-    @GetMapping("/listarDeudasAdministrador")
-    public String inici(Model model) {
+    
+    @Autowired
+    private ProfesorService profesorService;
+    
+    @GetMapping("/listarDeudasAdministrador/{correo}")
+    public String inici(Model model, Profesor profesor) {
         
         model.addAttribute("atrasWord", "Enrrere");
         model.addAttribute("listadoDeudasWord", "Llistat deutes");
@@ -36,22 +43,18 @@ public class ControladorListarDeudasAdministrador {
         model.addAttribute("profesorWord", "Professor:");
         model.addAttribute("correoWord", "Email: ");
         
-        model.addAttribute("listadoDeudas",deudaService.listarDeudas());
         
-        
-        //Exemple
-        Profesor datosProfesor = new Profesor();
-        datosProfesor.setCorreo("correo@ejemplo.com");
-        datosProfesor.setNombre("Nombre");
-        datosProfesor.setApellidos("Apellido1 Apellido2");
-        
-        model.addAttribute("datosProfesor", datosProfesor);
+        var hola = profesorService.buscarProfesores(profesor);
+                
+        model.addAttribute("datosProfesor", hola);
+        model.addAttribute("listadoDeudas",hola.getDeudas());
         
         return "/paginasDeudas/listarDeudasAdministrador";
     }
     
     @GetMapping("/crearDeuda")
-    public String crearDeuda(Model model) {
+    public String crearDeuda(Model model, Deuda deuda) {
+        
         model.addAttribute("atrasWord", "Enrrere");
         model.addAttribute("crearDeudaWord", "Crear deute");
         model.addAttribute("quantitatWord", "Quantitat:");
@@ -59,5 +62,13 @@ public class ControladorListarDeudasAdministrador {
         model.addAttribute("cancelarWord", "Cancel·lar");
         
         return "/paginasDeudas/crearDeuda"; 
+    }
+    
+    @PostMapping("/guardarDeuda")
+    public String guardarTipoTarea(Deuda deuda) {
+
+        deudaService.anadirDeuda(deuda);
+
+        return "redirect:/paginasDeudas/listarDeudasAdministrador";
     }
 }

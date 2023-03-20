@@ -4,7 +4,6 @@
         <title th:text="${listadoDeudasWord}"></title>
     </head>
     <body>
-        <!-- <button th:text="${atrasWord}"></button> -->
         <h1 th:text="${listadoProfesoresWord}"></h1>
 
         <div th:if="${listadoProfesores!=null && !listadoProfesores.empty}">    
@@ -14,8 +13,8 @@
                     <th th:text="${verWord}"></th>
                 </tr>
                 <tr th:each="i : ${listadoProfesores}"> 
-                    <td th:text="${i.correo}"></td>
-                    <td><img th:src="@{'/imagenes/visibilityIcon.webp'}" width='50' height='50'/></td>
+                    <td><a th:href="@{/listarDeudasAdministrador/}+${i.correo}" th:text="${i.correo}"/></td>
+                    <td>Veure</td>
                 </tr>
             </table>
         </div>

@@ -6,6 +6,7 @@ package cat.copernic.cantinadelcopernic.modelo;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -36,8 +37,14 @@ public class Tarea {
     @Column(name = "fecha")
     private LocalDate fecha;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "tipo_tarea_idtipo_tarea")
     private TipoTarea tipo;
-
+    
+    public Tarea(int id) {
+        this.id = id;
+    }
+    
+    public Tarea() {}
 }
+
