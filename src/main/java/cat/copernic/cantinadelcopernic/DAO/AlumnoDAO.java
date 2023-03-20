@@ -4,17 +4,10 @@
  */
 package cat.copernic.cantinadelcopernic.DAO;
 
-
-
-import cat.copernic.cantinadelcopernic.modelo.Sugerencia;
-import org.springframework.data.jpa.repository.JpaRepository;
-
-
 /**
  *
  * @author andre
  */
-public interface SugerenciaDAO extends JpaRepository<Sugerencia,Integer>{
+public interface AlumnoDAO extends UsuarioDAO {
     
-     
 }

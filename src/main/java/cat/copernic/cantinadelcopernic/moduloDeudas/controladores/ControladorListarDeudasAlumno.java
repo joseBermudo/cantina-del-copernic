@@ -42,9 +42,9 @@ public class ControladorListarDeudasAlumno {
         model.addAttribute("listadoDeudas", deudaDAO.findAll());
         
         Profesor datosProfesor = new Profesor();
-        datosProfesor.setCorreo("correo@ejemplo.com");
-        datosProfesor.setNombre("Nombre");
-        datosProfesor.setApellidos("Apellido1 Apellido2");
+//        datosProfesor.setCorreo("correo@ejemplo.com");
+//        datosProfesor.setNombre("Nombre");
+//        datosProfesor.setApellidos("Apellido1 Apellido2");
         
         model.addAttribute("datosProfesor", datosProfesor);
         

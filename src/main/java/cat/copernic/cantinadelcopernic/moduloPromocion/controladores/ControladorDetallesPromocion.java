@@ -21,7 +21,7 @@ public class ControladorDetallesPromocion {
         ArrayList<Profesor> profesores = new ArrayList<>();
         for (int i = 0; i < 7; i++) {
             Profesor profesor = new Profesor();
-            profesor.setCorreo("pepe@gmail.com");
+//            profesor.setCorreo("pepe@gmail.com");
             profesores.add(profesor);
         }
         model.addAttribute("profesores", profesores);

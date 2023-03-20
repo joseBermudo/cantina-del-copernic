@@ -10,8 +10,6 @@ import cat.copernic.cantinadelcopernic.moduloRRHH.servicios.ProfesorService;
 import cat.copernic.cantinadelcopernic.moduloSugerencias.servicios.SugerenciaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 /**
@@ -19,24 +17,29 @@ import org.springframework.web.bind.annotation.PostMapping;
  * @author andre
  */
 @Controller
-public class ControladorNuevaSugerencia {
+public class ControladorGuardarSugerencia {
     
-
-    @GetMapping("/nouSuggeriment")
-    public String inici( Sugerencia sugerencia, Model model){
+    @Autowired
+    private SugerenciaService sugerenciaService;
+    
+    @Autowired
+    private ProfesorService profesorService;
+    
+    @PostMapping("/guardarSuggeriment")
+    public String guardarSugerencia(Sugerencia sugerencia){
+        if (sugerencia.getProfesor() == null) {
+            var profesor = new Profesor();
+//            profesor.setCorreo("correo");
+            var profesorEntrado = profesorService.buscarProfesores(profesor);
+            sugerencia.setProfesor(profesorEntrado);   
+        }
         
-        var titulo = "CREAR SUGGERIMENT";
-        var tituloSugerencia = "Titul del suggeriment:";
-        var descripcionSugerencia = "Descripció del suggeriment:";
         
-        model.addAttribute("titulo", titulo);
-        model.addAttribute("tituloSugerencia", tituloSugerencia);
-        model.addAttribute("descripcionSugerencia", descripcionSugerencia);
-            
-        return "/paginasSugerencias/nuevaSugerencia"; 
+        sugerenciaService.anadirSugerencia(sugerencia);
+        
+        return "redirect:/listaSuggeriments";
+    
+    
     }
     
-   
-    
 }
-

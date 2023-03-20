@@ -5,16 +5,13 @@
 package cat.copernic.cantinadelcopernic.DAO;
 
 
-
-import cat.copernic.cantinadelcopernic.modelo.Sugerencia;
-import org.springframework.data.jpa.repository.JpaRepository;
-
+import cat.copernic.cantinadelcopernic.modelo.Usuario;
+import org.springframework.data.repository.CrudRepository;
 
 /**
  *
  * @author andre
  */
-public interface SugerenciaDAO extends JpaRepository<Sugerencia,Integer>{
+public interface UsuarioDAO   extends CrudRepository<Usuario,String>{
     
-     
 }

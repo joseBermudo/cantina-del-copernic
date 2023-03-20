@@ -5,15 +5,15 @@
 package cat.copernic.cantinadelcopernic.DAO;
 
 
-
 import cat.copernic.cantinadelcopernic.modelo.Profesor;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
+
 
 /**
  *
  * @author andre
  */
-public interface ProfesorDAO  extends CrudRepository<Profesor,String> {
+public interface ProfesorDAO  extends JpaRepository<Profesor,String> {
     
      
 }
