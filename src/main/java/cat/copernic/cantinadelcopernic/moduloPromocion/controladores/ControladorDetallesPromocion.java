@@ -5,7 +5,10 @@
 package cat.copernic.cantinadelcopernic.moduloPromocion.controladores;
 
 import cat.copernic.cantinadelcopernic.modelo.Profesor;
+import cat.copernic.cantinadelcopernic.modelo.Promocion;
+import cat.copernic.cantinadelcopernic.moduloPromocion.servicios.PromocionService;
 import java.util.ArrayList;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,15 +19,18 @@ import org.springframework.web.bind.annotation.GetMapping;
  */
 @Controller
 public class ControladorDetallesPromocion {
-     @GetMapping("/detallesPromocion")
-    public String inici(Model model) {
-        ArrayList<Profesor> profesores = new ArrayList<>();
-        for (int i = 0; i < 7; i++) {
-            Profesor profesor = new Profesor();
-//            profesor.setCorreo("pepe@gmail.com");
-            profesores.add(profesor);
-        }
-        model.addAttribute("profesores", profesores);
+    
+    @Autowired
+    PromocionService promServ;
+    
+    @GetMapping("/detallesPromocion/{id}")
+    public String inici(Promocion promocion,Model model) {
+        
+     
+        model.addAttribute("promocion",promServ.buscarPromocion(promocion));
+        
+        
+        
         return "/paginasPromocion/detallesPromocion";
     }
 }

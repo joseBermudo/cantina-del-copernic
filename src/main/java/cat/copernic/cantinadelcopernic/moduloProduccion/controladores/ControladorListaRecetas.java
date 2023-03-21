@@ -38,7 +38,7 @@ public class ControladorListaRecetas {
     }
     
     @GetMapping("/crearReceta")
-    public String formularioRceta(Receta bebida,Model model) {
+    public String formularioRceta(Receta receta,Model model) {
         model.addAttribute("titulo", tituloCrear);
         return "/paginasProduccion/editarReceta";
     }

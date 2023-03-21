@@ -26,6 +26,8 @@ public class Profesor extends Usuario {
     
     private static final long serialVersionUID = 1L;
     
+    
+    
     @Column(name = "into_lactosa")
     private Boolean intoleranciaLactosa;
     
@@ -44,4 +46,6 @@ public class Profesor extends Usuario {
     @OneToMany(mappedBy = "profesor", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Sugerencia> sugerencias;
    
+    @OneToMany(mappedBy="profesor",cascade = CascadeType.ALL)
+    private List<ProfesorPromocion> profesorPromocion;
 }

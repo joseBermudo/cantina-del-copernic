@@ -52,11 +52,13 @@ public class ProduccionService implements ProduccionServiceInterface {
     }
 
     @Override
+    @Transactional
     public void guardarReceta(Receta receta) {
         recetaDAO.save(receta);
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Receta buscarReceta(Receta receta) {
         return recetaDAO.findById(receta.getId()).orElse(null);
     }
