@@ -10,16 +10,19 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
     </head>
     <body>
         <div>
+            <h1>Promocions</h1>
+        </div>
+        <div>
             <ul th:each="promocio: ${promociones}">
                 <li th:text="${promocio.id}"></li> 
                 <li th:text="${promocio.desc}"></li>
-                <button><a href="/editarPromocion">Edita</a></button>
-                <button>Elimina</button>
-                <button><a href="/detallesPromocion">Usuaris</a></button>
+                <a th:href="@{/editarPromocion/}+${promocio.id}">Edita</a>
+                <a th:href="@{/eliminarPromocion/}+${promocio.id}">Elimina</a>
+                <a th:href="@{/detallesPromocion/}+${promocio.id}">Usuaris</a>
             </ul>
         </div>
         <div>
-            <button><a href="/crearPromocion">Nova promomoció</a></button>
+            <a th:href="@{/crearPromocion}">Nova promomoció</a>
         </div>
     </body>
 </html>

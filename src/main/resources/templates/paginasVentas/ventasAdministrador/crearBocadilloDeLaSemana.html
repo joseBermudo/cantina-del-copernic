@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <title th:text="${crearES}"></title>
-    </head>
+   <head th:replace="~{plantillas/plantilla :: head}"/>
     <body>
+        <div th:replace="~{plantillas/plantilla :: menu}" />
 
+        
+         <h2>Entrepa De la Setmanan</h2>
         <form th:action="@{/guardarBocaSemana}" method="POST" th:object="${bocadilloSemana}">
 
             <input type="hidden" name="idbocadillo_semana" th:field="*{idbocadillo_semana}"/>
@@ -15,8 +16,6 @@
             <br>
             <!--<label for="imagen">Cargar imagen:</label>
             <input type="file" name="imagen" />--> 
-            <br>
-            <br>
             <label for="nombre">Nom:</label>
             <input type="text" id="nombre" name="nombre" th:field="*{nombre} "/>
             <span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"/>

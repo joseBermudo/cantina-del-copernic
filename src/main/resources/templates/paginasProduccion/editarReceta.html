@@ -5,34 +5,31 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 -->
 <html>
     <head>
-        <title>Editar recepta</title>
+        <title th:text="${titulo}"></title>
         <meta charset="UTF-8">
     </head>
     <body>
         <div>
-            <h1>EDITAR RECEPTA</h1>
+            <h1 th:text="${titulo}" ></h1>
         </div> 
         <div>
-            <form action="" method="POST">
+            <form action="/guardarReceta" method="POST" th:object="${receta}">
+                <input type="hidden" name="id" th:field="*{id}"/>
                 <label for="nom">Nom:</label><br>
-                <input type="number" id="preu" name="preu"><br>
-                <label for="descripcio">Descripció:</label><br>
-                <textarea id="descripcio" name="descripcio" rows="4" cols="50"></textarea><br>  
+                <input type="text" id="nom" name="nom" th:field="*{nombre}"><br>
+                <label for="descripcion">Descripció:</label><br>
+                <textarea id="descripcion" name="descripcion" th:field="*{descripcion}" rows="4" cols="50"></textarea><br>  
+
+                <label for="ing">Ingredientes:</label><br>
+                <textarea id="ing" name="ing" th:field="*{ing}" rows="4" cols="50"></textarea><br>
+                <br>
+                <input type="submit" name="guardar" value="Guardar recepta"/>
+                <button><a href="/listaRecetas">Cancela</a></button>
             </form>
-            <h3>Ingredientes:</h3>
-            <table>
-                <tr>
-                    <th>Tomaquet</th>
-                </tr>
-                <tr>
-                    <th>Pastanaga</th>
-                </tr>
-            </table>
-            <button>+</button>
-            <button>-</button>
-            <br>
-            <button><a href="/listaRecetas">Guardar</a></button>
-            <button><a href="/listaRecetas">Cancela</a></button>
+
+
+
+
         </div>
     </body>
 </html>
