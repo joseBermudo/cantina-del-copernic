@@ -14,6 +14,8 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import java.io.Serializable;
 
 
@@ -38,17 +40,20 @@ public class Pedido implements Serializable {
     
     @ManyToOne()
     @JoinColumn(name = "bebida_idbebida") 
+    @NotNull
     private Bebida bebida;
 
 
     
     @ManyToOne()
     @JoinColumn(name = "bocadillo_semana_idbocadillo_semana") 
+    @NotNull
     private BocadilloSemana bocadilloSemana;
 
 
     
     @ManyToOne()
-    @JoinColumn(name = "usuarios_correo") 
+    @JoinColumn(name = "usuarios_correo")
+    @NotNull
     private Profesor profesores;
 }

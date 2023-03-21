@@ -41,12 +41,13 @@ public class Profesor extends Usuario {
     @Column(name = "obs")
     private String observaciones;
     
-    @OneToMany(mappedBy = "profesor", cascade = CascadeType.ALL, orphanRemoval = true)
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    private List<Sugerencia> sugerencias;
     
     @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "pedido_id_pedido")
     private List<Pedido> pedido;
+
+    @OneToMany(mappedBy = "profesor", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Sugerencia> sugerencias;
+
    
 }

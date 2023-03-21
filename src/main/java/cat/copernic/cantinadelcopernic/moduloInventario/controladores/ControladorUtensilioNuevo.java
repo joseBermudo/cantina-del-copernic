@@ -41,13 +41,17 @@ public class ControladorUtensilioNuevo {
         Contenedor contenedorB = invSer.buscarContenedor(c);
         utensilio.setContenedor(contenedorB);
         invSer.addUtensilio(utensilio);
-        return "redirect:/editarContenedor/";
+        return "redirect:/editarContenedor/" + contenedorB.getIdcontenedor();
     }
 
-    @GetMapping("/eliminarUtensilio/{idcontenedor}")
+    @GetMapping("/eliminarUtensilio/{idutensilio}")
     public String eliminarUtensilio(Utensilio utensilio) {
+        
+        Utensilio u = invSer.buscarUtensilio(utensilio);
+        Contenedor c = invSer.buscarContenedor(u.getContenedor());
         invSer.eliminarUtensilio(utensilio);
-        return "redirect:/listadoDeContenedores";
+        
+        return "redirect:/editarContenedor/" + c.getIdcontenedor();
     }
 
 }

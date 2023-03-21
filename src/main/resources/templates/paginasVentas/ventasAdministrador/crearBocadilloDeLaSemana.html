@@ -5,11 +5,13 @@
     </head>
     <body>
 
-        <form th:action="@{/guardarBocaSemana}" method="post" th:object="${bocadillosemana}">
+        <form th:action="@{/guardarBocaSemana}" method="POST" th:object="${bocadilloSemana}">
 
             <input type="hidden" name="idbocadillo_semana" th:field="*{idbocadillo_semana}"/>
 
-            <h1><span th:text="${crearES}"></span></h1>           
+
+            <h1><span th:text="${crearES}"></span></h1>      
+
             <br>
             <!--<label for="imagen">Cargar imagen:</label>
             <input type="file" name="imagen" />--> 
@@ -17,27 +19,35 @@
             <br>
             <label for="nombre">Nom:</label>
             <input type="text" id="nombre" name="nombre" th:field="*{nombre} "/>
+            <span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"/>
             <br>   
-            
+            <br>
             <label for="receta">Receta:</label>
             <select th:field="*{receta}">
-                <option th:each="r : ${recetas}" th:value="${r.id}" th:text="${r.nombre}">
-                </option>
+                <option th:each="r : ${recetas}" th:value="${r.id}" th:text="${r.nombre}"/>               
             </select>
+            <span th:if="${#fields.hasErrors('receta')}" th:errors="*{receta}"/>
+            <br>
             <br>
             <label for="precio">Preu:</label>
             <input type="text" id="precio" name="precio" th:field="*{precio}"/>
+            <span th:if="${#fields.hasErrors('precio')}" th:errors="*{precio}"/>
             <br>
             <br>
             <label for="descripcion">Descripció:</label>
             <br>
             <textarea id="descripcion" name="descripcion" rows="4" cols="50" th:field="*{descripcion}"></textarea>
+            <span th:if="${#fields.hasErrors('descripcion')}" th:errors="*{descripcion}"/>
+            <br>
             <br>
             <label for="fecha">Selecciona una data limit de l'entrepà:</label>
             <input type="date" id="fecha" name="fecha" th:field="*{fecha}" required>
+            <span th:if="${#fields.hasErrors('fecha')}" th:errors="*{fecha}"/>
             <br>
-            <input type="submit" name="enviar" value="Enviar Dades"/>           
+            <br>
+            <input type="submit" name="enviar" value="Enviar Dades"/>      
         </form>
+        <br>
         <button><a th:href="@{/listaBocadilloSemana}">Enrrere</a></button>
     </body>
 </html>

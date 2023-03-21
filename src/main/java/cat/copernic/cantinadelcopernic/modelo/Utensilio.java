@@ -15,6 +15,9 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.MapsId;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -36,9 +39,11 @@ public class Utensilio implements Serializable {
     @Column(name = "idutensilio")
     private int idutensilio;
 
+    @NotEmpty
     @Column(name = "nombre")
     private String nombre;
 
+    @NotNull
     @Column(name = "cantidad")
     private int cantidad;
 

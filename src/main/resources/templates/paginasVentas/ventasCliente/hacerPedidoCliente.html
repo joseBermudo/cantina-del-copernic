@@ -14,6 +14,7 @@
                 <option th:each="boc : ${bocsemana}" th:value="${boc.idbocadillo_semana}" th:text="${boc.nombre}">
                 </option>
             </select>
+            <span th:if="${#fields.hasErrors('bocadilloSemana')}" th:errors="*{bocadilloSemana}"/>
             <br><br>
 
             <label for="bebida">Beguda:</label>
@@ -21,6 +22,7 @@
                 <option th:each="b : ${bebidas}" th:value="${b.id}" th:text="${b.nombre}">
                 </option>   
             </select>
+            <span th:if="${#fields.hasErrors('bebida')}" th:errors="*{bebida}"/>
             <br><br>
 
             <label for="preutotal">Preu Total:</label>

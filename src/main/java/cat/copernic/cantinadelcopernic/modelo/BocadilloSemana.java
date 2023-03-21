@@ -5,9 +5,7 @@
 package cat.copernic.cantinadelcopernic.modelo;
 
 import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -15,10 +13,14 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.DecimalMax;
+import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.FutureOrPresent;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import java.io.Serializable;
-import java.sql.Date;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 import lombok.Data;
@@ -35,15 +37,21 @@ public class BocadilloSemana implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idbocadillo_semana;
-       
+    
+    @NotNull
     private double precio;
 
     private String imagen;
-
+    
+    @FutureOrPresent
     private LocalDate fecha;
-
+    
+    @NotEmpty
+    @Size(max = 45)
     private String nombre;
     
+    @NotEmpty
+    @Size(max = 500)
     private String descripcion;
       
 
