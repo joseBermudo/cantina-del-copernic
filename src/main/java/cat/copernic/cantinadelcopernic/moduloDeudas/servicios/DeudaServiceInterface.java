@@ -4,6 +4,7 @@
  */
 package cat.copernic.cantinadelcopernic.moduloDeudas.servicios;
 import cat.copernic.cantinadelcopernic.modelo.Deuda;
+import cat.copernic.cantinadelcopernic.modelo.Profesor;
 import java.util.List;
 
 /**
@@ -19,4 +20,6 @@ public interface DeudaServiceInterface {
     public void eliminarDeuda(Deuda deuda);
     
     public Deuda buscarDeuda(Deuda deuda); 
+    
+    public Profesor buscarProfesor(Profesor profesor);
 }

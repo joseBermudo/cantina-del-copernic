@@ -5,11 +5,12 @@
 </head>
 <body>
     <h1 th:text="${crearDeudaWord}"></h1>
-    <form th:action="@{/guardarDeuda}" method="post" th:object="${deuda}">        
+    <form th:action="@{/guardarDeuda/}+${correo}" method="post" th:object="${deuda}">        
         <input type="hidden" name="id" th:field="*{idDeuda}"/>
+       
         
         <label for="c" th:text="${quantitatWord}"></label>
-        <input type="number" name="c" th:field="*{cantidad}"><br>
+        <input type="number" step="any" name="c" th:field="*{cantidad}"><br>
         
         <label for="f" th:text="${dataWord}"></label>
         <input type="date" name="f" th:field="*{fechaDeLaDeuda}"><br><br>

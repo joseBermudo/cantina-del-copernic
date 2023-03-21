@@ -52,23 +52,26 @@ public class ControladorListarDeudasAdministrador {
         return "/paginasDeudas/listarDeudasAdministrador";
     }
     
-    @GetMapping("/crearDeuda")
-    public String crearDeuda(Model model, Deuda deuda) {
+    @GetMapping("/crearDeuda/{correo}")
+    public String crearDeuda(Model model, Deuda deuda,Profesor profesor) {
         
         model.addAttribute("atrasWord", "Enrrere");
         model.addAttribute("crearDeudaWord", "Crear deute");
         model.addAttribute("quantitatWord", "Quantitat:");
         model.addAttribute("dataWord", "Data:");
         model.addAttribute("cancelarWord", "Cancel·lar");
+        model.addAttribute("correo",deudaService.buscarProfesor(profesor).getCorreo());
         
         return "/paginasDeudas/crearDeuda"; 
     }
     
-    @PostMapping("/guardarDeuda")
-    public String guardarTipoTarea(Deuda deuda) {
-
+    @PostMapping("/guardarDeuda/{correo}")
+    public String guardarDeuda(Deuda deuda, Profesor profesor) {
+        
+        deuda.setProfesor(deudaService.buscarProfesor(profesor));
+        
         deudaService.anadirDeuda(deuda);
 
-        return "redirect:/paginasDeudas/listarDeudasAdministrador";
+        return "redirect:/listarDeudasAdministrador/{correo}";
     }
 }
