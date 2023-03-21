@@ -4,6 +4,7 @@
  */
 package cat.copernic.cantinadelcopernic.modelo;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
@@ -20,6 +21,7 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name = "recuento_promocion")
+
 public class ProfesorPromocion implements Serializable{
     
     @EmbeddedId
@@ -38,5 +40,20 @@ public class ProfesorPromocion implements Serializable{
     private boolean gastado;
     
     private int recuento;
+
+    public ProfesorPromocion() {
+    }
+
+    
+
+    public ProfesorPromocion(ProfesorPromocionId id, Promocion promocion, Profesor profesor, boolean gastado, int recuento) {
+        this.id = id;
+        this.promocion = promocion;
+        this.profesor = profesor;
+        this.gastado = gastado;
+        this.recuento = recuento;
+    }
+
+    
     
 }

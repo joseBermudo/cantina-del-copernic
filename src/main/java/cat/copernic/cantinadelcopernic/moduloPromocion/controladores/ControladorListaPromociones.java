@@ -5,6 +5,7 @@
 package cat.copernic.cantinadelcopernic.moduloPromocion.controladores;
 
 import cat.copernic.cantinadelcopernic.DAO.PromocionDAO;
+import cat.copernic.cantinadelcopernic.modelo.Profesor;
 import cat.copernic.cantinadelcopernic.modelo.ProfesorPromocion;
 import cat.copernic.cantinadelcopernic.modelo.ProfesorPromocionId;
 import cat.copernic.cantinadelcopernic.modelo.Promocion;
@@ -24,51 +25,54 @@ import org.springframework.web.bind.annotation.PostMapping;
  */
 @Controller
 public class ControladorListaPromociones {
-    
+
     private String tituloCrear = "Nova promoció";
     private String tituloEditar = "Editar promoció";
-    
+
     @Autowired
     private PromocionService promServ;
 
     @GetMapping("/listaPromociones")
     public String inici(Model model) {
 
-       
         model.addAttribute("promociones", promServ.obtenerPromociones());
         return "/paginasPromocion/listaPromociones";
     }
-    
-    
+
     @GetMapping("/crearPromocion")
-    public String formularioPromocion(Promocion promocion,Model model) {
-        model.addAttribute("titulo",tituloCrear);
-        return "/paginasPromocion/editarPromocion";
+    public String formularioPromocion(Promocion promocion, Model model) {
+        model.addAttribute("titulo", tituloCrear);
+        return "/paginasPromocion/crearPromocion";
     }
-    
+
     @GetMapping("/editarPromocion/{id}")
-    public String editarPromocion(Promocion promocion,Model model) {
-        model.addAttribute("titulo",tituloEditar);
-        model.addAttribute("promocion",promServ.buscarPromocion(promocion));
+    public String editarPromocion(Promocion promocion, Model model) {
+        model.addAttribute("titulo", tituloEditar);
+        model.addAttribute("promocion", promServ.buscarPromocion(promocion));
         return "/paginasPromocion/editarPromocion";
     }
-    
-    
+
     @PostMapping("/guardarPromocion")
-    public String guardarPromocion(Promocion promocion,HttpServletRequest request){
-        
-//        List<ProfesorPromocion> profesorPromocion = promocion.getProfesorPromocion();
-//        for (int i = 0; i < profesorPromocion.size(); i++) {
-//            int idPromocion = Integer.parseInt(request.getParameter("profesorPromocion[" + i + "].promocion.id"));
-//            String idProfesor = request.getParameter("profesorPromocion[" + i + "].profesor.correo");
-//            
-//            profesorPromocion.get(i).setId(new ProfesorPromocionId(idPromocion, idProfesor));
-//        }
+    public String guardarPromocion(Promocion promocion) {
+
+//        
+        promServ.guardarPromocion(promocion);
+
+        return "redirect:/listaPromociones";
+    }
+
+    @PostMapping("/guardarNuevaPromocion")
+    public String guardarNuevaPromocion(Promocion promocion, HttpServletRequest request) {
+        promocion.setProfesorPromocion(new ArrayList<ProfesorPromocion>());
+        promServ.guardarPromocion(promocion);
+        Promocion ultiProm = promServ.obetnerUltimaPromocion();
+        List<Profesor> listaProfesores = promServ.obetnerClientes();
+        listaProfesores.forEach(prof -> {
+            ultiProm.getProfesorPromocion().add(new ProfesorPromocion(new ProfesorPromocionId(ultiProm.getId(), prof.getCorreo()), ultiProm, prof, false, 0 ));
+        });
         
         promServ.guardarPromocion(promocion);
-        
-        
-        
+
         return "redirect:/listaPromociones";
     }
 }
