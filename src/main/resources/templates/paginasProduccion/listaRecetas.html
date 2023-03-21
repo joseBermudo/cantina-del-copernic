@@ -16,12 +16,18 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <div>
             <ul th:each="receta: ${recetas}">
                 <li th:text="${receta.nombre}"></li> 
-                <button><a href="/editarReceta">Edita</a></button>
+                <a th:href="@{/editarReceta/}+${receta.id}"th:text="Edita"></a>
                 <button>Elimina</button>
             </ul>
         </div>
+        
+        <div th:if="${recetas==null || recetas.empty}">
+            <!-- Mostrem missatge-->
+            No hi ha begudes a la llista.
+        </div>
+        
         <div>
-            <button><a href="/crearReceta">Nova recepta</a></button>
+              <a th:href="@{/crearReceta}">Nova recepta</a>
         </div>
     </body>
 </html>

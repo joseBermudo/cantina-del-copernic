@@ -10,10 +10,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.io.Serializable;
-import java.util.HashMap;
 import java.util.List;
 import lombok.Data;
 
@@ -23,21 +23,19 @@ import lombok.Data;
  */
 @Data
 @Entity
-@Table(name = "promocion")
-public class Promocion implements Serializable {
+@Table(name = "roles")
+public class Rol implements Serializable {
 
-    @Id //Indica al sistema que l'atribut idgos és la clau primària de la BBDDr
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idpromocion")
-    private int id;
+    private static final long serialVersionUID = 1L;
     
-    @Column(name = "descripcion")
-    private String desc;
+    @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Column(name = "idroles")
+    private int idroles;
     
-    @Column(name = "condicion")
-    private int condicio;
+    private String nombre;
     
-    @OneToMany(mappedBy="promocion",cascade = CascadeType.ALL)
-    private List<ProfesorPromocion> profesorPromocion;
+    @OneToMany(mappedBy = "rol",cascade = CascadeType.ALL)
+    private List<ModuloRol> modulosRoles;
 
 }

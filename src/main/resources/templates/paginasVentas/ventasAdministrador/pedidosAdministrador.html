@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <title th:text="${com1}"></title>
-    </head>
+    <head th:replace="~{plantillas/plantilla :: head}"/>
     <body>
+        <div th:replace="~{plantillas/plantilla :: menu}" />
         <!-- Título de la lista de pedidos -->
         <h2 th:text="${comand}"></h2>
 
@@ -14,7 +13,7 @@
 
                 <div>
                     <button><a th:href="@{/verPedidoAdministrador/}+${pedido.id_pedido}">Visualitzar</a></button>
-                      <button><a th:href="@{/eliminarPedido/}+${pedido.id_pedido}"> Borrar</a></button>
+                    <button><a th:href="@{/eliminarPedido/}+${pedido.id_pedido}"> Borrar</a></button>
                 </div>
             </li>
         </ul>

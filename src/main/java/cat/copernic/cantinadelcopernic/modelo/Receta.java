@@ -34,6 +34,7 @@ public class Receta implements Serializable {
     @Column(name = "descripcion") 
     private String descripcion;
     
+    @Column(name="ingredientes")
+    private String ing;
     
-    //private ArrayList<String> lista_ingredientes;
 }

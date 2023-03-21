@@ -4,15 +4,13 @@
  */
 package cat.copernic.cantinadelcopernic.DAO;
 
-
-import cat.copernic.cantinadelcopernic.modelo.Modulo;
+import cat.copernic.cantinadelcopernic.modelo.Rol;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.repository.CrudRepository;
 
 /**
  *
- * @author andre
+ * @author joseb
  */
-public interface ModuloDAO extends JpaRepository<Modulo,Integer> {
+public interface RolDAO extends JpaRepository<Rol,Integer>{
     
 }

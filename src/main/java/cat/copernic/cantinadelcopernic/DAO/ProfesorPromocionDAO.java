@@ -4,15 +4,14 @@
  */
 package cat.copernic.cantinadelcopernic.DAO;
 
-
-import cat.copernic.cantinadelcopernic.modelo.Modulo;
+import cat.copernic.cantinadelcopernic.modelo.ProfesorPromocion;
+import cat.copernic.cantinadelcopernic.modelo.Promocion;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.repository.CrudRepository;
 
 /**
  *
- * @author andre
+ * @author joseb
  */
-public interface ModuloDAO extends JpaRepository<Modulo,Integer> {
+public interface ProfesorPromocionDAO extends JpaRepository<ProfesorPromocion,Integer>{
     
 }
