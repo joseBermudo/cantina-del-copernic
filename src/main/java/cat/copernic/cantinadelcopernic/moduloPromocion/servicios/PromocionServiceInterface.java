@@ -23,4 +23,6 @@ public interface PromocionServiceInterface {
     public List<Profesor> obetnerClientes();
     
     public Promocion obetnerUltimaPromocion();
+    
+    public void eliminarPromocion(Promocion promocion);
 }

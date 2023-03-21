@@ -5,6 +5,7 @@
 package cat.copernic.cantinadelcopernic.moduloPromocion.servicios;
 
 import cat.copernic.cantinadelcopernic.DAO.ProfesorDAO;
+import cat.copernic.cantinadelcopernic.DAO.ProfesorPromocionDAO;
 import cat.copernic.cantinadelcopernic.DAO.PromocionDAO;
 import cat.copernic.cantinadelcopernic.modelo.Profesor;
 
@@ -29,6 +30,9 @@ public class PromocionService implements PromocionServiceInterface {
 
     @Autowired
     private ProfesorDAO profesorDAO;
+    
+    @Autowired
+    private ProfesorPromocionDAO profPromDAO;
 
     @Override
     @Transactional(readOnly = true)
@@ -62,6 +66,16 @@ public class PromocionService implements PromocionServiceInterface {
         return list.get(list.size()-1);
     }
 
+    @Override
+    @Transactional
+    public void eliminarPromocion(Promocion promocion) {
+        
+        profPromDAO.deleteAll(promocion.getProfesorPromocion());
+        
+        promocionDAO.delete(promocion);
+    }
+
+    
     
 
 }

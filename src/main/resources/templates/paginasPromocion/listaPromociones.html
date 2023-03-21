@@ -17,7 +17,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                 <li th:text="${promocio.id}"></li> 
                 <li th:text="${promocio.desc}"></li>
                 <a th:href="@{/editarPromocion/}+${promocio.id}">Edita</a>
-                <a>Elimina</a>
+                <a th:href="@{/eliminarPromocion/}+${promocio.id}">Elimina</a>
                 <a th:href="@{/detallesPromocion/}+${promocio.id}">Usuaris</a>
             </ul>
         </div>

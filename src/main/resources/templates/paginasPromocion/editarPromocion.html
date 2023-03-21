@@ -24,7 +24,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                 <button><a href="/listaPromociones">Cancelar</a></button>
             </form>
 
-            <button>Esborrar promoció</button>
+            <a th:href="@{/eliminarPromocion/}+${promocion.id}">Esborrar promoció</a>
         </div>
     </body>
 </html>

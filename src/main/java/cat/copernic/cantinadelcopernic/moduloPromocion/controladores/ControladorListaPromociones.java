@@ -75,4 +75,10 @@ public class ControladorListaPromociones {
 
         return "redirect:/listaPromociones";
     }
+    
+    @GetMapping("/eliminarPromocion/{id}")
+    public String eliminarPromocion(Promocion promocion){
+        promServ.eliminarPromocion(promServ.buscarPromocion(promocion));
+        return "redirect:/listaPromociones";
+    }
 }
