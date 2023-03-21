@@ -8,20 +8,18 @@
         <h2 th:text="${comand}"></h2>
 
         <!-- Lista con botones -->	
-        <ul th:each="p: ${pedidos}">
+        <ul th:each="pedido: ${pedidos}">
             <li>
-                <span th:text="${p.id_bocadilloSemana}"></span>
+                <span th:text="${pedido.bocadilloSemana.nombre}"></span>
 
                 <div>
-                    <button><a href="/verPedidoAdministrador">Visualitzar</a></button>
-                    <button>Eliminar</button>
+                    <button><a th:href="@{/verPedidoAdministrador/}+${pedido.id_pedido}">Visualitzar</a></button>
+                      <button><a th:href="@{/eliminarPedido/}+${pedido.id_pedido}"> Borrar</a></button>
                 </div>
             </li>
         </ul>
 
         <!-- Botones nou entrepa y editar entrepa -->
-        <button id="nou-entrepa"><a href="/crearBocadilloDeLaSemana">Nou entrepa</a></button>
-        <button id="editar-entrepa"><a href="/crearBocadilloDeLaSemana">Editar entrepa</a></button>
-
+        <button><a th:href="@{/listaBocadilloSemana}"/>Entrepans de la Setmana</button>
     </body>
 </html>

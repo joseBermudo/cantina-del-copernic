@@ -4,8 +4,7 @@
  */
 package cat.copernic.cantinadelcopernic.moduloVentas.controladores.Admin;
 
-import cat.copernic.cantinadelcopernic.DAO.BocadilloSemanaDAO;
-import cat.copernic.cantinadelcopernic.DAO.PedidoDAO;
+import cat.copernic.cantinadelcopernic.modelo.BocadilloSemana;
 import cat.copernic.cantinadelcopernic.moduloVentas.servicios.VentasService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,26 +16,26 @@ import org.springframework.web.bind.annotation.GetMapping;
  * @author Enric
  */
 @Controller
-public class ControladorPedidosAdministrador {
+public class ControladorListadoBocadilloSemana {
 
     @Autowired
     private VentasService serVentas;
+
     /*La interface Model d'Spring Boot ens permet transferir dades entre el controlador i la vista
      */
-    @GetMapping("/pedidosAdministrador")
+    @GetMapping("/listaBocadilloSemana")
     public String inici(Model model) {
 
-        String com = "Comandes";
+        String com = "Entrepans de la setmana";
         model.addAttribute("com1", com);
 
-        var pedidos = serVentas.listarPedidos();
-        
-        model.addAttribute("pedidos", pedidos);
-       
-        String Comandes = "Comandes";
-        model.addAttribute("comand", Comandes);
+        var bocadillos = serVentas.listarBocadilloSemana();
 
-        return "/paginasVentas/ventasAdministrador/pedidosAdministrador"; //Retorna la pàgina iniciEnviarDades
+        model.addAttribute("bocadillos", bocadillos);
+
+        return "/paginasVentas/ventasAdministrador/listadoBocadillosSemana"; //Retorna la pàgina iniciEnviarDades
     }
+
+  
 
 }

@@ -1,0 +1,53 @@
+<!--Afegim l'espai de noms per thymeleaf extras spring security-->
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+    <head th:fragment="head"> <!--fragment per afegir els links als documents html de la nostra aplicació-->
+        <title>Cantina del Copernic</title>
+        <meta charset="UTF-8"/>
+
+        <!--Enllaç als estils de Bootstrap-->
+        <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+        <!--Enllaç als estils de Font Awesome-->
+        <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css}"/>
+        <!--Llibreries jquery, popper i Java Script de Bootstrap pels elements dinàmics que podem utilitzar amb Bootstrap-->
+        <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+        <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+    </head>
+
+    <body>
+        
+        <div th:fragment="menu">
+		<a th:href="@{/listadoDeContenedores}">Módulo Inventario</a>
+		<a th:href="@{/listadoDeContenedores}">Módulo Deudas</a>
+		<a th:href="@{/listadoDeContenedores}">Módulo Producción</a>
+		<a th:href="@{/listadoDeContenedores}">Módulo Promoción</a>
+		<a th:href="@{/listadoDeContenedores}">Módulo RRHH</a>
+		<a th:href="@{/listadoDeContenedores}">Módulo Sugerencias</a>
+		<a th:href="@{/listadoDeContenedores}">Módulo Tareas</a>
+		<a th:href="@{/listadoDeContenedores}">Módulo Ventas</a>
+	</div>
+
+        <!-- Definim la capçalera que reutilitzarem en les altress pàgines que s'identificarà
+             com un fragment de nom "capcalera". El contingut és el de la variable plantilla.capcalera.titol
+             definida en el fitxer messages.properties. Aquest contingut el visualitzem
+             mitjançant la notació th:text="#{plantilla.capcalera.titol} que trobem dins
+             l'etiqueta de l'element
+        -->
+        <header th:fragment="capcalera">
+            <h1 th:text="#{plantilla.capcalera.titol}"/>
+        </header>
+
+        <!-- Definim el peu que reutilitzarem en les altres pàgines que s'identificarà
+             com un fragment de nom "peu". El contingut és el de la variable plantilla.peu
+             definida en el fitxer messages.properties. Aquest contingut el visualitzem
+             mitjançant la notació [[#{plantilla.peu}]], ja que és el contingut d'un element-->
+        <footer th:fragment="peu">
+            <div>[[#{plantilla.peu}]]</div>
+        </footer>
+        
+        
+
+    </body>
+</html>

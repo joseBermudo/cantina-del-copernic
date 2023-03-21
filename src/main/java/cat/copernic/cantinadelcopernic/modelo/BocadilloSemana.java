@@ -5,7 +5,6 @@
 package cat.copernic.cantinadelcopernic.modelo;
 
 import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,9 +13,16 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.DecimalMax;
+import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.FutureOrPresent;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Date;
+import java.time.LocalDate;
+import java.util.List;
+
 import lombok.Data;
 
 /**
@@ -30,29 +36,32 @@ public class BocadilloSemana implements Serializable{
    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idbocadillo_semana")
     private int idbocadillo_semana;
-       
-    @Column(name = "precio")
+    
+    @NotNull
     private double precio;
 
-    @Column(name = "imagen")
     private String imagen;
-
-    @Column(name = "fecha")
-    private Date fecha;
-
     
-    @Column(name = "nombre")
+    @FutureOrPresent
+    private LocalDate fecha;
+    
+    @NotEmpty
+    @Size(max = 45)
     private String nombre;
     
-    @Column(name = "desc")
-    private String desc;
+    @NotEmpty
+    @Size(max = 500)
+    private String descripcion;
       
-   
-    @ManyToOne(cascade = CascadeType.ALL)
+
+    @ManyToOne()
     @JoinColumn(name = "receta_idreceta") 
     private Receta receta;
+    
 
+    
+    @OneToMany(mappedBy = "bocadilloSemana", cascade = CascadeType.REMOVE) 
+    private List<Pedido> pedido;
 }
 
