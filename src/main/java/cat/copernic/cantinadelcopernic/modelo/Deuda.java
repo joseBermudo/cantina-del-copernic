@@ -15,6 +15,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import java.io.Serializable;
 import java.sql.Date;
+import java.time.LocalDate;
 import lombok.Data;
 
 @Data
@@ -30,15 +31,12 @@ public class Deuda implements Serializable{
     private int idDeuda;
     
     @Column(name = "fecha")
-    private Date fechaDeLaDeuda;
+    private LocalDate fechaDeLaDeuda;
     
     @Column(name = "cantidad")
     private float cantidad;
     
-    //@Column(name = "usuarios_correo")
-    //private String correo; 
-    
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne()
     @JoinColumn(name = "usuarios_correo")
     private Profesor profesor;
 

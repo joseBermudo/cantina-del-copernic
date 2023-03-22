@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 /**
@@ -44,10 +45,10 @@ public class ControladorListarDeudasAdministrador {
         model.addAttribute("correoWord", "Email: ");
         
         
-        var hola = profesorService.buscarProfesores(profesor);
+        var profe = profesorService.buscarProfesores(profesor);
                 
-        model.addAttribute("datosProfesor", hola);
-        model.addAttribute("listadoDeudas",hola.getDeudas());
+        model.addAttribute("datosProfesor", profe);
+        model.addAttribute("listadoDeudas",profe.getDeudas());
         
         return "/paginasDeudas/listarDeudasAdministrador";
     }
@@ -74,4 +75,13 @@ public class ControladorListarDeudasAdministrador {
 
         return "redirect:/listarDeudasAdministrador/{correo}";
     }
+    
+    @GetMapping("/eliminarDeuda/{idDeuda}") 
+    public String eliminarDeuda(Deuda deuda) {
+        
+        var objetoDeuda = deudaService.buscarDeudaPorId(deuda.getIdDeuda());
+        deudaService.eliminarDeuda(objetoDeuda);
+        return "redirect:/listarProfesores"; 
+    }
+
 }

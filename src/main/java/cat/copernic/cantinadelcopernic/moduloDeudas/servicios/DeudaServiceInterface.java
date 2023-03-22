@@ -22,4 +22,7 @@ public interface DeudaServiceInterface {
     public Deuda buscarDeuda(Deuda deuda); 
     
     public Profesor buscarProfesor(Profesor profesor);
+    
+    public Deuda buscarDeudaPorId(int idDeuda);
+
 }

@@ -52,12 +52,16 @@ public class DeudaService implements DeudaServiceInterface{
         
        return this.deudaDAO.findById(deuda.getIdDeuda()).orElse(null);
     }
+    
+    @Override
+    public Deuda buscarDeudaPorId(int idDeuda) {
+        return deudaDAO.findById(idDeuda).orElse(null);
+    }
+
 
     @Override
     @Transactional(readOnly=true)
     public Profesor buscarProfesor(Profesor profesor) {
         return profesorDAO.findById(profesor.getCorreo()).orElse(null);
     }
-    
-    
 }

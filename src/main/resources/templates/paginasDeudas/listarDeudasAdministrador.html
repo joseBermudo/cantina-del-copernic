@@ -15,15 +15,16 @@
                 <tr th:each="i : ${listadoDeudas}"> 
                     <td th:text="${i.fechaDeLaDeuda}"></td>
                     <td th:text="${i.cantidad}"></td>
-                    <td><input type="checkbox"></td> 
+                    <td>
+                        <!-- Aqui hay que poner eliminar deuda -->
+                        <a th:href="@{/eliminarDeuda/{idDeuda}(idDeuda=${i.idDeuda})}">Eliminar</a>
+                    </td>
                 </tr>
             </table>
-            <button th:text="${aplicarCambiosWord}"></button>
         </div>
 
         <div th:if="${listadoDeudas==null || listadoDeudas.empty}" th:text = "${noHayDeudasWord}"></div>
 
-        
         <p th:text="${profesorWord + ' ' + datosProfesor.nombre + ' ' + datosProfesor.apellidos}"></p>
         <p th:text="${correoWord + ' ' + datosProfesor.correo}"></p> 
         
