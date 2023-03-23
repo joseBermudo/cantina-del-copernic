@@ -5,12 +5,12 @@
 package cat.copernic.cantinadelcopernic.DAO;
 
 import cat.copernic.cantinadelcopernic.modelo.TipoTarea;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  *
  * @author Enric
  */
-public interface TipoTareaDAO extends CrudRepository<TipoTarea,Integer>{
+public interface TipoTareaDAO extends JpaRepository<TipoTarea,Integer>{
     
 }

@@ -1,21 +1,23 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-  <head>
-    <title>Listado De Contenedores</title>
-  </head>
+      <head th:replace="~{plantillas/plantilla :: head}"/>
   <body>
+      
+      <div th:replace="~{plantillas/plantilla :: menu}" />
+      
+      
       <h1>Listado De Contenedores</h1>
     <ul th:each="c: ${contenedor}">
             <li>
                 <span th:text="${c.idcontenedor}"></span>
 
                 <div>
-                    <button><a href="/contenedorNuevo">Editar</a></button>
-                    <button>Eliminar</button>
+                    <button><a th:href="@{/editarContenedor/}+${c.idcontenedor}">Editar</a></button>
+                    <button><a th:href="@{/eliminarContenedor/}+${c.idcontenedor}">Eliminar</a></button>
                 </div>
             </li>
         </ul>
-    <button><a href="/contenedorNuevo">Nou Contenidor</a></button>
+    <button><a th:href="@{/contenedorNuevo}">Nou Contenidor</a></button>
   </body>
 </html>
 

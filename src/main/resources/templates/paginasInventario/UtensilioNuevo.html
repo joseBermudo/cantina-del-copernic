@@ -1,17 +1,24 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-  <head>
-    <title>UTENSILI</title>
-  </head>
-  <body>
-    <h1>UTENSILI</h1>
-    <form>
-      <label for="nom">Nom:</label>
-      <input type="text" id="nom" name="nom"><br><br>
-      <label for="quantitat">Quantitat:</label>
-      <input type="number" id="quantitat" name="quantitat"><br><br>
-      <button type="submit" id="guardar"><a href="/contenedorNuevo">GUARDAR</a></button>
-      <button type="button" id="cancelar"><a href="/contenedorNuevo">CANCELAR</a></button>
-    </form>
-  </body>
+    <head>
+        <title>UTENSILI</title>
+    </head>
+    <body>
+        <h1>UTENSILI</h1>
+
+        <form th:action="@{/guardarUtensilio}" method="post" th:object="${utensilio}">
+            
+            <input type="hidden" id="idUtensilio" name="utensilio" th:field="*{idutensilio}"/>
+            <label for="nombre">Nom:</label>
+            <input type="text" id="nombre" name="nombre" th:field="*{nombre} "/> 
+            <br>
+            <label for="nombre">Quantitat:</label>
+            <input type="text" id="cantidad" name="nombre" th:field="*{cantidad} "/>
+            <br>
+            <br>
+            <input type="submit" name="enviar" value="GUARDAR"/>
+        </form>
+        
+        <button id="cancelar"><a th:href="@{/editarContenedor/}+${contenedor.idcontenedor}">CANCELAR</a></button>
+    </body>
 </html>

@@ -4,12 +4,21 @@
     <title  th:text="${entrSemana}"></title>
   </head>
   <body>
-    <h1 th:text="${bocSemana.nombre}"></h1>
-    <h2 th:text="${entrSemana}"></h2>
-    <img th:src="${bocSemana.imagen}" alt="Imagen del Bocadillo Fantástico">
+    <h1 th:text="${bocadillo.nombre}"></h1>
+    <img th:src="${bocadillo.imagen}" alt="Imagen del Bocadillo Fantástico">
     <br>
-    <p th:text="${bocSemana.desc}"></p>
+    <p th:text="${bocadillo.descripcion}"></p>
     <br>
-    <button><a href="/hacerPedidoCliente">Fer Comanda</a></button>
+     <ul th:each="pedido: ${pedidos}">
+            <li>
+                <span th:text="${pedido.bocadilloSemana.nombre}"></span>
+
+                <div>
+                     <button><a th:href="@{/verPedidoClient/}+${pedido.id_pedido}"/>Visualizar</button>
+                    <button><a th:href="@{/cancelarPedido/}+${pedido.id_pedido}"/> Cancelar</button>
+                </div>
+            </li>
+        </ul>
+    <button><a th:href="@{/hacerPedidoCliente}"/>Fer Comanda</button>
   </body>
 </html>

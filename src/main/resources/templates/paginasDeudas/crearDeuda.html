@@ -1,19 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title th:text="${crearDeudaWord}"></title>
+    <title>Crear deute</title>
 </head>
 <body>
-    <!-- <button th:text="${atrasWord}"></button> -->
-    <h1 th:text="${crearDeudaWord}"></h1>
-    <form>
-        <label for="c" th:text="${quantitatWord}"></label>
-        <input type="number" name="c"><br>
-        <label for="f" th:text="${dataWord}"></label>
-        <input type="date" name="f"><br><br>
+    <h1>Crear deute</h1>
+    <form th:action="@{/guardarDeuda/}+${correo}" method="post" th:object="${deuda}">        
+        <input type="hidden" name="id" th:field="*{idDeuda}"/>
+       
+        
+        <label for="c">Quantitat: </label>
+        <input type="number" step="any" name="c" th:field="*{cantidad}"><br>
+        
+        <label for="f">Data: </label>
+        <input type="date" name="f" th:field="*{fechaDeLaDeuda}"><br><br>
+        
+        <button type="submit">Crear deute</button>
+        <button type="button" onclick="window.location.href='/listarProfesores'">Cancel·lar</button>
+        
     </form>
     
-    <button id="crear-deuda" th:text="${crearDeudaWord}"></button>
-    <button id="cancelar" th:text="${cancelarWord}"></button>
 </body>
 </html>

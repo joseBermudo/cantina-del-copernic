@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Editar deute</title>
+</head>
+<body>
+    <h1>Editar deute</h1>
+    <form th:action="@{/guardarDeuda/}+${deuda.profesor.getCorreo()}" method="post" th:object="${deuda}">        
+        <input type="hidden" name="id" th:field="*{idDeuda}"/>
+       
+        
+        <label for="c">Quantitat: </label>
+        <input type="number" step="any" name="c" th:field="*{cantidad}"><br>
+        
+        <label for="f">Data: </label>
+        <input type="date" name="f" th:field="*{fechaDeLaDeuda}"><br><br>
+        
+        <input type="submit" name="enviar" value="Guardar canvis"/>
+        <button type="button" onclick="window.location.href='/listarProfesores'">Cancel·lar</button>
+        
+    </form>
+    
+</body>
+</html>

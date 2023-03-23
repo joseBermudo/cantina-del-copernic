@@ -13,6 +13,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 import java.io.Serializable;
 import lombok.Data;
 
@@ -32,11 +34,13 @@ public class Sugerencia implements Serializable {
     @Column(name = "idsugerencia")
     private int idSugerencia;
     
-    /*@Column(name = "usuarios_correo")
-    private String correoProfesor;*/
-    
+    @NotEmpty
+    @Size(max = 150)
     private String titulo;
     
+   
+    @NotEmpty
+    @Size(max = 500)
     @Column(name = "descripcion")
     private String descripcion;
     

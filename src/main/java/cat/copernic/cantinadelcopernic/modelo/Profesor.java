@@ -10,6 +10,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
+import jakarta.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 import lombok.Data;
@@ -41,11 +42,22 @@ public class Profesor extends Usuario {
     private Boolean intoleranciaGluten;
     
     @Column(name = "obs")
+    @Size(max = 500)
     private String observaciones;
     
+    
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "pedido_id_pedido")
+    private List<Pedido> pedido;
+
     @OneToMany(mappedBy = "profesor", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Sugerencia> sugerencias;
-   
+
     @OneToMany(mappedBy="profesor",cascade = CascadeType.ALL)
     private List<ProfesorPromocion> profesorPromocion;
+    
+    @OneToMany(mappedBy = "profesor", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
+    private List<Deuda> deudas;
 }
+   
+
