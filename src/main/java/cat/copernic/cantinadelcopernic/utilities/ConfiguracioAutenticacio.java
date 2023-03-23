@@ -36,14 +36,16 @@ public class ConfiguracioAutenticacio {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
         return http.authorizeHttpRequests((requests) -> requests
-                .requestMatchers("/crearFormularioBocadilloSemana").hasAnyAuthority("admin","alumno","profesor") //URL iniciGossos on pot accedir el rol de veterinari
-                .anyRequest().authenticated() //Qualsevol altre sol.licitud que no coincideixi amb les regles anteriors cal autenticació
-        )
-                .formLogin((form) -> form //Objecte que representa el formulari de login personalitzat que utilitzarem
-                .loginPage("/login") //Pàgina on es troba el formulari per fer login personalitzat
-                .permitAll() //Permet acceddir a tothom
+                .requestMatchers("/listaBocadilloSemana").hasAnyAuthority("admin","alumno","profesor").anyRequest().authenticated()
+//                .requestMatchers("/pedidosCliente").hasAnyAuthority("profesor")
+//                .anyRequest().authenticated()
                 )
-                .exceptionHandling((exception) -> exception //Quan es produeix una excepcció 403, accés denegat, mostrem el nostre missatge
+                .formLogin((form) -> form
+                .loginPage("/login")
+                .defaultSuccessUrl("/listaBocadilloSemana", true)
+                .permitAll()
+                )
+                .exceptionHandling((exception) -> exception
                 .accessDeniedPage("/errors/error403"))
                 .build();
 //, "admin",alumno", "profesor"
