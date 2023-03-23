@@ -6,6 +6,10 @@ package cat.copernic.cantinadelcopernic.moduloTareas.controladores;
 
 import cat.copernic.cantinadelcopernic.DAO.TareaDAO;
 import cat.copernic.cantinadelcopernic.modelo.Tarea;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -38,60 +42,126 @@ public class ControladorHorarioTareas {
 
         model.addAttribute("listaTareasWord", "Llista de tasques");
         model.addAttribute("crearTareaWord", "Crear tasca");
-
-        Date hoy = new Date();
-        Calendar hor = Calendar.getInstance();
-        hor.setTime(hoy);
-        int mesActual = hor.get(Calendar.MONTH);
-        int anioActual = hor.get(Calendar.YEAR);
-
-        // Obtener el número de días del mes actual
-        int diasEnMes = hor.getActualMaximum(Calendar.DAY_OF_MONTH);
-
-        // Obtener el primer día de la semana
-        int primerDiaSemana = hor.get(Calendar.DAY_OF_WEEK);
-        if (primerDiaSemana == Calendar.SUNDAY) {
-            // El primer día de la semana es domingo, así que ajustamos para que sea lunes
-            primerDiaSemana = Calendar.MONDAY;
-        } else {
-            // Restamos 1 para que el primer día de la semana sea 0 (lunes) en vez de 1 (martes) y así sucesivamente
-            primerDiaSemana--;
-        }
-
-        // Generar los datos para la tabla del horario
-        String[][] tablaHorario = new String[6][7];
-        int dia = hor.get(Calendar.DAY_OF_MONTH);
+        
+        ArrayList<String>[][] calendario = new ArrayList[6][7];
         for (int i = 0; i < 6; i++) {
             for (int j = 0; j < 7; j++) {
-                if (i == 0 && j + 1 < primerDiaSemana) {
-                    // Espacio en blanco para los días previos al primer día del mes
-                    tablaHorario[i][j] = "";
-                } else if (dia > diasEnMes) {
-                    // Espacio en blanco para los días posteriores al último día del mes
-                    tablaHorario[i][j] = "";
+                calendario[i][j] = new ArrayList<String>();
+            }
+        }
+
+        LocalDate fechaActual = LocalDate.now();
+        int mesActual = fechaActual.getMonthValue();
+        int anyoActual = fechaActual.getYear();
+        List<Tarea> tareas = tareaDAO.findTareasDelMesActual(mesActual, anyoActual);
+
+
+        LocalDate fecha = LocalDate.now().withDayOfMonth(1);
+        
+        
+        DayOfWeek diaInicio = fecha.getDayOfWeek();
+        int desplazamiento = diaInicio.getValue() - DayOfWeek.MONDAY.getValue();
+        fecha = fecha.minusDays(desplazamiento);
+
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < 7; j++) {
+                if (fecha.getMonthValue() == LocalDate.now().getMonthValue()) {
+                    String diaConCeros = String.format("%02d", fecha.getDayOfMonth());
+                    String mesConCeros = String.format("%02d", fecha.getMonthValue());
+                    String fechaString = diaConCeros + "-" + mesConCeros + "-" + fecha.getYear();
+                    calendario[i][j].add(fechaString);
+
                 } else {
-                    // Celda con el día actual
-                    tablaHorario[i][j] = Integer.toString(dia);
-                    List<Tarea> tareas = (List<Tarea>) tareaDAO.findAll();
-                    for (Tarea tarea : tareas) {
-                        if (tarea.getFecha().getDate() == dia) {
-                            tablaHorario[i][j] += " " + tarea.getAlumno();
+                    calendario[i][j].add(Integer.toString(0));
+                }
+                fecha = fecha.plusDays(1);
+            }
+        }
+        
+        for (Tarea tarea : tareas) {
+            for (int i = 0; i < 6; i++) {
+                for (int j = 0; j < 7; j++) {
+                    if(!calendario[i][j].get(0).equals("0")){
+                        //QUE IMBECIL SOY, si calendario[i][j].get(0) == fecha de la tarea, ya podemos hacer calendario[i][j].add(tarea.getAlumno());
+                        
+                        String diaDeLaFechaQueNosPasan = calendario[i][j].get(0).substring(0,2);
+                        if(diaDeLaFechaQueNosPasan.substring(0,1).equals("0")){
+                            diaDeLaFechaQueNosPasan = diaDeLaFechaQueNosPasan.substring(1);
+                        }
+                        if(Integer.parseInt(diaDeLaFechaQueNosPasan) == tarea.getFecha().getDayOfMonth())
+                        {
+                            calendario[i][j].add(tarea.getAlumno());
                         }
                     }
-
-
-                    if (dia == hor.get(Calendar.DAY_OF_MONTH) && mesActual == hor.get(Calendar.MONTH)
-                            && anioActual == hor.get(Calendar.YEAR)) {
-                        // Si es el día actual, añadir la clase "today"
-                        tablaHorario[i][j] += " avui";
-                    }
-                    dia++;
                 }
             }
-
         }
-        model.addAttribute("tablaHorario",tablaHorario);
+        model.addAttribute("calendario",calendario);
+        
         return "/paginasTareas/horarioTareas";
 
     }
+    private boolean procesarDatosCalendario(String fecha, int mesActual, int anyoActual) {
+        
+        String[] partesFecha = fecha.split("-");
+        int dia = Integer.parseInt(partesFecha[0]);
+        int mes;
+        
+        if(fecha.substring(0,1).equals("0"))
+        {
+            dia = Integer.parseInt(partesFecha[0].substring(1));
+        }
+        else
+        {
+            dia = Integer.parseInt(partesFecha[0]);
+        }
+        
+        if(fecha.substring(3,4).equals("0"))
+        {
+            mes = Integer.parseInt(partesFecha[1].substring(1));
+        }
+        else
+        {
+            mes = Integer.parseInt(partesFecha[1]);
+        }
+        int anyo = Integer.parseInt(partesFecha[2]);
+
+        return(mes == mesActual && anyo == anyoActual);
+        
+        //return true;
+    }
+
 }
+/*
+        int[][] calendario = new int[6][7];
+        int mesActual = LocalDate.now().getMonthValue();
+        List<Tarea> tareas = tareaDAO.findTareasDelMesActual(mesActual);
+
+        LocalDate fecha = LocalDate.now().withDayOfMonth(1);
+        int diasEnMes = fecha.lengthOfMonth();
+        ArrayList<ArrayList<Tarea>> tablaTareas = new ArrayList<>(diasEnMes);
+
+        for (int i = 0; i < diasEnMes; i++) {
+            tablaTareas.add(new ArrayList<>());
+        }
+        for (Tarea j : tareas) {
+            int diaDeLaTarea = j.getFecha().toInstant().atZone(ZoneId.systemDefault()).toLocalDate().getDayOfMonth();
+            tablaTareas.get(diaDeLaTarea - 1).add(j);
+        }
+        DayOfWeek diaInicio = fecha.getDayOfWeek();
+        int desplazamiento = diaInicio.getValue() - DayOfWeek.MONDAY.getValue();
+        fecha = fecha.minusDays(desplazamiento);
+
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < 7; j++) {
+                if (fecha.getMonthValue() == LocalDate.now().getMonthValue()) {
+                    calendario[i][j] = fecha.getDayOfMonth();
+                } else {
+                    calendario[i][j] = 0;
+                }
+                fecha = fecha.plusDays(1);
+            }
+        }
+        model.addAttribute("calendario",calendario);
+        model.addAttribute("tablaTareas",tablaTareas);
+        */

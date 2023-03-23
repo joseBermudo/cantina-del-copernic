@@ -53,4 +53,7 @@ public class Profesor extends Usuario {
 
     @OneToMany(mappedBy="profesor",cascade = CascadeType.ALL)
     private List<ProfesorPromocion> profesorPromocion;
+    
+    @OneToMany(mappedBy = "profesor", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
+    private List<Deuda> deudas;
 }
