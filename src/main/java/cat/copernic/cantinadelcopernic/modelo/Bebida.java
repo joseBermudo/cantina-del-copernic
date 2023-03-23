@@ -42,9 +42,9 @@ public class Bebida implements Serializable {
     
     @Column(name="precio")
     private Double precio;
-    
-    
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "pedido_id_pedido")
-    private List<Pedido> pedido;
+//    
+//    
+//    @OneToMany(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "pedido_id_pedido")
+//    private List<Pedido> pedido;
 }
