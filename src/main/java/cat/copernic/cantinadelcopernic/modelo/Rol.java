@@ -27,15 +27,15 @@ import lombok.Data;
 public class Rol implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    
+
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idroles")
     private int idroles;
-    
+
     private String nombre;
-    
-    @OneToMany(mappedBy = "rol",cascade = CascadeType.ALL)
+
+    @OneToMany(mappedBy = "rol", cascade = CascadeType.ALL)
     private List<ModuloRol> modulosRoles;
 
 }

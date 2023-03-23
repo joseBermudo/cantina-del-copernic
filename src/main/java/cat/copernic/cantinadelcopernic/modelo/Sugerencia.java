@@ -41,7 +41,7 @@ public class Sugerencia implements Serializable {
    
     @NotEmpty
     @Size(max = 500)
-    @Column(name = "des")
+    @Column(name = "descripcion")
     private String descripcion;
     
     private Boolean leida = false;
