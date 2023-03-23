@@ -11,6 +11,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,9 +31,10 @@ public class Contenedor implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @Column(name = "idcontenedor")
+    @NotEmpty
+    @Size(max = 5)
     private String idcontenedor;
 
-    @OneToMany(mappedBy = "idutensilio", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "contenedor", cascade = CascadeType.REMOVE)
     private List<Utensilio> utensilios = new ArrayList<>();
 }

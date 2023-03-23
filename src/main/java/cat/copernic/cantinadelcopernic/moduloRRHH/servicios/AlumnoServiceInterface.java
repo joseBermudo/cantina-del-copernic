@@ -14,6 +14,6 @@ import cat.copernic.cantinadelcopernic.modelo.Usuario;
  */
 public interface AlumnoServiceInterface {
     
-    public Usuario buscarProfesores(Alumno alumno); 
+    public Usuario buscarProfesores(Alumno profesor); 
     
 }

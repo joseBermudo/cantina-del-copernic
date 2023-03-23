@@ -1,27 +1,29 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-  <head>
-    <title>NOU CONTENIDOR</title>
-  </head>
-  <body>
-    <h1>NOU CONTENIDOR</h1>
-    <label for="codi">Codi:</label>
-    <input type="text" id="codi" name="codi"><br><br>
-    <label>Utensilios:</label>
-    
-    
-    <ul ID="utensilio" th:each="u: ${utensilios}">
-            <li>
-                <span th:text="${u.nombre}"></span>
+    <head>
+        <title>CONTENIDOR</title>
+    </head>
+    <body>
+        <h1>CONTENIDOR</h1>
+        <form th:action="@{/guardarContenedor}" method="post" th:object="${contenedor}">
+            <label for="nombre">Codi:</label>
+            <input type="text" id="nombre" name="nombre" th:field="*{idcontenedor}"/>
+            <br>
 
-                <div>
-                    <button>Eliminar</button>
-                </div>
-            </li>
-        </ul>
-    <button id="agregar-utensilio"><a href="/utensilioNuevo">+</a></button>
-    <br><br>
-    <button id="crear-contenedor"><a href="/listadoDeContenedores">CREAR CONTENEDOR</a></button>
-  </body>
+            <label for="utensilio">Utensilios:</label>       
+            <ul>
+                <li th:each="u : ${contenedor.utensilios}" id="utensilio">
+                    <span th:text="${u.nombre}"></span>
+                    <input type="hidden" th:name="utensilios" th:value="${u.idutensilio}" />
+                    <div>
+                        <button><a th:href="@{/eliminarUtensilio/}+${u.idutensilio}">ELIMINAR</a></button>
+                    </div>
+                </li>
+            </ul>
+            <button id="agregar-utensilio"><a th:href="@{/utensilioNuevo/}+${contenedor.idcontenedor}">UTENSILILI NUEVO</a></button>
+            <br><br>
+            <input type="submit" name="enviar" value="GUARDAR"/>
+        </form>
+    </body>
 </html>
 

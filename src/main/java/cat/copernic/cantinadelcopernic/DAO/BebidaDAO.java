@@ -6,12 +6,13 @@ package cat.copernic.cantinadelcopernic.DAO;
 
 import cat.copernic.cantinadelcopernic.modelo.Bebida;
 import java.util.List;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.CrudRepository;
 
 /**
  *
  * @author joseb
  */
-public interface BebidaDAO extends CrudRepository<Bebida,Integer>{
+public interface BebidaDAO extends JpaRepository<Bebida,Integer>{
     List<Bebida> findByNombre(String nombre);
 }

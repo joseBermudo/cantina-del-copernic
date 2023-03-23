@@ -43,13 +43,7 @@ public class ProfesorService  implements ProfesorServiceInterface {
     @Override
     @Transactional
     public void eliminarProfesores(Profesor profesor) {
-        if (profesor.getSugerencias() != null || !profesor.getSugerencias().isEmpty()) {
-            
-            for (Sugerencia sugerencia : profesor.getSugerencias()) {
-                
-                sugerenciaService.eliminarSugerencia(sugerencia);
-            }
-        }
+        
         this.profesorDAO.delete(profesor);
     }
 

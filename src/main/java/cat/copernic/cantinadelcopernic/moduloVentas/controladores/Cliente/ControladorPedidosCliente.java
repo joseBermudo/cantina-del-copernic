@@ -6,7 +6,9 @@ package cat.copernic.cantinadelcopernic.moduloVentas.controladores.Cliente;
 
 
 
+import cat.copernic.cantinadelcopernic.DAO.BebidaDAO;
 import cat.copernic.cantinadelcopernic.DAO.BocadilloSemanaDAO;
+import cat.copernic.cantinadelcopernic.moduloVentas.servicios.VentasService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,24 +23,20 @@ public class ControladorPedidosCliente {
 
     /*La interface Model d'Spring Boot ens permet transferir dades entre el controlador i la vista
      */
-    
-     @Autowired
-    private BocadilloSemanaDAO bsDAO;
-
+   @Autowired
+    private VentasService serVentas;
+   
+   @Autowired
+   private BebidaDAO bebDAO;
+   
+   
+   
     @GetMapping("/pedidosCliente")
     public String inici(Model model) {
+ 
+        model.addAttribute("bocadillo", serVentas.listarBocadilloSemana().get(0)); 
         
-         var bocadillosDeLaSemana = bsDAO.findAll();
-        
-         var bocadilloPernil = bsDAO.findById(1);
-          
-         var B= bocadilloPernil.get();
-         model.addAttribute("bocSemana", B);
-
-        
-        String descEntrepa="Descripció l'entrepà de pernil: Aquest deliciós entrepà està fet amb pa acabat de fer, enciam, tomàquet, pernil, format i una exquisida salsa secreta. És la combinació perfecta de sabors i textures que et deixarà amb ganes de més.";
-        model.addAttribute("descEntrepa", descEntrepa);
-        
+        model.addAttribute("pedidos", serVentas.listarPedidos());
         
         return "/paginasVentas/ventasCliente/pedidosCliente"; //Retorna la pàgina iniciEnviarDades
     }

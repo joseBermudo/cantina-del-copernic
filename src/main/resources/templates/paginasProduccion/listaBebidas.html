@@ -17,12 +17,17 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
             <ul th:each="bebida: ${bebidas}">
                 <li th:text="${bebida.nombre}"></li> 
                 <li th:text="${bebida.precio}"></li>
-                <button><a href="/editarBebida">Edita</a></button>
+                <a th:href="@{/editarBebida/}+${bebida.id}"th:text="Edita"></a>
                 <button>Elimina</button>
             </ul>
         </div>
+        
+        <div th:if="${bebidas==null || bebidas.empty}">
+            <!-- Mostrem missatge-->
+            No hi ha begudes a la llista.
+        </div>
         <div>
-            <button><a href="/crearBebida">Nova beguda</a></button>
+            <a th:href="@{/crearBebida}">Nova beguda</a>
         </div>
     </body>
 </html>

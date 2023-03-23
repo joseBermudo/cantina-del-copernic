@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html>
+    <head>
+        <title>Configuració modul</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <form th:action="@{/actualizarModulo}" method="post" th:object="${modulo}">
+            <input type="hidden" name="idmodulos" th:field="*{idmodulos}"/>
+
+            <table border=1>
+                <thead>
+                <th th:text="*{nombreModulo}" colspan="100"></th>
+                <thead>
+                    <tr>
+                        <td th:text="Habilitat"></td>
+                        <td th:each="moduloRol: *{modulosRoles}" th:text="${moduloRol.rol.nombre}"></td>
+                    </tr>              
+                    <tr>
+                        <td><input type="checkbox" th:checked="*{habilitado}"name="habilitado" th:field="*{habilitado}"/></td>
+                        
+                        <td th:each="moduloRol: *{modulosRoles}">
+                            <input type="checkbox" th:checked="${moduloRol.visible}" th:field="*{modulosRoles[__${moduloRolStat.index}__].visible}" name="visible"/>
+                            <input type="hidden"  name="modulosRoles[${moduloRolStat.index}].rol.idroles" th:field="*{modulosRoles[__${moduloRolStat.index}__].rol.idroles}" th:value="${moduloRol.rol.idroles}"/>
+                            <input type="hidden"  name="modulosRoles[${moduloRolStat.index}].modulo.idmodulos" th:field="*{modulosRoles[__${moduloRolStat.index}__].modulo.idmodulos}" th:value="${moduloRol.modulo.idmodulos}"/>
+                        </td>
+
+                    </tr>
+
+            </table>
+            <input type="submit" name="guarda" value="Guardar canvis"/>   
+        </form>
+
+    </body>
+</html>

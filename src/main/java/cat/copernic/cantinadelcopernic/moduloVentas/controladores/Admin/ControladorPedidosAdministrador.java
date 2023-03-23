@@ -6,6 +6,7 @@ package cat.copernic.cantinadelcopernic.moduloVentas.controladores.Admin;
 
 import cat.copernic.cantinadelcopernic.DAO.BocadilloSemanaDAO;
 import cat.copernic.cantinadelcopernic.DAO.PedidoDAO;
+import cat.copernic.cantinadelcopernic.moduloVentas.servicios.VentasService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,11 +20,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class ControladorPedidosAdministrador {
 
     @Autowired
-    private BocadilloSemanaDAO bsDAO;
-
-    @Autowired
-    private PedidoDAO pedDAO;
-
+    private VentasService serVentas;
     /*La interface Model d'Spring Boot ens permet transferir dades entre el controlador i la vista
      */
     @GetMapping("/pedidosAdministrador")
@@ -32,11 +29,10 @@ public class ControladorPedidosAdministrador {
         String com = "Comandes";
         model.addAttribute("com1", com);
 
-        var pedidos = pedDAO.findAll();
+        var pedidos = serVentas.listarPedidos();
+        
         model.addAttribute("pedidos", pedidos);
-
-        
-        
+       
         String Comandes = "Comandes";
         model.addAttribute("comand", Comandes);
 
