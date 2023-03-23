@@ -5,22 +5,26 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 -->
 <html>
     <head>
-        <title>Crear promoció</title>
+        <title th:text="${titulo}"></title>
         <meta charset="UTF-8">
     </head>
     <body>
         <div>
-            <h1>CREAR PROMOCIÓ</h1>
+            <h1 th:text="${titulo}"></h1>
         </div> 
         <div>
-            <form action="" method="POST">
-                <label for="descripcio">Descripció:</label><br>
-                <textarea id="descripcio" name="descripcio" rows="4" cols="50"></textarea><br>  
+            <form action="/guardarNuevaPromocion" method="POST" th:object="${promocion}">
+                <input type="hidden" name="id" th:field="*{id}"/>
+                <label for="descripcion">Descripció:</label><br>
+                <textarea id="desc" name="desc" th:field="*{desc}" rows="4" cols="50"></textarea><br>  
                 <label for="condicio">Condicio:</label><br>
-                <input type="number" id="condicio" name="condicio"><br>
+                <input id="condicio" type="number" name="condicio" th:field="*{condicio}"><br>
+                <br>
+                <input type="submit" name="guardar" value="Guardar promoció"/>
+                <button><a href="/listaPromociones">Cancelar</a></button>
             </form>
-            <button><a href="/listaPromociones">Crrear promoció</a></button>
-            <button><a href="/listaPromociones">Cancelar</a></button>
+
+            
         </div>
     </body>
 </html>

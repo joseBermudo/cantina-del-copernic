@@ -10,10 +10,25 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
     </head>
     <body>
         <div>
-            <ul th:each="profesor: ${profesores}">
-                <li th:text="${profesor.correo}"></li> 
-                <button><a href="/listaPromociones">Utilitza</a></button>
-            </ul>
+            <div>
+                <h1>Clients de la promocio</h1>
+            </div>
+            <div>
+                <table border="1" width="420"<>
+                    <thead> 
+                        <th colspan="20">Nom:</th>
+                        <th colspan="20">Correu Electronic</th>
+                        <th colspan="20">Reconte</th>
+                        <th colspan="20">Gastat</th>
+                    </thead>
+                    <tr th:each="profProm:${promocion.profesorPromocion}">
+                        <td colspan="20" th:text="${profProm.profesor.nombre}"></td>
+                        <td colspan="20" th:text="${profProm.profesor.correo}"></td>
+                        <td colspan="20" th:text="${profProm.recuento}"></td>
+                        <td><a>Utilitzar</a></td>
+                    </tr>
+                </table>
+            </div>
         </div>
     </body>
 </html>
