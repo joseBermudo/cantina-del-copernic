@@ -13,5 +13,5 @@ import org.springframework.data.repository.CrudRepository;
  * @author andre
  */
 public interface UsuarioDAO   extends CrudRepository<Usuario,String>{
-    
+       Usuario findByUsername(String username);
 }

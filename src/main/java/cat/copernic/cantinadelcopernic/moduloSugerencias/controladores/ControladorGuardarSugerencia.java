@@ -27,7 +27,7 @@ public class ControladorGuardarSugerencia {
     
     @PostMapping("/guardarSuggeriment")
     public String guardarSugerencia(Sugerencia sugerencia){
-        if (sugerencia.getProfesor() == null) {
+        if (sugerencia.getProfesor()== null) {
             var profesor = new Profesor();
             profesor.setCorreo("correo");
             var profesorEntrado = profesorService.buscarProfesores(profesor);
