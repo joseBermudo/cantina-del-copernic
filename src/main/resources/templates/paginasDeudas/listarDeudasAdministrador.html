@@ -10,11 +10,16 @@
                 <tr>
                     <th th:text="${fechaWord}"></th>
                     <th th:text="${deudaWord}"></th>
+                    <th th:text="Editar"></th>
                     <th th:text="${marcarComoPagadaWord}"></th>
                 </tr>
                 <tr th:each="i : ${listadoDeudas}"> 
                     <td th:text="${i.fechaDeLaDeuda}"></td>
                     <td th:text="${i.cantidad}"></td>
+                    <td>
+                        <!-- Aqui hay que poner eliminar deuda -->
+                        <a th:href="@{/editarDeuda/{idDeuda}(idDeuda=${i.idDeuda})}">Editar</a>
+                    </td>
                     <td>
                         <!-- Aqui hay que poner eliminar deuda -->
                         <a th:href="@{/eliminarDeuda/{idDeuda}(idDeuda=${i.idDeuda})}">Eliminar</a>

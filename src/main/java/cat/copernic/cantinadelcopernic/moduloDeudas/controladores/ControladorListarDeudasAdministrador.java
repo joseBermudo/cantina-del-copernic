@@ -72,7 +72,7 @@ public class ControladorListarDeudasAdministrador {
         deuda.setProfesor(deudaService.buscarProfesor(profesor));
         
         deudaService.anadirDeuda(deuda);
-
+        
         return "redirect:/listarDeudasAdministrador/{correo}";
     }
     
@@ -81,7 +81,17 @@ public class ControladorListarDeudasAdministrador {
         
         var objetoDeuda = deudaService.buscarDeudaPorId(deuda.getIdDeuda());
         deudaService.eliminarDeuda(objetoDeuda);
-        return "redirect:/listarProfesores"; 
+        var correoProfesor = deuda.getProfesor().getCorreo();
+        
+        return "redirect:/listarDeudasAdministrador/{correo}" + correoProfesor; 
+    }
+    
+    @GetMapping("/editarDeuda/{idDeuda}")
+    public String editarDeuda(Deuda deuda, Model model) {
+        
+        model.addAttribute("deuda", deudaService.buscarDeuda(deuda));
+        
+        return "/paginasDeudas/editarDeuda";
     }
 
 }
