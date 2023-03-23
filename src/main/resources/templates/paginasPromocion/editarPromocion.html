@@ -13,7 +13,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
             <h1 th:text="${titulo}"></h1>
         </div> 
         <div>
-            <form action="/guardarPromocion" method="POST" th:object="${promocion}">
+            <form th:action="@{/guardarPromocion}" method="POST" th:object="${promocion}">
                 <input type="hidden" name="id" th:field="*{id}"/>
                 <label for="descripcion">Descripció:</label><br>
                 <textarea id="desc" name="desc" th:field="*{desc}" rows="4" cols="50"></textarea><br>  
