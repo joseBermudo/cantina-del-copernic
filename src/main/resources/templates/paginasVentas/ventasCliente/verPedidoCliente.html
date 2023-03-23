@@ -5,14 +5,23 @@
 </head>
 <body>
 	<h1  th:text="${comanda}"></h1>
-	<form>
-		<label for="entrepasetmana">Entrepà de la setmana:</label>
-		<input type="text" id="entrepasetmana" name="entrepasetmana" value="Entrepà Mediterrani" readonly><br><br>
-		<label for="beguda">Beguda:</label>
-		<input type="text" id="beguda" name="beguda" value="Aigua" readonly><br><br>
-		<label for="preutotal">Preu Total:</label>
-		<input type="text" id="preutotal" name="preutotal" value="12,50 €" readonly><br><br>
-		<input type="button" value="Esborrar comanda">
-	</form>
+        
+	 <form method="post" th:object="${pedido}"  readonly>
+            <label for="campo1" th:text="${correostr}"></label>
+            <input type="text" id="campo1" th:field="*{profesores.correo}"  readonly><br>
+            <br>
+            <label for="campo2" th:text="${entrepastr}"></label>
+            <input type="text" id="campo1" th:field="*{bocadilloSemana.nombre}"  readonly><br>
+            <br>
+            <label for="beguda">Beguda:</label>
+            <input type="text" id="campo1" th:field="*{bebida.nombre}"  readonly><br>
+             <br>
+            <label for="campo5">Preu total:</label>
+            <input type="text" id="campo5" th:value="${preciototal}"  readonly><br>
+            <br>
+            <label for="observaciones">Observacions:</label><br>
+            <textarea id="observaciones" rows="4" cols="50" th:field="*{profesores.observaciones}" readonly></textarea><br>
+        </form>
+         <button><a th:href="@{/cancelarPedido/}+${pedido.id_pedido}"/> Eliminar</button>
 </body>
 </html>

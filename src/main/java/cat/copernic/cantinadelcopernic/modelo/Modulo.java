@@ -4,13 +4,20 @@
  */
 package cat.copernic.cantinadelcopernic.modelo;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.io.Serializable;
+import java.util.List;
+import java.util.Map;
 import lombok.Data;
 
 /**
@@ -27,18 +34,15 @@ public class Modulo implements Serializable{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "idmodulos")
-    private int idModulo;
+    private int idmodulos;
     
     @Column(name = "nombre_modulo")
     private String nombreModulo;
     
-    @Column(name = "visible_cliente")
-    private boolean visibleCliente;
-    
-    @Column(name = "visible"
-            + "_alumno")
-    private boolean visibleAlumno;
-    
     @Column(name = "habilitado")
     private boolean habilitado;
+    
+    @OneToMany(mappedBy="modulo",cascade = CascadeType.ALL)
+    private List<ModuloRol> modulosRoles;
+    
 }

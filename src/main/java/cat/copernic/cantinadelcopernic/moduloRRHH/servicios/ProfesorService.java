@@ -6,6 +6,8 @@ package cat.copernic.cantinadelcopernic.moduloRRHH.servicios;
 
 import cat.copernic.cantinadelcopernic.DAO.ProfesorDAO;
 import cat.copernic.cantinadelcopernic.modelo.Profesor;
+import cat.copernic.cantinadelcopernic.modelo.Sugerencia;
+import cat.copernic.cantinadelcopernic.moduloSugerencias.servicios.SugerenciaService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,6 +22,9 @@ public class ProfesorService  implements ProfesorServiceInterface {
     
     @Autowired
     private ProfesorDAO profesorDAO;
+    
+    @Autowired
+    private SugerenciaService sugerenciaService;
     
     @Override
     @Transactional(readOnly=true) 

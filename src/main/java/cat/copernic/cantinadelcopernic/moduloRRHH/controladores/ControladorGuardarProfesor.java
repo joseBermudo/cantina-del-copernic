@@ -6,8 +6,11 @@ package cat.copernic.cantinadelcopernic.moduloRRHH.controladores;
 
 import cat.copernic.cantinadelcopernic.modelo.Profesor;
 import cat.copernic.cantinadelcopernic.moduloRRHH.servicios.ProfesorService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.Errors;
+
 import org.springframework.web.bind.annotation.PostMapping;
 
 /**
@@ -21,7 +24,11 @@ public class ControladorGuardarProfesor {
     private ProfesorService profesorService;
     
     @PostMapping("/guardarProfesor")
-    public String guardarProfesor(Profesor profesor){
+    public String guardarProfesor(@Valid Profesor profesor, Errors errors){
+        
+        if(errors.hasErrors()){ 
+           return "paginasRRHH/nuevoProfesor";
+        }
         
         profesorService.anadirProfesores(profesor);
         

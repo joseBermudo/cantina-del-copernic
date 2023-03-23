@@ -25,7 +25,9 @@ public class ControladorEliminarProfesor {
     @GetMapping("/eliminarProfesor/{correo}") 
     public String eliminar(Profesor profesor) {
         
-        profesorService.eliminarProfesores(profesor);
+        var profesorCompleto = profesorService.buscarProfesores(profesor);
+        
+        profesorService.eliminarProfesores(profesorCompleto);
         
         return "redirect:/listaProfesors";
     }

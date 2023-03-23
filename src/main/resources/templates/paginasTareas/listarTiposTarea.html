@@ -13,10 +13,12 @@
                     <th th:text="${tiposTareaWord}"></th>
                     <th th:text="${eliminarWord}"></th>
                 </tr>
-                <tr th:each="i : ${listadoTiposTarea}"> 
-                    <td th:text="${i.nombre}"></td>
-                    <td><img th:src="@{'/imagenes/basuraTipoTarea.png'}" width='50' height='50'/></td>
-                    </tr>
+                <tr th:each="tipoTarea : ${listadoTiposTarea}"> 
+                    <td th:text="${tipoTarea.nombre}"></td>
+                    <td>
+                        <td><a th:href="@{/eliminarTipoTarea/}+${tipoTarea.id}" onclick="return confirm('¿Estás seguro de que deseas eliminar este tipo de tarea?')"/>Eliminar</td>
+                    </td>
+                </tr>
             </table>
         </div>
 
