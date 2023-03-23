@@ -16,7 +16,7 @@
                 <tr th:each="tipoTarea : ${listadoTiposTarea}"> 
                     <td th:text="${tipoTarea.nombre}"></td>
                     <td>
-                        <td><a th:href="@{/eliminarTipoTarea/}+${tipoTarea.id}" onclick="return confirm('¿Estás seguro de que deseas eliminar este tipo de tarea?')"/>Eliminar</td>
+                        <td><a th:href="@{/eliminarTipoTarea/}+${tipoTarea.id}" onclick="return confirm('Estás segur de que vols eliminar aquesta tasca?')"/>Eliminar</td>
                     </td>
                 </tr>
             </table>
