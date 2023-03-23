@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title th:text="${crearTipoTareaWord}"></title>
+    </head>
+    <body>
+        <h1 th:text="${crearTipoTareaWord}"></h1>
+        <form th:action="@{/guardarTipoTarea}" method="post" th:object="${tipoTarea}">
+            <input type="hidden" name="id" th:field="*{id}"/>
+            
+            <label for="nombre" th:text="${nombreTipoTareaWord}"></label>
+            <input type="text" name="nombre" th:field="*{nombre}"><br>
+            
+            <button type="submit" th:text="${crearTipoTareaWord}"></button>
+            <button type="button" th:text="${cancelarWord}" onclick="window.location.href='/listarTiposTarea'"></button>
+        </form>
+    </body>
+</html>

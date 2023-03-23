@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title th:text="${listadoDeudasWord}"></title>
+    </head>
+    <body>
+        <h1 th:text="${deudasWord}"></h1>
+        <div th:if="${listadoDeudas!=null && !listadoDeudas.empty}">    
+            <table border="1">
+                <tr>
+                    <th th:text="${fechaWord}"></th>
+                    <th th:text="${deudaWord}"></th>
+                    <th th:text="${marcarComoPagadaWord}"></th>
+                </tr>
+                <tr th:each="i : ${listadoDeudas}"> 
+                    <td th:text="${i.fechaDeLaDeuda}"></td>
+                    <td th:text="${i.cantidad}"></td>
+                    <td>
+                        <!-- Aqui hay que poner eliminar deuda -->
+                        <a th:href="@{/eliminarDeuda/{idDeuda}(idDeuda=${i.idDeuda})}">Eliminar</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div th:if="${listadoDeudas==null || listadoDeudas.empty}" th:text = "${noHayDeudasWord}"></div>
+
+        <p th:text="${profesorWord + ' ' + datosProfesor.nombre + ' ' + datosProfesor.apellidos}"></p>
+        <p th:text="${correoWord + ' ' + datosProfesor.correo}"></p> 
+        
+        <button><a th:href="@{/crearDeuda/}+${datosProfesor.correo}">Crear deute</a></button>
+        
+        <button onclick="window.location.href='/listarProfesores'">Cancel·lar</button>
+    </body>
+</html>

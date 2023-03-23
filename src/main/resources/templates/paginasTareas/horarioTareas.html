@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title th:text="${horarioWord}"></title>
+        <style>
+            table {
+                border-collapse: collapse;
+                margin: 0 auto;
+            }
+            th, td {
+                border: 1px solid black;
+                padding: 10px;
+            }
+            th {
+                background-color: #ccc;
+            }
+            td {
+                text-align: center;
+            }
+            .groc {
+                background-color: #ff0;
+            }
+        </style>
+    </head>
+    <body>
+        <h1 th:text="${horarioWord}"></h1>
+        <table id="horario">
+            <thead>
+                <tr>
+                    <th th:text="${lunesWord}"></th>
+                    <th th:text="${martesWord}"></th>
+                    <th th:text="${miercolesWord}"></th>
+                    <th th:text="${juevesWord}"></th>
+                    <th th:text="${viernesWord}"></th>
+                    <th th:text="${sabadoWord}"></th>
+                    <th th:text="${domingoWord}"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Iterar sobre el arreglo calendario para mostrar las filas -->
+                <tr th:each="fila : ${calendario}">
+                    <!-- Iterar sobre cada ArrayList dentro de la fila para mostrar las celdas -->
+                    <td th:each="celda : ${fila}">
+                        <!-- Mostrar el primer valor del ArrayList -->
+                        <span th:text="${celda[0]}"></span>
+                        <!-- Si el ArrayList tiene más de un valor, mostrar los demás -->
+                        <div th:if="${#lists.size(celda) > 1}">
+                            <span th:each="valor : ${celda}" th:unless="${#strings.equals(valor, celda[0])}">
+                                <span th:text="${valor}"></span>
+                                <br />
+                            </span>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <button th:text="${listaTareasWord}" onclick="window.location.href = '/listarTareas'"></button>
+    </body>
+</html>
+
+
+<!-- 
+<tr th:each="fila : ${calendario}">
+        <td th:each="celda : ${fila}">
+            <span th:each="palabra : ${#strings.arraySplit(celda, ' ')}" th:text="${palabra}"></span>
+        <td th:each="alumno : ${tablaTareas[#strings.indexOf(fila, calendario)][#strings.indexOf(fila, celda)]}">
+            <span th:text="${alumno}"></span>
+        </td>
+</tr>
+-->

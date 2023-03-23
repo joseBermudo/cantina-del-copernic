@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Nou Professor</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <div>
+            <h1>REGISTRAR PROFESSOR</h1>
+        </div> 
+        <div>
+            <form th:action="@{/guardarProfesor}" method="post" th:object="${profesor}">
+                <p>
+                    <label for="nombre" >Nom:</label>
+                    <input type="text" name="nombre" th:field="*{nombre}"/>
+                    <span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"/>
+                </p>
+                <p>
+                <label for="nombre" >Cognoms:</label>
+                <input type="text" name="apellidos" th:field="*{apellidos}"/>
+                <span th:if="${#fields.hasErrors('apellidos')}" th:errors="*{apellidos}"/> 
+                </p>
+                <p>
+                    <label for="correu">Correu electronic:</label>
+                    <input type="text" id="correu" name="correu" th:field="*{correo}">
+                    <span th:if="${#fields.hasErrors('correo')}" th:errors="*{correo}"/>
+                </p>
+                <p>
+                    <label for="contrasenya">Contrasenya:</label>
+                    <input type="password" id="contrasenya" name="contrasenya">
+                </p>
+                <p>
+                    <label for="contrasenya" >Confirmar contrasenya:</label>
+                    <input type="password" id="confirmar_contrasenya" name="confirmar_contrasenya">
+                </p>
+                <input type="submit" name="enviar" value="Registrar profesor"/>
+            </form>
+        </div>
+    </body>
+</html>
