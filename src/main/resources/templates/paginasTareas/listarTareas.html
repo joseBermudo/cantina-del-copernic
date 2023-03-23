@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title th:text="${listadoTareaWord}"></title>
+    </head>
+    <body>
+        <h1 th:text="${listadoTareaWord}"></h1>
+
+        <div th:if="${listadoTarea!=null && !listadoTarea.empty}">    
+            <table border="1">
+                <tr>
+                    <th th:text="${tareaWord}"></th>
+                    <th th:text="${alumnoWord}"></th>
+                    <th th:text="${fechaWord}"></th>
+                    <th th:text="${editarWord}"></th>
+                    <th th:text="Eliminar"></th>
+                </tr>
+                <tr th:each="i : ${listadoTarea}"> 
+                    <td th:text="${i.tipo.nombre}"></td>
+                    <td th:text="${i.alumno}"></td>
+                    <td th:text="${#temporals.format(i.fecha, 'dd/MM/yyyy')}"></td>
+                    <td th:text="Editar"></td>
+                    <td>
+                        <a th:href="@{/eliminarTarea/{id}(id=${i.id})}" onclick="return confirm('¿Estás seguro de que deseas eliminar esta tarea?')">Eliminar</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div th:if="${listadoTarea==null || listadoTarea.empty}" th:text = "${noHayTareasWord}"></div>
+        <br>
+        <button th:text="${horarioWord}" onclick="window.location.href = '/horarioTareas'"></button>
+        <button th:text="${crearTareaWord}" onclick="window.location.href = '/crearTarea'"></button>
+        <button th:text="${verTipoTareaWord}" onclick="window.location.href = '/listarTiposTarea'"></button>
+    </body>
+</html>

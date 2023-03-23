@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Receptes</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <div>
+            <button>Receptes</button>
+            <button><a href="/listaBebidas">Begudes</a></button>
+        </div>
+        <div>
+            <ul th:each="receta: ${recetas}">
+                <li th:text="${receta.nombre}"></li> 
+                <a th:href="@{/editarReceta/}+${receta.id}"th:text="Edita"></a>
+                <button>Elimina</button>
+            </ul>
+        </div>
+        
+        <div th:if="${recetas==null || recetas.empty}">
+            <!-- Mostrem missatge-->
+            No hi ha begudes a la llista.
+        </div>
+        
+        <div>
+              <a th:href="@{/crearReceta}">Nova recepta</a>
+        </div>
+    </body>
+</html>

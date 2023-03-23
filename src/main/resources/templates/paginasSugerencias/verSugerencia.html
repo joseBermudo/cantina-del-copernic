@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Veure Suggeriment</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <div>
+            <h1>VEURE SUGGERIMENT</h1>
+        </div> 
+        <div th:if="${sugerencia!=null}">
+                
+                <p th:text="${tituloSugerencia}"></p>
+                <p th:text="${sugerencia.titulo}"></p>
+                <p th:text="${descripcioSuggerimrnt}"></p>
+                <p th:text="${sugerencia.descripcion}"></p>
+
+             
+            <button>Marcar llegit</button>
+            <button><a th:href="@{/eliminarSuggeriment/}+${sugerencia.idSugerencia}"/> Borrar</button>
+        </div>
+       
+    </body>
+</html>

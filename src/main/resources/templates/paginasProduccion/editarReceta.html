@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html>
+    <head>
+        <title th:text="${titulo}"></title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <div>
+            <h1 th:text="${titulo}" ></h1>
+        </div> 
+        <div>
+            <form action="/guardarReceta" method="POST" th:object="${receta}">
+                <input type="hidden" name="id" th:field="*{id}"/>
+                <label for="nom">Nom:</label><br>
+                <input type="text" id="nom" name="nom" th:field="*{nombre}"><br>
+                <label for="descripcion">Descripció:</label><br>
+                <textarea id="descripcion" name="descripcion" th:field="*{descripcion}" rows="4" cols="50"></textarea><br>  
+
+                <label for="ing">Ingredientes:</label><br>
+                <textarea id="ing" name="ing" th:field="*{ing}" rows="4" cols="50"></textarea><br>
+                <br>
+                <input type="submit" name="guardar" value="Guardar recepta"/>
+                <button><a href="/listaRecetas">Cancela</a></button>
+            </form>
+
+
+
+
+        </div>
+    </body>
+</html>

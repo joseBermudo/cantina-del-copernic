@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title th:text="${listadoDeudasWord}"></title>
+    </head>
+    <body>
+        <!-- <button th:text="${atrasWord}"></button> -->
+        <h1 th:text="${deudasWord}"></h1>
+
+
+        <div th:if="${listadoDeudas!=null && !listadoDeudas.empty}">    
+            <table border="1">
+                <tr>
+                    <th th:text="${fechaWord}"></th>
+                    <th th:text="${deudaWord}"></th>
+                </tr>
+                <tr th:each="i : ${listadoDeudas}"> 
+                    <td th:text="${i.fechaDeLaDeuda}"></td>
+                    <td th:text="${i.cantidad}"></td>
+                </tr>
+            </table>
+        </div>
+
+        <div th:if="${listadoDeudas==null || listadoDeudas.empty}" th:text = "${noHayDeudasWord}"></div>
+        <p th:text="${profesorWord + ' ' + datosProfesor.nombre + ' ' + datosProfesor.apellidos}"></p>
+        <p th:text="${correoWord + ' ' + datosProfesor.correo}"></p>
+        <button id="cancelar" th:text="${cancelarWord}" onclick="window.location.href='/listarProfesores'"></button>
+    </body>
+</html>

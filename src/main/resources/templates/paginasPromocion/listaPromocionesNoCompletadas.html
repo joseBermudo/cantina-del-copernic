@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Promocions</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <div>
+            <button><a href="/listaPromocionesCompletadas">Completades</a></button>
+            <button>Sense completar</button>
+        </div>
+        <div>
+            <ul th:each="promocio: ${promociones}">
+                <li th:text="${promocio.id}"></li> 
+                <li th:text="${promocio.desc}"></li>
+            </ul>
+        </div>
+        <div>
+        </div>
+    </body>
+</html>

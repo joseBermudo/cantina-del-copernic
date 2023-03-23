@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title th:text="${listadoDeudasWord}"></title>
+    </head>
+    <body>
+        <h1 th:text="${listadoProfesoresWord}"></h1>
+
+        <div th:if="${listadoProfesores!=null && !listadoProfesores.empty}">    
+            <table border="1">
+                <tr>
+                    <th th:text="${correoWord}"></th>
+                </tr>
+                <tr th:each="i : ${listadoProfesores}"> 
+                    <td><a th:href="@{/listarDeudasAdministrador/}+${i.correo}" th:text="${i.correo}"/></td>
+                </tr>
+            </table>
+        </div>
+
+        <div th:if="${listadoProfesores==null || listadoProfesores.empty}" th:text = "${noHayProfesoresWord}"></div>
+        
+    </body>
+</html>

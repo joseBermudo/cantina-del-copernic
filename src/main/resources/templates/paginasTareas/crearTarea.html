@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title th:text="${crearTareaWord}"></title>
+    </head>
+    <body>
+        <h1 th:text="${crearTareaWord}"></h1>
+        <form th:action="@{/guardarTarea}" method="post" th:object="${tarea}">
+            <input type="hidden" name="id" th:field="*{id}"/>
+            <label for="c" th:text="${alumneWord}"></label>
+            <input type="text" name="c" th:field="*{alumno}"><br><br>
+            
+            <label for="fecha" th:text="${fechaWord}"></label>
+            <input type="date" id="fecha" name="fecha" th:field="*{fecha}"><br><br>
+            
+            <label for="tipoTarea" th:text="${tipoTareaWord}"></label>
+           
+            <select th:field="*{tipo}">
+                <option th:each="i : ${listaTiposTarea}" th:value="${i.id}" th:text="${i.nombre}"/>               
+            </select>
+            <span th:if="${#fields.hasErrors('tipo')}" th:errors="*{tipo}"/>
+            <br><br>
+            <button type="submit" th:text="${crearTareaWord}"></button>
+            <button type="button" th:text="${cancelarWord}" onclick="window.location.href='/listarTareas'"></button>
+        </form>
+    </body>
+</html>

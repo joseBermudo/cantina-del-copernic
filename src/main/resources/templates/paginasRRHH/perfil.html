@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html>
+    <head>
+        <title>Perfil</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div>
+            <h1>PERFIL</h1>
+        </div>
+        <div>
+            <form th:action="@{/guardarPerfil}" method="post" th:object="${profesor}">
+                <div>
+                    <input type="hidden" name="correo" th:field="*{correo}"/>
+                    <span th:if="${#fields.hasErrors('correo')}" th:errors="*{correo}"/>
+                    <p>
+                    <label for="nombre" >Nom del professor:</label>
+                    <input type="text" id="nombre" name="nombre" th:field="*{nombre}">
+                    <span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"/>
+                    </p>
+                    <p>
+                    <label for="apellidos">Cognoms del professor: </label>
+                    <input type="text" id="nombre" name="nombre" th:field="*{apellidos}">
+                    <span th:if="${#fields.hasErrors('apellidos')}" th:errors="*{apellidos}"/>
+                    </p>
+                </div>
+                <div>
+                    <p>
+                        <label for="intoleranciaLactosa" >Intolerància a la lactosa:</label>
+                        <input type="checkbox" th:checked="*{intoleranciaLactosa}" name="option1" value="1" th:field="*{intoleranciaLactosa}">
+                    </p>
+                    <p>
+                        <label for="intoleranciaGluten">Intolerància al gluten:</label>
+                        <input type="checkbox" th:checked="*{intoleranciaGluten}" name="option1" value="1" th:field="*{intoleranciaGluten}">
+                    </p>
+                     <p>
+                        <label for="intoleranciaHismatico" >Intolerància a l'histaminic:</label>
+                        <input type="checkbox" th:checked="*{intoleranciaHismatico}" name="option1" value="1" th:field="*{intoleranciaHismatico}">
+                    </p>
+                    
+                    <p>
+                        <label for="intoleranciaFodmaps">Intolerància al FODMAP's:</label>
+                        <input type="checkbox" th:checked="*{intoleranciaFodmaps}" name="option1" value="1" th:field="*{intoleranciaFodmaps}">
+                    </p>
+                    <p>
+                    <label for="observaciones">Observaciones:</label>
+                    <input type="text" id="observaciones" name="observaciones" th:field="*{observaciones}">
+                    <span th:if="${#fields.hasErrors('observaciones')}" th:errors="*{observaciones}"/>
+                    </p>
+                </div>
+                
+                <input type="submit" name="enviar" value="Guardar canvis"/>
+            </form>
+        </div>
+    </body>
+</html>

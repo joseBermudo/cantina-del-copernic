@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Crear Suggeriment</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <div>
+            <h1 th:text="${titulo}"></h1>
+        </div> 
+        <div>
+            <form th:action="@{/guardarSuggeriment}" method="post" th:object="${sugerencia}">
+                <input type="hidden" name="idsugerencia" th:field="*{idSugerencia}"/>
+                <p>
+                <label for="titulo" th:text="${tituloSugerencia}"> </label>
+                <input type="text" id="titulo" name="titulo" th:field="*{titulo}">
+                <span th:if="${#fields.hasErrors('titulo')}" th:errors="*{titulo}"/>
+                </p>
+                <p>
+                <label for="descripcion" th:text="${descripcionSugerencia}"></label>
+                <input type="text" id="descripcion" name="descripcion" th:field="*{descripcion}">
+                <span th:if="${#fields.hasErrors('descripcion')}" th:errors="*{descripcion}"/>
+                </p>
+                <input type="submit" name="enviar" value="Crear suggeriment"/>
+            </form>
+           
+            <button><a th:href="@{/listaSuggeriments}"/> Cancela</button>
+        </div>
+    </body>
+</html>
