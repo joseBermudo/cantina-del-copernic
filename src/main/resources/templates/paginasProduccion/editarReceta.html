@@ -15,11 +15,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <div>
             <form th:action="@{/guardarReceta}" method="POST" th:object="${receta}">
                 <input type="hidden" name="id" th:field="*{id}"/>
-                <label for="nom">Nom:</label><br>
-                <input type="text" id="nom" name="nom" th:field="*{nombre}"><br>
+                <label for="nombre">Nom:</label><br>
+                <input type="text" id="nombre" name="nombre" th:field="*{nombre}"><br>
+                <span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"/><br>
                 <label for="descripcion">Descripció:</label><br>
                 <textarea id="descripcion" name="descripcion" th:field="*{descripcion}" rows="4" cols="50"></textarea><br>  
-
+                <span th:if="${#fields.hasErrors('descripcion')}" th:errors="*{descripcion}"/><br>
                 <label for="ing">Ingredientes:</label><br>
                 <textarea id="ing" name="ing" th:field="*{ing}" rows="4" cols="50"></textarea><br>
                 <br>

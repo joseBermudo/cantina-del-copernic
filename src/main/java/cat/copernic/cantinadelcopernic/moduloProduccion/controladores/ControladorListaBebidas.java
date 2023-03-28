@@ -7,10 +7,12 @@ package cat.copernic.cantinadelcopernic.moduloProduccion.controladores;
 import cat.copernic.cantinadelcopernic.DAO.BebidaDAO;
 import cat.copernic.cantinadelcopernic.modelo.Bebida;
 import cat.copernic.cantinadelcopernic.moduloProduccion.servicios.ProduccionService;
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -53,7 +55,10 @@ public class ControladorListaBebidas {
     }
     
     @PostMapping("/guardarBebida")
-    public String guardarBebida(Bebida bebida){
+    public String guardarBebida(@Valid Bebida bebida,Errors errors){
+        if(errors.hasErrors()){
+            return "/paginasProduccion/editarBebida";
+        }
         proServ.guardarBebida(bebida);
         return "redirect:/listaBebidas";
     }
