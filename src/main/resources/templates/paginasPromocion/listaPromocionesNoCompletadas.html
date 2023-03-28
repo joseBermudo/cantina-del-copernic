@@ -14,9 +14,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
             <button>Sense completar</button>
         </div>
         <div>
-            <ul th:each="promocio: ${promociones}">
-                <li th:text="${promocio.id}"></li> 
-                <li th:text="${promocio.desc}"></li>
+             <ul th:each="promProf: ${promocionesProf}">
+                <li th:text="${promProf.promocion.id}"></li> 
+                <li th:text="${promProf.promocion.desc}"></li>
+                <li th:text="${promProf.recuento}"></li>
             </ul>
         </div>
         <div>

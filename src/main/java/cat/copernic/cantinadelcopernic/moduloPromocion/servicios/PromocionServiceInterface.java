@@ -35,4 +35,5 @@ public interface PromocionServiceInterface {
     
     public Profesor buscarProfesor(Profesor profesor);
     
+    public List<ProfesorPromocion> obtenerPromocionesUsuario(String correo);
 }

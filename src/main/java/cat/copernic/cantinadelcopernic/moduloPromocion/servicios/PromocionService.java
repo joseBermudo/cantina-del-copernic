@@ -106,6 +106,12 @@ public class PromocionService implements PromocionServiceInterface {
         return profesorDAO.findById(profesor.getCorreo()).orElse(null);
     }
 
+    @Override
+    @Transactional(readOnly = true)
+    public List<ProfesorPromocion> obtenerPromocionesUsuario(String correo) {
+        return profPromDAO.findByCorreo(correo);
+    }
+
     
     
     
