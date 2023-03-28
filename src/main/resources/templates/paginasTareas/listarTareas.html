@@ -1,25 +1,27 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title th:text="${listadoTareaWord}"></title>
+        <title>Llistat tasques</title>
     </head>
     <body>
-        <h1 th:text="${listadoTareaWord}"></h1>
+        <h1>Llistat tasques</h1>
 
         <div th:if="${listadoTarea!=null && !listadoTarea.empty}">    
             <table border="1">
                 <tr>
-                    <th th:text="${tareaWord}"></th>
-                    <th th:text="${alumnoWord}"></th>
-                    <th th:text="${fechaWord}"></th>
-                    <th th:text="${editarWord}"></th>
-                    <th th:text="Eliminar"></th>
+                    <th>Tasca</th>
+                    <th>Alumne</th>
+                    <th>Data</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
                 </tr>
                 <tr th:each="i : ${listadoTarea}"> 
                     <td th:text="${i.tipo.nombre}"></td>
                     <td th:text="${i.alumno}"></td>
                     <td th:text="${#temporals.format(i.fecha, 'dd/MM/yyyy')}"></td>
-                    <td th:text="Editar"></td>
+                    <td>
+                        <a th:href="@{/editarTarea/{id}(id=${i.id})}">Editar</a>
+                    </td>
                     <td>
                         <a th:href="@{/eliminarTarea/{id}(id=${i.id})}" onclick="return confirm('Estás segur de que vols eliminar aquesta tasca?')">Eliminar</a>
                     </td>
@@ -27,10 +29,10 @@
             </table>
         </div>
 
-        <div th:if="${listadoTarea==null || listadoTarea.empty}" th:text = "${noHayTareasWord}"></div>
+        <div th:if="${listadoTarea==null || listadoTarea.empty}">No hi ha tasques</div>
         <br>
-        <button th:text="${horarioWord}" onclick="window.location.href = '/horarioTareas'"></button>
-        <button th:text="${crearTareaWord}" onclick="window.location.href = '/crearTarea'"></button>
-        <button th:text="${verTipoTareaWord}" onclick="window.location.href = '/listarTiposTarea'"></button>
+        <button onclick="window.location.href = '/horarioTareas'">Horari</button>
+        <button onclick="window.location.href = '/crearTarea'">Crear tasca</button>
+        <button onclick="window.location.href = '/listarTiposTarea'">Veure tipus de tasques</button>
     </body>
 </html>

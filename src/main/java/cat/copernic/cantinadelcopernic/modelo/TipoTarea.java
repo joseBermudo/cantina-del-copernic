@@ -33,9 +33,9 @@ public class TipoTarea {
     @Column(name = "nombre")
     private String nombre;
     
-    @OneToMany(mappedBy = "tipo", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
+    /*@OneToMany(mappedBy = "tipo", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
     private List<Tarea> tareas;
-    
+    */
     public TipoTarea(int id) {
         this.id = id;
     }

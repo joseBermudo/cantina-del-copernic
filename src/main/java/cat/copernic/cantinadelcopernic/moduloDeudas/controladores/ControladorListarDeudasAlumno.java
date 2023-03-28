@@ -25,29 +25,9 @@ public class ControladorListarDeudasAlumno {
     @Autowired
     private DeudaService deudaService;
     @GetMapping("/listarDeudasAlumno")
-    public String inici(Model model) {
-        
-        model.addAttribute("atrasWord", "Enrrere");
-        model.addAttribute("listadoDeudasWord", "Llistat deutes");
-        model.addAttribute("deudasWord", "Deutes");
-        model.addAttribute("fechaWord", "Data");
-        model.addAttribute("deudaWord", "Deuda");
-        model.addAttribute("marcarComoPagadaWord", "Marcar com a pagada");
-        model.addAttribute("noHayDeudasWord", "No hi ha deutes");
-        model.addAttribute("aplicarCambiosWord", "Aplicar canvis");
-        model.addAttribute("cancelarWord", "Cancel·lar");
-        model.addAttribute("crearDeuteWord", "Crear deute");
-        model.addAttribute("profesorWord", "Professor:");
-        model.addAttribute("correoWord", "Email: ");
+    public String listarDeudasAlumno(Model model) {
         
         model.addAttribute("listadoDeudas", deudaService.listarDeudas());
-        
-        Profesor datosProfesor = new Profesor();
-//        datosProfesor.setCorreo("correo@ejemplo.com");
-//        datosProfesor.setNombre("Nombre");
-//        datosProfesor.setApellidos("Apellido1 Apellido2");
-        
-        model.addAttribute("datosProfesor", datosProfesor);
         
         return "/paginasDeudas/listarDeudasAlumno"; 
     }

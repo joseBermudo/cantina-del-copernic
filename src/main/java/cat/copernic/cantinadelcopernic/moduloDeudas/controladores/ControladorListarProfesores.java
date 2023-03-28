@@ -22,16 +22,7 @@ public class ControladorListarProfesores {
     @Autowired
     ProfesorDAO profesorDAO;
     @GetMapping("/listarProfesores")
-    public String inici(Model model) {
-        
-        model.addAttribute("atrasWord", "Enrrere");
-        model.addAttribute("listadoProfesoresWord", "Llistat professors");
-        model.addAttribute("deudasWord", "Deutes");
-        model.addAttribute("deudaWord", "Deuda");
-        model.addAttribute("correoWord", "Email");
-        model.addAttribute("noHayProfesoresWord", "No hi ha professors");
-        model.addAttribute("verWord", "Veure");
-        
+    public String listarProfesores(Model model) {
         
         model.addAttribute("listadoProfesores", profesorDAO.findAll());
         

@@ -1,18 +1,15 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title th:text="${listadoDeudasWord}"></title>
+        <title>Llistat deutes</title>
     </head>
     <body>
-        <!-- <button th:text="${atrasWord}"></button> -->
-        <h1 th:text="${deudasWord}"></h1>
-
-
+        <h1>Deutes</h1>
         <div th:if="${listadoDeudas!=null && !listadoDeudas.empty}">    
             <table border="1">
                 <tr>
-                    <th th:text="${fechaWord}"></th>
-                    <th th:text="${deudaWord}"></th>
+                    <th>Data</th>
+                    <th>Deute</th>
                 </tr>
                 <tr th:each="i : ${listadoDeudas}"> 
                     <td th:text="${i.fechaDeLaDeuda}"></td>
@@ -21,9 +18,9 @@
             </table>
         </div>
 
-        <div th:if="${listadoDeudas==null || listadoDeudas.empty}" th:text = "${noHayDeudasWord}"></div>
-        <p th:text="${profesorWord + ' ' + datosProfesor.nombre + ' ' + datosProfesor.apellidos}"></p>
-        <p th:text="${correoWord + ' ' + datosProfesor.correo}"></p>
-        <button id="cancelar" th:text="${cancelarWord}" onclick="window.location.href='/listarProfesores'"></button>
+        <div th:if="${listadoDeudas==null || listadoDeudas.empty}">No hi ha deutes</div>
+        <p th:text="${'Professor: ' + ' ' + datosProfesor.nombre + ' ' + datosProfesor.apellidos}"></p>
+        <p th:text="${'Email: ' + ' ' + datosProfesor.correo}"></p>
+        <button id="cancelar" onclick="window.location.href='/listarProfesores'">Cancel·lar</button>
     </body>
 </html>

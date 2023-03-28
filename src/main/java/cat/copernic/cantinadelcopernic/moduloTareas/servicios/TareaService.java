@@ -77,4 +77,9 @@ public class TareaService implements TareaServiceInterface {
     public Tarea cercarTarea(Tarea tarea) {
         return this.tarea.findById(tarea.getId()).orElse(null);
     }
+    
+    public Tarea obtenerTareaPorId(int id) {
+        return this.tarea.findById(id).orElse(null);
+    }
+
 }

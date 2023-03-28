@@ -1,17 +1,16 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title th:text="${listadoTipoTareaWord}"></title>
+        <title>Llistat tipus de tasques</title>
     </head>
     <body>
-        <!-- <button th:text="${atrasWord}"></button> -->
-        <h1 th:text="${listadoTipoTareaWord}"></h1>
+        <h1>Llistat tipus de tasques</h1>
 
         <div th:if="${listadoTiposTarea!=null && !listadoTiposTarea.empty}">    
             <table border="1">
                 <tr>
-                    <th th:text="${tiposTareaWord}"></th>
-                    <th th:text="${eliminarWord}"></th>
+                    <th>Tipus de tasca</th>
+                    <th>Eliminar</th>
                 </tr>
                 <tr th:each="tipoTarea : ${listadoTiposTarea}"> 
                     <td th:text="${tipoTarea.nombre}"></td>
@@ -22,8 +21,8 @@
             </table>
         </div>
 
-        <div th:if="${listadoTiposTarea==null || listadoTiposTarea.empty}" th:text = "${noHayTiposTareaWord}"></div>
-        <button th:text="${listaTareasWord}" onclick="window.location.href='/listarTareas'"></button>
-        <button th:text="${crearTipoTareaWord}" onclick="window.location.href='/crearTipoTarea'"></button>
+        <div th:if="${listadoTiposTarea==null || listadoTiposTarea.empty}">No hi ha tipus de tasques</div>
+        <button onclick="window.location.href='/listarTareas'">Llista de tasques</button>
+        <button onclick="window.location.href='/crearTipoTarea'">Crear tipus de tasca</button>
     </body>
 </html>

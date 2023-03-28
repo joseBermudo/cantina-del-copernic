@@ -31,20 +31,6 @@ public class ControladorListarDeudasAdministrador {
     @GetMapping("/listarDeudasAdministrador/{correo}")
     public String inici(Model model, Profesor profesor) {
         
-        model.addAttribute("atrasWord", "Enrrere");
-        model.addAttribute("listadoDeudasWord", "Llistat deutes");
-        model.addAttribute("deudasWord", "Deutes");
-        model.addAttribute("fechaWord", "Data");
-        model.addAttribute("deudaWord", "Deuda");
-        model.addAttribute("marcarComoPagadaWord", "Marcar com a pagada");
-        model.addAttribute("noHayDeudasWord", "No hi ha deutes");
-        model.addAttribute("aplicarCambiosWord", "Aplicar canvis");
-        model.addAttribute("cancelarWord", "Cancel·lar");
-        model.addAttribute("crearDeuteWord", "Crear deute");
-        model.addAttribute("profesorWord", "Professor:");
-        model.addAttribute("correoWord", "Email: ");
-        
-        
         var profe = profesorService.buscarProfesores(profesor);
                 
         model.addAttribute("datosProfesor", profe);
@@ -56,11 +42,6 @@ public class ControladorListarDeudasAdministrador {
     @GetMapping("/crearDeuda/{correo}")
     public String crearDeuda(Model model, Deuda deuda,Profesor profesor) {
         
-        model.addAttribute("atrasWord", "Enrrere");
-        model.addAttribute("crearDeudaWord", "Crear deute");
-        model.addAttribute("quantitatWord", "Quantitat:");
-        model.addAttribute("dataWord", "Data:");
-        model.addAttribute("cancelarWord", "Cancel·lar");
         model.addAttribute("correo",deudaService.buscarProfesor(profesor).getCorreo());
         
         return "/paginasDeudas/crearDeuda"; 
@@ -80,10 +61,10 @@ public class ControladorListarDeudasAdministrador {
     public String eliminarDeuda(Deuda deuda) {
         
         var objetoDeuda = deudaService.buscarDeudaPorId(deuda.getIdDeuda());
+        var correoProfesor = objetoDeuda.getProfesor().getCorreo();
         deudaService.eliminarDeuda(objetoDeuda);
-        var correoProfesor = deuda.getProfesor().getCorreo();
-        
-        return "redirect:/listarDeudasAdministrador/{correo}" + correoProfesor; 
+
+        return "redirect:/listarDeudasAdministrador/" + correoProfesor;
     }
     
     @GetMapping("/editarDeuda/{idDeuda}")

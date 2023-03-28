@@ -26,11 +26,6 @@ public class ControladorCrearTipoTarea {
     @GetMapping("/crearTipoTarea")
     public String inici(Model model) {
         
-        model.addAttribute("crearTipoTareaWord", "Crear tipus de tasca");
-        model.addAttribute("atrasWord", "Enrrere");
-        model.addAttribute("nombreTipoTareaWord", "Nom tipus de tasca");
-        model.addAttribute("cancelarWord", "Cancel·lar");
-        
         model.addAttribute("tipoTarea", new TipoTarea(0));
         
         return "/paginasTareas/crearTipoTarea"; 

@@ -1,23 +1,87 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title th:text="${editarTareaWord}"></title>
+        <title>Editar tasca</title>
     </head>
     <body>
-        <!-- <button id="atras" th:text="${atrasWord}"></button> -->
-        <h1 th:text="${editarTareaWord}"></h1>
-        <form>
-            <label for="c" th:text="${alumneWord}"></label>
-            <input type="text" name="c"><br><br>
-            <label for="fecha" th:text="${fechaWord}"></label>
-            <input type="date" id="fecha" name="fecha"><br><br>
+        <h1>Editar tasca</h1>
+        <form th:action="@{/guardarTarea}" method="post" th:object="${tarea}">
+            <input type="hidden" name="id" th:field="*{id}"/>
+            <label for="c">Alumne: </label>
+            <input type="text" name="c" th:field="*{alumno}"><br><br>
             
-            <label for="tipoTarea" th:text="${tipoTareaWord}"></label>
-            <select name="tipoTarea" id="tipoTarea">
-                <option th:each="tipoTarea : ${listaTiposTarea}" th:value="${tipoTarea.id}" th:text="${tipoTarea.nombre}"></option>
-            </select><br><br>
+            <label for="fecha">Data: </label>
+            <input type="date" id="fecha" name="fecha" th:field="*{fecha}"><br><br>
+            
+            <label for="tipoTarea">Tipus de tasca: </label>
+           
+            <select th:field="*{tipo}">
+                <option th:each="i : ${listaTiposTarea}" th:value="${i.id}" th:text="${i.nombre}"/>               
+            </select>
+            <span th:if="${#fields.hasErrors('tipo')}" th:errors="*{tipo}"/>
+            <br><br>
+            <button type="submit">Guardar tasca</button>
+            <button type="button" onclick="window.location.href='/listarTareas'">Cancel·lar</button>
         </form>
-        <button th:text="${editarTareaWord}" ></button>
-        <button th:text="${cancelarWord}" onclick="window.location.href='/listarTareas'"></button>
     </body>
 </html>
+
+
+<!--
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Editar tarea</title>
+    </head>
+    <body>
+        <h1>Editar tarea</h1>
+        
+        <form th:action="@{/guardarTarea}" method="post" th:object="${tarea}">
+            <input type="hidden" name="id" th:field="*{id}"/>
+            <label for="c">Alumne: </label>
+            <input type="text" name="c" th:field="*{alumno}"><br><br>
+            
+            <label for="fecha">Data: </label>
+            <input type="date" id="fecha" name="fecha" th:field="*{fecha}"><br><br>
+            
+            <label for="tipoTarea">Tipus de tasca: </label>
+           
+            <select>
+                <option th:each="i : ${listaTiposTarea}" th:value="${i.id}" th:text="${i.nombre}"/>               
+            </select>
+            
+            <br><br>
+            <button type="submit">Guardar tasca</button>
+            <button type="button" onclick="window.location.href='/listarTareas'">Cancel·lar</button>
+        </form>
+    </body>
+</html>
+-->
+<!--
+<label for="tipoTarea">Tipus de tasca: </label>
+            <select id="tipoTarea">
+                <option th:each="tipoTarea : ${listaTiposTarea}" th:value="${tipoTarea.id}" th:text="${tipoTarea.nombre}" th:selected="${tipoTarea.id == ${tarea.tipoTarea.id}}"></option>
+            </select><br><br>
+
+
+
+<form th:action="@{/guardarTarea}" method="post" th:object="${tarea}">
+            <input type="hidden" name="id" th:value="${tarea.id}">
+            <label for="c">Alumne: </label>
+            <input type="text" name="c" th:value="${tarea.alumno}"><br><br>
+            <label for="fecha"> Data: </label>
+            <input type="date" id="fecha" name="fecha" th:field="${tarea.fecha}"><br><br>
+            
+            
+            <label for="tipoTarea">Tipus de tasca: </label>
+           
+            <select th:field="*{tipo}">
+                <option th:each="i : ${listaTiposTarea}"
+                        th:value="${i.id}" th:text="${i.nombre}"/>               
+            </select>
+            <span th:if="${#fields.hasErrors('tipo')}" th:errors="*{tipo}"/>
+            
+            <button type="submit">Guardar canvis</button>
+            <button onclick="window.location.href='/listarTareas'">Cancel·lar</button>
+        </form>
+-->

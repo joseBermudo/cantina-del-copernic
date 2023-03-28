@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title th:text="${listadoDeudasWord}"></title>
+        <title>Llistat deutes</title>
     </head>
     <body>
-        <!-- <button th:text="${atrasWord}"></button> -->
-        <h1 th:text="${deudasWord}"></h1>
+        <h1>Deutes</h1>
         <div th:if="${listadoDeudas!=null && !listadoDeudas.empty}">    
             <table border="1">
                 <tr>
-                    <th th:text="${fechaWord}"></th>
-                    <th th:text="${deudaWord}"></th>
+                    <th>Data: </th>
+                    <th>Deute: </th>
                 </tr>
                 <tr th:each="i : ${listadoDeudas}"> 
                     <td th:text="${i.fechaDeLaDeuda}"></td>
@@ -18,8 +17,8 @@
                 </tr>
             </table>
         </div>
-        <div th:if="${listadoDeudas==null || listadoDeudas.empty}" th:text = "${noHayDeudasWord}"></div>
+        <div th:if="${listadoDeudas==null || listadoDeudas.empty}">No hi ha deutes</div>
         <br>
-        <button th:text="${cancelarWord}" onclick="window.location.href='/listarProfesores'"></button>
+        <button onclick="window.location.href='/listarProfesores'">Cancel·lar</button>
     </body>
 </html>
