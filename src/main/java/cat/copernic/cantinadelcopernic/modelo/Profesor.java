@@ -46,8 +46,7 @@ public class Profesor extends Usuario {
     private String observaciones;
     
     
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "pedido_id_pedido")
+    @OneToMany(mappedBy = "profesores", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
     private List<Pedido> pedido;
 
     @OneToMany(mappedBy = "profesor", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
