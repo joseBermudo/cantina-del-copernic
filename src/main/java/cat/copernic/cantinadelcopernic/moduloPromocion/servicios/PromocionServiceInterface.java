@@ -5,6 +5,7 @@
 package cat.copernic.cantinadelcopernic.moduloPromocion.servicios;
 
 import cat.copernic.cantinadelcopernic.modelo.Profesor;
+import cat.copernic.cantinadelcopernic.modelo.ProfesorPromocion;
 import cat.copernic.cantinadelcopernic.modelo.Promocion;
 import java.util.List;
 
@@ -15,7 +16,9 @@ import java.util.List;
 public interface PromocionServiceInterface {
 
     public List<Promocion> obtenerPromociones();
-
+    
+    public void gurdarProfesorPromocion(List<ProfesorPromocion> list);
+    
     public void guardarPromocion(Promocion promocion);
 
     public Promocion buscarPromocion(Promocion promocion);
@@ -24,5 +27,12 @@ public interface PromocionServiceInterface {
     
     public Promocion obetnerUltimaPromocion();
     
+    public void utilizarPromocion(ProfesorPromocion profesorPromocion);
+    
+    public ProfesorPromocion buscarPromocionProfesor(ProfesorPromocion profesorPromocion);
+    
     public void eliminarPromocion(Promocion promocion);
+    
+    public Profesor buscarProfesor(Profesor profesor);
+    
 }

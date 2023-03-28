@@ -37,7 +37,7 @@ public class Promocion implements Serializable {
     @Column(name = "condicion")
     private int condicio;
     
-    @OneToMany(mappedBy="promocion",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy="promocion",cascade = CascadeType.REMOVE)
     private List<ProfesorPromocion> profesorPromocion;
 
 }

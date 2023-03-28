@@ -63,15 +63,19 @@ public class ControladorListaPromociones {
 
     @PostMapping("/guardarNuevaPromocion")
     public String guardarNuevaPromocion(Promocion promocion, HttpServletRequest request) {
+       
         promocion.setProfesorPromocion(new ArrayList<ProfesorPromocion>());
         promServ.guardarPromocion(promocion);
-        Promocion ultiProm = promServ.obetnerUltimaPromocion();
+        
+        //Promocion ultiProm = promServ.obetnerUltimaPromocion();
+        ArrayList<ProfesorPromocion >listPromProf = new ArrayList<ProfesorPromocion>();
         List<Profesor> listaProfesores = promServ.obetnerClientes();
+        
         listaProfesores.forEach(prof -> {
-            ultiProm.getProfesorPromocion().add(new ProfesorPromocion(new ProfesorPromocionId(ultiProm.getId(), prof.getCorreo()), ultiProm, prof, false, 0 ));
+            listPromProf.add(new ProfesorPromocion(new ProfesorPromocionId(promocion.getId(), prof.getCorreo()), promocion, prof, false, 0 ));
         });
         
-        promServ.guardarPromocion(promocion);
+        promServ.gurdarProfesorPromocion(listPromProf);
 
         return "redirect:/listaPromociones";
     }

@@ -22,29 +22,27 @@ import lombok.Data;
 @Entity
 @Table(name = "recuento_promocion")
 
-public class ProfesorPromocion implements Serializable{
-    
+public class ProfesorPromocion implements Serializable {
+
     @EmbeddedId
     private ProfesorPromocionId id;
-    
+
     @ManyToOne
     @MapsId("promocionId")
     @JoinColumn(name = "promocion_idpromocion", insertable = false, updatable = false)
     private Promocion promocion;
-    
+
     @ManyToOne
     @MapsId("usuarioCorreo")
     @JoinColumn(name = "usuarios_correo", insertable = false, updatable = false)
     private Profesor profesor;
-    
+
     private boolean gastado;
-    
+
     private int recuento;
 
     public ProfesorPromocion() {
     }
-
-    
 
     public ProfesorPromocion(ProfesorPromocionId id, Promocion promocion, Profesor profesor, boolean gastado, int recuento) {
         this.id = id;
@@ -54,6 +52,4 @@ public class ProfesorPromocion implements Serializable{
         this.recuento = recuento;
     }
 
-    
-    
 }

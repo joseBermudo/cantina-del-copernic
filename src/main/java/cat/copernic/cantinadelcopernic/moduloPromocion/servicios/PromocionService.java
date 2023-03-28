@@ -8,6 +8,7 @@ import cat.copernic.cantinadelcopernic.DAO.ProfesorDAO;
 import cat.copernic.cantinadelcopernic.DAO.ProfesorPromocionDAO;
 import cat.copernic.cantinadelcopernic.DAO.PromocionDAO;
 import cat.copernic.cantinadelcopernic.modelo.Profesor;
+import cat.copernic.cantinadelcopernic.modelo.ProfesorPromocion;
 
 import cat.copernic.cantinadelcopernic.modelo.Promocion;
 import java.util.ArrayList;
@@ -33,6 +34,7 @@ public class PromocionService implements PromocionServiceInterface {
     
     @Autowired
     private ProfesorPromocionDAO profPromDAO;
+    
 
     @Override
     @Transactional(readOnly = true)
@@ -75,6 +77,36 @@ public class PromocionService implements PromocionServiceInterface {
         promocionDAO.delete(promocion);
     }
 
+    @Override
+    @Transactional
+    public void utilizarPromocion(ProfesorPromocion profesorPromocion) {
+        profPromDAO.delete(profesorPromocion);
+        
+    }
+
+    @Override
+    @Transactional
+    public void gurdarProfesorPromocion(List<ProfesorPromocion> list) {
+        profPromDAO.saveAll(list);
+    }
+    
+    
+    
+
+    @Override
+    @Transactional(readOnly = true)
+    public ProfesorPromocion buscarPromocionProfesor(ProfesorPromocion profesorPromocion) {
+        return profPromDAO.findById(profesorPromocion.getId()).orElse(null);
+                
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Profesor buscarProfesor(Profesor profesor) {
+        return profesorDAO.findById(profesor.getCorreo()).orElse(null);
+    }
+
+    
     
     
 

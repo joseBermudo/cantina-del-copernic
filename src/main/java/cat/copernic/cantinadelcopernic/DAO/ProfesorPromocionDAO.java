@@ -5,6 +5,7 @@
 package cat.copernic.cantinadelcopernic.DAO;
 
 import cat.copernic.cantinadelcopernic.modelo.ProfesorPromocion;
+import cat.copernic.cantinadelcopernic.modelo.ProfesorPromocionId;
 import cat.copernic.cantinadelcopernic.modelo.Promocion;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -12,6 +13,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
  *
  * @author joseb
  */
-public interface ProfesorPromocionDAO extends JpaRepository<ProfesorPromocion,Integer>{
+public interface ProfesorPromocionDAO extends JpaRepository<ProfesorPromocion,ProfesorPromocionId>{
     
 }

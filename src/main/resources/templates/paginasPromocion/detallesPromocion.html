@@ -3,6 +3,11 @@
 Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
 Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
 -->
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
         <title>Promocions</title>
@@ -14,20 +19,63 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                 <h1>Clients de la promocio</h1>
             </div>
             <div>
-                <table border="1" width="420"<>
+                <!--<table border="1" width="420">
                     <thead> 
+                    <th colspan="20">Nom:</th>
+                    <th colspan="20">Correu Electronic</th>
+                    <th colspan="20">Reconte</th>
+                    <th colspan="20">Gastat</th>
+                    </thead>
+                    <form th:action="@{/utilizarPromocion}" method="POST">
+                        <input type="hidden" name="proId" th:value="${promocion.id}" />
+                        <input type="hidden" name="_csrf" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+
+
+
+                        <tr th:each="profProm,index:${promocion.profesorPromocion}">
+                            <td colspan="20" th:text="${profProm.profesor.nombre}"></td>
+                            <td colspan="20" th:text="${profProm.profesor.correo}"></td>
+                            <td colspan="20" th:text="${profProm.recuento}"></td>
+                            <td>
+                                  <input type="hidden" name="indice" th:value="${index.index}" />
+                                <input type="hidden" name="correo[]" th:value="${profProm.profesor.correo}" />
+                                <input type="submit" name="utilitzar" value="Utilitzar" th:attr="indice=${index.index}"/>
+
+                            </td>
+
+                        </tr>
+                    </form>
+                </table>-->
+
+
+                <form th:action="@{/utilizarPromocion}" method="POST">
+                    <input type="hidden" name="proId" th:value="${promocion.id}" />
+                    <input type="hidden" name="_csrf" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+
+                    <table border="1" width="420">
+                        <thead> 
                         <th colspan="20">Nom:</th>
                         <th colspan="20">Correu Electronic</th>
                         <th colspan="20">Reconte</th>
                         <th colspan="20">Gastat</th>
-                    </thead>
-                    <tr th:each="profProm:${promocion.profesorPromocion}">
-                        <td colspan="20" th:text="${profProm.profesor.nombre}"></td>
-                        <td colspan="20" th:text="${profProm.profesor.correo}"></td>
-                        <td colspan="20" th:text="${profProm.recuento}"></td>
-                        <td><a>Utilitzar</a></td>
-                    </tr>
-                </table>
+                        </thead>
+                        <tbody>
+                            <tr th:each="profProm,indiceStat:${promocion.profesorPromocion}">
+                                <td colspan="20" th:text="${profProm.profesor.nombre}"></td>
+                                <td colspan="20" th:text="${profProm.profesor.correo}"></td>
+                                <td colspan="20" th:text="${profProm.recuento}"></td>
+                                <td>
+                                    <input type="hidden" name="correo[]" th:value="${profProm.profesor.correo}" />
+                                    <button type="submit" name="indice" th:value="${indiceStat.index}" 
+                                            th:attr="data-correo=${profProm.profesor.correo}">Utilitzar</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </form>
+
+
+
             </div>
         </div>
     </body>
