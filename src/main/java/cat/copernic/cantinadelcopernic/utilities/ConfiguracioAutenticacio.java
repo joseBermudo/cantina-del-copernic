@@ -62,7 +62,7 @@ public class ConfiguracioAutenticacio {
 
         // Autorización de las solicitudes entrantes
         return http.authorizeHttpRequests((requests) -> requests
-                .requestMatchers("/listaBocadilloSemana").hasAnyAuthority("admin", "alumno")
+                .requestMatchers("/listaBocadilloSemana","/crearFormularioBocadilloSemana","/listaBocadilloSemana","/verPedidoAdministrador/**").hasAnyAuthority("admin", "alumno")
                 .requestMatchers("/pedidosCliente").hasAnyAuthority("profesor")
                 .anyRequest().authenticated()
         )
