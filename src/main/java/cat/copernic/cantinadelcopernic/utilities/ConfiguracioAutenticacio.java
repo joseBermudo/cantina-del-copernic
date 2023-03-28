@@ -89,7 +89,7 @@ public class ConfiguracioAutenticacio {
 
             // Redirigir al usuario a la página correspondiente según su rol
             if (roles.contains("admin") || roles.contains("alumno")) {
-                getRedirectStrategy().sendRedirect(request, response, "/listaBocadilloSemana");
+                getRedirectStrategy().sendRedirect(request, response, "/pedidosAdministrador");
             } else if (roles.contains("profesor")) {
                 getRedirectStrategy().sendRedirect(request, response, "/pedidosCliente");
             } else {
