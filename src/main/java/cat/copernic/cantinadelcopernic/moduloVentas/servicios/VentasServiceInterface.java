@@ -6,6 +6,7 @@ package cat.copernic.cantinadelcopernic.moduloVentas.servicios;
 
 import cat.copernic.cantinadelcopernic.modelo.BocadilloSemana;
 import cat.copernic.cantinadelcopernic.modelo.Pedido;
+import cat.copernic.cantinadelcopernic.modelo.Profesor;
 import cat.copernic.cantinadelcopernic.modelo.Receta;
 import java.util.List;
 
@@ -35,4 +36,6 @@ public interface VentasServiceInterface {
     
     //Pedidos
     public List<Receta> listarRecetas(); //Mètode que implementarem per llistar Recetas
+    
+    public List<Pedido> findByProfesores(Profesor profesores);
 }
