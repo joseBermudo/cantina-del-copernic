@@ -13,6 +13,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 import java.util.List;
 import lombok.Data;
 
@@ -30,12 +33,11 @@ public class TipoTarea {
     @Column(name = "idtipo_tarea")
     public int id;
     
+    @NotEmpty
+    @Size(max = 45)
     @Column(name = "nombre")
     private String nombre;
     
-    /*@OneToMany(mappedBy = "tipo", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
-    private List<Tarea> tareas;
-    */
     public TipoTarea(int id) {
         this.id = id;
     }
