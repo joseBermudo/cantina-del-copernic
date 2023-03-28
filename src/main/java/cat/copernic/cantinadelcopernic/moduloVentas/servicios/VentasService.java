@@ -9,6 +9,7 @@ import cat.copernic.cantinadelcopernic.DAO.PedidoDAO;
 import cat.copernic.cantinadelcopernic.DAO.RecetaDAO;
 import cat.copernic.cantinadelcopernic.modelo.BocadilloSemana;
 import cat.copernic.cantinadelcopernic.modelo.Pedido;
+import cat.copernic.cantinadelcopernic.modelo.Profesor;
 import cat.copernic.cantinadelcopernic.modelo.Receta;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
@@ -93,5 +94,11 @@ public class VentasService implements VentasServiceInterface {
 
         return (List<Receta>) recetaDAO.findAll();
     }
-
+    
+    @Override
+    @Transactional(readOnly = true)
+    public List<Pedido> findByProfesores(Profesor profesores){        
+        
+         return (List<Pedido>) pedidoDAO.findByProfesores(profesores);
+    }
 }

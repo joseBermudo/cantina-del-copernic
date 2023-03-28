@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <title>UTENSILI</title>
-    </head>
+    <head th:replace="~{plantillas/plantilla :: head}"/>
     <body>
+         <nav th:replace="~{plantillas/plantilla :: menuAdmin}"/>
+        <main class="main-wrapper"/>
+        <header th:replace="~{plantillas/plantilla :: headAdmin}"/>
         <h1>UTENSILI</h1>
-
+         
         <form th:action="@{/guardarUtensilio}" method="post" th:object="${utensilio}">
             
             <input type="hidden" id="idUtensilio" name="utensilio" th:field="*{idutensilio}"/>
