@@ -4,8 +4,6 @@
  */
 package cat.copernic.cantinadelcopernic.moduloVentas.controladores.Cliente;
 
-
-
 import cat.copernic.cantinadelcopernic.DAO.BebidaDAO;
 import cat.copernic.cantinadelcopernic.modelo.Bebida;
 import cat.copernic.cantinadelcopernic.modelo.Pedido;
@@ -26,26 +24,31 @@ public class ControladorVerPedido {
      */
     @Autowired
     private VentasService serVentas;
-    
+
     @Autowired
-   private BebidaDAO bebDAO;
-    
+    private BebidaDAO bebDAO;
+
     @GetMapping("/verPedidoClient/{id_pedido}")
     public String inici(Model model, Pedido pedido) {
-        
-        String com="COMANDA: "+ pedido.getId_pedido();
+
+        String com = "COMANDA: " + pedido.getId_pedido();
         model.addAttribute("comanda", com);
-       
-        
-        
-        pedido=serVentas.buscarPedido(pedido);
-        
-        model.addAttribute("precio",pedido.getBebida().getPrecio()+ pedido.getBocadilloSemana().getPrecio());     
-        
+
+        model.addAttribute("precio", obtenerPrecio(serVentas.buscarPedido(pedido)));
+
+        pedido = serVentas.buscarPedido(pedido);
+
+        model.addAttribute("precio", pedido.getBebida().getPrecio() + pedido.getBocadilloSemana().getPrecio());
+
         model.addAttribute("pedido", serVentas.buscarPedido(pedido));
- 
+
         return "/paginasVentas/ventasCliente/verPedidoCliente"; //Retorna la pàgina iniciEnviarDades
     }
-    
-    
+
+    public Double obtenerPrecio(Pedido pedido) {
+        Double precio = pedido.getBebida().getPrecio() + pedido.getBocadilloSemana().getPrecio();
+        //PRECIO
+        return precio;
+    }
+
 }

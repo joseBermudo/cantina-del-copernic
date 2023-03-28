@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-	<title th:text="${comanda}"></title>
-</head>
-<body>
-	<h1  th:text="${comanda}"></h1>
-        
-	 <form method="post" th:object="${pedido}"  readonly>
+    <head th:replace="~{plantillas/plantilla :: head}"/>
+    <body>
+        <ul th:replace="~{plantillas/plantilla :: menuUsuario}" />
+        <h1  th:text="${comanda}"></h1>
+
+        <form method="post" th:object="${pedido}"  readonly>
             <label for="campo1" th:text="${correostr}"></label>
             <input type="text" id="campo1" th:field="*{profesores.correo}"  readonly><br>
             <br>
@@ -15,13 +14,13 @@
             <br>
             <label for="beguda">Beguda:</label>
             <input type="text" id="campo1" th:field="*{bebida.nombre}"  readonly><br>
-             <br>
+            <br>
             <label for="campo5">Preu total:</label>
-            <input type="text" id="campo5" th:value="${preciototal}"  readonly><br>
+            <input type="text" id="campo5" th:value="${precio}"  readonly><br>
             <br>
             <label for="observaciones">Observacions:</label><br>
             <textarea id="observaciones" rows="4" cols="50" th:field="*{profesores.observaciones}" readonly></textarea><br>
         </form>
-         <button><a th:href="@{/cancelarPedido/}+${pedido.id_pedido}"/> Eliminar</button>
-</body>
+        <button><a th:href="@{/cancelarPedido/}+${pedido.id_pedido}"/> Eliminar</button>
+    </body>
 </html>

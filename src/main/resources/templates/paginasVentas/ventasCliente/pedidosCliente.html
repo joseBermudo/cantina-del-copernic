@@ -1,24 +1,45 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-  <head>
-    <title  th:text="${entrSemana}"></title>
-  </head>
-  <body>
-    <h1 th:text="${bocadillo.nombre}"></h1>
-    <img th:src="${bocadillo.imagen}" alt="Imagen del Bocadillo Fantástico">
-    <br>
-    <p th:text="${bocadillo.descripcion}"></p>
-    <br>
-     <ul th:each="pedido: ${pedidos}">
-            <li>
-                <span th:text="${pedido.bocadilloSemana.nombre}"></span>
+    <head th:replace="~{plantillas/plantilla :: head}"/>
+    <body>
 
-                <div>
-                     <button><a th:href="@{/verPedidoClient/}+${pedido.id_pedido}"/>Visualizar</button>
-                    <button><a th:href="@{/cancelarPedido/}+${pedido.id_pedido}"/> Cancelar</button>
+        <nav th:replace="~{plantillas/plantilla :: menuUsuario}"/>
+        <main class="main-wrapper"/>
+        <header th:replace="~{plantillas/plantilla :: headUsuario}"/>
+
+
+        <div style="padding: 24px;" class="container-fluid">
+            <br>
+            <div class="row">
+                <div th:each="pedido: ${pedidos}" class="col-md-4 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title" th:text="${pedido.bocadilloSemana.nombre}"></h5>
+                            <div class="d-flex justify-content-between">
+                                <a th:href="@{/verPedidoClient/}+${pedido.id_pedido}" class="btn main-btn primary-btn rounded-md btn-hover text-white mr-2">Visualizar</a>
+                                <a th:href="@{/cancelarPedido/}+${pedido.id_pedido}" class="btn main-btn primary-btn rounded-md btn-hover text-white">Cancelar</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </li>
-        </ul>
-    <button><a th:href="@{/hacerPedidoCliente}"/>Fer Comanda</button>
-  </body>
+            </div>
+            <br>
+            <button class="btn main-btn primary-btn rounded-md btn-hover"><a th:href="@{/hacerPedidoCliente}" class="text-white">Fer Comanda</a></button>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        <!-- ========= All Javascript files linkup ======== -->
+        <script src="assets/js/bootstrap.bundle.min.js"></script>
+        <script src="assets/js/Chart.min.js"></script>
+        <script src="assets/js/dynamic-pie-chart.js"></script>
+        <script src="assets/js/moment.min.js"></script>
+        <script src="assets/js/fullcalendar.js"></script>
+        <script src="assets/js/jvectormap.min.js"></script>
+        <script src="assets/js/world-merc.js"></script>
+        <script src="assets/js/polyfill.js"></script>
+        <script src="assets/js/main.js"></script>
+
+    </body>
 </html>

@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <title th:text="${ferComanda}"></title>
-    </head>
+      <head th:replace="~{plantillas/plantilla :: head}"/>
     <body>
+        
+          <nav th:replace="~{plantillas/plantilla :: menuUsuario}"/>
+        <main class="main-wrapper"/>
+        <header th:replace="~{plantillas/plantilla :: headUsuario}"/>
+        
+        <ul th:replace="~{plantillas/plantilla :: menuUsuario}" />
         <h1 th:text="${ferComanda}"></h1>
         <form th:action="@{/guardarPedido}" method="post" th:object="${pedido}">
 
@@ -24,10 +28,11 @@
             </select>
             <span th:if="${#fields.hasErrors('bebida')}" th:errors="*{bebida}"/>
             <br><br>
-
-            <label for="preutotal">Preu Total:</label>
-            <input type="text" id="preutotal" name="preutotal" readonly><br><br>
-            <input type="submit" name="enviar" value="Fer Comanda"/>           
+           
+            <!--<label for="preutotal">Preu Total:</label>
+            <input type="text" id="preutotal" name="preutotal" th:text="${precio}" readonly><br>-->
+            
+           <input type="submit" name="enviar" value="Fer Comanda"/>           
         </form>
 
     </body>
