@@ -9,11 +9,13 @@
         <input type="hidden" name="id" th:field="*{idDeuda}"/>
        
         
-        <label for="c">Quantitat: </label>
-        <input type="number" step="any" name="c" th:field="*{cantidad}"><br>
+        <label for="cantidad">Quantitat: </label>
+        <input type="number" step="any" name="cantidad" th:field="*{cantidad}"><br>
+        <span th:if="${#fields.hasErrors('cantidad')}" th:errors="*{cantidad}"/>
         
-        <label for="f">Data: </label>
-        <input type="date" name="f" th:field="*{fechaDeLaDeuda}"><br><br>
+        <label for="fechaDeLaDeuda">Data: </label>
+        <input type="date" name="fechaDeLaDeuda" th:field="*{fechaDeLaDeuda}"><br><br>
+        <span th:if="${#fields.hasErrors('fechaDeLaDeuda')}" th:errors="*{fechaDeLaDeuda}"/>
         
         <button type="submit">Crear deute</button>
         <button type="button" onclick="window.location.href='/listarProfesores'">Cancel·lar</button>
