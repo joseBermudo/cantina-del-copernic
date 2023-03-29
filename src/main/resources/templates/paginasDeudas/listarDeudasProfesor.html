@@ -1,24 +1,26 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Llistat deutes</title>
-    </head>
+    <head th:replace="~{plantillas/plantilla :: head}"/>
     <body>
-        <h1>Deutes</h1>
-        <div th:if="${listadoDeudas!=null && !listadoDeudas.empty}">    
-            <table border="1">
-                <tr>
-                    <th>Data: </th>
-                    <th>Deute: </th>
-                </tr>
-                <tr th:each="i : ${listadoDeudas}"> 
-                    <td th:text="${i.fechaDeLaDeuda}"></td>
-                    <td th:text="${i.cantidad}"></td>
-                </tr>
-            </table>
-        </div>
-        <div th:if="${listadoDeudas==null || listadoDeudas.empty}">No hi ha deutes</div>
-        <br>
-        <button onclick="window.location.href='/pedidosCliente'">Cancel·lar</button>
-    </body>
+        <link rel="stylesheet" href="/css/listados.css" />
+        <nav th:replace="~{plantillas/plantilla :: menuUsuario}"/>
+        <main class="main-wrapper"/>
+        <header th:replace="~{plantillas/plantilla :: headUsuario}"/>
+        
+	<h1>Deutes</h1>
+	<div th:if="${listadoDeudas!=null && !listadoDeudas.empty}">
+		<table>
+			<tr>
+				<th>Data</th>
+				<th>Deute</th>
+			</tr>
+			<tr th:each="i : ${listadoDeudas}">
+				<td th:text="${i.fechaDeLaDeuda}"></td>
+				<td th:text="${i.cantidad}"></td>
+			</tr>
+		</table>
+	</div>
+	<div th:if="${listadoDeudas==null || listadoDeudas.empty}" class="no-debts">No hi ha deutes</div>
+	<button onclick="window.location.href='/pedidosCliente'">Cancel·lar</button>
+</body>
 </html>
