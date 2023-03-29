@@ -2,24 +2,38 @@
 <html xmlns:th="http://www.thymeleaf.org">
     <head th:replace="~{plantillas/plantilla :: head}"/>
     <body>
-         <nav th:replace="~{plantillas/plantilla :: menuAdmin}"/>
+        <nav th:replace="~{plantillas/plantilla :: menuAdmin}"/>
         <main class="main-wrapper"/>
         <header th:replace="~{plantillas/plantilla :: headAdmin}"/>
-        <h1>UTENSILI</h1>
-         
-        <form th:action="@{/guardarUtensilio}" method="post" th:object="${utensilio}">
-            
-            <input type="hidden" id="idUtensilio" name="utensilio" th:field="*{idutensilio}"/>
-            <label for="nombre">Nom:</label>
-            <input type="text" id="nombre" name="nombre" th:field="*{nombre} "/> 
-            <br>
-            <label for="nombre">Quantitat:</label>
-            <input type="text" id="cantidad" name="nombre" th:field="*{cantidad} "/>
-            <br>
-            <br>
-            <input type="submit" name="enviar" value="GUARDAR"/>
-        </form>
-        
-        <button id="cancelar"><a th:href="@{/editarContenedor/}+${contenedor.idcontenedor}">CANCELAR</a></button>
+
+        <br>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <form th:action="@{/guardarUtensilio}" method="post" th:object="${utensilio}">
+                                <h1 class="card-title">UTENSILI</h1>
+                                <input type="hidden" id="idUtensilio" name="utensilio" th:field="*{idutensilio}" />
+                                <div class="form-group">
+                                    <label for="nombre">Nom:</label>
+                                    <input type="text" id="nombre" name="nombre" class="form-control" th:field="*{nombre}" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="cantidad">Quantitat:</label>
+                                    <input type="text" id="cantidad" name="cantidad" class="form-control" th:field="*{cantidad}" />
+                                </div>
+                                
+                                <br>
+                                <div class="form-group text-center">
+                                    <input type="submit" name="enviar" value="GUARDAR" class="btn btn-primary" />
+                                    <a th:href="@{/editarContenedor/}+${contenedor.idcontenedor}" class="btn btn-secondary">CANCELAR</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </body>
 </html>
