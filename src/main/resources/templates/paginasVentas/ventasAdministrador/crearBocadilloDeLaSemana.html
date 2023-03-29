@@ -6,10 +6,12 @@
         <main class="main-wrapper"/>
         <header th:replace="~{plantillas/plantilla :: headAdmin}"/>
 
-        
-         <h2>Entrepa De la Setmanan</h2>
+        <br>
+         <br>
         <form th:action="@{/guardarBocaSemana}" method="POST" th:object="${bocadilloSemana}">
 
+               <h2>Entrepa De la Setmanan</h2>
+               
             <input type="hidden" name="idbocadillo_semana" th:field="*{idbocadillo_semana}"/>
 
 
@@ -48,8 +50,6 @@
             <br>
             <input type="submit" name="enviar" value="Enviar Dades"/>      
         </form>
-        <br>
-        <button><a th:href="@{/listaBocadilloSemana}">Enrrere</a></button>
     </body>
 </html>
 
