@@ -4,11 +4,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to c
 Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
 -->
 <html xmlns:th="http://www.thymeleaf.org">
-    <head>
+    <head th:replace="~{plantillas/plantilla :: head}"/>
         <title>Begudes</title>
         <meta charset="UTF-8">
     </head>
     <body>
+        <nav th:replace="~{plantillas/plantilla :: menuAdmin}"/>
+        <main class="main-wrapper"/>
+        <header th:replace="~{plantillas/plantilla :: headAdmin}"/>
         <div>
             <button><a href="/listaRecetas">Receptes</a></button>
             <button>Begudes</button>
