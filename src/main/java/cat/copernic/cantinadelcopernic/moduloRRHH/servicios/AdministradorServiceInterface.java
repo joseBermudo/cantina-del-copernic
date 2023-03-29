@@ -5,7 +5,7 @@
 package cat.copernic.cantinadelcopernic.moduloRRHH.servicios;
 
 import cat.copernic.cantinadelcopernic.modelo.Administrador;
-import cat.copernic.cantinadelcopernic.modelo.Usuario;
+import java.util.List;
 
 
 
@@ -15,5 +15,8 @@ import cat.copernic.cantinadelcopernic.modelo.Usuario;
  */
 public interface AdministradorServiceInterface {
     
-     public Usuario buscarProfesores(Administrador administrador); 
+     public Administrador buscarAdministrador(Administrador administrador);
+     public List<Administrador> listarAdministradores();
+     public void anadirAdministrador(Administrador administrador); 
+     public void eliminarAlumno(Administrador administrador);
 }
