@@ -5,30 +5,35 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 -->
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
-        <title>Lista profesors</title>
-        <meta charset="UTF-8">
-    </head>
+         <link rel="stylesheet" href="/css/listaProfessors.css" />  
+    <head th:replace="~{plantillas/plantilla :: head}"/>
     <body>
-        <div>
-             <ul th:each="profesor: ${profesores}">
-                <li>
-                    <span th:text="${profesor.correo}"></span>
-
-                <div>
-                <a th:href="@{/eliminarProfesor/}+${profesor.correo}" onclick="return confirm('Estás segur de que vols eliminar aquesta professor?')">
-                    <button>Eliminar</button>
-                </a>
-            </div>
-            </li>
-            </ul>
-        </div>
-        <div>
+        <nav th:replace="~{plantillas/plantilla :: menuAdmin}"/>
+        <main class="main-wrapper"/>
+        <header th:replace="~{plantillas/plantilla :: headAdmin}"/>
+        
+        <h1 class="titulo"> LLISTA DE PROFESSORS</h1>
+         <div>
            <a th:href="@{/nouProfessor}"/>
-                <button>Nou Profesor</button>
+                <button class="boton-nuevoProfesor">Nou Profesor</button>
            </a>
             <a th:href="@{/nouAlumne}"/>
                 <button>Nou Alumnre</button>
            </a>
         </div>
+        <div>
+            <ul class="lista" th:each="profesor: ${profesores}">
+                <li class="elemento-lista">
+                    <span th:text="${profesor.correo}"></span>
+
+                <div>
+                <a th:href="@{/eliminarProfesor/}+${profesor.correo}" onclick="return confirm('Estás segur de que vols eliminar aquesta professor?')">
+                    <button class="boton-eliminar">Eliminar</button>
+                </a>
+            </div>
+            </li>
+            </ul>
+        </div>
+       
     </body>
 </html>

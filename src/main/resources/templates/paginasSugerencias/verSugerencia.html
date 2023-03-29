@@ -5,23 +5,25 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 -->
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
-        <title>Veure Suggeriment</title>
-        <meta charset="UTF-8">
-    </head>
+       <link rel="stylesheet" href="/css/verSugerencia.css" />  
+    <head th:replace="~{plantillas/plantilla :: head}"/>
     <body>
+        <nav th:replace="~{plantillas/plantilla :: menuAdmin}"/>
+        <main class="main-wrapper"/>
+        <header th:replace="~{plantillas/plantilla :: headAdmin}"/>
         <div>
-            <h1>VEURE SUGGERIMENT</h1>
+            <h1 class="titulo">VEURE SUGGERIMENT</h1>
         </div> 
-        <div th:if="${sugerencia!=null}">
+        <div style th:if="${sugerencia!=null}">
             <form th:action="@{/guardarSuggeriment/1}" method="post" th:object="${sugerencia}">
                  <input type="hidden" id="titulo" name="titulo" th:field="*{idSugerencia}">
                 <input type="hidden" id="titulo" name="titulo" th:field="*{titulo}">
                 <input type="hidden" id="titulo" name="titulo" th:field="*{descripcion}">
-                <p th:text="${tituloSugerencia}"></p>
-                <p th:text="*{titulo}"></p>
-                <p th:text="${descripcioSuggerimrnt}"></p>
-                <p th:text="*{descripcion}"></p>
-                <input type="submit" name="enviar" value="Marcar llegit"/>
+                <p class="texto-negrita" th:text="${tituloSugerencia}"></p>
+                <p class="texto" th:text="*{titulo}"></p>
+                <p class="texto-negrita" th:text="${descripcioSuggerimrnt}"></p>
+                <p class="texto" th:text="*{descripcion}"></p>
+                <input class="boton" type="submit" name="enviar" value="Marcar llegit"/>
             </form>
           
         </div>

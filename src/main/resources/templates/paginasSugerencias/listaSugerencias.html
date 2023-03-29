@@ -6,23 +6,38 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 <html xmlns:th="http://www.thymeleaf.org">
     <head th:replace="~{plantillas/plantilla :: head}"/>
     <body>
+        <div th:if="${esProfesor}">
+        <nav  th:replace="~{plantillas/plantilla :: menuUsuario}"/>
+        </div>
+        
+        <div th:if="${esAdmin}" >
         <nav th:replace="~{plantillas/plantilla :: menuAdmin}"/>
+        </div>
+        
         <main class="main-wrapper"/>
-        <header th:replace="~{plantillas/plantilla :: headAdmin}"/>
+        
+        <div th:if="${esAdmin}" >
+            <header th:replace="~{plantillas/plantilla :: headAdmin}"/>
+        </div>
+        
+        <div th:if="${esProfesor}">
+             <header th:replace="~{plantillas/plantilla :: headUsuario}"/>
+        </div>
+        
         <div>
-            <h1 style="margin-left: 40px; margin-bottom: 30px">LLISTA SUGGERIMENT</h1>
+            <h1 style="margin-left: 43px; margin-bottom: 30px">LLISTA SUGGERIMENT</h1>
         </div>
         <div>
             <ul style="margin-top: 10px; " th:if="${esProfesor}" th:each="sugerencia: ${sugerencias}">
-                <li style="margin-bottom: 15px; margin-left: 40px">·<a th:text="${sugerencia.titulo}" th:href="@{/editarSuggeriment/}+${sugerencia.idSugerencia}"/></li>  
+                <li style="margin-bottom: 15px; margin-left: 43px">- <a style=" color: orange;" th:text="${sugerencia.titulo}" th:href="@{/editarSuggeriment/}+${sugerencia.idSugerencia}"/></li>  
             </ul>
             <ul style="margin-top: 10px;" th:unless="${esProfesor}" th:each="sugerencia: ${sugerencias}">
-                <li style="margin-bottom: 15px; margin-left: 100px">·<a th:text="${sugerencia.titulo}" th:href="@{/verSuggeriment/}+${sugerencia.idSugerencia}"/></li>  
+                <li style="margin-bottom: 15px; margin-left: 100px">- <a style=" color: orange;" th:text="${sugerencia.titulo}" th:href="@{/verSuggeriment/}+${sugerencia.idSugerencia}"/></li>  
             </ul>
         </div>
         <div>
             <a th:href="@{/nouSuggeriment}">
-                <button th:if="${esProfesor}">Nou suggeriment</button>
+                <button style="margin-left: 43px;  margin-top: 30px" th:if="${esProfesor}">Nou suggeriment</button>
             </a>
         </div>
     </body>

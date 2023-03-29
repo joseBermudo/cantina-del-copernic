@@ -50,6 +50,7 @@ public class ControladorListaSugerencias {
         }else{
             model.addAttribute("sugerencias", sugerenciaService.listarSugerencias());
             model.addAttribute("esProfesor", false);
+            model.addAttribute("esAdmin", true);
         }
         
       

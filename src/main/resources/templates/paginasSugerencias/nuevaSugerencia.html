@@ -5,35 +5,40 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 -->
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
-        <title>Crear Suggeriment</title>
-        <meta charset="UTF-8">
-    </head>
+        <link rel="stylesheet" href="/css/formularioSugerencia.css" />  
+    <head th:replace="~{plantillas/plantilla :: head}"/>
     <body>
+        <nav th:replace="~{plantillas/plantilla :: menuUsuario}"/>
+        <main class="main-wrapper"/>
+        <header th:replace="~{plantillas/plantilla :: headUsuario}"/> 
+        
         <div>
-            <h1 th:text="FORMULARISUGGERIMENT"></h1>
+            <h1 th:if="${esCrearSugerencia}" class="titulo">NOU SUGGERIMENT</h1>
+            <h1 th:if="${esEditarSugerencia}" class="titulo">EDITAR SUGGERIMENT</h1>
         </div> 
+        
+        
         <div>
             <form th:action="@{/guardarSuggeriment/0}" method="post" th:object="${sugerencia}">
                 <p th:if="*{leida}">Aquest suggeriment ja ha estat llegit</p>
                 <input type="hidden" name="idsugerencia" th:field="*{idSugerencia}"/>
                 <p>
-                <label for="titulo" th:text="TitulDelSuggeriment"> </label>
+                <span th:if="${#fields.hasErrors('titulo')}" th:errors="*{titulo}"/><br>
+                <label for="titulo">Titul del suggeriment: </label><br>
                 <input type="text" id="titulo" name="titulo" th:field="*{titulo}">
-                <span th:if="${#fields.hasErrors('titulo')}" th:errors="*{titulo}"/>
+                
                 </p>
                 <p>
-                <label for="descripcion" th:text="DescripcióDelSuggeriment"></label>
+                <span th:if="${#fields.hasErrors('descripcion')}" th:errors="*{descripcion}"/><br>
+                <label for="descripcion">Descripció del suggeriment</label><br>
                 <input type="text" id="descripcion" name="descripcion" th:field="*{descripcion}">
-                <span th:if="${#fields.hasErrors('descripcion')}" th:errors="*{descripcion}"/>
                 </p>
-                <input type="submit" name="enviar" value="Crear suggeriment"/>
-            </form>
-           <a th:href="@{/listaSuggeriments}">
-            <button th:if="${esCrearSugerencia}"> Cancela</button>
-           </a>
-            <a th:href="@{/eliminarSuggeriment/}+${sugerencia.idSugerencia}" onclick="return confirm('Estás segur de que vols eliminar aquest suggeriment')">
+                <input type="submit" name="enviar" value="Guardar"/>
+                 <a th:href="@{/eliminarSuggeriment/}+${sugerencia.idSugerencia}" onclick="return confirm('Estás segur de que vols eliminar aquest suggeriment')">
                 <button th:if="${esEditarSugerencia}"> Elimina</button>
-            </a>
+                </a>
+            </form>
+           
         </div>
     </body>
     

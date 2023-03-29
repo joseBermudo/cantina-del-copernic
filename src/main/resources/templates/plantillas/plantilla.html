@@ -117,11 +117,9 @@
                         </a>
                         <ul id="ddmenu_2" class="collapse dropdown-nav">
                             <li>
-                                <a href="settings.html"> Settings </a>
+                               <a th:href="@{/listaSuggeriments}"> Llistat Suggeriments </a>
                             </li>
-                            <li>
-                                <a href="blank-page.html"> Blank Page </a>
-                            </li>
+                           
                         </ul>
                     </li>
                     <li class="nav-item">
@@ -363,14 +361,19 @@
                   >
                     <div class="profile-info">
                       <div class="info">
+                        
                         <h6>John Doe</h6>
+                        <a th:href="@{/perfil}"> 
                         <div class="image">
+                          
                           <img
                             src="assets/images/profile/profile-image.png"
                             alt=""
                           />
+                          
                           <span class="status"></span>
                         </div>
+                            </a>
                       </div>
                     </div>
                     <i class="lni lni-chevron-down"></i>
@@ -485,9 +488,7 @@
                             <li>
                                 <a th:href="@{/listaSuggeriments}"> Llistat Suggeriments </a>
                             </li>
-                            <li>
-                                <a href="blank-page.html"> Blank Page </a>
-                            </li>
+                           
                         </ul>
                     </li>
                     <li class="nav-item">
@@ -588,7 +589,7 @@
                         </a>
                         <ul id="ddmenu_5" class="collapse dropdown-nav">
                             <li>
-                                <a href="form-elements.html"> Form Elements </a>
+                                 <a th:href="@{/listaProfesors}"> Llistat Suggeriments </a>
                             </li>
                         </ul>
                     </li>
