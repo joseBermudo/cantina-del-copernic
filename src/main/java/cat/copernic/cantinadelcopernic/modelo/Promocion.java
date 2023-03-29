@@ -12,6 +12,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
@@ -31,9 +34,12 @@ public class Promocion implements Serializable {
     @Column(name = "idpromocion")
     private int id;
     
+    
     @Column(name = "descripcion")
+    @NotEmpty
     private String desc;
     
+    @NotNull
     @Column(name = "condicion")
     private int condicio;
     
