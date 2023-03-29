@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <title>Crear tipus de tasca</title>
-    </head>
+<html>
+    <head th:replace="~{plantillas/plantilla :: head}"/>
     <body>
+        <link rel="stylesheet" href="/css/formulario.css" />
+        <nav th:replace="~{plantillas/plantilla :: menuAdmin}"/>
+        <main class="main-wrapper"/>
+        <header th:replace="~{plantillas/plantilla :: headAdmin}"/>
         <h1>Crear tipus de tasca</h1>
         <form th:action="@{/guardarTipoTarea}" method="post" th:object="${tipoTarea}">
             <input type="hidden" name="id" th:field="*{id}"/>

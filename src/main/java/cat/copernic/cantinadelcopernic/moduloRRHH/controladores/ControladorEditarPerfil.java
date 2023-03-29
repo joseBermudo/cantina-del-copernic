@@ -5,7 +5,9 @@
 package cat.copernic.cantinadelcopernic.moduloRRHH.controladores;
 
 import cat.copernic.cantinadelcopernic.modelo.Profesor;
+import cat.copernic.cantinadelcopernic.modelo.Rol;
 import cat.copernic.cantinadelcopernic.moduloRRHH.servicios.ProfesorService;
+import cat.copernic.cantinadelcopernic.utilities.RolSigleton;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,9 +32,12 @@ public class ControladorEditarPerfil {
            return "paginasRRHH/perfil";
         }
         
+        var rol = new Rol();
+        rol.setIdroles(RolSigleton.getInformacion());
+        profesor.setRols(rol);
         profesorService.anadirProfesores(profesor);
-        
-        return "redirect:/listaProfesors";
+        var correo = profesor.getCorreo();
+        return "redirect:/perfil/" + correo;
     
     }
 }

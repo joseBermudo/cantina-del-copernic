@@ -4,7 +4,6 @@
  */
 package cat.copernic.cantinadelcopernic.moduloVentas.controladores.Admin;
 
-import cat.copernic.cantinadelcopernic.DAO.RecetaDAO;
 import cat.copernic.cantinadelcopernic.modelo.BocadilloSemana;
 import cat.copernic.cantinadelcopernic.moduloProduccion.servicios.ProduccionService;
 import cat.copernic.cantinadelcopernic.moduloVentas.servicios.VentasService;
@@ -68,7 +67,7 @@ public class ControladorCrearBocadilloDeLaSemana {
     public String editarBocadilloSemana(BocadilloSemana bocadilloSemana, Model model) {
 
         model.addAttribute("recetas", prodSer.obtenerRecetas());
-        model.addAttribute("bocadillosemana", ventasSer.buscarBocadilloSemana(bocadilloSemana));
+        model.addAttribute("bocadilloSemana", ventasSer.buscarBocadilloSemana(bocadilloSemana));
 
         return "/paginasVentas/ventasAdministrador/crearBocadilloDeLaSemana";
     }

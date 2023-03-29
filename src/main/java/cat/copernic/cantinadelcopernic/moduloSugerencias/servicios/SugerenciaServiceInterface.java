@@ -4,6 +4,7 @@
  */
 package cat.copernic.cantinadelcopernic.moduloSugerencias.servicios;
 
+import cat.copernic.cantinadelcopernic.modelo.Profesor;
 import cat.copernic.cantinadelcopernic.modelo.Sugerencia;
 import java.util.List;
 
@@ -20,5 +21,7 @@ public interface SugerenciaServiceInterface {
     public void eliminarSugerencia(Sugerencia sugerencia);
     
     public Sugerencia buscarSugerencia(Sugerencia sugerencia); 
+    
+    public List<Sugerencia> listarSugerenciasProfesor(Profesor profesor);
     
 }

@@ -6,6 +6,7 @@ package cat.copernic.cantinadelcopernic.moduloRRHH.controladores;
 
 import cat.copernic.cantinadelcopernic.modelo.Profesor;
 import cat.copernic.cantinadelcopernic.moduloRRHH.servicios.ProfesorService;
+import cat.copernic.cantinadelcopernic.utilities.RolSigleton;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,8 +33,10 @@ public class ControladorPerfilProfesor {
         model.addAttribute("intoleranciaHismatico", "intolerància a l'histaminic");
         model.addAttribute("intoleranciaFodmaps", "intolerància al FODMAP's");
         model.addAttribute("observaciones", "observaciones");
-        
-        model.addAttribute("profesor", profesorService.buscarProfesores(profesor));
+        var profesor2 = profesorService.buscarProfesores(profesor); 
+        model.addAttribute("profesor",profesor2);
+        RolSigleton.getInstance();
+        RolSigleton.setInformacion(profesor2.getRols().getIdroles());
         
         return "/paginasRRHH/perfil";
     }

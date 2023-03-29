@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Crear tasca</title>
-    </head>
+    <head th:replace="~{plantillas/plantilla :: head}"/>
     <body>
+        <link rel="stylesheet" href="/css/formulario.css" />
+        <nav th:replace="~{plantillas/plantilla :: menuAdmin}"/>
+        <main class="main-wrapper"/>
+        <header th:replace="~{plantillas/plantilla :: headAdmin}"/>
         <h1>Crear tasca</h1>
         <form th:action="@{/guardarTarea}" method="post" th:object="${tarea}">
             <input type="hidden" name="id" th:field="*{id}"/>

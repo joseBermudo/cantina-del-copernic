@@ -1,28 +1,11 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <title>Horari</title>
-        <style>
-            table {
-                border-collapse: collapse;
-                margin: 0 auto;
-            }
-            th, td {
-                border: 1px solid black;
-                padding: 10px;
-            }
-            th {
-                background-color: #ccc;
-            }
-            td {
-                text-align: center;
-            }
-            .groc {
-                background-color: #ff0;
-            }
-        </style>
-    </head>
+<html>
+    <head th:replace="~{plantillas/plantilla :: head}"/>
     <body>
+        <link rel="stylesheet" href="/css/horarioCSS.css" />
+        <nav th:replace="~{plantillas/plantilla :: menuAdmin}"/>
+        <main class="main-wrapper"/>
+        <header th:replace="~{plantillas/plantilla :: headAdmin}"/>
         <h1>Horari</h1>
         <table id="horario">
             <thead>

@@ -21,6 +21,7 @@
         <link rel="stylesheet" href="/css/materialdesignicons.min.css" />
         <link rel="stylesheet" href="/css/fullcalendar.css" />
         <link rel="stylesheet" href="/css/main.css" />
+        <link rel="stylesheet" type="text/css" href="/css/formulario.css">
     </head>
 
     <head th:fragment="headLogin"> <!--fragment per afegir els links als documents html de la nostra aplicació-->
@@ -46,15 +47,18 @@
 
 
 
-
-
-
+    
+    
+    
+    
+    
+    
     <body>
 
          <!-- ======== sidebar-nav start =========== -->
         <aside class="sidebar-nav-wrapper" th:fragment="menuUsuario">
             <div class="navbar-logo">
-                <a href="index.html">
+                <a th:href="@{/pedidosCliente}">
                     <img src="/imagenes/logo_para_menu.png" alt="logo" />
                 </a>
             </div>
@@ -113,11 +117,9 @@
                         </a>
                         <ul id="ddmenu_2" class="collapse dropdown-nav">
                             <li>
-                                <a href="settings.html"> Settings </a>
+                               <a th:href="@{/listaSuggeriments}"> Llistat Suggeriments </a>
                             </li>
-                            <li>
-                                <a href="blank-page.html"> Blank Page </a>
-                            </li>
+                           
                         </ul>
                     </li>
                     <li class="nav-item">
@@ -135,7 +137,6 @@
                                     />
                                 </svg>
                             </span>
-
 
                             <span class="text">Mòdul promoció</span>
                         </a>
@@ -159,7 +160,7 @@
                     </li>
 
                        <li class="nav-item">
-                        <a href="tables.html">
+                        <a th:href="@{/listarProfesores}">
                             <span class="icon">
                                 <svg
                                     width="22"
@@ -178,9 +179,7 @@
                             </span>
                         </a>
                     </li>                   
-           
-                    
-                    
+  
                     <span class="divider"><hr /></span>
                     <li class="nav-item nav-item-has-children">           
             <a
@@ -211,19 +210,16 @@
             </a>
             <ul id="ddmenu_3" class="collapsed show dropdown-nav">
               <li>
-                <a href="signin.html" class="active">log out</a>
+                <form method="POST" th:action="@{/logout}">                
+                <!-- Botó per sortir de l'aplicació-->
+                <p><input class="btn btn-outline-danger" type="submit" name="logout" value="Sortir"/></p> 
+            </form>
               </li>
                 </ul>
             </nav>
         </aside>
         <div class="overlay"></div>
         <!-- ======== sidebar-nav end =========== -->
-
-
-
-
-
-
 
        <header class="header" th:fragment="headUsuario">
         <div class="container-fluid">
@@ -367,14 +363,19 @@
                   >
                     <div class="profile-info">
                       <div class="info">
+                        
                         <h6>John Doe</h6>
+                        <a th:href="@{/perfil}"> 
                         <div class="image">
+                          
                           <img
                             src="assets/images/profile/profile-image.png"
                             alt=""
                           />
+                          
                           <span class="status"></span>
                         </div>
+                            </a>
                       </div>
                     </div>
                     <i class="lni lni-chevron-down"></i>
@@ -413,20 +414,7 @@
       <!-- ========== header end ========== -->
 
 
-
-
-
-
-
-
-
-
-        <!-- Definim la capçalera que reutilitzarem en les altress pàgines que s'identificarà
-             com un fragment de nom "capcalera". El contingut és el de la variable plantilla.capcalera.titol
-             definida en el fitxer messages.properties. Aquest contingut el visualitzem
-             mitjançant la notació th:text="#{plantilla.capcalera.titol} que trobem dins
-             l'etiqueta de l'element
-        -->
+      
         <header th:fragment="capcalera">
             <h1 th:text="#{plantilla.capcalera.titol}"/>
         </header>
@@ -435,10 +423,8 @@
         
         
         
-        <!--ADMINISTRADOR/ALUMNO -->
-        
-
-         <!-- ======== sidebar-nav start =========== -->
+       <!--ADMINISTRADOR/ALUMNO -->
+       <!-- ======== sidebar-nav start =========== -->
         <aside class="sidebar-nav-wrapper" th:fragment="menuAdmin">
             <div class="navbar-logo">
                 <a href="index.html">
@@ -502,11 +488,9 @@
                         </a>
                         <ul id="ddmenu_2" class="collapse dropdown-nav">
                             <li>
-                                <a href="settings.html"> Settings </a>
+                                <a th:href="@{/listaSuggeriments}"> Llistat Suggeriments </a>
                             </li>
-                            <li>
-                                <a href="blank-page.html"> Blank Page </a>
-                            </li>
+                           
                         </ul>
                     </li>
                     <li class="nav-item">
@@ -546,16 +530,8 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="nav-item nav-item-has-children">
-                        <a
-                            href="#0"
-                            class="collapsed"
-                            data-bs-toggle="collapse"
-                            data-bs-target="#ddmenu_55"
-                            aria-controls="ddmenu_55"
-                            aria-expanded="false"
-                            aria-label="Toggle navigation"
-                            >
+                    <li class="nav-item">
+                        <a th:href="@{/horarioTareas}">
                             <span class="icon">
                                 <svg
                                     width="22"
@@ -565,13 +541,13 @@
                                     xmlns="http://www.w3.org/2000/svg"
                                     >
                                 <path
-                                    d="M1.83325 19.25V17.4167H18.3333V19.25H1.83325ZM18.3333 7.33333V4.58333H16.4999V7.33333H18.3333ZM18.3333 2.75C18.8195 2.75 19.2858 2.94315 19.6296 3.28697C19.9734 3.63079 20.1666 4.0971 20.1666 4.58333V7.33333C20.1666 7.81956 19.9734 8.28588 19.6296 8.6297C19.2858 8.97351 18.8195 9.16667 18.3333 9.16667H16.4999V11.9167C16.4999 12.8891 16.1136 13.8218 15.426 14.5094C14.7383 15.197 13.8057 15.5833 12.8333 15.5833H7.33325C6.36079 15.5833 5.42816 15.197 4.74053 14.5094C4.05289 13.8218 3.66659 12.8891 3.66659 11.9167V2.75H18.3333ZM14.6666 4.58333H5.49992V11.9167C5.49992 12.4029 5.69307 12.8692 6.03689 13.213C6.38071 13.5568 6.84702 13.75 7.33325 13.75H12.8333C13.3195 13.75 13.7858 13.5568 14.1296 13.213C14.4734 12.8692 14.6666 12.4029 14.6666 11.9167V4.58333Z"
+                                    d="M4.58333 3.66675H17.4167C17.9029 3.66675 18.3692 3.8599 18.713 4.20372C19.0568 4.54754 19.25 5.01385 19.25 5.50008V16.5001C19.25 16.9863 19.0568 17.4526 18.713 17.7964C18.3692 18.1403 17.9029 18.3334 17.4167 18.3334H4.58333C4.0971 18.3334 3.63079 18.1403 3.28697 17.7964C2.94315 17.4526 2.75 16.9863 2.75 16.5001V5.50008C2.75 5.01385 2.94315 4.54754 3.28697 4.20372C3.63079 3.8599 4.0971 3.66675 4.58333 3.66675ZM4.58333 7.33341V11.0001H10.0833V7.33341H4.58333ZM11.9167 7.33341V11.0001H17.4167V7.33341H11.9167ZM4.58333 12.8334V16.5001H10.0833V12.8334H4.58333ZM11.9167 12.8334V16.5001H17.4167V12.8334H11.9167Z"
                                     />
                                 </svg>
                             </span>
                             <span class="text"><a th:href="@{/horarioTareas}">Mòdul Tasques</a></span>
                         </a>
-                    </li>
+                    </li> 
                     <li class="nav-item nav-item-has-children">
                         <a
                             href="#0"
@@ -599,7 +575,7 @@
                         </a>
                         <ul id="ddmenu_5" class="collapse dropdown-nav">
                             <li>
-                                <a href="form-elements.html"> Form Elements </a>
+                                 <a th:href="@{/listaProfesors}"> Llistat Suggeriments </a>
                             </li>
                         </ul>
                     </li>
@@ -643,7 +619,7 @@
                     </li>
                     
                        <li class="nav-item">
-                        <a href="tables.html">
+                        <a th:href="@{/listarDeudasProfesor}">
                             <span class="icon">
                                 <svg
                                     width="22"
@@ -662,8 +638,7 @@
                             </span>
                             
                         </a>
-                    </li>
-                    
+                    </li> 
                       </li>
                     
                        <li class="nav-item">
@@ -685,7 +660,6 @@
                         </a>
                     </li>
 
-                    
                     <span class="divider"><hr /></span>
                     <li class="nav-item nav-item-has-children">           
             <a
@@ -716,8 +690,10 @@
             </a>
             <ul id="ddmenu_3" class="collapsed show dropdown-nav">
               <li>
-                <a href="signin.html" class="active">log out</a>
-              </li>
+                 <form method="POST" th:action="@{/logout}">                
+                <!-- Botó per sortir de l'aplicació-->
+                <p><input class="btn btn-outline-danger" type="submit" name="logout" value="Sortir"/></p> 
+            </form>
                 </ul>
             </nav>
         </aside>
@@ -800,6 +776,8 @@
                     </li>
                   </ul>
                 </div>
+                
+                
                 <!-- notification end -->
                 <!-- message start -->
                 <div class="header-message-box ml-15 d-none d-md-flex">

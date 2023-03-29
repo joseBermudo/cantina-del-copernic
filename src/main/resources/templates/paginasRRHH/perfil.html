@@ -4,29 +4,34 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to c
 Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
 -->
 <html>
-    <head>
-        <title>Perfil</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
+      <head>
+        <link rel="stylesheet" href="/css/perfil.css" />  
+    <head th:replace="~{plantillas/plantilla :: head}"/>
     <body>
+        <nav  th:replace="~{plantillas/plantilla :: menuUsuario}"/>
+        <main class="main-wrapper"/>
+        <header th:replace="~{plantillas/plantilla :: headUsuario}"/> 
         <div>
-            <h1>PERFIL</h1>
+            <h1 class="titulo">PERFIL</h1>
         </div>
         <div>
             <form th:action="@{/guardarPerfil}" method="post" th:object="${profesor}">
                 <div>
                     <input type="hidden" name="correo" th:field="*{correo}"/>
-                    <span th:if="${#fields.hasErrors('correo')}" th:errors="*{correo}"/>
+                    <input type="hidden" name="correo" th:field="*{password}"/>
+                    <input type="hidden" name="correo" th:field="*{username}"/>
+                    <span class="span" th:if="${#fields.hasErrors('correo')}" th:errors="*{correo}"/>
                     <p>
+                        <span class="span" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"/><br>
                     <label for="nombre" >Nom del professor:</label>
                     <input type="text" id="nombre" name="nombre" th:field="*{nombre}">
-                    <span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"/>
+                   
                     </p>
                     <p>
+                        <span class="span" th:if="${#fields.hasErrors('apellidos')}" th:errors="*{apellidos}"/><br>
                     <label for="apellidos">Cognoms del professor: </label>
                     <input type="text" id="nombre" name="nombre" th:field="*{apellidos}">
-                    <span th:if="${#fields.hasErrors('apellidos')}" th:errors="*{apellidos}"/>
+                   
                     </p>
                 </div>
                 <div>
@@ -50,7 +55,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                     <p>
                     <label for="observaciones">Observaciones:</label>
                     <input type="text" id="observaciones" name="observaciones" th:field="*{observaciones}">
-                    <span th:if="${#fields.hasErrors('observaciones')}" th:errors="*{observaciones}"/>
+                    <span class="span" th:if="${#fields.hasErrors('observaciones')}" th:errors="*{observaciones}"/>
                     </p>
                 </div>
                 

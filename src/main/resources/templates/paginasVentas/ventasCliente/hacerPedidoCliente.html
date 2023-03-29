@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-      <head th:replace="~{plantillas/plantilla :: head}"/>
+    <head th:replace="~{plantillas/plantilla :: head}"></head>
+
+    
     <body>
         
-          <nav th:replace="~{plantillas/plantilla :: menuUsuario}"/>
+        <nav th:replace="~{plantillas/plantilla :: menuUsuario}"/>
         <main class="main-wrapper"/>
         <header th:replace="~{plantillas/plantilla :: headUsuario}"/>
-        
-        <ul th:replace="~{plantillas/plantilla :: menuUsuario}" />
-        <h1 th:text="${ferComanda}"></h1>
+       
+        <h1 style="text-align: center; color: #FFA500; margin: 35px" th:text="${ferComanda}"></h1>
         <form th:action="@{/guardarPedido}" method="post" th:object="${pedido}">
 
             <input type="hidden" name="id_pedido" th:field="*{id_pedido}"/>

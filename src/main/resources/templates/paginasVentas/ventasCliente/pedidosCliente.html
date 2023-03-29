@@ -2,12 +2,17 @@
 <html xmlns:th="http://www.thymeleaf.org">
     <head th:replace="~{plantillas/plantilla :: head}"/>
     <body>
-
+        
         <nav th:replace="~{plantillas/plantilla :: menuUsuario}"/>
         <main class="main-wrapper"/>
         <header th:replace="~{plantillas/plantilla :: headUsuario}"/>
-
-
+        
+        
+        <h1 style="font-family: Arial, sans-serif; color: #000; padding: 24px;">COMANDES</h1>
+        
+        
+        
+        
         <div style="padding: 24px;" class="container-fluid">
             <br>
             <div class="row">
@@ -17,7 +22,7 @@
                             <h5 class="card-title" th:text="${pedido.bocadilloSemana.nombre}"></h5>
                             <div class="d-flex justify-content-between">
                                 <a th:href="@{/verPedidoClient/}+${pedido.id_pedido}" class="btn main-btn primary-btn rounded-md btn-hover text-white mr-2">Visualizar</a>
-                                <a th:href="@{/cancelarPedido/}+${pedido.id_pedido}" class="btn main-btn primary-btn rounded-md btn-hover text-white">Cancelar</a>
+                                <a th:href="@{/cancelarPedido/}+${pedido.id_pedido}" class="btn main-btn primary-btn rounded-md btn-hover text-white" onclick="return confirm('Estás segur de que vols eliminar aquesta comanda?')">Cancelar</a>
                             </div>
                         </div>
                     </div>
