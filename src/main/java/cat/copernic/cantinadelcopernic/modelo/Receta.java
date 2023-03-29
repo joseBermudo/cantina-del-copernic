@@ -10,6 +10,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.ArrayList;
 import lombok.Data;
@@ -28,10 +30,12 @@ public class Receta implements Serializable {
     @Column(name = "idreceta")
     private int id;
     
-    @Column(name = "nombre") 
+    @Column(name = "nombre")
+    @NotEmpty
     private String nombre;
     
-    @Column(name = "descripcion") 
+    @Column(name = "descripcion")
+    @NotEmpty
     private String descripcion;
     
     @Column(name="ingredientes")
