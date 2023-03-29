@@ -4,10 +4,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to c
 Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
 -->
 <html xmlns:th="http://www.thymeleaf.org">
-    <head>
+    <head th:replace="~{plantillas/plantilla :: head}"></head>
         <title>Promocions</title>
         <meta charset="UTF-8">
     </head>
+     <nav th:replace="~{plantillas/plantilla :: menuUsuario}"/>
+        <main class="main-wrapper"/>
+        <header th:replace="~{plantillas/plantilla :: headUsuario}"/>
     <body>
         <div>
             <button>Completades</button>

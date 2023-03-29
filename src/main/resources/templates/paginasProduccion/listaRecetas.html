@@ -8,6 +8,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <title>Receptes</title>
         <meta charset="UTF-8">
     </head>
+    <link rel="stylesheet" type="text/css" href="/css/listadoRecetas.css">
     <body>
         <nav th:replace="~{plantillas/plantilla :: menuAdmin}"/>
         <main class="main-wrapper"/>
@@ -19,7 +20,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <div>
             <ul th:each="receta: ${recetas}">
                 <li th:text="${receta.nombre}"></li> 
-                <a th:href="@{/editarReceta/}+${receta.id}"th:text="Edita"></a>
+                 <a th:href="@{/editarReceta/}+${receta.id}"th:text="Edita"></a>
                 <button>Elimina</button>
             </ul>
         </div>

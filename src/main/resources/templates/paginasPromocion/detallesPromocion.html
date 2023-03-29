@@ -9,10 +9,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to c
 Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
 -->
 <html xmlns:th="http://www.thymeleaf.org">
-    <head>
+    <head th:replace="~{plantillas/plantilla :: head}"/>
         <title>Promocions</title>
         <meta charset="UTF-8">
     </head>
+    <link rel="stylesheet" type="text/css" href="/css/detallesPromociones.css">
+     <nav th:replace="~{plantillas/plantilla :: menuAdmin}"/>
+        <main class="main-wrapper"/>
+        <header th:replace="~{plantillas/plantilla :: headAdmin}"/>
     <body>
         <div>
             <div>
@@ -60,7 +64,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                         <th colspan="20">Gastat</th>
                         </thead>
                         <tbody>
-                            <tr th:each="profProm,indiceStat:${promocion.profesorPromocion}">
+                            <tr class="spaceUnder"th:each="profProm,indiceStat:${promocion.profesorPromocion}">
                                 <td colspan="20" th:text="${profProm.profesor.nombre}"></td>
                                 <td colspan="20" th:text="${profProm.profesor.correo}"></td>
                                 <td colspan="20" th:text="${profProm.recuento}"></td>
