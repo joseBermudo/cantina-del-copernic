@@ -1,23 +1,28 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title th:text="${listadoDeudasWord}"></title>
-    </head>
+    <head th:replace="~{plantillas/plantilla :: head}"/>
     <body>
-        <h1 th:text="${listadoProfesoresWord}"></h1>
+        <link rel="stylesheet" href="/css/listados.css" />
+        <nav th:replace="~{plantillas/plantilla :: menuAdmin}"/>
+        <main class="main-wrapper"/>
+        <header th:replace="~{plantillas/plantilla :: headAdmin}"/>
+        <h1>Llistat professors</h1>
 
         <div th:if="${listadoProfesores!=null && !listadoProfesores.empty}">    
             <table border="1">
                 <tr>
-                    <th th:text="${correoWord}"></th>
+                    <th>Email:</th>
                 </tr>
                 <tr th:each="i : ${listadoProfesores}"> 
-                    <td><a th:href="@{/listarDeudasAdministrador/}+${i.correo}" th:text="${i.correo}"/></td>
+                    <td>
+                        <a th:href="${rol == 1 ? '/listarDeudasAdministrador/' + i.correo : '/listarDeudasAlumno/' + i.correo}" 
+                           th:text="${i.correo}"/>
+                    </td>
                 </tr>
             </table>
         </div>
 
-        <div th:if="${listadoProfesores==null || listadoProfesores.empty}" th:text = "${noHayProfesoresWord}"></div>
-        
+        <div th:if="${listadoProfesores==null || listadoProfesores.empty}" >No hi ha professors</div>
+        <br>
     </body>
 </html>

@@ -13,6 +13,9 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import java.time.LocalDate;
 import java.util.Date;
 import lombok.Data;
@@ -31,12 +34,16 @@ public class Tarea {
     @Column(name = "idtarea")
     private int id;
 
+    @NotEmpty
+    @Size(max = 45)
     @Column(name = "alumno")
     private String alumno;
 
+    @NotNull
     @Column(name = "fecha")
     private LocalDate fecha;
 
+    @NotNull
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "tipo_tarea_idtipo_tarea")
     private TipoTarea tipo;
