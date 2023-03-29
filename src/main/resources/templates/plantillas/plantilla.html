@@ -21,6 +21,7 @@
         <link rel="stylesheet" href="/css/materialdesignicons.min.css" />
         <link rel="stylesheet" href="/css/fullcalendar.css" />
         <link rel="stylesheet" href="/css/main.css" />
+        <link rel="stylesheet" type="text/css" href="/css/formulario.css">
     </head>
 
     <head th:fragment="headLogin"> <!--fragment per afegir els links als documents html de la nostra aplicació-->
@@ -46,9 +47,12 @@
 
 
 
-
-
-
+    
+    
+    
+    
+    
+    
     <body>
 
          <!-- ======== sidebar-nav start =========== -->
@@ -136,7 +140,6 @@
                                 </svg>
                             </span>
 
-
                             <span class="text">Mòdul promoció</span>
                         </a>
                     </li>
@@ -176,9 +179,7 @@
                             <span class="text">Mòdul Deutes</span>
                         </a>
                     </li>                   
-           
-                    
-                    
+  
                     <span class="divider"><hr /></span>
                     <li class="nav-item nav-item-has-children">           
             <a
@@ -209,19 +210,16 @@
             </a>
             <ul id="ddmenu_3" class="collapsed show dropdown-nav">
               <li>
-                <a href="signin.html" class="active">log out</a>
+                <form method="POST" th:action="@{/logout}">                
+                <!-- Botó per sortir de l'aplicació-->
+                <p><input class="btn btn-outline-danger" type="submit" name="logout" value="Sortir"/></p> 
+            </form>
               </li>
                 </ul>
             </nav>
         </aside>
         <div class="overlay"></div>
         <!-- ======== sidebar-nav end =========== -->
-
-
-
-
-
-
 
        <header class="header" th:fragment="headUsuario">
         <div class="container-fluid">
@@ -411,20 +409,7 @@
       <!-- ========== header end ========== -->
 
 
-
-
-
-
-
-
-
-
-        <!-- Definim la capçalera que reutilitzarem en les altress pàgines que s'identificarà
-             com un fragment de nom "capcalera". El contingut és el de la variable plantilla.capcalera.titol
-             definida en el fitxer messages.properties. Aquest contingut el visualitzem
-             mitjançant la notació th:text="#{plantilla.capcalera.titol} que trobem dins
-             l'etiqueta de l'element
-        -->
+      
         <header th:fragment="capcalera">
             <h1 th:text="#{plantilla.capcalera.titol}"/>
         </header>
@@ -433,10 +418,8 @@
         
         
         
-        <!--ADMINISTRADOR/ALUMNO -->
-        
-
-         <!-- ======== sidebar-nav start =========== -->
+       <!--ADMINISTRADOR/ALUMNO -->
+       <!-- ======== sidebar-nav start =========== -->
         <aside class="sidebar-nav-wrapper" th:fragment="menuAdmin">
             <div class="navbar-logo">
                 <a href="index.html">
@@ -665,8 +648,7 @@
                             </span>
                             <span class="text">Mòdul Deutes</span>
                         </a>
-                    </li>
-                    
+                    </li> 
                       </li>
                     
                        <li class="nav-item">
@@ -688,7 +670,6 @@
                         </a>
                     </li>
 
-                    
                     <span class="divider"><hr /></span>
                     <li class="nav-item nav-item-has-children">           
             <a
@@ -803,6 +784,8 @@
                     </li>
                   </ul>
                 </div>
+                
+                
                 <!-- notification end -->
                 <!-- message start -->
                 <div class="header-message-box ml-15 d-none d-md-flex">
