@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <title>CONTENIDOR</title>
-    </head>
+   <head th:replace="~{plantillas/plantilla :: head}"/>
     <body>
+         <nav th:replace="~{plantillas/plantilla :: menuAdmin}"/>
+        <main class="main-wrapper"/>
+        <header th:replace="~{plantillas/plantilla :: headAdmin}"/>
         <h1>CONTENIDOR</h1>
         <form th:action="@{/guardarContenedor}" method="post" th:object="${contenedor}">
             <label for="nombre">Codi:</label>
