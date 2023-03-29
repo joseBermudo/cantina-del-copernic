@@ -5,28 +5,40 @@
         <nav th:replace="~{plantillas/plantilla :: menuUsuario}"/>
         <main class="main-wrapper"/>
         <header th:replace="~{plantillas/plantilla :: headUsuario}"/>
-
-
-        <h1 style="text-align: center; color: #FFA500; margin: 35px" >Visualizar Comanda</h1>
-        <form method="post" th:object="${pedido}"  readonly>
-
-            <label for="beguda">Correo:</label>
-            <label for="campo1" th:text="${correostr}"></label>
-            <input type="text" id="campo1" th:field="*{profesores.correo}"  readonly><br>
-            <br>
-            <label for="beguda">Entrepa:</label>
-            <label for="campo2" th:text="${entrepastr}"></label>
-            <input type="text" id="campo1" th:field="*{bocadilloSemana.nombre}"  readonly><br>
-            <br>
-            <label for="beguda">Beguda:</label>
-            <input type="text" id="campo1" th:field="*{bebida.nombre}"  readonly><br>
-            <br>
-            <label for="campo5">Preu total:</label>
-            <input type="text" id="campo5" th:value="${precio}"  readonly><br>
-            <br>
-            <label for="observaciones">Observacions:</label><br>
-            <textarea id="observaciones" rows="4" cols="50" th:field="*{profesores.observaciones}" readonly></textarea><br>
-        </form>
-        <button class="btn main-btn primary-btn rounded-md btn-hover"><a th:href="@{/cancelarPedido/}+${pedido.id_pedido}" class="text-white"/> Eliminar</button>
+        
+        <div class="card">
+            <div class="card-body">
+                <h1 th:text="${pedido.bocadilloSemana.nombre}" class="text-center"></h1>
+                <form action="@{/navega}" method="post" th:object="${pedido}" readonly>
+                    <div class="form-group">
+                        <label for="campo1">Email:</label>
+                        <label for="campo1" th:text="${correostr}"></label>
+                        <input type="text" id="campo1" th:field="*{profesores.correo}" readonly class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="campo2">Entrepà:</label>
+                        <label for="campo2" th:text="${entrepastr}"></label>
+                        <input type="text" id="campo2" th:field="*{bocadilloSemana.nombre}" readonly class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="campo3">Beguda:</label>
+                        <input type="text" id="campo3" th:field="*{bebida.nombre}" readonly class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="campo5">Preu total:</label>
+                        <input type="text" id="campo5" th:value="${precio}" readonly class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="observaciones">Observacions:</label>
+                        <textarea id="observaciones" rows="4" cols="50" th:field="*{profesores.observaciones}" class="form-control"></textarea>
+                    </div>
+                </form>
+                <div class="text-center">
+                    <button class="btn btn-danger">
+                        <a th:href="@{/eliminarPedido/}+${pedido.id_pedido}" style="color: white" onclick="return confirm('Estás segur de que vols eliminar aquesta comanda?')">Borrar</a>
+                    </button>
+                </div>
+            </div>
+        </div>
     </body>
 </html>
