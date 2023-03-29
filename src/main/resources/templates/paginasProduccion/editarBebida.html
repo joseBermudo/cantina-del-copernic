@@ -4,27 +4,33 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to c
 Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
 -->
 <html>
-    <head>
+    <head th:replace="~{plantillas/plantilla :: head}"/>
         <title th:text="${titulo}"></title>
         <meta charset="UTF-8">
     </head>
     <body>
+        <nav th:replace="~{plantillas/plantilla :: menuAdmin}"/>
+        <main class="main-wrapper"/>
+        <header th:replace="~{plantillas/plantilla :: headAdmin}"/>
         <div>
             <h1 th:text="${titulo}"></h1>
         </div> 
         <div>
             <form th:action="@{/guardarBebida}" method="post" th:object="${bebida}">
                 <input type="hidden" name="id" th:field="*{id}"/>
-                <label for="nom">Nom:</label><br>
-                <input type="text" id="nom" name="nom" th:field="*{nombre}"><br>
+                <label for="nombre">Nom:</label><br>
+                <input type="text" id="nombre" name="nombre" th:field="*{nombre}"><br>
+                <span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"/><br>
                 <label for="precio">Preu:</label><br>
                 <input type="number" id="precio" step="any" name="precio"th:field="*{precio}"><br>
+                <span th:if="${#fields.hasErrors('precio')}" th:errors="*{precio}"/><br>
                 <label for="desc">Descripció:</label><br>
                 <textarea id="desc" name="desc" th:field="*{desc}" rows="4" cols="50"></textarea><br>  
                 <input type="submit" name="guardar" value="Guardar beguda"/> 
+                <button><a href="/listaBebidas">Cancelar</a></button>
             </form>
     
-            <a href="/listaBebidas">Cancelar</a>
+            
         </div>
     </body>
 </html>

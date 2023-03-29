@@ -8,11 +8,13 @@ import cat.copernic.cantinadelcopernic.DAO.RecetaDAO;
 
 import cat.copernic.cantinadelcopernic.modelo.Receta;
 import cat.copernic.cantinadelcopernic.moduloProduccion.servicios.ProduccionService;
+import jakarta.validation.Valid;
 import java.util.ArrayList;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -52,7 +54,12 @@ public class ControladorListaRecetas {
     }
     
     @PostMapping("/guardarReceta")
-    public String guardarReceta(Receta receta){
+    public String guardarReceta(@Valid Receta receta,Errors errors){
+        
+        if(errors.hasErrors()){
+            return "/paginasProduccion/editarReceta";
+        }
+        
         proServ.guardarReceta(receta);
         return "redirect:/listaRecetas";
     }

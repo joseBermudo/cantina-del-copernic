@@ -14,6 +14,8 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.List;
 import lombok.Data;
@@ -35,11 +37,12 @@ public class Bebida implements Serializable {
     private int id;
     
     @Column(name="nombre")
+    @NotEmpty
     private String nombre;
     
     @Column(name="descripcion")
     private String desc;
-    
+    @NotNull
     @Column(name="precio")
     private Double precio;
 //    
