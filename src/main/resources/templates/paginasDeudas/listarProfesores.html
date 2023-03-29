@@ -12,12 +12,16 @@
                     <th>Email:</th>
                 </tr>
                 <tr th:each="i : ${listadoProfesores}"> 
-                    <td><a th:href="@{/listarDeudasAdministrador/}+${i.correo}" th:text="${i.correo}"/></td>
+                    <td>
+                        <a th:href="${rol == 1 ? '/listarDeudasAdministrador/' + i.correo : '/listarDeudasAlumno/' + i.correo}" 
+                           th:text="${i.correo}"/>
+                    </td>
                 </tr>
             </table>
         </div>
 
         <div th:if="${listadoProfesores==null || listadoProfesores.empty}" >No hi ha professors</div>
-        
+        <br>
+        <button onclick="window.location.href='/login'">Cancel·lar</button>
     </body>
 </html>

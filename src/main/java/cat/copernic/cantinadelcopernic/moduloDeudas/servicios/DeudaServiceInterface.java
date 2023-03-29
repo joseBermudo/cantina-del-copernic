@@ -15,6 +15,8 @@ public interface DeudaServiceInterface {
     
     public List<Deuda> listarDeudas();
     
+    public List<Deuda> listarDeudasDeUnProfesor(String correoProfesor);
+    
     public void anadirDeuda(Deuda deuda);
     
     public void eliminarDeuda(Deuda deuda);

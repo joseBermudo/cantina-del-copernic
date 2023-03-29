@@ -9,7 +9,11 @@ import cat.copernic.cantinadelcopernic.modelo.Deuda;
 import cat.copernic.cantinadelcopernic.modelo.Profesor;
 import cat.copernic.cantinadelcopernic.moduloDeudas.servicios.DeudaService;
 import java.util.ArrayList;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,8 +30,19 @@ public class ControladorListarDeudasProfesor {
     @GetMapping("/listarDeudasProfesor")
     public String listarDeudasProfesor(Model model) {
         
-        model.addAttribute("listadoDeudas", deudaService.listarDeudas());
+        String correoProfesor = getCurrentUser();
+        
+        List<Deuda> deudas = deudaService.listarDeudasDeUnProfesor(correoProfesor);
+        
+        model.addAttribute("listadoDeudas", deudas);
         
         return "/paginasDeudas/listarDeudasProfesor"; 
+    }
+    
+    public String getCurrentUser() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+        String username = userDetails.getUsername();
+        return username;
     }
 }

@@ -31,7 +31,7 @@ public class ControladorListarDeudasAdministrador {
     private ProfesorService profesorService;
 
     @GetMapping("/listarDeudasAdministrador/{correo}")
-    public String inici(Model model, Profesor profesor) {
+    public String listarDeudasAdministrador(Model model, Profesor profesor) {
 
         var profe = profesorService.buscarProfesores(profesor);
 

@@ -26,7 +26,7 @@ public class ControladorCrearTipoTarea {
 
     
     @GetMapping("/crearTipoTarea")
-    public String inici(Model model) {
+    public String crearTipoTarea(Model model) {
         
         model.addAttribute("tipoTarea", new TipoTarea(0));
         return "/paginasTareas/crearTipoTarea"; 
