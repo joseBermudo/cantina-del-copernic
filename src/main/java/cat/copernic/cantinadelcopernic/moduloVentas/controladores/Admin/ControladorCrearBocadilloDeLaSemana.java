@@ -6,6 +6,7 @@ package cat.copernic.cantinadelcopernic.moduloVentas.controladores.Admin;
 
 import cat.copernic.cantinadelcopernic.DAO.RecetaDAO;
 import cat.copernic.cantinadelcopernic.modelo.BocadilloSemana;
+import cat.copernic.cantinadelcopernic.moduloProduccion.servicios.ProduccionService;
 import cat.copernic.cantinadelcopernic.moduloVentas.servicios.VentasService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,14 +27,13 @@ public class ControladorCrearBocadilloDeLaSemana {
      */
     @Autowired
     private VentasService ventasSer;
-
-    @Autowired
-    private RecetaDAO recDADO;
+    
+   @Autowired
+    private ProduccionService prodSer;
 
     @GetMapping("/crearFormularioBocadilloSemana")
     public String crearFormularioBocadilloSemana(BocadilloSemana bocadillosemana, Model model) {
-        model.addAttribute("recetas", recDADO.findAll());
-        //model.addAttribute("bocadillosemana", bocadillosemana);
+        model.addAttribute("recetas", prodSer.obtenerRecetas());
         return "/paginasVentas/ventasAdministrador/crearBocadilloDeLaSemana";
     }
 
@@ -41,7 +41,7 @@ public class ControladorCrearBocadilloDeLaSemana {
     public String guardarBocadilloSemana(@Valid BocadilloSemana bocadilloSemana, Errors errors, Model model) {
 
         if (errors.hasErrors()) {
-            model.addAttribute("recetas", recDADO.findAll());
+            model.addAttribute("recetas", prodSer.obtenerRecetas());
 
             return "/paginasVentas/ventasAdministrador/crearBocadilloDeLaSemana";
         }
@@ -50,7 +50,7 @@ public class ControladorCrearBocadilloDeLaSemana {
 //            Files.write(Paths.get("/imagenes/imagen.jpg"), bocadilloSemana.getImagen().getBytes());
         bocadilloSemana.setImagen("asdasdasdasdasdasdasdasd");
 
-        var receta = recDADO.findById(bocadilloSemana.getReceta().getId()).get();
+        var receta = prodSer.buscarReceta(bocadilloSemana.getReceta());
 
         bocadilloSemana.setReceta(receta);
         ventasSer.addBocadilloSemana(bocadilloSemana);
@@ -67,7 +67,7 @@ public class ControladorCrearBocadilloDeLaSemana {
     @GetMapping("/editar/{idbocadillo_semana}")
     public String editarBocadilloSemana(BocadilloSemana bocadilloSemana, Model model) {
 
-        model.addAttribute("recetas", recDADO.findAll());
+        model.addAttribute("recetas", prodSer.obtenerRecetas());
         model.addAttribute("bocadillosemana", ventasSer.buscarBocadilloSemana(bocadilloSemana));
 
         return "/paginasVentas/ventasAdministrador/crearBocadilloDeLaSemana";
