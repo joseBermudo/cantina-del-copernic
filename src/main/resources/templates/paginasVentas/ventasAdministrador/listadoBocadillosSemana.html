@@ -1,28 +1,44 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-       <head th:replace="~{plantillas/plantilla :: head}"/>
+    <head th:replace="~{plantillas/plantilla :: head}"/>
     <body>
-        
+
         <nav th:replace="~{plantillas/plantilla :: menuAdmin}"/>
         <main class="main-wrapper"/>
         <header th:replace="~{plantillas/plantilla :: headAdmin}"/>
+
+        <br>
         <!-- Título de la lista de pedidos -->
-        <h2 th:text="${com1}"></h2>
+        <div class="card text-center">
+            <div class="card-header">
+                <h2 class="card-title" th:text="${com1}"></h2>
+            </div>
 
-        <!-- Lista con botones -->	
-        <ul th:each="bocata: ${bocadillos}">
-            <li>
-                <span th:text="${bocata.nombre}"></span>
+            <div class="card-body">
+                <!-- Lista con botones -->
+                <ul class="list-group">
+                    <li class="list-group-item" th:each="bocata: ${bocadillos}">
+                        <div class="row align-items-center">
+                            <div class="col-md-9">
+                                <span th:text="${bocata.nombre}"></span>
+                            </div>
+                            <div class="col-md-3 text-right">
+                                <button class="btn btn-sm btn-primary"><a th:href="@{/editar/}+${bocata.idbocadillo_semana}" style="color: white">Editar</a></button>
+                                <button class="btn btn-sm btn-danger" onclick="return confirm('Estás segur de que vols eliminar aquest entrepà?')"><a th:href="@{/eliminarbocadillo/}+${bocata.idbocadillo_semana}" style="color: white">Borrar</a></button>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
 
-                <div>
-                     <button><a th:href="@{/editar/}+${bocata.idbocadillo_semana}"/>Editar</button>
-                    <button><a th:href="@{/eliminarbocadillo/}+${bocata.idbocadillo_semana}"/> Borrar</button>
+            <div class="card-footer">
+                <!-- Botones nou entrepa y editar entrepa -->
+                <div class="text-right">
+                    <button class="btn main-btn primary-btn rounded-md btn-hover"><a th:href="@{/crearFormularioBocadilloSemana}" style="color: white">Nou entrepa</a></button>
+                    <button class="btn main-btn primary-btn rounded-md btn-hover"><a th:href="@{/pedidosAdministrador}" style="color: white">Comandes</a></button>
                 </div>
-            </li>
-        </ul>
+            </div>
+        </div>
 
-        <!-- Botones nou entrepa y editar entrepa -->
-        <button><a th:href="@{/crearFormularioBocadilloSemana}"/>Nou entrepa</button>
-        <button><a th:href="@{/pedidosAdministrador}"/>Comandes</button>
     </body>
 </html>

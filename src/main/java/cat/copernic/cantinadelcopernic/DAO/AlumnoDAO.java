@@ -4,10 +4,14 @@
  */
 package cat.copernic.cantinadelcopernic.DAO;
 
+
+import cat.copernic.cantinadelcopernic.modelo.Alumno;
+import org.springframework.data.jpa.repository.JpaRepository;
+
 /**
  *
  * @author andre
  */
-public interface AlumnoDAO extends UsuarioDAO {
+public interface AlumnoDAO extends JpaRepository<Alumno,String> {
     
 }

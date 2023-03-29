@@ -22,7 +22,7 @@
                             <h5 class="card-title" th:text="${pedido.bocadilloSemana.nombre}"></h5>
                             <div class="d-flex justify-content-between">
                                 <a th:href="@{/verPedidoClient/}+${pedido.id_pedido}" class="btn main-btn primary-btn rounded-md btn-hover text-white mr-2">Visualizar</a>
-                                <a th:href="@{/cancelarPedido/}+${pedido.id_pedido}" class="btn main-btn primary-btn rounded-md btn-hover text-white">Cancelar</a>
+                                <a th:href="@{/cancelarPedido/}+${pedido.id_pedido}" class="btn main-btn primary-btn rounded-md btn-hover text-white" onclick="return confirm('Estás segur de que vols eliminar aquesta comanda?')">Cancelar</a>
                             </div>
                         </div>
                     </div>

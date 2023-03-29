@@ -41,14 +41,21 @@ public class ControladorEditarSugerencia {
         var titulo = "EDITAR SUGGERIMENT";
         var tituloSugerencia = "Titul del suggeriment:";
         var descripcionSugerencia = "Descripció del suggeriment:";
+        
+        var esCrearSugerencia = false;
+        var esEditarSugerencia = true;
 
         model.addAttribute("titulo", titulo);
 
         model.addAttribute("tituloSugerencia", tituloSugerencia);
 
         model.addAttribute("descripcionSugerencia", descripcionSugerencia);
+        
+        model.addAttribute("esCrearSugerencia", esCrearSugerencia);
+        
+        model.addAttribute("esEditarSugerencia", esEditarSugerencia);
 
-        return "/paginasSugerencias/editarSugerencia";
+        return "/paginasSugerencias/nuevaSugerencia";
     }
     
 }
