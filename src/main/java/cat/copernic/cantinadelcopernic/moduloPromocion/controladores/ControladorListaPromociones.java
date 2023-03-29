@@ -11,11 +11,13 @@ import cat.copernic.cantinadelcopernic.modelo.ProfesorPromocionId;
 import cat.copernic.cantinadelcopernic.modelo.Promocion;
 import cat.copernic.cantinadelcopernic.moduloPromocion.servicios.PromocionService;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -53,8 +55,10 @@ public class ControladorListaPromociones {
     }
 
     @PostMapping("/guardarPromocion")
-    public String guardarPromocion(Promocion promocion) {
-
+    public String guardarPromocion(@Valid Promocion promocion,Errors errors) {
+        if(errors.hasErrors()){
+           return "/paginasPromocion/editarPromocion";
+       }
 //        
         promServ.guardarPromocion(promocion);
 
@@ -62,16 +66,23 @@ public class ControladorListaPromociones {
     }
 
     @PostMapping("/guardarNuevaPromocion")
-    public String guardarNuevaPromocion(Promocion promocion, HttpServletRequest request) {
+    public String guardarNuevaPromocion(@Valid Promocion promocion,Errors errors) {
+       if(errors.hasErrors()){
+           return "/paginasPromocion/crearPromocion";
+       }
+        
         promocion.setProfesorPromocion(new ArrayList<ProfesorPromocion>());
         promServ.guardarPromocion(promocion);
-        Promocion ultiProm = promServ.obetnerUltimaPromocion();
+        
+        //Promocion ultiProm = promServ.obetnerUltimaPromocion();
+        ArrayList<ProfesorPromocion >listPromProf = new ArrayList<ProfesorPromocion>();
         List<Profesor> listaProfesores = promServ.obetnerClientes();
+        
         listaProfesores.forEach(prof -> {
-            ultiProm.getProfesorPromocion().add(new ProfesorPromocion(new ProfesorPromocionId(ultiProm.getId(), prof.getCorreo()), ultiProm, prof, false, 0 ));
+            listPromProf.add(new ProfesorPromocion(new ProfesorPromocionId(promocion.getId(), prof.getCorreo()), promocion, prof, false, 0 ));
         });
         
-        promServ.guardarPromocion(promocion);
+        promServ.gurdarProfesorPromocion(listPromProf);
 
         return "redirect:/listaPromociones";
     }
