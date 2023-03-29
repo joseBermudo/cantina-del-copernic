@@ -36,7 +36,6 @@ public class ControladorCrearTipoTarea {
     public String guardarTipoTarea(@Valid TipoTarea tipoTarea, Errors errors, Model model) {
 
         if(errors.hasErrors()){
-            model.addAttribute("tipoTarea", new TipoTarea(0));
             return "/paginasTareas/crearTipoTarea";
         }
         tareaService.afegirTipoTarea(tipoTarea);

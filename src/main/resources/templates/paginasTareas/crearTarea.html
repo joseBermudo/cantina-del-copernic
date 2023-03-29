@@ -11,10 +11,12 @@
             <input type="hidden" name="id" th:field="*{id}"/>
             <label for="c">Alumne: </label>
             <input type="text" name="c" th:field="*{alumno}"><br><br>
+            <span th:if="${#fields.hasErrors('alumno')}" th:errors="*{alumno}"/>
             
             <label for="fecha">Data: </label>
             <input type="date" id="fecha" name="fecha" th:field="*{fecha}"><br><br>
-            
+            <span th:if="${#fields.hasErrors('fecha')}" th:errors="*{fecha}"/>
+
             <label for="tipoTarea">Tipus de tasca: </label>
            
             <select th:field="*{tipo}">

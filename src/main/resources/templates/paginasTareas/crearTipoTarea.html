@@ -12,6 +12,7 @@
             
             <label for="nombre">Tipus de tasca: </label>
             <input type="text" name="nombre" th:field="*{nombre}"><br>
+            <span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"/>
             
             <button type="submit">Crear tipus de tasca</button>
             <button type="button" onclick="window.location.href='/listarTiposTarea'">Cancel·lar</button>

@@ -33,7 +33,6 @@ public class ControladorCrearTarea {
         
         if(errors.hasErrors()){
             model.addAttribute("listaTiposTarea", tareaService.llistarTipoTarea());
-            model.addAttribute("tarea", new Tarea());
 
             return "/paginasTareas/crearTarea";
         }
