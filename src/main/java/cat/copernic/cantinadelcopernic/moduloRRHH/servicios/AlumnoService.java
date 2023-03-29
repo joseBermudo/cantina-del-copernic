@@ -6,10 +6,10 @@ package cat.copernic.cantinadelcopernic.moduloRRHH.servicios;
 
 import cat.copernic.cantinadelcopernic.DAO.AlumnoDAO;
 import cat.copernic.cantinadelcopernic.modelo.Alumno;
-import cat.copernic.cantinadelcopernic.modelo.Usuario;
+
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
@@ -22,10 +22,24 @@ public class AlumnoService implements AlumnoServiceInterface{
     private AlumnoDAO alumnoDAO;
     
     @Override
-    @Transactional(readOnly=true) 
-    public Usuario buscarProfesores(Alumno alumno) {
+    public void anadirAlumno(Alumno alumno) {
        
-        return this.alumnoDAO.findById(alumno.getCorreo()).orElse(null);
+        this.alumnoDAO.save(alumno); 
+    }
+
+    @Override
+    public List<Alumno> listarAlumnos() {
+       return (List<Alumno>) alumnoDAO.findAll(); 
+    }
+
+    @Override
+    public void eliminarAlumno(Alumno alumno) {
+       this.alumnoDAO.delete(alumno);
+    }
+
+    @Override
+    public Alumno buscarAlumno(Alumno alumno) {
+         return this.alumnoDAO.findById(alumno.getCorreo()).orElse(null);
     }
     
 }

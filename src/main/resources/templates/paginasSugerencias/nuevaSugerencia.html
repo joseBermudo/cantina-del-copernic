@@ -10,25 +10,34 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
     </head>
     <body>
         <div>
-            <h1 th:text="${titulo}"></h1>
+            <h1 th:text="FORMULARISUGGERIMENT"></h1>
         </div> 
         <div>
-            <form th:action="@{/guardarSuggeriment}" method="post" th:object="${sugerencia}">
+            <form th:action="@{/guardarSuggeriment/0}" method="post" th:object="${sugerencia}">
+                <p th:if="*{leida}">Aquest suggeriment ja ha estat llegit</p>
                 <input type="hidden" name="idsugerencia" th:field="*{idSugerencia}"/>
                 <p>
-                <label for="titulo" th:text="${tituloSugerencia}"> </label>
+                <label for="titulo" th:text="TitulDelSuggeriment"> </label>
                 <input type="text" id="titulo" name="titulo" th:field="*{titulo}">
                 <span th:if="${#fields.hasErrors('titulo')}" th:errors="*{titulo}"/>
                 </p>
                 <p>
-                <label for="descripcion" th:text="${descripcionSugerencia}"></label>
+                <label for="descripcion" th:text="DescripcióDelSuggeriment"></label>
                 <input type="text" id="descripcion" name="descripcion" th:field="*{descripcion}">
                 <span th:if="${#fields.hasErrors('descripcion')}" th:errors="*{descripcion}"/>
                 </p>
                 <input type="submit" name="enviar" value="Crear suggeriment"/>
             </form>
-           
-            <button><a th:href="@{/listaSuggeriments}"/> Cancela</button>
+           <a th:href="@{/listaSuggeriments}">
+            <button th:if="${esCrearSugerencia}"> Cancela</button>
+           </a>
+            <a th:href="@{/eliminarSuggeriment/}+${sugerencia.idSugerencia}" onclick="return confirm('Estás segur de que vols eliminar aquest suggeriment')">
+                <button th:if="${esEditarSugerencia}"> Elimina</button>
+            </a>
         </div>
     </body>
+    
+    
+    
+    
 </html>

@@ -12,16 +12,23 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <div>
              <ul th:each="profesor: ${profesores}">
                 <li>
-                <span th:text="${profesor.correo}"></span>
+                    <span th:text="${profesor.correo}"></span>
 
                 <div>
-                    <button><a th:href="@{/eliminarProfesor/}+${profesor.correo}"/> Eliminar</button>
-                </div>
+                <a th:href="@{/eliminarProfesor/}+${profesor.correo}" onclick="return confirm('Estás segur de que vols eliminar aquesta professor?')">
+                    <button>Eliminar</button>
+                </a>
+            </div>
             </li>
             </ul>
         </div>
         <div>
-            <button><a th:href="@{/nouProfessor}"/>Nou Profesor</button>
+           <a th:href="@{/nouProfessor}"/>
+                <button>Nou Profesor</button>
+           </a>
+            <a th:href="@{/nouAlumne}"/>
+                <button>Nou Alumnre</button>
+           </a>
         </div>
     </body>
 </html>

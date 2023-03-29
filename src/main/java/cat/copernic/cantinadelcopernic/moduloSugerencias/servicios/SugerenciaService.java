@@ -5,6 +5,7 @@
 package cat.copernic.cantinadelcopernic.moduloSugerencias.servicios;
 
 import cat.copernic.cantinadelcopernic.DAO.SugerenciaDAO;
+import cat.copernic.cantinadelcopernic.modelo.Profesor;
 import cat.copernic.cantinadelcopernic.modelo.Sugerencia;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,6 +46,11 @@ public class SugerenciaService implements SugerenciaServiceInterface {
     public Sugerencia buscarSugerencia(Sugerencia sugerencia) {
          
          return this.sugerenciaDAO.findById(sugerencia.getIdSugerencia()).orElse(null);
+    }
+
+    @Override
+    public List<Sugerencia> listarSugerenciasProfesor(Profesor profesor) {
+        return (List<Sugerencia>) sugerenciaDAO.findByProfesor(profesor); 
     }
     
 }

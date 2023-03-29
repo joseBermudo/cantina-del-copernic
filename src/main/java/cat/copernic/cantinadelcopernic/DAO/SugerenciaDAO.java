@@ -6,7 +6,9 @@ package cat.copernic.cantinadelcopernic.DAO;
 
 
 
+import cat.copernic.cantinadelcopernic.modelo.Profesor;
 import cat.copernic.cantinadelcopernic.modelo.Sugerencia;
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 
@@ -16,5 +18,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  */
 public interface SugerenciaDAO extends JpaRepository<Sugerencia,Integer>{
     
-     
+      List<Sugerencia> findByProfesor(Profesor profesor);
 }

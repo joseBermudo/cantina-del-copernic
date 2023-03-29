@@ -17,6 +17,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
             <form th:action="@{/guardarPerfil}" method="post" th:object="${profesor}">
                 <div>
                     <input type="hidden" name="correo" th:field="*{correo}"/>
+                    <input type="hidden" name="correo" th:field="*{password}"/>
+                    <input type="hidden" name="correo" th:field="*{username}"/>
                     <span th:if="${#fields.hasErrors('correo')}" th:errors="*{correo}"/>
                     <p>
                     <label for="nombre" >Nom del professor:</label>

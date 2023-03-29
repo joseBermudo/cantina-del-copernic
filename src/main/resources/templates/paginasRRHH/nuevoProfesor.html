@@ -29,13 +29,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                     <input type="text" id="correu" name="correu" th:field="*{correo}">
                     <span th:if="${#fields.hasErrors('correo')}" th:errors="*{correo}"/>
                 </p>
+                  <span th:if="${#fields.hasErrors('confirmarPassword')}" th:errors="*{confirmarPassword}"></span>
                 <p>
                     <label for="contrasenya">Contrasenya:</label>
-                    <input type="password" id="contrasenya" name="contrasenya">
+                    <input type="password" id="contrasenya" name="contrasenya" th:field="*{password}">
+                    <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}"/> 
                 </p>
                 <p>
                     <label for="contrasenya" >Confirmar contrasenya:</label>
-                    <input type="password" id="confirmar_contrasenya" name="confirmar_contrasenya">
+                    <input type="password" id="confirmar_contrasenya" name="confirmar_contrasenya" th:field="*{confirmarPassword}">
                 </p>
                 <input type="submit" name="enviar" value="Registrar profesor"/>
             </form>
