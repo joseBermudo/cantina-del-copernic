@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Llistat deutes</title>
-    </head>
+    <head th:replace="~{plantillas/plantilla :: head}"/>
     <body>
-        <h1>Deutes</h1>
+        <link rel="stylesheet" href="/css/listados.css" />
+        <nav th:replace="~{plantillas/plantilla :: menuAdmin}"/>
+        <main class="main-wrapper"/>
+        <header th:replace="~{plantillas/plantilla :: headAdmin}"/>
+        
+	<h1>Deutes</h1>
         <div th:if="${listadoDeudas!=null && !listadoDeudas.empty}">    
             <table border="1">
                 <tr>

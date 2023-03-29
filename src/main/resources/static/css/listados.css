@@ -40,6 +40,6 @@ button {
         cursor: pointer;
 }
 button:hover {
-        background-color: #333;
+        background-color: red;
 }
 	

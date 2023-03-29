@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Llistat professors</title>
-    </head>
+    <head th:replace="~{plantillas/plantilla :: head}"/>
     <body>
+        <link rel="stylesheet" href="/css/listados.css" />
+        <nav th:replace="~{plantillas/plantilla :: menuAdmin}"/>
+        <main class="main-wrapper"/>
+        <header th:replace="~{plantillas/plantilla :: headAdmin}"/>
         <h1>Llistat professors</h1>
 
         <div th:if="${listadoProfesores!=null && !listadoProfesores.empty}">    
@@ -22,6 +24,5 @@
 
         <div th:if="${listadoProfesores==null || listadoProfesores.empty}" >No hi ha professors</div>
         <br>
-        <button onclick="window.location.href='/login'">Cancel·lar</button>
     </body>
 </html>
