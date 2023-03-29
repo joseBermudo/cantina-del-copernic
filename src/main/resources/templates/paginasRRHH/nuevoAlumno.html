@@ -5,23 +5,49 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 -->
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
-        <title>Nou Alumne</title>
-        <meta charset="UTF-8">
-    </head>
+        <link rel="stylesheet" href="/css/nuevoAlumno.css" />  
+    <head th:replace="~{plantillas/plantilla :: head}"/>
     <body>
+       <nav th:replace="~{plantillas/plantilla :: menuAdmin}"/>
+        <main class="main-wrapper"/>
+        <header th:replace="~{plantillas/plantilla :: headAdmin}"/>
         <div>
-            <h1 th:text="${tituloPagina}"></h1>
+            <h1 class="titulo">REGISTRAR ALUMNE</h1>
         </div> 
         <div>
-            <form action="" method="POST">
-                <label for="correu" th:text="${correo}"></label><br>
-                <input type="text" id="correu" name="correu"><br>
-                <label for="contrasenya" th:text="${contrasenya}"></label><br>
-                <input type="password" id="contrasenya" name="contrasenya"><br>
-                <label for="contrasenya" th:text="${confirmarContrasenya}"></label><br>
-                <input type="password" id="confirmar_contrasenya" name="confirmar_contrasenya"><br>  
+            <form th:action="@{/guardarAlumno}" method="post" th:object="${alumno}">
+                <p>
+                    <span class="span" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"/><br>
+                    <label for="nombre" >Nom:</label>
+                    <input type="text" name="nombre" th:field="*{nombre}"/>
+                    
+                </p>
+                <p>
+                    <span class="span" th:if="${#fields.hasErrors('apellidos')}" th:errors="*{apellidos}"/><br>
+                <label for="nombre" >Cognoms:</label>
+                <input type="text" name="apellidos" th:field="*{apellidos}"/>
+              
+                </p>
+                <p>
+                    <span class="span" th:if="${#fields.hasErrors('correo')}" th:errors="*{correo}"/><br>
+                    <label for="correu">Correu electronic:</label>
+                    <input type="text" id="correu" name="correu" th:field="*{correo}">
+                    
+                </p>
+                <span class="span" th:if="${#fields.hasErrors('confirmarPassword')}" th:errors="*{confirmarPassword}"/><br>
+                <span class="span" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"/> <br>
+                <p>
+                    <label for="contrasenya">Contrasenya:</label><br>
+                    <input class="pass" type="password" id="contrasenya" name="contrasenya" th:field="*{password}">
+                    
+                </p>
+                <p>
+                    <label  for="contrasenya" >Confirmar contrasenya:</label><br>
+                    <input class="pass" type="password" id="confirmar_contrasenya" name="confirmar_contrasenya" th:field="*{confirmarPassword}">
+                </p>
+                <input type="submit" name="enviar" value="Registrar alumne"/>
             </form>
-            <button>Registrar alumne</button>
+           
         </div>
     </body>
 </html>

@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+
 
 /**
  *
@@ -29,9 +29,13 @@ public class ControladorNuevaSugerencia {
         var tituloSugerencia = "Titul del suggeriment:";
         var descripcionSugerencia = "Descripció del suggeriment:";
         
+        var esCrearSugerencia = true;
+        var esEditarSugerencia = false; 
         model.addAttribute("titulo", titulo);
         model.addAttribute("tituloSugerencia", tituloSugerencia);
         model.addAttribute("descripcionSugerencia", descripcionSugerencia);
+        model.addAttribute("esCrearSugerencia", esCrearSugerencia);
+         model.addAttribute("esEditarSugerencia", esEditarSugerencia);
             
         return "/paginasSugerencias/nuevaSugerencia"; 
     }

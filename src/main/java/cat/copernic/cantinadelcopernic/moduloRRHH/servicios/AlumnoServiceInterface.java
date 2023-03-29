@@ -5,7 +5,8 @@
 package cat.copernic.cantinadelcopernic.moduloRRHH.servicios;
 
 import cat.copernic.cantinadelcopernic.modelo.Alumno;
-import cat.copernic.cantinadelcopernic.modelo.Usuario;
+import java.util.List;
+
 
 
 /**
@@ -14,6 +15,8 @@ import cat.copernic.cantinadelcopernic.modelo.Usuario;
  */
 public interface AlumnoServiceInterface {
     
-    public Usuario buscarProfesores(Alumno profesor); 
-    
+    public List<Alumno> listarAlumnos();
+    public void anadirAlumno(Alumno alumno); 
+    public void eliminarAlumno(Alumno alumno);
+    public Alumno buscarAlumno(Alumno alumno); 
 }

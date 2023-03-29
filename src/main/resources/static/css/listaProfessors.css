@@ -1,0 +1,41 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 29 mar 2023, 19:35:53
+    Author     : andre
+*/
+
+.titulo {
+    margin-left: 43px; 
+    margin-bottom: 30px;
+}
+.lista{
+    
+    margin-top: 10px;
+}
+.elemento-lista{
+    margin-bottom: 15px;
+    
+    margin-left: 43px;
+}
+
+.boton-eliminar{
+    margin-top: 5px;
+   
+}
+
+button{
+    background-color: #FFA500;
+    color: #FFFFFF;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.boton-nuevoProfesor{
+     margin-left: 43px;
+     margin-bottom: 20px;
+}
