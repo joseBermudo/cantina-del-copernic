@@ -33,7 +33,7 @@ public class UsuarioService implements UsuarioServiceInterface, UserDetailsServi
     
     @Override
     @Transactional(readOnly=true) 
-    public Usuario buscarProfesores(Usuario usuario) {
+    public Usuario buscarUsuario(Usuario usuario) {
         
          return this.usuarioDAO.findById(usuario.getCorreo()).orElse(null);
    }
