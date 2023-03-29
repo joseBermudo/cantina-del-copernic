@@ -5,9 +5,13 @@
 package cat.copernic.cantinadelcopernic.moduloPromocion.controladores;
 
 import cat.copernic.cantinadelcopernic.DAO.PromocionDAO;
+import cat.copernic.cantinadelcopernic.modelo.ProfesorPromocion;
 import cat.copernic.cantinadelcopernic.modelo.Promocion;
+import cat.copernic.cantinadelcopernic.moduloPromocion.servicios.PromocionService;
+import cat.copernic.cantinadelcopernic.utilities.Utils;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,13 +25,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class ControladorPromocionesCompletadasProfesor {
 
     @Autowired
-    private PromocionDAO promocionDAO;
+    private PromocionService promServ;
 
     @GetMapping("/listaPromocionesCompletadas")
     public String inici(Model model) {
-        
-        
-        model.addAttribute("promociones", promocionDAO.findAll());
+        String usuario = Utils.getCurrentUser();
+        ArrayList<ProfesorPromocion> listaPromocionesProf =(ArrayList<ProfesorPromocion>) promServ.obtenerPromocionesUsuario(usuario);
+        listaPromocionesProf = (ArrayList<ProfesorPromocion>) listaPromocionesProf.stream().filter(pf -> pf.getRecuento()>=pf.getPromocion().getCondicio()).collect(Collectors.toList());
+        model.addAttribute("promocionesProf", listaPromocionesProf);
         return "/paginasPromocion/listaPromocionesCompletadas";
     }
 }

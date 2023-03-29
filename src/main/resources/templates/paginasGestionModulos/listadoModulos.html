@@ -1,25 +1,29 @@
 <!DOCTYPE html>
 <html>
     <html xmlns:th="http://www.thymeleaf.org">
-        <head>
-            <title th:text="${tituloPagina}"></title>
-            <meta charset="UTF-8">
-        </head>
-        <body>
-            <div> 
+        <link rel="stylesheet" type="text/css" href="/css/listadoModulos.css">
+        <head th:replace="~{plantillas/plantilla :: head}"/>
+        <title th:text="${tituloPagina}"></title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <nav th:replace="~{plantillas/plantilla :: menuAdmin}"/>
+        <main class="main-wrapper"/>
+        <header th:replace="~{plantillas/plantilla :: headAdmin}"/>
+        <div> 
 
-                <table border="1" width="420">
-                    <tr th:each="modul : ${modulos}" >
-                        <td th:text="${modul.nombreModulo}"></td>
-                        <td><a th:href="@{/modificar/}+${modul.idmodulos}" th:text="Modificar"/></td>
-                    </tr>
-                </table>
-            </div>
-            <br>
-            <div th:if="${modulos==null || modulos.empty}">
+            <table border="1" width="420">
+                <tr class="spaceUnder"th:each="modul : ${modulos}" >
+                    <td th:text="${modul.nombreModulo}"></td>
+                    <td><a th:href="@{/modificar/}+${modul.idmodulos}" th:text="Modificar"/></td>
+                </tr>
+            </table>
+        </div>
+        <br>
+        <div th:if="${modulos==null || modulos.empty}">
 
-                No hi ha moduls disponibles.
-            </div>
+            No hi ha moduls disponibles.
+        </div>
 
-        </body>
-    </html>
+    </body>
+</html>

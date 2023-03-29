@@ -7,6 +7,7 @@ package cat.copernic.cantinadelcopernic.moduloRRHH.controladores;
 import cat.copernic.cantinadelcopernic.modelo.Profesor;
 import cat.copernic.cantinadelcopernic.moduloRRHH.servicios.ProfesorService;
 import cat.copernic.cantinadelcopernic.utilities.RolSigleton;
+import cat.copernic.cantinadelcopernic.utilities.UsuarioActual;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,8 +23,8 @@ public class ControladorPerfilProfesor {
     @Autowired
     private ProfesorService profesorService;
     
-    @GetMapping("/perfil/{correo}")
-    public String inici(Profesor profesor, Model model){
+    @GetMapping("/perfil")
+    public String inici( Model model){
         
         model.addAttribute("nombre", "Nom del professor");
         model.addAttribute("apellidos", "Cognoms del professor");
@@ -33,6 +34,9 @@ public class ControladorPerfilProfesor {
         model.addAttribute("intoleranciaHismatico", "intolerància a l'histaminic");
         model.addAttribute("intoleranciaFodmaps", "intolerància al FODMAP's");
         model.addAttribute("observaciones", "observaciones");
+        var correo = UsuarioActual.getCurrentUser();
+        var profesor = new Profesor();
+        profesor.setCorreo(correo);
         var profesor2 = profesorService.buscarProfesores(profesor); 
         model.addAttribute("profesor",profesor2);
         RolSigleton.getInstance();
