@@ -2,13 +2,19 @@
 <html xmlns:th="http://www.thymeleaf.org">
     <head th:replace="~{plantillas/plantilla :: head}"/>
     <body>
-        <ul th:replace="~{plantillas/plantilla :: menuUsuario}" />
-        <h1  th:text="${comanda}"></h1>
+        <nav th:replace="~{plantillas/plantilla :: menuUsuario}"/>
+        <main class="main-wrapper"/>
+        <header th:replace="~{plantillas/plantilla :: headUsuario}"/>
 
+
+        <h1 style="text-align: center; color: #FFA500; margin: 35px" >Visualizar Comanda</h1>
         <form method="post" th:object="${pedido}"  readonly>
+
+            <label for="beguda">Correo:</label>
             <label for="campo1" th:text="${correostr}"></label>
             <input type="text" id="campo1" th:field="*{profesores.correo}"  readonly><br>
             <br>
+            <label for="beguda">Entrepa:</label>
             <label for="campo2" th:text="${entrepastr}"></label>
             <input type="text" id="campo1" th:field="*{bocadilloSemana.nombre}"  readonly><br>
             <br>
@@ -21,6 +27,6 @@
             <label for="observaciones">Observacions:</label><br>
             <textarea id="observaciones" rows="4" cols="50" th:field="*{profesores.observaciones}" readonly></textarea><br>
         </form>
-        <button><a th:href="@{/cancelarPedido/}+${pedido.id_pedido}"/> Eliminar</button>
+        <button class="btn main-btn primary-btn rounded-md btn-hover"><a th:href="@{/cancelarPedido/}+${pedido.id_pedido}" class="text-white"/> Eliminar</button>
     </body>
 </html>
