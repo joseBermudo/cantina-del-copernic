@@ -67,7 +67,7 @@ public class ControladorCrearBocadilloDeLaSemana {
     public String editarBocadilloSemana(BocadilloSemana bocadilloSemana, Model model) {
 
         model.addAttribute("recetas", prodSer.obtenerRecetas());
-        model.addAttribute("bocadillosemana", ventasSer.buscarBocadilloSemana(bocadilloSemana));
+        model.addAttribute("bocadilloSemana", ventasSer.buscarBocadilloSemana(bocadilloSemana));
 
         return "/paginasVentas/ventasAdministrador/crearBocadilloDeLaSemana";
     }

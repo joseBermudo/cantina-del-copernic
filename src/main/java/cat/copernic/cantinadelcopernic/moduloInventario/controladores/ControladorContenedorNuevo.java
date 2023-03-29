@@ -39,7 +39,7 @@ public class ControladorContenedorNuevo {
     @GetMapping("/editarContenedor/{idcontenedor}")
     public String editarContenedor(Contenedor contenedor, Model model) {  
         model.addAttribute("contenedor", invSer.buscarContenedor(contenedor));
-        return "/paginasInventario/contenedorNuevo";
+        return "/paginasInventario/contenedorEditar";
     }
     
     @GetMapping("/eliminarContenedor/{idcontenedor}")

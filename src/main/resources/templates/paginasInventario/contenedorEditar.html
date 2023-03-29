@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{plantillas/plantilla :: head}"/>
+    <body>
+        <nav th:replace="~{plantillas/plantilla :: menuAdmin}"/>
+        <main class="main-wrapper"/>
+        <header th:replace="~{plantillas/plantilla :: headAdmin}"/>
+     <br>
+
+        <form th:action="@{/guardarContenedor}" method="post" th:object="${contenedor}">
+            <h1>CONTENIDOR</h1>
+            <div class="form-group">
+                <label for="nombre">Codi:</label>
+                <input type="text" id="nombre" name="nombre" th:field="*{idcontenedor}" class="form-control" readonly />
+            </div>
+       
+            <div class="form-group">
+                <label for="utensilio">Utensilios:</label>
+                <div class="card">
+                    <ul class="list-group list-group-flush">
+                        <li th:each="u : ${contenedor.utensilios}" id="utensilio" class="list-group-item">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span th:text="${u.nombre}"></span>
+                                <button class="btn btn-danger btn-sm"><a th:href="@{/eliminarUtensilio/}+${u.idutensilio}" class="text-white">ELIMINAR</a></button>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="card-footer">
+                        <button id="agregar-utensilio" class="btn btn-success btn-sm"><a th:href="@{/utensilioNuevo/}+${contenedor.idcontenedor}" class="text-white">UTENSILILI NOU</a></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" name="enviar" value="GUARDAR" class="btn btn-primary"/>
+            </div>
+        </form>
+    </body>
+</html>
+

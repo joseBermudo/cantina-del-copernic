@@ -8,18 +8,31 @@
         <header th:replace="~{plantillas/plantilla :: headAdmin}"/>
       
       
-      <h1>Listado De Contenedores</h1>
-    <ul th:each="c: ${contenedor}">
-            <li>
-                <span th:text="${c.idcontenedor}"></span>
-
-                <div>
-                    <button><a th:href="@{/editarContenedor/}+${c.idcontenedor}">Editar</a></button>
-                    <button><a th:href="@{/eliminarContenedor/}+${c.idcontenedor}">Eliminar</a></button>
-                </div>
-            </li>
-        </ul>
-    <button><a th:href="@{/contenedorNuevo}">Nou Contenidor</a></button>
+  <div class="card" style="width: 80%; margin: 0 auto;">
+  <div class="card-body">
+    <h1 class="card-title text-center">Llistat de Contenidors</h1>
+    <div style="display: flex; flex-wrap: wrap; justify-content: center;">
+      <ul th:each="c: ${contenedor}" style="list-style: none; padding: 0; margin: 0 10px 10px 10px;">
+        <li style="border: 1px solid #ccc; border-radius: 5px; padding: 10px; width: 200px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+            <span th:text="${c.idcontenedor}" style="font-weight: bold;"></span>
+            <div>
+              <button style="background-color: #007BFF; color: white; border: none; padding: 5px 10px; border-radius: 5px; margin-right: 5px;">
+                <a th:href="@{/editarContenedor/}+${c.idcontenedor}" style="color: white; text-decoration: none;">Editar</a>
+              </button>
+              <button style="background-color: #DC3545; color: white; border: none; padding: 5px 10px; border-radius: 5px;">
+                <a th:href="@{/eliminarContenedor/}+${c.idcontenedor}" style="color: white; text-decoration: none;">Eliminar</a>
+              </button>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+   <button class="btn main-btn primary-btn rounded-md btn-hover">
+      <a th:href="@{/contenedorNuevo}" style="color: white; text-decoration: none;">Nou Contenidor</a>
+    </button>
+  </div>
+</div>
   </body>
 </html>
 
