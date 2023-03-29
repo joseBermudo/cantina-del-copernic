@@ -30,18 +30,6 @@ public class ControladorHorarioTareas {
 
     @GetMapping("/horarioTareas")
     public String inici(Model model) {
-        model.addAttribute("crearTurnoLimpiezaWord", "Crear torn de neteja");
-        model.addAttribute("lunesWord", "Dilluns");
-        model.addAttribute("martesWord", "Dimarts");
-        model.addAttribute("miercolesWord", "Dimecres");
-        model.addAttribute("juevesWord", "Dijous");
-        model.addAttribute("viernesWord", "Divendres");
-        model.addAttribute("sabadoWord", "Dissabte");
-        model.addAttribute("domingoWord", "Diumenge");
-        model.addAttribute("horarioWord", "Horari");
-
-        model.addAttribute("listaTareasWord", "Llista de tasques");
-        model.addAttribute("crearTareaWord", "Crear tasca");
         
         ArrayList<String>[][] calendario = new ArrayList[6][7];
         for (int i = 0; i < 6; i++) {
@@ -72,7 +60,7 @@ public class ControladorHorarioTareas {
                     calendario[i][j].add(fechaString);
 
                 } else {
-                    calendario[i][j].add(Integer.toString(0));
+                    calendario[i][j].add("0");
                 }
                 fecha = fecha.plusDays(1);
             }
@@ -82,8 +70,7 @@ public class ControladorHorarioTareas {
             for (int i = 0; i < 6; i++) {
                 for (int j = 0; j < 7; j++) {
                     if(!calendario[i][j].get(0).equals("0")){
-                        //QUE IMBECIL SOY, si calendario[i][j].get(0) == fecha de la tarea, ya podemos hacer calendario[i][j].add(tarea.getAlumno());
-                        
+                       
                         String diaDeLaFechaQueNosPasan = calendario[i][j].get(0).substring(0,2);
                         if(diaDeLaFechaQueNosPasan.substring(0,1).equals("0")){
                             diaDeLaFechaQueNosPasan = diaDeLaFechaQueNosPasan.substring(1);
@@ -101,67 +88,4 @@ public class ControladorHorarioTareas {
         return "/paginasTareas/horarioTareas";
 
     }
-    private boolean procesarDatosCalendario(String fecha, int mesActual, int anyoActual) {
-        
-        String[] partesFecha = fecha.split("-");
-        int dia = Integer.parseInt(partesFecha[0]);
-        int mes;
-        
-        if(fecha.substring(0,1).equals("0"))
-        {
-            dia = Integer.parseInt(partesFecha[0].substring(1));
-        }
-        else
-        {
-            dia = Integer.parseInt(partesFecha[0]);
-        }
-        
-        if(fecha.substring(3,4).equals("0"))
-        {
-            mes = Integer.parseInt(partesFecha[1].substring(1));
-        }
-        else
-        {
-            mes = Integer.parseInt(partesFecha[1]);
-        }
-        int anyo = Integer.parseInt(partesFecha[2]);
-
-        return(mes == mesActual && anyo == anyoActual);
-        
-        //return true;
-    }
-
 }
-/*
-        int[][] calendario = new int[6][7];
-        int mesActual = LocalDate.now().getMonthValue();
-        List<Tarea> tareas = tareaDAO.findTareasDelMesActual(mesActual);
-
-        LocalDate fecha = LocalDate.now().withDayOfMonth(1);
-        int diasEnMes = fecha.lengthOfMonth();
-        ArrayList<ArrayList<Tarea>> tablaTareas = new ArrayList<>(diasEnMes);
-
-        for (int i = 0; i < diasEnMes; i++) {
-            tablaTareas.add(new ArrayList<>());
-        }
-        for (Tarea j : tareas) {
-            int diaDeLaTarea = j.getFecha().toInstant().atZone(ZoneId.systemDefault()).toLocalDate().getDayOfMonth();
-            tablaTareas.get(diaDeLaTarea - 1).add(j);
-        }
-        DayOfWeek diaInicio = fecha.getDayOfWeek();
-        int desplazamiento = diaInicio.getValue() - DayOfWeek.MONDAY.getValue();
-        fecha = fecha.minusDays(desplazamiento);
-
-        for (int i = 0; i < 6; i++) {
-            for (int j = 0; j < 7; j++) {
-                if (fecha.getMonthValue() == LocalDate.now().getMonthValue()) {
-                    calendario[i][j] = fecha.getDayOfMonth();
-                } else {
-                    calendario[i][j] = 0;
-                }
-                fecha = fecha.plusDays(1);
-            }
-        }
-        model.addAttribute("calendario",calendario);
-        model.addAttribute("tablaTareas",tablaTareas);
-        */

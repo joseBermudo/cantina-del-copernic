@@ -6,9 +6,11 @@ package cat.copernic.cantinadelcopernic.moduloTareas.controladores;
 
 import cat.copernic.cantinadelcopernic.modelo.TipoTarea;
 import cat.copernic.cantinadelcopernic.moduloTareas.controladores.servicios.TareaService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -24,21 +26,18 @@ public class ControladorCrearTipoTarea {
 
     
     @GetMapping("/crearTipoTarea")
-    public String inici(Model model) {
-        
-        model.addAttribute("crearTipoTareaWord", "Crear tipus de tasca");
-        model.addAttribute("atrasWord", "Enrrere");
-        model.addAttribute("nombreTipoTareaWord", "Nom tipus de tasca");
-        model.addAttribute("cancelarWord", "Cancel·lar");
+    public String crearTipoTarea(Model model) {
         
         model.addAttribute("tipoTarea", new TipoTarea(0));
-        
         return "/paginasTareas/crearTipoTarea"; 
     }
     
     @PostMapping("/guardarTipoTarea")
-    public String guardarTipoTarea(TipoTarea tipoTarea) {
+    public String guardarTipoTarea(@Valid TipoTarea tipoTarea, Errors errors, Model model) {
 
+        if(errors.hasErrors()){
+            return "/paginasTareas/crearTipoTarea";
+        }
         tareaService.afegirTipoTarea(tipoTarea);
 
         return "redirect:/listarTiposTarea";

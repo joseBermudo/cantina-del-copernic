@@ -8,6 +8,7 @@ import cat.copernic.cantinadelcopernic.DAO.DeudaDAO;
 import cat.copernic.cantinadelcopernic.modelo.Deuda;
 import cat.copernic.cantinadelcopernic.modelo.Profesor;
 import cat.copernic.cantinadelcopernic.moduloDeudas.servicios.DeudaService;
+import cat.copernic.cantinadelcopernic.moduloRRHH.servicios.ProfesorService;
 import java.sql.Date;
 import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,31 +25,26 @@ public class ControladorListarDeudasAlumno {
     
     @Autowired
     private DeudaService deudaService;
+    
+    @Autowired
+    private ProfesorService profesorService;
+    
     @GetMapping("/listarDeudasAlumno")
-    public String inici(Model model) {
-        
-        model.addAttribute("atrasWord", "Enrrere");
-        model.addAttribute("listadoDeudasWord", "Llistat deutes");
-        model.addAttribute("deudasWord", "Deutes");
-        model.addAttribute("fechaWord", "Data");
-        model.addAttribute("deudaWord", "Deuda");
-        model.addAttribute("marcarComoPagadaWord", "Marcar com a pagada");
-        model.addAttribute("noHayDeudasWord", "No hi ha deutes");
-        model.addAttribute("aplicarCambiosWord", "Aplicar canvis");
-        model.addAttribute("cancelarWord", "Cancel·lar");
-        model.addAttribute("crearDeuteWord", "Crear deute");
-        model.addAttribute("profesorWord", "Professor:");
-        model.addAttribute("correoWord", "Email: ");
+    public String listarDeudasAlumno(Model model) {
         
         model.addAttribute("listadoDeudas", deudaService.listarDeudas());
         
-        Profesor datosProfesor = new Profesor();
-//        datosProfesor.setCorreo("correo@ejemplo.com");
-//        datosProfesor.setNombre("Nombre");
-//        datosProfesor.setApellidos("Apellido1 Apellido2");
-        
-        model.addAttribute("datosProfesor", datosProfesor);
-        
         return "/paginasDeudas/listarDeudasAlumno"; 
+    }
+    
+    @GetMapping("/listarDeudasAlumno/{correo}")
+    public String listarDeudasAlumno(Model model, Profesor profesor) {
+
+        var profe = profesorService.buscarProfesores(profesor);
+
+        model.addAttribute("datosProfesor", profe);
+        model.addAttribute("listadoDeudas", profe.getDeudas());
+
+        return "/paginasDeudas/listarDeudasAlumno";
     }
 }

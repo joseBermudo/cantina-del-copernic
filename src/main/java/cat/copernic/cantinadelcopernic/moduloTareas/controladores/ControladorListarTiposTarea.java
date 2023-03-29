@@ -24,18 +24,7 @@ public class ControladorListarTiposTarea {
     @GetMapping("/listarTiposTarea")
     public String inici(Model model) {
         
-        model.addAttribute("listadoTipoTareaWord", "Llistat tipus de tasques");
-        model.addAttribute("atrasWord", "Enrrere");
-        model.addAttribute("eliminarWord", "Eliminar");
-        
         model.addAttribute("listadoTiposTarea", tipoTareaDAO.findAll());
-
-        model.addAttribute("tiposTareaWord", "Tipus de tasques");
-        model.addAttribute("noHayTiposTareaWord", "No hi ha tipus de tasques");
-
-        model.addAttribute("cancelarWord", "Cancel·lar");
-        model.addAttribute("listaTareasWord", "Llistat de Tasques");
-        model.addAttribute("crearTipoTareaWord", "Crear nou tipus de tasca");
 
         return "/paginasTareas/listarTiposTarea";
     }

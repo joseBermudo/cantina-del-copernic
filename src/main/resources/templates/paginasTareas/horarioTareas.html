@@ -1,39 +1,22 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <title th:text="${horarioWord}"></title>
-        <style>
-            table {
-                border-collapse: collapse;
-                margin: 0 auto;
-            }
-            th, td {
-                border: 1px solid black;
-                padding: 10px;
-            }
-            th {
-                background-color: #ccc;
-            }
-            td {
-                text-align: center;
-            }
-            .groc {
-                background-color: #ff0;
-            }
-        </style>
-    </head>
+<html>
+    <head th:replace="~{plantillas/plantilla :: head}"/>
     <body>
-        <h1 th:text="${horarioWord}"></h1>
+        <link rel="stylesheet" href="/css/horarioCSS.css" />
+        <nav th:replace="~{plantillas/plantilla :: menuAdmin}"/>
+        <main class="main-wrapper"/>
+        <header th:replace="~{plantillas/plantilla :: headAdmin}"/>
+        <h1>Horari</h1>
         <table id="horario">
             <thead>
                 <tr>
-                    <th th:text="${lunesWord}"></th>
-                    <th th:text="${martesWord}"></th>
-                    <th th:text="${miercolesWord}"></th>
-                    <th th:text="${juevesWord}"></th>
-                    <th th:text="${viernesWord}"></th>
-                    <th th:text="${sabadoWord}"></th>
-                    <th th:text="${domingoWord}"></th>
+                    <th>Dilluns</th>
+                    <th>Dimarts</th>
+                    <th>Dimecres</th>
+                    <th>Dijous</th>
+                    <th>Divendres</th>
+                    <th>Dissabte</th>
+                    <th>Diumenge</th>
                 </tr>
             </thead>
             <tbody>
@@ -54,17 +37,7 @@
                 </tr>
             </tbody>
         </table>
-        <button th:text="${listaTareasWord}" onclick="window.location.href = '/listarTareas'"></button>
+        <button onclick="window.location.href = '/listarTareas'">Llista tasques</button>
     </body>
 </html>
 
-
-<!-- 
-<tr th:each="fila : ${calendario}">
-        <td th:each="celda : ${fila}">
-            <span th:each="palabra : ${#strings.arraySplit(celda, ' ')}" th:text="${palabra}"></span>
-        <td th:each="alumno : ${tablaTareas[#strings.indexOf(fila, calendario)][#strings.indexOf(fila, celda)]}">
-            <span th:text="${alumno}"></span>
-        </td>
-</tr>
--->
