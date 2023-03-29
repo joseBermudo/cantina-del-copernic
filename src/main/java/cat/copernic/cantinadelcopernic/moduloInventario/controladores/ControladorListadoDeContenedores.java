@@ -4,17 +4,13 @@
  */
 package cat.copernic.cantinadelcopernic.moduloInventario.controladores;
 
-import cat.copernic.cantinadelcopernic.DAO.ContenedorDAO;
+
 import cat.copernic.cantinadelcopernic.moduloInventario.servicios.InventarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-/**
- *
- * @author Enric
- */
 
 @Controller
 public class ControladorListadoDeContenedores {

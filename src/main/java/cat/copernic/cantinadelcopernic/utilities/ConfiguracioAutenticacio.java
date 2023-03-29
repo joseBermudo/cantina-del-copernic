@@ -60,16 +60,19 @@ public class ConfiguracioAutenticacio {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
+        // Autorización de las solicitudes entrantes
         return http.authorizeHttpRequests((requests) -> requests
-                .requestMatchers("/listaBocadilloSemana").hasAnyAuthority("admin", "alumno")
+                .requestMatchers("/listaBocadilloSemana","/crearFormularioBocadilloSemana","/listaBocadilloSemana","/verPedidoAdministrador/**").hasAnyAuthority("admin", "alumno")
                 .requestMatchers("/pedidosCliente").hasAnyAuthority("profesor")
                 .anyRequest().authenticated()
         )
+                // Configuración del formulario de inicio de sesión
                 .formLogin((form) -> form
                 .loginPage("/login")
                 .successHandler(new CustomAuthenticationSuccessHandler())
                 .permitAll()
                 )
+                // Configuración del manejo de excepciones
                 .exceptionHandling((exception) -> exception
                 .accessDeniedPage("/errors/error403"))
                 .build();
@@ -81,13 +84,16 @@ public class ConfiguracioAutenticacio {
         public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
                 Authentication authentication) throws IOException, ServletException {
 
+            // Obtener los roles del usuario autenticado
             Set<String> roles = AuthorityUtils.authorityListToSet(authentication.getAuthorities());
 
+            // Redirigir al usuario a la página correspondiente según su rol
             if (roles.contains("admin") || roles.contains("alumno")) {
-                getRedirectStrategy().sendRedirect(request, response, "/listaBocadilloSemana");
+                getRedirectStrategy().sendRedirect(request, response, "/pedidosAdministrador");
             } else if (roles.contains("profesor")) {
                 getRedirectStrategy().sendRedirect(request, response, "/pedidosCliente");
             } else {
+                // Usar el comportamiento predeterminado si no se cumple ninguna condición anterior
                 super.onAuthenticationSuccess(request, response, authentication);
             }
         }
