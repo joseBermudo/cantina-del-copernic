@@ -19,10 +19,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
 
-/**
- *
- * @author fta
- */
 
 /*Classe de configuració de Spring Security per configurar l'accés d'usuaris (autenticació).
  *Aquesta classe ha d'extendre de la classe WebSecurityConfigurerAdapter de Spring Security per poder
@@ -62,7 +58,7 @@ public class ConfiguracioAutenticacio {
 
         // Autorización de las solicitudes entrantes
         return http.authorizeHttpRequests((requests) -> requests
-                .requestMatchers("/listaBocadilloSemana","/crearFormularioBocadilloSemana","/listaBocadilloSemana","/verPedidoAdministrador/**","/pedidosAdministrador").hasAnyAuthority("admin", "alumno")
+                .requestMatchers("/listaBocadilloSemana","/crearFormularioBocadilloSemana","/listaBocadilloSemana","/verPedidoAdministrador/**","/pedidosAdministrador","/listarProfesores","/listarDeudasAdministrador","/horarioTareas","/listarTareas").hasAnyAuthority("admin", "alumno")
                 .requestMatchers("/pedidosCliente").hasAnyAuthority("profesor")
                 .anyRequest().authenticated()
         )
