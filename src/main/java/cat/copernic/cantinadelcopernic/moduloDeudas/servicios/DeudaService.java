@@ -8,6 +8,7 @@ import cat.copernic.cantinadelcopernic.DAO.DeudaDAO;
 import cat.copernic.cantinadelcopernic.DAO.ProfesorDAO;
 import cat.copernic.cantinadelcopernic.modelo.Deuda;
 import cat.copernic.cantinadelcopernic.modelo.Profesor;
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,7 +31,23 @@ public class DeudaService implements DeudaServiceInterface{
     public List<Deuda> listarDeudas() {
        
         return (List<Deuda>) deudaDAO.findAll(); 
-    } 
+    }
+    
+    @Override
+    @Transactional(readOnly=true) 
+    public List<Deuda> listarDeudasDeUnProfesor(String correoProfesor) {
+        
+        List<Deuda> deudasTotales = deudaDAO.findAll();
+        List<Deuda> deudasProfesor = new ArrayList<>();
+        for (int i = 0; i < deudasTotales.size(); i++) {
+            if(deudasTotales.get(i).getProfesor().getCorreo().equals(correoProfesor))
+            {
+                deudasProfesor.add(deudasTotales.get(i));
+            }
+        }
+        
+        return deudasProfesor; 
+    }
 
     @Override
     @Transactional

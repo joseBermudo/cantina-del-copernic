@@ -1,0 +1,46 @@
+@charset "UTF-8";
+
+/* Estilos para el título */
+h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  margin: 2rem 0;
+}
+
+/* Estilos para la tabla */
+#horario {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 2rem;
+}
+
+#horario th,
+#horario td {
+  padding: 1rem;
+  text-align: center;
+  border: 1px solid #ccc;
+}
+
+#horario thead {
+  background-color: orange;
+}
+
+#horario tbody tr:nth-child(odd) {
+  background-color: white;
+}
+
+button {
+        display: block;
+        margin: 20px auto;
+        padding: 10px 20px;
+        font-size: 1.2em;
+        background-color: #666;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+}
+button:hover {
+        background-color: red;
+}

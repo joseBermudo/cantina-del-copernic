@@ -8,11 +8,14 @@ import cat.copernic.cantinadelcopernic.DAO.TipoTareaDAO;
 import cat.copernic.cantinadelcopernic.modelo.Tarea;
 import cat.copernic.cantinadelcopernic.modelo.TipoTarea;
 import cat.copernic.cantinadelcopernic.moduloTareas.controladores.servicios.TareaService;
+import jakarta.validation.Valid;
 import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 /**
@@ -24,32 +27,29 @@ public class ControladorCrearTarea {
 
     @Autowired 
     private TareaService tareaService;
-
-    @GetMapping("/crearTarea")
-    public String inici(Model model) {
-
-        model.addAttribute("listaTiposTarea", tareaService.llistarTipoTarea());
-
-        model.addAttribute("tarea", new Tarea());
-
-        model.addAttribute("crearTareaWord", "Crear nova tasca");
-        model.addAttribute("alumneWord", "Alumne: ");
-        model.addAttribute("fechaWord", "Data: ");
-        model.addAttribute("tipoTareaWord", "Tipus de tasca: ");
-        model.addAttribute("cancelarWord", "Cancel·lar");
-
-        return "/paginasTareas/crearTarea";
-    }
-
     
     @PostMapping("/guardarTarea")
-    public String guardarTarea(Tarea tarea) {
+    public String guardarTarea(@Valid Tarea tarea, Errors errors, Model model) {
+        
+        if(errors.hasErrors()){
+            model.addAttribute("listaTiposTarea", tareaService.llistarTipoTarea());
 
+            return "/paginasTareas/crearTarea";
+        }
+        
         tareaService.afegirTarea(tarea);
 
         return "redirect:/listarTareas";
     }
     
+    @GetMapping("/crearTarea")
+    public String crearTarea(Model model) {
+
+        model.addAttribute("listaTiposTarea", tareaService.llistarTipoTarea());
+        model.addAttribute("tarea", new Tarea());
+        
+        return "/paginasTareas/crearTarea";
+    }
     @GetMapping("/eliminarTarea/{id}") 
     public String eliminarTarea(Tarea tarea) {
 
@@ -58,5 +58,14 @@ public class ControladorCrearTarea {
         tareaService.eliminarTarea(todasTareasTarea);
         
         return "redirect:/listarTareas"; 
+    }
+
+    @GetMapping("/editarTarea/{id}")
+    public String editarTarea(Tarea tarea, Model model) {
+        
+        model.addAttribute("listaTiposTarea", tareaService.llistarTipoTarea());
+        model.addAttribute("tarea", tareaService.cercarTarea(tarea));
+        
+        return "/paginasTareas/editarTarea";
     }
 }

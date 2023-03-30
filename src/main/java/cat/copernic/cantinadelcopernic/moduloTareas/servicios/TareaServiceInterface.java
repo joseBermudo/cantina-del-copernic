@@ -31,4 +31,6 @@ public interface TareaServiceInterface {
     public void eliminarTarea(Tarea tarea);
     
     public Tarea cercarTarea(Tarea tarea);
+    
+    public Tarea obtenerTareaPorId(int id);
 }

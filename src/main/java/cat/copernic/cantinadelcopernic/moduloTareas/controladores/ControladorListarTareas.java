@@ -27,19 +27,8 @@ public class ControladorListarTareas {
     TareaDAO tareaDAO;
     @GetMapping("/listarTareas")
     public String inici(Model model) {
-
-        model.addAttribute("listadoTareaWord", "Llista de tasques");
         
         model.addAttribute("listadoTarea", tareaDAO.findAll());
-        
-        model.addAttribute("tareaWord", "Tasca");
-        model.addAttribute("fechaWord", "Data");
-        model.addAttribute("alumnoWord", "Alumne");
-        model.addAttribute("horarioWord", "Horari");
-        model.addAttribute("editarWord", "Editar");
-        model.addAttribute("crearTareaWord", "Crear nova tasca");
-        model.addAttribute("verTipoTareaWord", "Veure tipus de tasques");
-        model.addAttribute("noHayTareasWord", "No hi ha tasques");
 
         return "/paginasTareas/listarTareas";
     }
