@@ -36,8 +36,8 @@ public class ControladorEditarPerfil {
         rol.setIdroles(RolSigleton.getInformacion());
         profesor.setRols(rol);
         profesorService.anadirProfesores(profesor);
-        var correo = profesor.getCorreo();
-        return "redirect:/perfil/" + correo;
+        
+        return "redirect:/perfil";
     
     }
 }
