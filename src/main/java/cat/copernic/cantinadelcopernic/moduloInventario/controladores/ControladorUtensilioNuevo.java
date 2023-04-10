@@ -8,9 +8,11 @@ import cat.copernic.cantinadelcopernic.modelo.Contenedor;
 import cat.copernic.cantinadelcopernic.modelo.Utensilio;
 import cat.copernic.cantinadelcopernic.moduloInventario.servicios.InventarioService;
 import cat.copernic.cantinadelcopernic.utilities.ContenedorSingleton;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -25,19 +27,23 @@ public class ControladorUtensilioNuevo {
     private InventarioService invSer;
 
     @GetMapping("/utensilioNuevo/{idcontenedor}")
-    public String inici(Model model, Contenedor contenedor) {
-        Utensilio u = new Utensilio();
+    public String inici(Model model, Contenedor contenedor, Utensilio utensilio) {
         //model.addAttribute("contenedor",contenedor);
         ContenedorSingleton.getInstance();
         ContenedorSingleton.setInformacion(contenedor.getIdcontenedor());
-        model.addAttribute("utensilio", u);
+
         return "/paginasInventario/UtensilioNuevo";
     }
 
     @PostMapping("/guardarUtensilio")
-    public String guardarUtensilio(Utensilio utensilio) {
+    public String guardarUtensilio(@Valid Utensilio utensilio, Errors errors) {
         Contenedor c = new Contenedor();
         c.setIdcontenedor(ContenedorSingleton.getInformacion());
+           if (errors.hasErrors()) {
+              return "redirect:/utensilioNuevo/" + c.getIdcontenedor();
+        }
+               
+       
         Contenedor contenedorB = invSer.buscarContenedor(c);
         utensilio.setContenedor(contenedorB);
         invSer.addUtensilio(utensilio);
