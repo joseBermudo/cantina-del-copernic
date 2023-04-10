@@ -18,10 +18,12 @@
                                 <div class="form-group">
                                     <label for="nombre">Nom:</label>
                                     <input type="text" id="nombre" name="nombre" class="form-control" th:field="*{nombre}" />
+                                     <span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"/>
                                 </div>
                                 <div class="form-group">
                                     <label for="cantidad">Quantitat:</label>
                                     <input type="text" id="cantidad" name="cantidad" class="form-control" th:field="*{cantidad}" />
+                                     <span th:if="${#fields.hasErrors('cantidad')}" th:errors="*{cantidad}"/>
                                 </div>
                                 
                                 <br>
