@@ -17,27 +17,32 @@ import java.util.ArrayList;
 import lombok.Data;
 
 /**
- *
+ * Clase entidad Receta.
+ * Hace referencia a la tabla SQL receta.
  * @author joseb
  */
 @Data
 @Entity
 @Table(name = "receta")
 public class Receta implements Serializable {
-
-    @Id //Indica al sistema que l'atribut idgos és la clau primària de la BBDD
+    
+    //Id de la receta.
+    @Id 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idreceta")
     private int id;
     
+    //Nombre de la receta.
     @Column(name = "nombre")
     @NotEmpty
     private String nombre;
     
+    //Descripcion de la receta.
     @Column(name = "descripcion")
     @NotEmpty
     private String descripcion;
     
+    //Ingredientes de la receta.
     @Column(name="ingredientes")
     private String ing;
     
