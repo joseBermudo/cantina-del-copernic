@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Editar deute</title>
-</head>
-<body>
+    <head th:replace="~{plantillas/plantilla :: head}"/>
+    <body>
+        <link rel="stylesheet" href="/css/formulario.css" />
+        <nav th:replace="~{plantillas/plantilla :: menuAdmin}"/>
+        <main class="main-wrapper"/>
+        <header th:replace="~{plantillas/plantilla :: headAdmin}"/>
     <h1>Editar deute</h1>
     <form th:action="@{/guardarDeuda/}+${deuda.profesor.getCorreo()}" method="post" th:object="${deuda}">        
         <input type="hidden" name="id" th:field="*{idDeuda}"/>

@@ -9,7 +9,11 @@ import cat.copernic.cantinadelcopernic.modelo.Deuda;
 import cat.copernic.cantinadelcopernic.modelo.Profesor;
 import cat.copernic.cantinadelcopernic.moduloDeudas.servicios.DeudaService;
 import java.util.ArrayList;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,20 +28,21 @@ public class ControladorListarDeudasProfesor {
     @Autowired
     private DeudaService deudaService;
     @GetMapping("/listarDeudasProfesor")
-    public String inici(Model model) {
+    public String listarDeudasProfesor(Model model) {
         
-        model.addAttribute("atrasWord", "Enrrere");
-        model.addAttribute("listadoDeudasWord", "Llistat deutes");
-        model.addAttribute("deudasWord", "Deutes");
-        model.addAttribute("fechaWord", "Data");
-        model.addAttribute("deudaWord", "Deuda");
-        model.addAttribute("noHayDeudasWord", "No hi ha deutes");
-        model.addAttribute("cancelarWord", "Cancel·lar");
-        model.addAttribute("profesorWord", "Professor:");
-        model.addAttribute("correoWord", "Email: ");
+        String correoProfesor = getCurrentUser();
         
-        model.addAttribute("listadoDeudas", deudaService.listarDeudas());
+        List<Deuda> deudas = deudaService.listarDeudasDeUnProfesor(correoProfesor);
+        
+        model.addAttribute("listadoDeudas", deudas);
         
         return "/paginasDeudas/listarDeudasProfesor"; 
+    }
+    
+    public String getCurrentUser() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+        String username = userDetails.getUsername();
+        return username;
     }
 }

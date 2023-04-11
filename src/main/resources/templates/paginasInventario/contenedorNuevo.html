@@ -6,11 +6,15 @@
         <main class="main-wrapper"/>
         <header th:replace="~{plantillas/plantilla :: headAdmin}"/>
         
+        <br>
        
         <form th:action="@{/guardarContenedor}" method="post" th:object="${contenedor}">
              <h1>CONTENIDOR</h1>
             <label for="nombre">Codi:</label>
-            <input type="text" id="nombre" name="nombre" th:field="*{idcontenedor}"/>
+            <input type="text" id="idcontenedor" name="idcontenedor" th:field="*{idcontenedor}"/>
+            <br> 
+            <span th:if="${#fields.hasErrors('idcontenedor')}" th:errors="*{idcontenedor}"/>
+            <br> 
             <br>    
 
             <input type="submit" name="enviar" value="GUARDAR"/>
