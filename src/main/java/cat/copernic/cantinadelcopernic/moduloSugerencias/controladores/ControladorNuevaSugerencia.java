@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 
 /**
- *
+ * Clase que representa el controlador de la página para crear una sugerencia
  * @author andre
  */
 @Controller
@@ -23,6 +23,12 @@ public class ControladorNuevaSugerencia {
     
 
     @GetMapping("/nouSuggeriment")
+    /**
+     * función que se utiliza para cargar la página para crear una sugerencia
+     * @param sugerencia
+     * @param model
+     * @return devuelve el html de la página para crear una sugerencia
+     */
     public String inici( Sugerencia sugerencia, Model model){
         
         var titulo = "CREAR SUGGERIMENT";

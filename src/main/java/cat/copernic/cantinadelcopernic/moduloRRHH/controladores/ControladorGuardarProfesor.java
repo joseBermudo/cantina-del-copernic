@@ -17,7 +17,7 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.PostMapping;
 
 /**
- *
+ *Clase que represena el controllador para guardar un profesor
  * @author andre
  */
 @Controller
@@ -27,6 +27,13 @@ public class ControladorGuardarProfesor {
     private ProfesorService profesorService;
     
     @PostMapping("/guardarProfesor")
+    /**
+     * función que se utiliza para guardar un profesor
+     * @param profesor
+     * @param errors objeto donde se guardan los errores que se dan al validar profesor
+     * @param result objeto que se utliza para crear un error propio para validar la contraseña
+     * @return devuelve un redirect a una pantalla donde se muestra una lista de profesores
+     */
     public String guardarProfesor(@Valid Profesor profesor, Errors errors, BindingResult result){
         
         if(errors.hasErrors()){ 

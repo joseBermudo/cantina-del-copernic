@@ -13,10 +13,15 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 
 /**
- *
+ *interficie que define los metodos para acceder a los datos de las sugerencias de la base de datos 
  * @author andre
  */
 public interface SugerenciaDAO extends JpaRepository<Sugerencia,Integer>{
-    
+      
+      /**
+       * metodo para listar sugerencias de un solo profesor
+       * @param profesor
+       * @return devuelve una lista de profesorws 
+       */
       List<Sugerencia> findByProfesor(Profesor profesor);
 }

@@ -14,7 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 /**
- *
+ * Clase que representa el controlador de la página para mostar la información de un profesor
  * @author andre
  */
 @Controller
@@ -24,6 +24,11 @@ public class ControladorPerfilProfesor {
     private ProfesorService profesorService;
     
     @GetMapping("/perfil")
+    /**
+     * funmción que e utiliza para recuperar la información del profesor logueado y mostarla
+     * @param model
+     * @return devuelve una pantalla donse se muestra el la información del profesor 
+     */
     public String inici( Model model){
         
         model.addAttribute("nombre", "Nom del professor");

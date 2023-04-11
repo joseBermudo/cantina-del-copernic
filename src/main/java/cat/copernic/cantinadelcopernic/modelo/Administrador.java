@@ -11,6 +11,9 @@ import jakarta.persistence.Entity;
  * @author andre
  */
 @Entity
+/**
+ * Clase que representa un ADminisstrador del ERP
+ */
 public class Administrador extends Alumno {
     private static final long serialVersionUID = 1L;
 }

@@ -18,16 +18,22 @@ import org.springframework.transaction.annotation.Transactional;
  * @author andre
  */
 @Service 
+/**
+ * Clase que representa la capa de servicio para el modelo de Profesor
+ */
 public class ProfesorService  implements ProfesorServiceInterface {
     
     @Autowired
     private ProfesorDAO profesorDAO;
     
-    @Autowired
-    private SugerenciaService sugerenciaService;
+    
     
     @Override
     @Transactional(readOnly=true) 
+    /**
+     * metodo que recupera una lista de todos los profesores de la base de datos
+     * @return lista de sugerencias
+     */
     public List<Profesor> listarProfesores() {
        
         return (List<Profesor>) profesorDAO.findAll(); 
@@ -35,6 +41,10 @@ public class ProfesorService  implements ProfesorServiceInterface {
 
     @Override
     @Transactional
+    /**
+     * metodo que se utiliza para añadir y ediar profesores de la base de datos
+     * @param profesor
+     */
     public void anadirProfesores(Profesor profesor) {
        
         this.profesorDAO.save(profesor); 
@@ -42,6 +52,10 @@ public class ProfesorService  implements ProfesorServiceInterface {
 
     @Override
     @Transactional
+    /**
+     * metodo que elimina un profesor de la base de datos
+     * @param profesor
+     */
     public void eliminarProfesores(Profesor profesor) {
         
         this.profesorDAO.delete(profesor);
@@ -49,6 +63,11 @@ public class ProfesorService  implements ProfesorServiceInterface {
 
     @Override
     @Transactional(readOnly=true)
+    /**
+     * metodo que busca un profesor en la base de datos
+     * @param profesor
+     * @return el profesor encontrado 
+     */
     public Profesor buscarProfesores(Profesor profesor) {
         
        return this.profesorDAO.findById(profesor.getCorreo()).orElse(null);
