@@ -20,7 +20,7 @@ public interface ProfesorPromocionDAO extends JpaRepository<ProfesorPromocion,Pr
     /**
      * 
      * @param usuarios_correo correo electronico del usuario.
-     * @return  Devuelve una lista de promociones que este relacionados con el usuario espeficado.
+     * @return  Devuelve una lista de ProfesorPromocion que este relacionados con el usuario espeficado.
      */
     @Query("SELECT pf FROM ProfesorPromocion pf WHERE pf.profesor.correo =:usuarios_correo")
     List<ProfesorPromocion> findByCorreo(@Param("usuarios_correo") String usuarios_correo);
