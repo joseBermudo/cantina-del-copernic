@@ -9,7 +9,8 @@ import cat.copernic.cantinadelcopernic.modelo.Rol;
 import java.util.List;
 
 /**
- *
+ *Interfaz que define los metodos para hablar con la base de datos respecto
+ * a la gestion de modulos.
  * @author joseb
  */
 public interface GestionModulosServiceInterface {
