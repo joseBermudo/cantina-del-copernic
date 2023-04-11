@@ -4,8 +4,7 @@
  */
 package cat.copernic.cantinadelcopernic.moduloInventario.controladores;
 
-import cat.copernic.cantinadelcopernic.DAO.ContenedorDAO;
-import cat.copernic.cantinadelcopernic.DAO.UtensilioDAO;
+
 import cat.copernic.cantinadelcopernic.modelo.Contenedor;
 import cat.copernic.cantinadelcopernic.moduloInventario.servicios.InventarioService;
 import org.springframework.beans.factory.annotation.Autowired;
