@@ -19,6 +19,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 /**
  *
+ * Controlador para listar, crear, editar y eliminar deudas desde una cuenta de
+ * administrador.
+ *
  * @author Enric
  */
 @Controller
@@ -30,6 +33,17 @@ public class ControladorListarDeudasAdministrador {
     @Autowired
     private ProfesorService profesorService;
 
+    /**
+     *
+     * Obtiene el listado de deudas de un profesor en particular y los muestra
+     * en una vista.
+     *
+     * @param model El modelo que se usará para enviar datos a la vista.
+     *
+     * @param profesor El profesor del que se desean obtener las deudas.
+     *
+     * @return La vista con el listado de deudas.
+     */
     @GetMapping("/listarDeudasAdministrador/{correo}")
     public String listarDeudasAdministrador(Model model, Profesor profesor) {
 
@@ -41,6 +55,19 @@ public class ControladorListarDeudasAdministrador {
         return "/paginasDeudas/listarDeudasAdministrador";
     }
 
+    /**
+     *
+     * Muestra la vista para crear una nueva deuda asociada a un profesor en
+     * particular.
+     *
+     * @param model El modelo que se usará para enviar datos a la vista.
+     *
+     * @param deuda La nueva deuda a crear.
+     *
+     * @param profesor El profesor asociado a la nueva deuda.
+     *
+     * @return La vista para crear una nueva deuda.
+     */
     @GetMapping("/crearDeuda/{correo}")
     public String crearDeuda(Model model, Deuda deuda, Profesor profesor) {
 
@@ -48,11 +75,26 @@ public class ControladorListarDeudasAdministrador {
         return "/paginasDeudas/crearDeuda";
     }
 
+    /**
+     *
+     * Guarda una nueva deuda asociada a un profesor en particular.
+     *
+     * @param deuda La nueva deuda a guardar.
+     *
+     * @param profesor El profesor asociado a la nueva deuda.
+     *
+     * @param errors Los errores que se hayan presentado al validar la nueva
+     * deuda.
+     *
+     * @param model El modelo que se usará para enviar datos a la vista.
+     *
+     * @return Una redirección al listado de deudas actualizado.
+     */
     @PostMapping("/guardarDeuda/{correo}")
     public String guardarDeuda(@Valid Deuda deuda, Profesor profesor, Errors errors, Model model) {
-        
+
         System.out.println(deudaService.buscarProfesor(profesor).getCorreo());
-        
+
         if (errors.hasErrors()) {
             model.addAttribute("correo", deudaService.buscarProfesor(profesor).getCorreo());
             return "/paginasDeudas/crearDeuda";
@@ -63,6 +105,14 @@ public class ControladorListarDeudasAdministrador {
         return "redirect:/listarDeudasAdministrador/{correo}";
     }
 
+    /**
+     *
+     * Elimina una deuda en particular.
+     *
+     * @param deuda La deuda a eliminar.
+     *
+     * @return Una redirección al listado de deudas actualizado.
+     */
     @GetMapping("/eliminarDeuda/{idDeuda}")
     public String eliminarDeuda(Deuda deuda) {
 
@@ -72,7 +122,14 @@ public class ControladorListarDeudasAdministrador {
 
         return "redirect:/listarDeudasAdministrador/" + correoProfesor;
     }
-
+    /**
+     *
+     * Edita una deuda en particular.
+     *
+     * @param deuda La deuda a editar.
+     *
+     * @return Una redirección al listado de deudas actualizado.
+     */
     @GetMapping("/editarDeuda/{idDeuda}")
     public String editarDeuda(Deuda deuda, Model model) {
 
