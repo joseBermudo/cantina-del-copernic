@@ -19,7 +19,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 /**
- *
+ *Clase que representa el controlador de la página que mostrará la lista de sugerencias 
  * @author andre
  */
 @Controller
@@ -32,6 +32,12 @@ public class ControladorListaSugerencias {
     private UsuarioService usuarioService;
     
     @GetMapping("/listaSuggeriments")
+    /**
+     * función que recuperará una lista de todas las sugerencia o de las sugerencias de un usuario dependiendo 
+     * si el usuario quiue accede a la página es un admin o un usuario comun
+     * @param model
+     * @return devuelve la página html donde se muestra la lista de sugerencias
+     */
     public String inici(Model model){
         
         var correo = UsuarioActual.getCurrentUser();

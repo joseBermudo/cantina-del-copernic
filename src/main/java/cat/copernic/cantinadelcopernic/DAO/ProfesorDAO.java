@@ -10,7 +10,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 
 /**
- *
+ *interficie que define los metodos para acceder a los datos de los profesores de la base de datos 
  * @author andre
  */
 public interface ProfesorDAO  extends JpaRepository<Profesor,String> {

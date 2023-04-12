@@ -20,7 +20,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- *
+ * Clase que representa la capa de servicio para el modelo de Usuario
  * @author andre
  */
 @Service
@@ -33,6 +33,11 @@ public class UsuarioService implements UsuarioServiceInterface, UserDetailsServi
     
     @Override
     @Transactional(readOnly=true) 
+    /**
+     * metodo que busca un usuario en especifico 
+     * @param usuario
+     * @return  devuelve el usuario encontratado
+     */
     public Usuario buscarUsuario(Usuario usuario) {
         
          return this.usuarioDAO.findById(usuario.getCorreo()).orElse(null);

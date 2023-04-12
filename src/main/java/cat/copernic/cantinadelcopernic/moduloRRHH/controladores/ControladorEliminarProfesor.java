@@ -13,7 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 /**
- *
+ * Clase que represena el controllador para eliminar un profesor
  * @author andre
  */
 @Controller
@@ -23,6 +23,11 @@ public class ControladorEliminarProfesor {
     private ProfesorService profesorService;
     
     @GetMapping("/eliminarProfesor/{correo}") 
+    /**
+     * función que se utiliza para eliminar el profesor
+     * @param profesor
+     * @return devuelve un redirect a la pantalla donde se muestra un listdo de los profesores
+     */
     public String eliminar(Profesor profesor) {
         
         var profesorCompleto = profesorService.buscarProfesores(profesor);

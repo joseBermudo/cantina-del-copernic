@@ -13,7 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 /**
- *
+ *Clase que representa el controlador de la página que muestra la sugerencia a los admins
  * @author andre
  */
 @Controller
@@ -23,6 +23,12 @@ public class ControladorVerSugerencia {
     private SugerenciaService SugerenciaService;
     
     @GetMapping("/verSuggeriment/{idSugerencia}")
+    /**
+     * función que cargar la página que mustra la información de la sugerencia
+     * @param sugerencia 
+     * @param model
+     * @return devuelve el html de la página que muestra la información de la sugerencia 
+     */
     public String inici(Sugerencia sugerencia, Model model){
         
         /*var sugerencia2 = new Sugerencia();

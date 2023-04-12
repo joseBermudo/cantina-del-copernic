@@ -18,12 +18,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 /**
- *
+ *Clase que representa un controlador para crear alumnos
  * @author andre
  */
 @Controller
 public class ControladorNuevoAlumno {
-  @GetMapping("/nouAlumne")
+    @GetMapping("/nouAlumne")
+    /**
+     * función qe se utliza para mostrar la pantalla para crear un alumno
+     */
     public String inici(Model model, Alumno alumno){
         
         var tituloPagina = "REGISTRAR ALUMNE";
@@ -49,6 +52,13 @@ public class ControladorNuevoAlumno {
     private AlumnoService alumnoService;
     
     @PostMapping("/guardarAlumno")
+    /**
+     * función donde se valida el alumno para guardarlo
+     * @param alumno 
+     * @param errores objeto donde se guardan los erropres que se dan al validar alumno
+     * @param result objeto que se utliza para crear un error propio para validar la contraseña
+     * @return devuelve un redirect a una pantalla donde se muestra una lista de profesores
+     */
     public String guardarAlumno(@Valid Alumno alumno, Errors errors, BindingResult result){
         
         

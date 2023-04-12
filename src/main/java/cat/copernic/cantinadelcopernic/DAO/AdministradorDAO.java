@@ -8,7 +8,7 @@ import cat.copernic.cantinadelcopernic.modelo.Administrador;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
- *
+ *interficie que define los metodos para acceder a los datos de los administradores de la base de datos 
  * @author andre
  */
 public interface AdministradorDAO extends JpaRepository<Administrador,String> {
