@@ -14,14 +14,24 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 /**
  *
- * @author Enric
+ * Esta clase es un controlador de Spring que maneja las solicitudes HTTP
+ * relacionadas con los pedidos del administrador.
  */
 @Controller
 public class ControladorPedidosAdministrador {
 
     @Autowired
     private VentasService serVentas;
-    /*La interface Model d'Spring Boot ens permet transferir dades entre el controlador i la vista
+
+    /**
+     *
+     * Este método maneja una solicitud HTTP GET para mostrar los pedidos del
+     * administrador.
+     *
+     * @param model El objeto Model que se utiliza para transferir datos entre
+     * el controlador y la vista.
+     *
+     * @return La vista que muestra los pedidos del administrador.
      */
     @GetMapping("/pedidosAdministrador")
     public String inici(Model model) {
@@ -30,9 +40,9 @@ public class ControladorPedidosAdministrador {
         model.addAttribute("com1", com);
 
         var pedidos = serVentas.listarPedidos();
-        
+
         model.addAttribute("pedidos", pedidos);
-       
+
         String Comandes = "Comandes";
         model.addAttribute("comand", Comandes);
 

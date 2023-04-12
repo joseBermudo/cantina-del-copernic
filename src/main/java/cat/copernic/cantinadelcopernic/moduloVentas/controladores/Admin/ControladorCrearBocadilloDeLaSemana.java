@@ -17,52 +17,91 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 /**
  *
- * @author Enric
+ * Esta clase es un controlador encargado de manejar las peticiones relacionadas
+ * con la creación de bocadillos de la semana.
  */
 @Controller
 public class ControladorCrearBocadilloDeLaSemana {
 
-    /*La interface Model d'Spring Boot ens permet transferir dades entre el controlador i la vista
+    /**
+     *
+     * Esta anotación permite la inyección automática de una instancia de la
+     * clase VentasService al controlador.
      */
     @Autowired
     private VentasService ventasSer;
-    
-   @Autowired
+    /**
+     *
+     * Esta anotación permite la inyección automática de una instancia de la
+     * clase ProduccionService al controlador.
+     */
+    @Autowired
     private ProduccionService prodSer;
 
+    /**
+     *
+     * Maneja las peticiones GET relacionadas con la creación de un formulario
+     * de bocadillo de la semana.
+     *
+     * @param bocadillosemana objeto de la clase BocadilloSemana
+     * @param model objeto de la clase Model, que permite transferir datos entre
+     * el controlador y la vista
+     * @return la vista que contiene el formulario para crear el bocadillo de la
+     * semana
+     */
     @GetMapping("/crearFormularioBocadilloSemana")
     public String crearFormularioBocadilloSemana(BocadilloSemana bocadillosemana, Model model) {
         model.addAttribute("recetas", prodSer.obtenerRecetas());
         return "/paginasVentas/ventasAdministrador/crearBocadilloDeLaSemana";
     }
 
+    /**
+     *
+     * Maneja las peticiones POST relacionadas con la creación y guardado de un
+     * nuevo bocadillo de la semana.
+     *
+     * @param bocadilloSemana objeto de la clase BocadilloSemana, validado con
+     * la anotación @Valid
+     *
+     * @param errors objeto de la clase Errors, que contiene los errores de
+     * validación del objeto BocadilloSemana
+     *
+     * @param model objeto de la clase Model, que permite transferir datos entre
+     * el controlador y la vista
+     *
+     * @return la vista que muestra la lista de bocadillos de la semana si la
+     * creación fue exitosa, o la vista del formulario de creación si hubo
+     * errores de validación.
+     */
     @PostMapping("/guardarBocaSemana")
     public String guardarBocadilloSemana(@Valid BocadilloSemana bocadilloSemana, Errors errors, Model model) {
 
         if (errors.hasErrors()) {
             model.addAttribute("recetas", prodSer.obtenerRecetas());
-
             return "/paginasVentas/ventasAdministrador/crearBocadilloDeLaSemana";
         }
-//        try {
-//            // Guardar la imagen en el sistema de archivos
-//            Files.write(Paths.get("/imagenes/imagen.jpg"), bocadilloSemana.getImagen().getBytes());
+
+// Guardar la imagen en el sistema de archivos
         bocadilloSemana.setImagen("asdasdasdasdasdasdasdasd");
 
         var receta = prodSer.buscarReceta(bocadilloSemana.getReceta());
 
         bocadilloSemana.setReceta(receta);
         ventasSer.addBocadilloSemana(bocadilloSemana);
-//            return "redirect:/listadoBocadilloSemana";
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//            return "Error al guardar la imagen";
-//        }
 
         return "redirect:/listaBocadilloSemana";
-
     }
 
+    /**
+     *
+     * Método que se encarga de cargar el formulario para editar un bocadillo de
+     * la semana. Recibe como parámetros el objeto BocadilloSemana y el objeto
+     * Model.
+     *
+     * Se agrega al modelo la lista de recetas disponibles para seleccionar.
+     *
+     * @return la vista para crear un bocadillo de la semana.
+     */
     @GetMapping("/editar/{idbocadillo_semana}")
     public String editarBocadilloSemana(BocadilloSemana bocadilloSemana, Model model) {
 
@@ -72,6 +111,16 @@ public class ControladorCrearBocadilloDeLaSemana {
         return "/paginasVentas/ventasAdministrador/crearBocadilloDeLaSemana";
     }
 
+    /**
+     *
+     * Método que se encarga de eliminar un bocadillo de la semana. Recibe como
+     * parámetro el objeto BocadilloSemana.
+     *
+     * Se busca el bocadillo a eliminar y se llama al método de eliminación de
+     * la capa de servicio.
+     *
+     * @return la vista de la lista de bocadillos de la semana.
+     */
     @GetMapping("/eliminarbocadillo/{idbocadillo_semana}")
     public String eliminarBocadilloSemana(BocadilloSemana bocadilloSemana) {
 
@@ -79,5 +128,4 @@ public class ControladorCrearBocadilloDeLaSemana {
         ventasSer.eliminarBocadilloSemana(bocadilloeliminar);
         return "redirect:/listaBocadilloSemana";
     }
-
 }
