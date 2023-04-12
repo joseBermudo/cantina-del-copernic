@@ -43,6 +43,10 @@ public class TestControllerListaRecetas {
     @InjectMocks
     private ControladorListaRecetas controller;
 
+    /**
+     *
+     * @throws Exception
+     */
     @Test
 public void testPage() throws Exception {
     List<Receta> recetas = new ArrayList<>();

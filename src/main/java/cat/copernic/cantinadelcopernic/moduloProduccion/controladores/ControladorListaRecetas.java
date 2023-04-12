@@ -108,7 +108,10 @@ public class ControladorListaRecetas {
         return "redirect:/listaRecetas";
     }
     
-    
+    /**
+     *
+     * @param proServ
+     */
     public void setProServ(ProduccionService proServ) {
         this.proServ = proServ;
     }

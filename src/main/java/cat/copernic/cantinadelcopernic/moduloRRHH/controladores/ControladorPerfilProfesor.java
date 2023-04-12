@@ -23,6 +23,11 @@ public class ControladorPerfilProfesor {
     @Autowired
     private ProfesorService profesorService;
     
+    /**
+     *
+     * @param model
+     * @return
+     */
     @GetMapping("/perfil")
     /**
      * funmción que e utiliza para recuperar la información del profesor logueado y mostarla

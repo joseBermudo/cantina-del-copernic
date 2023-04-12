@@ -61,6 +61,7 @@ public class TipoTarea {
      *
      * Constructor de la clase que recibe como parámetro el identificador único
      * del tipo de tarea.
+     * @param id
      */
     public TipoTarea(int id) {
         this.id = id;

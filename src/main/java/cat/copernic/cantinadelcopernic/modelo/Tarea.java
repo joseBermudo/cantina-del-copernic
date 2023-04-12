@@ -80,6 +80,7 @@ public class Tarea {
      *
      * Constructor de la clase que recibe como parámetro el identificador único
      * de la tarea.
+     * @param id
      */
     public Tarea(int id) {
         this.id = id;

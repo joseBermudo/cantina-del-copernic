@@ -31,6 +31,11 @@ public class ControladorListaSugerencias {
     @Autowired
     private UsuarioService usuarioService;
     
+    /**
+     *
+     * @param model
+     * @return
+     */
     @GetMapping("/listaSuggeriments")
     /**
      * función que recuperará una lista de todas las sugerencia o de las sugerencias de un usuario dependiendo 

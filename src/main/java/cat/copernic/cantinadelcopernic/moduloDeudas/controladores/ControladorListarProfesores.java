@@ -30,6 +30,11 @@ public class ControladorListarProfesores {
     @Autowired
     UsuarioDAO usuarioDAO;
     
+    /**
+     *
+     * @param model
+     * @return
+     */
     @GetMapping("/listarProfesores")
     public String listarProfesores(Model model) {
         
@@ -54,6 +59,10 @@ public class ControladorListarProfesores {
         return "/paginasDeudas/listarProfesores"; 
     }
 
+    /**
+     *
+     * @return
+     */
     public String getCurrentUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
