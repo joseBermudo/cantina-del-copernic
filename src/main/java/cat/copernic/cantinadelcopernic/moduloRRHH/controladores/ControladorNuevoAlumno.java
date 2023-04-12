@@ -51,6 +51,13 @@ public class ControladorNuevoAlumno {
     @Autowired
     private AlumnoService alumnoService;
     
+    /**
+     *
+     * @param alumno
+     * @param errors
+     * @param result
+     * @return
+     */
     @PostMapping("/guardarAlumno")
     /**
      * función donde se valida el alumno para guardarlo

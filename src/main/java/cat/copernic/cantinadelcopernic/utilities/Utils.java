@@ -13,6 +13,11 @@ import org.springframework.security.core.userdetails.UserDetails;
  * @author joseb
  */
 public class Utils {
+
+    /**
+     *
+     * @return
+     */
     public  static String getCurrentUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();

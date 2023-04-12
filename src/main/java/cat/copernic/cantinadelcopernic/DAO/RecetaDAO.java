@@ -10,9 +10,14 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.CrudRepository;
 
 /**
- *
+ *  Interfaz que aplica el repositorio Jpa de la entidad Receta.
  * @author joseb
  */
 public interface RecetaDAO extends JpaRepository<Receta,Integer> {
+    /**
+     * 
+     * @param nombre nombre de la receta.
+     * @return Una lista de recetas que tienen el nombre espeficicado.
+     */
     List<Receta> findByNombre(String nombre);
 }

@@ -25,6 +25,12 @@ public class ControladorEditarPerfil {
     @Autowired
     private ProfesorService profesorService;
     
+    /**
+     *
+     * @param profesor
+     * @param errors
+     * @return
+     */
     @PostMapping("/guardarPerfil")
     /**
      * función que se utiliza para hacer las validaciones sobre profesor y guardarlo

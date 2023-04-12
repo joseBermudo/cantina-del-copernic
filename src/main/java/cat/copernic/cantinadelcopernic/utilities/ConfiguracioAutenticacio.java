@@ -23,6 +23,12 @@ import org.springframework.security.web.authentication.SimpleUrlAuthenticationSu
  *Aquesta classe ha d'extendre de la classe WebSecurityConfigurerAdapter de Spring Security per poder
  *autenticar els usuaaris.
  */
+
+/**
+ *
+ * @author joseb
+ */
+
 @Configuration //Indica al sistema que és una classe de configuració
 @EnableWebSecurity //Habilita la seguretat web
 public class ConfiguracioAutenticacio {
@@ -30,6 +36,11 @@ public class ConfiguracioAutenticacio {
     @Autowired
     private UserDetailsService userDetailsService; //Objecte per recuperar l'usuari
 
+    /**
+     *
+     * @param auth
+     * @throws Exception
+     */
     @Autowired
     public void autenticacio(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService).passwordEncoder(new BCryptPasswordEncoder());
@@ -52,6 +63,13 @@ public class ConfiguracioAutenticacio {
 //                .build();
 ////, "admin",alumno", "profesor"
 //    }
+
+    /**
+     *
+     * @param http
+     * @return
+     * @throws Exception
+     */
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
@@ -73,8 +91,19 @@ public class ConfiguracioAutenticacio {
                 .build();
     }
 
+    /**
+     *
+     */
     public class CustomAuthenticationSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
 
+        /**
+         *
+         * @param request
+         * @param response
+         * @param authentication
+         * @throws IOException
+         * @throws ServletException
+         */
         @Override
         public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
                 Authentication authentication) throws IOException, ServletException {

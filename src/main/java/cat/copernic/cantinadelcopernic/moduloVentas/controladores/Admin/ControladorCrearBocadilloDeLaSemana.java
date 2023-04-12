@@ -95,11 +95,11 @@ public class ControladorCrearBocadilloDeLaSemana {
     /**
      *
      * Método que se encarga de cargar el formulario para editar un bocadillo de
-     * la semana. Recibe como parámetros el objeto BocadilloSemana y el objeto
-     * Model.
+     * la semana.Recibe como parámetros el objeto BocadilloSemana y el objeto
+ Model.Se agrega al modelo la lista de recetas disponibles para seleccionar.
      *
-     * Se agrega al modelo la lista de recetas disponibles para seleccionar.
-     *
+     * @param bocadilloSemana
+     * @param model
      * @return la vista para crear un bocadillo de la semana.
      */
     @GetMapping("/editar/{idbocadillo_semana}")
@@ -113,12 +113,11 @@ public class ControladorCrearBocadilloDeLaSemana {
 
     /**
      *
-     * Método que se encarga de eliminar un bocadillo de la semana. Recibe como
-     * parámetro el objeto BocadilloSemana.
+     * Método que se encarga de eliminar un bocadillo de la semana.Recibe como
+ parámetro el objeto BocadilloSemana. Se busca el bocadillo a eliminar y se llama al método de eliminación de
+ la capa de servicio.
      *
-     * Se busca el bocadillo a eliminar y se llama al método de eliminación de
-     * la capa de servicio.
-     *
+     * @param bocadilloSemana
      * @return la vista de la lista de bocadillos de la semana.
      */
     @GetMapping("/eliminarbocadillo/{idbocadillo_semana}")

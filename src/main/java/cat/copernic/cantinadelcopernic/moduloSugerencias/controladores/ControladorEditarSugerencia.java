@@ -25,6 +25,12 @@ public class ControladorEditarSugerencia {
     @Autowired
     private SugerenciaService sugerenciaService;
     
+    /**
+     *
+     * @param sugerencia
+     * @param model
+     * @return
+     */
     @GetMapping("/editarSuggeriment/{idSugerencia}")
     /**
      * función que sirve para guardar los cambios de una sugerencia
