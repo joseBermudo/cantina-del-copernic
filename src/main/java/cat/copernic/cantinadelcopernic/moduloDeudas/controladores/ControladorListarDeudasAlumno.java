@@ -18,25 +18,67 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 /**
  *
+ * Controlador encargado de listar las deudas de un alumno en particular.
+ *
+ * Inyecta los servicios de DeudaService y ProfesorService para obtener la
+ * información necesaria.
+ *
+ * Contiene dos métodos GET, uno para listar todas las deudas de todos los
+ * alumnos y otro para listar
+ *
+ * las deudas de un alumno en particular identificado por su correo electrónico.
+ *
+ * Ambos métodos retornan la vista "listarDeudasAlumno" que muestra el listado
+ * de deudas correspondiente.
+ *
  * @author Enric
  */
 @Controller
 public class ControladorListarDeudasAlumno {
-    
+
+    /**
+     *
+     * Servicio encargado de la gestión de las deudas.
+     */
     @Autowired
     private DeudaService deudaService;
-    
+    /**
+     *
+     * Servicio encargado de la gestión de los profesores.
+     */
     @Autowired
     private ProfesorService profesorService;
-    
+
+    /**
+     *
+     * Método GET encargado de listar todas las deudas de todos los alumnos.
+     *
+     * @param model modelo que se utiliza para pasar información a la vista.
+     *
+     * @return la vista "listarDeudasAlumno" que muestra el listado de deudas
+     * correspondiente.
+     */
     @GetMapping("/listarDeudasAlumno")
     public String listarDeudasAlumno(Model model) {
-        
+
         model.addAttribute("listadoDeudas", deudaService.listarDeudas());
-        
-        return "/paginasDeudas/listarDeudasAlumno"; 
+
+        return "/paginasDeudas/listarDeudasAlumno";
     }
-    
+
+    /**
+     *
+     * Método GET encargado de listar las deudas de un alumno en particular
+     * identificado por su correo electrónico.
+     *
+     * @param model modelo que se utiliza para pasar información a la vista.
+     *
+     * @param profesor objeto Profesor que contiene el correo electrónico del
+     * alumno del que se quieren listar las deudas.
+     *
+     * @return la vista "listarDeudasAlumno" que muestra el listado de deudas
+     * correspondiente.
+     */
     @GetMapping("/listarDeudasAlumno/{correo}")
     public String listarDeudasAlumno(Model model, Profesor profesor) {
 
