@@ -13,7 +13,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 /**
  *
- * @author Enric
+ * Esta clase es un controlador de Spring que maneja las solicitudes HTTP
+ * relacionadas con la vista del listado de bocadillos de la semana.
  */
 @Controller
 public class ControladorListadoBocadilloSemana {
@@ -21,7 +22,15 @@ public class ControladorListadoBocadilloSemana {
     @Autowired
     private VentasService serVentas;
 
-    /*La interface Model d'Spring Boot ens permet transferir dades entre el controlador i la vista
+    /**
+     *
+     * Este método maneja una solicitud HTTP GET para mostrar el listado de
+     * bocadillos de la semana.
+     *
+     * @param model El objeto Model que se utiliza para transferir datos entre
+     * el controlador y la vista.
+     *
+     * @return La vista que muestra el listado de bocadillos de la semana.
      */
     @GetMapping("/listaBocadilloSemana")
     public String inici(Model model) {
@@ -35,7 +44,4 @@ public class ControladorListadoBocadilloSemana {
 
         return "/paginasVentas/ventasAdministrador/listadoBocadillosSemana"; //Retorna la pàgina iniciEnviarDades
     }
-
-  
-
 }

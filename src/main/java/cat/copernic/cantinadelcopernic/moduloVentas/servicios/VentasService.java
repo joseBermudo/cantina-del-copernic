@@ -18,9 +18,10 @@ import org.springframework.stereotype.Service;
 
 /**
  *
- * @author marku
+ * Esta clase implementa la interfaz VentasServiceInterface y se encarga de
+ * proveer los servicios relacionados con la venta de bocadillos y bebidas.
  */
-@Service 
+@Service
 public class VentasService implements VentasServiceInterface {
 
     @Autowired
@@ -32,6 +33,12 @@ public class VentasService implements VentasServiceInterface {
     @Autowired
     private RecetaDAO recetaDAO;
 
+    /**
+     *
+     * Lista todos los pedidos.
+     *
+     * @return una lista de pedidos.
+     */
     @Override
     @Transactional(readOnly = true)
     public List<Pedido> listarPedidos() {
@@ -39,6 +46,12 @@ public class VentasService implements VentasServiceInterface {
         return (List<Pedido>) pedidoDAO.findAll();
     }
 
+    /**
+     *
+     * Añade un nuevo pedido.
+     *
+     * @param pedido el pedido a añadir.
+     */
     @Override
     @Transactional
     public void addPedidos(Pedido pedido) {
@@ -46,6 +59,12 @@ public class VentasService implements VentasServiceInterface {
         this.pedidoDAO.save(pedido);
     }
 
+    /**
+     *
+     * Elimina un pedido existente.
+     *
+     * @param pedido el pedido a eliminar.
+     */
     @Override
     @Transactional
     public void eliminarPedido(Pedido pedido) {
@@ -53,6 +72,14 @@ public class VentasService implements VentasServiceInterface {
         this.pedidoDAO.delete(pedido);
     }
 
+    /**
+     *
+     * Busca un pedido por su ID.
+     *
+     * @param pedido el pedido a buscar.
+     *
+     * @return el pedido encontrado o null si no se encuentra.
+     */
     @Override
     @Transactional(readOnly = true)
     public Pedido buscarPedido(Pedido pedido) {
@@ -60,6 +87,12 @@ public class VentasService implements VentasServiceInterface {
         return this.pedidoDAO.findById(pedido.getId_pedido()).orElse(null);
     }
 
+    /**
+     *
+     * Lista todos los bocadillos de la semana.
+     *
+     * @return una lista de bocadillos de la semana.
+     */
     @Override
     @Transactional(readOnly = true)
     public List<BocadilloSemana> listarBocadilloSemana() {
@@ -67,6 +100,12 @@ public class VentasService implements VentasServiceInterface {
         return (List<BocadilloSemana>) bocaSemanaDAO.findAll();
     }
 
+    /**
+     *
+     * Añade un nuevo bocadillo de la semana.
+     *
+     * @param bocadilloSemana el bocadillo de la semana a añadir.
+     */
     @Override
     @Transactional
     public void addBocadilloSemana(BocadilloSemana bocadilloSemana) {
@@ -74,6 +113,12 @@ public class VentasService implements VentasServiceInterface {
         this.bocaSemanaDAO.save(bocadilloSemana);
     }
 
+    /**
+     *
+     * Elimina un bocadillo de la semana existente.
+     *
+     * @param bocadilloSemana el bocadillo de la semana a eliminar.
+     */
     @Override
     @Transactional
     public void eliminarBocadilloSemana(BocadilloSemana bocadilloSemana) {
@@ -81,6 +126,14 @@ public class VentasService implements VentasServiceInterface {
         this.bocaSemanaDAO.delete(bocadilloSemana);
     }
 
+    /**
+     *
+     * Busca un bocadillo de la semana por su ID.
+     *
+     * @param bocadilloSemana el bocadillo de la semana a buscar.
+     *
+     * @return el bocadillo de la semana encontrado o null si no se encuentra.
+     */
     @Override
     @Transactional(readOnly = true)
     public BocadilloSemana buscarBocadilloSemana(BocadilloSemana bocadilloSemana) {
@@ -88,17 +141,29 @@ public class VentasService implements VentasServiceInterface {
         return this.bocaSemanaDAO.findById(bocadilloSemana.getIdbocadillo_semana()).orElse(null);
     }
 
+    /**
+     *
+     * Retorna una lista de todas las recetas guardadas en la base de datos.
+     *
+     * @return Lista de objetos Receta.
+     */
     @Override
     @Transactional(readOnly = true)
     public List<Receta> listarRecetas() {
-
         return (List<Receta>) recetaDAO.findAll();
     }
-    
+
+    /**
+     *
+     * Retorna una lista de todos los pedidos asociados a un profesor
+     * específico.
+     *
+     * @param profesores Profesor al que se le buscarán los pedidos.
+     * @return Lista de objetos Pedido asociados al profesor especificado.
+     */
     @Override
     @Transactional(readOnly = true)
-    public List<Pedido> findByProfesores(Profesor profesores){        
-        
-         return (List<Pedido>) pedidoDAO.findByProfesores(profesores);
+    public List<Pedido> findByProfesores(Profesor profesores) {
+        return (List<Pedido>) pedidoDAO.findByProfesores(profesores);
     }
 }
