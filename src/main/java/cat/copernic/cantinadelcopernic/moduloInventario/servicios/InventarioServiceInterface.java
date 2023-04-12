@@ -13,26 +13,77 @@ import java.util.List;
  *
  * @author marku
  */
+/**
+ *
+ * Interfaz que define los métodos para el servicio de inventario de
+ * contenedores y utensilios.
+ */
 public interface InventarioServiceInterface {
-    
-      //Contenedores 
-    public List<Contenedor> listarContenedores(); //Mètode que implementarem per llistar Contenedores 
 
-    public void addContenedor(Contenedor contenedor); //Mètode que implementarem per afegir un Contenedor
+    /**
+     *
+     * Método que devuelve una lista de contenedores.
+     *
+     * @return una lista de objetos de tipo Contenedor
+     */
+    public List<Contenedor> listarContenedores();
 
-    public void eliminarContenedor(Contenedor contenedor); //Mètode que implementarem per eliminar un Contenedor
+    /**
+     *
+     * Método que agrega un nuevo contenedor.
+     *
+     * @param contenedor el objeto Contenedor que se desea agregar
+     */
+    public void addContenedor(Contenedor contenedor);
 
-    public Contenedor buscarContenedor(Contenedor contenedor); //Mètode que implementarem per cercar un Contenedor
+    /**
+     *
+     * Método que elimina un contenedor existente.
+     *
+     * @param contenedor el objeto Contenedor que se desea eliminar
+     */
+    public void eliminarContenedor(Contenedor contenedor);
 
-    
-    
-    //Utensilios
-    public List<Utensilio> listarUtensilios(); //Mètode que implementarem per llistar Utensilios
+    /**
+     *
+     * Método que busca un contenedor en la base de datos.
+     *
+     * @param contenedor el objeto Contenedor que se desea buscar
+     *
+     * @return el objeto Contenedor encontrado o null si no se encuentra
+     */
+    public Contenedor buscarContenedor(Contenedor contenedor);
 
-    public void addUtensilio(Utensilio utensilio); //Mètode que implementarem per afegir un Utensilio
+    /**
+     *
+     * Método que devuelve una lista de utensilios.
+     *
+     * @return una lista de objetos de tipo Utensilio
+     */
+    public List<Utensilio> listarUtensilios();
 
-    public void eliminarUtensilio(Utensilio utensilio); //Mètode que implementarem per eliminar un Utensilio
+    /**
+     *
+     * Método que agrega un nuevo utensilio.
+     *
+     * @param utensilio el objeto Utensilio que se desea agregar
+     */
+    public void addUtensilio(Utensilio utensilio);
 
-    public Utensilio buscarUtensilio(Utensilio utensilio); //Mètode que implementarem per cercar un Utensilio
-    
+    /**
+     *
+     * Método que elimina un utensilio existente.
+     *
+     * @param utensilio el objeto Utensilio que se desea eliminar
+     */
+    public void eliminarUtensilio(Utensilio utensilio);
+
+    /**
+     *
+     * Método que busca un utensilio en la base de datos.
+     *
+     * @param utensilio el objeto Utensilio que se desea buscar
+     * @return el objeto Utensilio encontrado o null si no se encuentra
+     */
+    public Utensilio buscarUtensilio(Utensilio utensilio);
 }

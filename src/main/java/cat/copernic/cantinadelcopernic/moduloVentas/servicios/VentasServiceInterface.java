@@ -14,28 +14,99 @@ import java.util.List;
  *
  * @author marku
  */
+/**
+ *
+ * Interfaz que define los métodos necesarios para gestionar las ventas de la
+ * empresa.
+ */
 public interface VentasServiceInterface {
 
-    //Pedidos
-    public List<Pedido> listarPedidos(); //Mètode que implementarem per llistar comandes
+//Pedidos
+    /**
+     *
+     * Retorna una lista de todos los pedidos guardados en la base de datos.
+     *
+     * @return Lista de objetos Pedido.
+     */
+    public List<Pedido> listarPedidos();
 
-    public void addPedidos(Pedido pedido); //Mètode que implementarem per afegir una comanda
+    /**
+     *
+     * Agrega un nuevo pedido a la base de datos.
+     *
+     * @param pedido Pedido a agregar.
+     */
+    public void addPedidos(Pedido pedido);
 
-    public void eliminarPedido(Pedido pedido); //Mètode que implementarem per eliminar una comanda
+    /**
+     *
+     * Elimina un pedido existente de la base de datos.
+     *
+     * @param pedido Pedido a eliminar.
+     */
+    public void eliminarPedido(Pedido pedido);
 
-    public Pedido buscarPedido(Pedido pedido); //Mètode que implementarem per cercar una comanda
+    /**
+     *
+     * Busca un pedido en la base de datos según su identificador.
+     *
+     * @param pedido Pedido a buscar.
+     * @return Objeto Pedido encontrado.
+     */
+    public Pedido buscarPedido(Pedido pedido);
+//bocadillo de la semana
 
-    //bocadillo de la semana
-    public List<BocadilloSemana> listarBocadilloSemana(); //Mètode que implementarem per llistar Entrepans de la Setmana
+    /**
+     *
+     * Retorna una lista de todos los bocadillos de la semana guardados en la
+     * base de datos.
+     *
+     * @return Lista de objetos BocadilloSemana.
+     */
+    public List<BocadilloSemana> listarBocadilloSemana();
 
-    public void addBocadilloSemana(BocadilloSemana bocaSemana); //Mètode que implementarem per afegir un Entrepans de la Setmana
+    /**
+     *
+     * Agrega un nuevo bocadillo de la semana a la base de datos.
+     *
+     * @param bocaSemana Bocadillo de la semana a agregar.
+     */
+    public void addBocadilloSemana(BocadilloSemana bocaSemana);
 
-    public void eliminarBocadilloSemana(BocadilloSemana bocaSemana); //Mètode que implementarem per eliminar un Entrepans de la Setmana
+    /**
+     *
+     * Elimina un bocadillo de la semana existente de la base de datos.
+     *
+     * @param bocaSemana Bocadillo de la semana a eliminar.
+     */
+    public void eliminarBocadilloSemana(BocadilloSemana bocaSemana);
 
-    public BocadilloSemana buscarBocadilloSemana(BocadilloSemana bocadilloSemana); //Mètode que implementarem per cercar un Entrepans de la Setmana
-    
-    //Pedidos
-    public List<Receta> listarRecetas(); //Mètode que implementarem per llistar Recetas
-    
+    /**
+     *
+     * Busca un bocadillo de la semana en la base de datos según su
+     * identificador.
+     *
+     * @param bocadilloSemana Bocadillo de la semana a buscar.
+     * @return Objeto BocadilloSemana encontrado.
+     */
+    public BocadilloSemana buscarBocadilloSemana(BocadilloSemana bocadilloSemana);
+//Recetas
+
+    /**
+     *
+     * Retorna una lista de todas las recetas guardadas en la base de datos.
+     *
+     * @return Lista de objetos Receta.
+     */
+    public List<Receta> listarRecetas();
+
+    /**
+     *
+     * Retorna una lista de todos los pedidos asociados a un profesor
+     * específico.
+     *
+     * @param profesores Profesor al que se le buscarán los pedidos.
+     * @return Lista de objetos Pedido asociados al profesor especificado.
+     */
     public List<Pedido> findByProfesores(Profesor profesores);
 }
