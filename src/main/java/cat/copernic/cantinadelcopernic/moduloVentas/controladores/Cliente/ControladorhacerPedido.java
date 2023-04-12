@@ -20,7 +20,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 /**
  *
- * @author Enric
+ * Esta clase ControladorhacerPedido maneja las solicitudes HTTP relacionadas
+ * con los pedidos de los clientes.
  */
 @Controller
 public class ControladorhacerPedido {
@@ -34,16 +35,26 @@ public class ControladorhacerPedido {
     @Autowired
     private ProfesorService profSer;
 
+    /**
+     *
+     * Maneja la solicitud HTTP GET para la página de inicio de hacer pedidos.
+     *
+     * @param model - objeto Model para agregar atributos a la vista
+     *
+     * @param pedido - objeto Pedido para recopilar información del formulario
+     *
+     * @return una cadena que indica la página de la vista hacerPedidoCliente
+     */
     @GetMapping("/hacerPedidoCliente")
     public String inici(Model model, Pedido pedido) {
 
         String fc = "FER COMANDA";
         model.addAttribute("ferComanda", fc);
 
-        //lista de bocadillos de la semana
+//lista de bocadillos de la semana
         var bocadillosDeLaSemana = serVentas.listarBocadilloSemana();
 
-        //recetas
+//recetas
         var bebidas = prodSer.obtenerBebidas();
 
         model.addAttribute("bocsemana", bocadillosDeLaSemana);
@@ -52,35 +63,28 @@ public class ControladorhacerPedido {
         return "/paginasVentas/ventasCliente/hacerPedidoCliente"; //Retorna la pàgina iniciEnviarDades
     }
 
+    /**
+     *
+     * Maneja la solicitud HTTP GET para cancelar un pedido.
+     *
+     * @param pedido - objeto Pedido para eliminar de la lista de pedidos
+     * @return una cadena que indica la página de la vista pedidosCliente
+     */
     @GetMapping("/cancelarPedido/{id_pedido}")
     public String cancelarPedido(Pedido pedido) {
         serVentas.eliminarPedido(pedido);
         return "redirect:/pedidosCliente";
     }
 
-//    @GetMapping("/mostrarPrecio/{id_pedido}")
-//    public String mostrarPrecio(Pedido pedido, Model model) {
-//
-//        Double precio = pedido.getBebida().getPrecio() + pedido.getBocadilloSemana().getPrecio();
-//           //PRECIO
-//        model.addAttribute("precio", precio);
-//        
-//        
-//        
-//         String fc = "FER COMANDA";
-//        model.addAttribute("ferComanda", fc);
-//
-//        //lista de bocadillos de la semana
-//        var bocadillosDeLaSemana = serVentas.listarBocadilloSemana();
-//
-//        //recetas
-//        var bebidas = prodSer.obtenerBebidas();
-//
-//        model.addAttribute("bocsemana", bocadillosDeLaSemana);
-//        model.addAttribute("bebidas", bebidas);
-//
-//        return "/paginasVentas/ventasCliente/hacerPedidoCliente";
-//    }
+    /**
+     *
+     * Maneja la solicitud HTTP POST para guardar un pedido.
+     *
+     * @param pedido - objeto Pedido que contiene la información del pedido a
+     * guardar
+     *
+     * @return una cadena que indica la página de la vista pedidosCliente
+     */
     @PostMapping("/guardarPedido")
     public String guardarPedidos(Pedido pedido) {
 
@@ -90,7 +94,7 @@ public class ControladorhacerPedido {
         var bocadilloSemana = serVentas.buscarBocadilloSemana(pedido.getBocadilloSemana());
         pedido.setBocadilloSemana(bocadilloSemana);
 
-        //var precio = bocadilloSemana.getPrecio() + bebida.getPrecio();
+//var precio = bocadilloSemana.getPrecio() + bebida.getPrecio();
         Profesor prof = new Profesor();
         prof.setCorreo(getCurrentUser());
         pedido.setProfesores(profSer.buscarProfesores(prof));
@@ -100,11 +104,18 @@ public class ControladorhacerPedido {
         return "redirect:/pedidosCliente";
 
     }
+
+    /**
+     *
+     * Obtiene el nombre de usuario actualmente autenticado.
+     *
+     * @return una cadena que indica el nombre de usuario actualmente
+     * autenticado
+     */
     public String getCurrentUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
         String username = userDetails.getUsername();
         return username;
     }
-
 }

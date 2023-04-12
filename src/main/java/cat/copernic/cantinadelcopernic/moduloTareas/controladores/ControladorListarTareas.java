@@ -18,18 +18,32 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 /**
  *
+ * Controlador para la vista de listar tareas. Permite obtener todas las tareas
+ * almacenadas en la base de datos y
+ *
+ * enviarlas a la vista para que sean mostradas.
+ *
  * @author Enric
  */
 @Controller
 public class ControladorListarTareas {
-    
+
     @Autowired
     TareaDAO tareaDAO;
+
+    /**
+     *
+     * Método que se ejecuta al acceder a la URL "/listarTareas". Obtiene todas
+     * las tareas almacenadas en la base de datos y las envía a la vista
+     * "listarTareas" para que sean mostradas.
+     *
+     * @param model objeto Model que permite agregar atributos para que sean
+     * usados en la vista.
+     * @return un String con el nombre de la vista que se va a mostrar.
+     */
     @GetMapping("/listarTareas")
     public String inici(Model model) {
-        
         model.addAttribute("listadoTarea", tareaDAO.findAll());
-
         return "/paginasTareas/listarTareas";
     }
 }

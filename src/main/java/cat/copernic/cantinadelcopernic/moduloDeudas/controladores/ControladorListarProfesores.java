@@ -46,7 +46,7 @@ public class ControladorListarProfesores {
             model.addAttribute("rol", 1);
 
         }
-        else
+        else//Alumno-user
         {
             model.addAttribute("rol", 2);
         }

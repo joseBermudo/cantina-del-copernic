@@ -27,6 +27,9 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name = "usuarios")
+/**
+ * Clase que representa  un usuario generico del ERP
+ */
 public class Usuario implements Serializable {
 
     private static final long serialVersionUID = 1L;

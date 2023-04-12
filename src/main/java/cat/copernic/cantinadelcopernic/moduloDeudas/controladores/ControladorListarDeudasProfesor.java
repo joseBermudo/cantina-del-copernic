@@ -20,25 +20,56 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 /**
  *
+ * Controlador encargado de listar las deudas de un profesor en particular.
+ *
+ * Inyecta el servicio de DeudaService para obtener la información necesaria.
+ *
+ * Contiene un método GET que lista las deudas del profesor que ha iniciado
+ * sesión.
+ *
+ * Este método retorna la vista "listarDeudasProfesor" que muestra el listado de
+ * deudas correspondiente.
+ *
  * @author Enric
  */
 @Controller
 public class ControladorListarDeudasProfesor {
-    
+
+    /**
+     *
+     * Servicio encargado de la gestión de las deudas.
+     */
     @Autowired
     private DeudaService deudaService;
+
+    /**
+     *
+     * Método GET encargado de listar las deudas de un profesor en particular.
+     *
+     * @param model modelo que se utiliza para pasar información a la vista.
+     *
+     * @return la vista "listarDeudasProfesor" que muestra el listado de deudas
+     * correspondiente.
+     */
     @GetMapping("/listarDeudasProfesor")
     public String listarDeudasProfesor(Model model) {
-        
+
         String correoProfesor = getCurrentUser();
-        
+
         List<Deuda> deudas = deudaService.listarDeudasDeUnProfesor(correoProfesor);
-        
+
         model.addAttribute("listadoDeudas", deudas);
-        
-        return "/paginasDeudas/listarDeudasProfesor"; 
+
+        return "/paginasDeudas/listarDeudasProfesor";
     }
-    
+
+    /**
+     *
+     * Método que obtiene el correo electrónico del profesor que ha iniciado
+     * sesión.
+     *
+     * @return el correo electrónico del profesor que ha iniciado sesión.
+     */
     public String getCurrentUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();

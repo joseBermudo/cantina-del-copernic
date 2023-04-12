@@ -17,7 +17,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 /**
  *
- * @author Enric
+ * Controlador encargado de mostrar y eliminar pedidos en la vista del
+ * administrador.
  */
 @Controller
 public class ControladorVerPedidoAdministrador {
@@ -25,18 +26,40 @@ public class ControladorVerPedidoAdministrador {
     @Autowired
     private VentasService ventasSer;
 
-    /*La interface Model d'Spring Boot ens permet transferir dades entre el controlador i la vista*/
+    /**
+     *
+     * Método que permite mostrar el detalle de un pedido en la vista del
+     * administrador.
+     *
+     * @param model objeto de la interface Model de Spring Boot que permite
+     * transferir datos entre el controlador y la vista
+     *
+     * @param pedido objeto de tipo Pedido que representa el pedido a mostrar
+     *
+     * @return String con la dirección de la página que muestra el detalle del
+     * pedido
+     */
     @GetMapping("/verPedidoAdministrador/{id_pedido}")
     public String inici(Model model, Pedido pedido) {
 
-       double  precioBebida = ventasSer.buscarPedido(pedido).getBebida().getPrecio();
-       double precioBocata = ventasSer.buscarPedido(pedido).getBocadilloSemana().getPrecio();
-       double precioTotal = precioBebida + precioBocata;
+        double precioBebida = ventasSer.buscarPedido(pedido).getBebida().getPrecio();
+        double precioBocata = ventasSer.buscarPedido(pedido).getBocadilloSemana().getPrecio();
+        double precioTotal = precioBebida + precioBocata;
         model.addAttribute("pedido", ventasSer.buscarPedido(pedido));
         model.addAttribute("preciototal", precioTotal);
-        return "/paginasVentas/ventasAdministrador/verPedidoAdministrador"; //Retorna la pàgina iniciEnviarDades
+        return "/paginasVentas/ventasAdministrador/verPedidoAdministrador"; //Retorna la página de detalle del pedido
     }
 
+    /**
+     *
+     * Método que permite eliminar un pedido de la lista de pedidos en la vista
+     * del administrador.
+     *
+     * @param pedido objeto de tipo Pedido que representa el pedido a eliminar
+     *
+     * @return String con la dirección de la página de la lista de pedidos del
+     * administrador
+     */
     @GetMapping("/eliminarPedido/{id_pedido}")
     public String eliminar(Pedido pedido) {
 
@@ -44,7 +67,4 @@ public class ControladorVerPedidoAdministrador {
 
         return "redirect:/pedidosAdministrador";
     }
-    
-    
-
 }
