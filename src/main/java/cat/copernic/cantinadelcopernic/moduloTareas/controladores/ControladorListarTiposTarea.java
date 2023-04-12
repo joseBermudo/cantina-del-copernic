@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 /**
  *
+ * Controlador encargado de listar todos los tipos de tarea existentes en el
+ * sistema.
+ *
  * @author Enric
  */
 @Controller
@@ -21,9 +24,20 @@ public class ControladorListarTiposTarea {
 
     @Autowired
     TipoTareaDAO tipoTareaDAO;
+
+    /**
+     *
+     * Método encargado de cargar la página que muestra el listado de tipos de
+     * tarea.
+     *
+     * @param model objeto que contiene los datos que se quieren mostrar en la
+     * vista.
+     *
+     * @return la vista que muestra el listado de tipos de tarea.
+     */
     @GetMapping("/listarTiposTarea")
     public String inici(Model model) {
-        
+
         model.addAttribute("listadoTiposTarea", tipoTareaDAO.findAll());
 
         return "/paginasTareas/listarTiposTarea";
