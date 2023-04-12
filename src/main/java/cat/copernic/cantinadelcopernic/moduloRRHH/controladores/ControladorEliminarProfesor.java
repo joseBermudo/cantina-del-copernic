@@ -22,6 +22,11 @@ public class ControladorEliminarProfesor {
     @Autowired
     private ProfesorService profesorService;
     
+    /**
+     *
+     * @param profesor
+     * @return
+     */
     @GetMapping("/eliminarProfesor/{correo}") 
     /**
      * función que se utiliza para eliminar el profesor

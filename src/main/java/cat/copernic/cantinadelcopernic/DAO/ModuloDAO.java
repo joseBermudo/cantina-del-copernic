@@ -10,7 +10,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.CrudRepository;
 
 /**
- *
+ * Interfaz que aplica el repositorio Jpa de la entidad Modulo.
  * @author andre
  */
 public interface ModuloDAO extends JpaRepository<Modulo,Integer> {

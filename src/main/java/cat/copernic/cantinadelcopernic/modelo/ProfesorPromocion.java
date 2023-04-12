@@ -15,7 +15,8 @@ import java.io.Serializable;
 import lombok.Data;
 
 /**
- *
+ * Clase entidad ProfesorPromocion, que relaciona las entidades Promocion y Profesor.
+ * Hace referencia a la tabla SQL recuento_promocion.
  * @author joseb
  */
 @Data
@@ -23,27 +24,43 @@ import lombok.Data;
 @Table(name = "recuento_promocion")
 
 public class ProfesorPromocion implements Serializable {
-
+    
+    //Id compuesta, formado por las id de Promocion y Profesor.
     @EmbeddedId
     private ProfesorPromocionId id;
-
+    
+    //Promocion de la relacion.
     @ManyToOne
     @MapsId("promocionId")
     @JoinColumn(name = "promocion_idpromocion", insertable = false, updatable = false)
     private Promocion promocion;
-
+    
+    //Profesor de la relacion.
     @ManyToOne
     @MapsId("usuarioCorreo")
     @JoinColumn(name = "usuarios_correo", insertable = false, updatable = false)
     private Profesor profesor;
-
+    
+    //Boolean que indica si la promocion de la relación se ha utilizado.
     private boolean gastado;
-
+    
+    //Int que indica el recuento.
     private int recuento;
-
+    
+    /**
+     * Constructor vacio necesario.
+     */
     public ProfesorPromocion() {
     }
-
+    
+    /**
+     * Constructor con todos los parametros.
+     * @param id Id compuesta, ProfesorPromocionId
+     * @param promocion Promocion de la relacion.
+     * @param profesor Profesor de la relacion.
+     * @param gastado 
+     * @param recuento 
+     */
     public ProfesorPromocion(ProfesorPromocionId id, Promocion promocion, Profesor profesor, boolean gastado, int recuento) {
         this.id = id;
         this.promocion = promocion;

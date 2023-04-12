@@ -23,6 +23,12 @@ public class ControladorlistaProfesors {
     
     @Autowired
     private ProfesorService profesorService;
+
+    /**
+     *
+     * @param model
+     * @return
+     */
     @GetMapping("/listaProfesors")
     /**
      * función en la que se recupera la lista de profesores

@@ -20,6 +20,11 @@ public class ControladorEliminarSugerencia {
     @Autowired
     private SugerenciaService sugerenciaService;
     
+    /**
+     *
+     * @param sugerencia
+     * @return
+     */
     @GetMapping("/eliminarSuggeriment/{idSugerencia}") 
     /**
      * función para eliminiar la sugerencia 

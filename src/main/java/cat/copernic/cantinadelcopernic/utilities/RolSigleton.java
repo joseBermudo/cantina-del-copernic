@@ -19,7 +19,11 @@ public class RolSigleton {
 
         }
 
-        public static Rol getInstance() {
+    /**
+     *
+     * @return
+     */
+    public static Rol getInstance() {
             if (instance == null) {
                 instance = new Rol();
             }
@@ -27,11 +31,19 @@ public class RolSigleton {
             return instance;
         }
 
-        public static void setInformacion(int idRol) {
+    /**
+     *
+     * @param idRol
+     */
+    public static void setInformacion(int idRol) {
             getInstance().setIdroles(idRol);
         }
 
-        public static int getInformacion() {
+    /**
+     *
+     * @return
+     */
+    public static int getInformacion() {
             return getInstance().getIdroles();
         }
 }

@@ -26,6 +26,13 @@ public class ControladorGuardarProfesor {
     @Autowired
     private ProfesorService profesorService;
     
+    /**
+     *
+     * @param profesor
+     * @param errors
+     * @param result
+     * @return
+     */
     @PostMapping("/guardarProfesor")
     /**
      * función que se utiliza para guardar un profesor

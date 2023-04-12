@@ -15,7 +15,8 @@ import java.io.Serializable;
 import lombok.Data;
 
 /**
- *
+ * Clase entidad ModuloRol que relaciona la entidad Modulo con Rol.
+ * Hace referencia a la tabla SQL visibilidad.
  * @author joseb
  */
 @Data
@@ -23,18 +24,22 @@ import lombok.Data;
 @Table(name = "visibilidad")
 public class ModuloRol implements Serializable {
     
+    //Id compuesta de tipo ModuloRolId.
     @EmbeddedId
     private ModuloRolId id;
     
+    //Variable que contiene el modulo de la relacion.
     @ManyToOne
     @MapsId("modulosIdModulos")
     @JoinColumn(name = "modulos_idmodulos", insertable = false, updatable = false)
     private Modulo modulo;
     
+    //Variable que contiene el modulo de la relacion.
     @ManyToOne
     @MapsId("rolesIdRoles")
     @JoinColumn(name = "roles_idroles", insertable = false, updatable = false)
     private Rol rol;
     
+    //Boolean que indica si  el modulo es visible para el Rol.
     private Boolean visible;
 }

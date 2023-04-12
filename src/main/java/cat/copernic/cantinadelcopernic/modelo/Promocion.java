@@ -21,28 +21,32 @@ import java.util.List;
 import lombok.Data;
 
 /**
- *
+ * Clase entidad Promocion.
+ * Hace referencia a la tabla SQL promocion.
  * @author joseb
  */
 @Data
 @Entity
 @Table(name = "promocion")
 public class Promocion implements Serializable {
-
-    @Id //Indica al sistema que l'atribut idgos és la clau primària de la BBDDr
+    
+    //Id de la promocion.
+    @Id 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idpromocion")
     private int id;
     
-    
+    //Descripcion de la promocion.
     @Column(name = "descripcion")
     @NotEmpty
     private String desc;
     
+    //Condicion de la promocion.
     @NotNull
     @Column(name = "condicion")
     private int condicio;
     
+    //Lista de ProfesorPromocion, entidad que relacion Promocion con Profesor.
     @OneToMany(mappedBy="promocion",cascade = CascadeType.REMOVE)
     private List<ProfesorPromocion> profesorPromocion;
 

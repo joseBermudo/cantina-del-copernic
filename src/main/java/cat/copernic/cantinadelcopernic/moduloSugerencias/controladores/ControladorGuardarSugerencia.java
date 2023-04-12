@@ -31,6 +31,13 @@ public class ControladorGuardarSugerencia {
     @Autowired
     private UsuarioService usuarioService;
     
+    /**
+     *
+     * @param sugerencia
+     * @param errors
+     * @param num
+     * @return
+     */
     @PostMapping("/guardarSuggeriment/{num}")
     /**
      * función que se utiliza para guardar una sugerencia validando los atributoss del objeto 

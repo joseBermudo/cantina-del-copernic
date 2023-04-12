@@ -21,7 +21,8 @@ import java.util.Map;
 import lombok.Data;
 
 /**
- *
+ * Clase entidad de Modulo.
+ * Hace referencia a la tabla SQL modulos
  * @author andre
  */
 @Data
@@ -29,19 +30,24 @@ import lombok.Data;
 @Table(name = "modulos")
 public class Modulo implements Serializable{
     
+    //Version de la instancia
     private static final long serialVersionUID = 1L;
     
+    //Id del modulo
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "idmodulos")
     private int idmodulos;
     
+    //Nombre del modulo
     @Column(name = "nombre_modulo")
     private String nombreModulo;
     
+    //Boolean que indica si el modulo esta activado o desactivado
     @Column(name = "habilitado")
     private boolean habilitado;
     
+    //Lista de ModuloRol, instancia que relaciona Modulo con Rol.
     @OneToMany(mappedBy="modulo",cascade = CascadeType.ALL)
     private List<ModuloRol> modulosRoles;
     

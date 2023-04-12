@@ -21,6 +21,12 @@ Utiliza la interfaz JpaRepository para implementar de manera sencilla y eficient
 */
 public interface TareaDAO extends JpaRepository<Tarea, Integer> {
     
+    /**
+     *
+     * @param mesActual
+     * @param anyoActual
+     * @return
+     */
     @Query(value = "SELECT * FROM tarea WHERE YEAR(fecha) = ?2 AND MONTH(fecha) = ?1", nativeQuery = true)
     List<Tarea> findTareasDelMesActual(int mesActual, int anyoActual);
 }
