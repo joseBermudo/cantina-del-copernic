@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 /**
- *
+ *Clase que representa el controlador para la página de  guardar suerencia
  * @author andre
  */
 @Controller
@@ -32,18 +32,18 @@ public class ControladorGuardarSugerencia {
     private UsuarioService usuarioService;
     
     @PostMapping("/guardarSuggeriment/{num}")
+    /**
+     * función que se utiliza para guardar una sugerencia validando los atributoss del objeto 
+     * @param sugerencia 
+     * @errors objeto que contendrá los errores que se hayan encontrado en la validación
+     * @num numero que se utiliza para identificar si la modificaciçon de la sugerencia se ha hecho por un admin o un usuario
+     * @return redirección a la lista de sugerencias
+     */
     public String guardarSugerencia(@Valid Sugerencia sugerencia, Errors errors, @PathVariable("num") int num){
         
          if(errors.hasErrors()){ 
              return "/paginasSugerencias/nuevaSugerencia";
         }
-        
-        /*if (sugerencia.getProfesor() == null) {
-            var profesor = new Profesor();
-            profesor.setCorreo("adolfo@gmail.com");
-            var profesorEntrado = profesorService.buscarProfesores(profesor);
-            sugerencia.setProfesor(profesorEntrado);   
-        }*/
         
         if (num == 1) {
           sugerencia.setLeida(true);
@@ -65,12 +65,9 @@ public class ControladorGuardarSugerencia {
             
         }
         
-        
         sugerenciaService.anadirSugerencia(sugerencia);
         
         return "redirect:/listaSuggeriments";
-    
-    
     }
     
 }

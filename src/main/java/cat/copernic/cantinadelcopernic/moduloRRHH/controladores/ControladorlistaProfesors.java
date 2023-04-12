@@ -15,7 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 /**
- *
+ *Clase que representa el controlador de la pagina donde se muestra una lista de profesores
  * @author andre
  */
 @Controller
@@ -24,6 +24,11 @@ public class ControladorlistaProfesors {
     @Autowired
     private ProfesorService profesorService;
     @GetMapping("/listaProfesors")
+    /**
+     * función en la que se recupera la lista de profesores
+     * @param model
+     * @return devuelve la pantalla html donde se muestra la lista de profesores
+     */
    public String inici(Model model){
         
          /* var profesor = new Profesor();

@@ -25,6 +25,9 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name = "sugerencia")
+/**
+ *  Clase que representa una sugerencia que hace un profesor
+ */
 public class Sugerencia implements Serializable {
     
     private static final long serialVersionUID = 1L;

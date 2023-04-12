@@ -11,7 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 /**
- *
+ *Clase que actua de controlador para hacer la función de elimniar una sugerencia
  * @author andre
  */
 @Controller
@@ -21,6 +21,11 @@ public class ControladorEliminarSugerencia {
     private SugerenciaService sugerenciaService;
     
     @GetMapping("/eliminarSuggeriment/{idSugerencia}") 
+    /**
+     * función para eliminiar la sugerencia 
+     * @param sugerencia
+     * @return una redirección a la lista de sugerencias
+     */
     public String eliminar(Sugerencia sugerencia) {
         
         sugerenciaService.eliminarSugerencia(sugerencia);

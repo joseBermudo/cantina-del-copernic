@@ -10,13 +10,29 @@ import java.util.List;
 
 
 /**
- *
+ *interficie que define los metodos de la capa de servicio para el modelo de Alumno
  * @author andre
  */
 public interface AlumnoServiceInterface {
-    
+    /**
+     * metodo para recupar una lista de alumnos 
+     * @return 
+     */
     public List<Alumno> listarAlumnos();
-    public void anadirAlumno(Alumno alumno); 
+    /**
+     *  metodo para añadir un alumno a la base de datos
+     * @param alumno 
+     */
+    public void anadirAlumno(Alumno alumno);
+    /**
+     * metodo para eliminar un alumno de la base de datos
+     * @param alumno 
+     */
     public void eliminarAlumno(Alumno alumno);
+    /**
+     * metodo para buscar un alumno
+     * @param alumno
+     * @return devuelve un alumno
+     */
     public Alumno buscarAlumno(Alumno alumno); 
 }

@@ -10,13 +10,19 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 /**
- *
+ *Clase que representa un controllador para la pantalla donde se muestra el formulario para crear un profesor
  * @author andre
  */
 @Controller
 public class ControladorNuevoProfesor {
     
    @GetMapping("/nouProfessor")
+   /**
+     * función que se utiliza para cargar la página para crear un profesor
+     * @param profesor
+     * @param model
+     * @return devuelve el html de la página para crear un profesor
+     */
     public String inici(Profesor profesor, Model model){
         
         var tituloPagina = "REGISTRAR PROFESSOR";

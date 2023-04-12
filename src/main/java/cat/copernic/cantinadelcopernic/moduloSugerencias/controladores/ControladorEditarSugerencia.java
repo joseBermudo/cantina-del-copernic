@@ -1,4 +1,4 @@
-/*
+    /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 /**
- *
+ * Clase que actua de controlador para la página de editar una sugerencia
  * @author andre
  */
 @Controller
@@ -26,6 +26,12 @@ public class ControladorEditarSugerencia {
     private SugerenciaService sugerenciaService;
     
     @GetMapping("/editarSuggeriment/{idSugerencia}")
+    /**
+     * función que sirve para guardar los cambios de una sugerencia
+     * @param sugerencia 
+     * @param model
+     * @return la pantalla html para editar las sugerencias
+     */
     public String inici(Sugerencia sugerencia, Model model) {
 
         /*var sugerencia = new Sugerencia();
