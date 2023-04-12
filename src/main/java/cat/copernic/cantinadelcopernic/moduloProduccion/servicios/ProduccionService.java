@@ -9,6 +9,7 @@ import cat.copernic.cantinadelcopernic.DAO.RecetaDAO;
 import cat.copernic.cantinadelcopernic.modelo.Bebida;
 import cat.copernic.cantinadelcopernic.modelo.Receta;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -76,8 +77,9 @@ public class ProduccionService implements ProduccionServiceInterface {
      */
     @Override
     @Transactional
-    public void guardarReceta(Receta receta) {
-        recetaDAO.save(receta);
+    public Receta guardarReceta(Receta receta) {
+       
+       return recetaDAO.save(receta);
     }
     
     /**

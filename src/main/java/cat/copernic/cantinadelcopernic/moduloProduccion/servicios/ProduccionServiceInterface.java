@@ -42,8 +42,9 @@ public interface ProduccionServiceInterface {
     /**
      * Guarda o actualiza una receta en la base de datos.
      * @param receta Receta que guardamos o actualizamos.
+     * @return Devuelve la receta guardada
      */
-    public void guardarReceta(Receta receta);
+    public Receta guardarReceta(Receta receta);
     
     /**
      * Lee una receta especifica.

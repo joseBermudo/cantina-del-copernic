@@ -107,5 +107,11 @@ public class ControladorListaRecetas {
         //Redirigimos al uusario a la lista de recetas.
         return "redirect:/listaRecetas";
     }
+    
+    
+    public void setProServ(ProduccionService proServ) {
+        this.proServ = proServ;
+    }
+    
 
 }

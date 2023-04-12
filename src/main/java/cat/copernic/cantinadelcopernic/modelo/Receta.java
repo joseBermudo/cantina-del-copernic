@@ -11,9 +11,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
+
 import java.io.Serializable;
-import java.util.ArrayList;
+
 import lombok.Data;
 
 /**
@@ -21,6 +21,7 @@ import lombok.Data;
  * Hace referencia a la tabla SQL receta.
  * @author joseb
  */
+
 @Data
 @Entity
 @Table(name = "receta")
