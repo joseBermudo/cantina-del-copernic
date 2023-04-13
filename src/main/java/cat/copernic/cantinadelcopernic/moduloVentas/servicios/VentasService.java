@@ -54,9 +54,9 @@ public class VentasService implements VentasServiceInterface {
      */
     @Override
     @Transactional
-    public void addPedidos(Pedido pedido) {
+    public Pedido addPedidos(Pedido pedido) {
 
-        this.pedidoDAO.save(pedido);
+        return this.pedidoDAO.save(pedido);
     }
 
     /**

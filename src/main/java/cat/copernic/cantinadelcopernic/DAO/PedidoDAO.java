@@ -15,7 +15,7 @@ public interface PedidoDAO extends JpaRepository<Pedido,Integer>{
     
       /**
      * Busca todos los pedidos realizados por un determinado profesor.
-     * @param profesor el objeto Profesor del que se desean buscar los pedidos realizados.
+     * @param profesores
      * @return una lista de objetos Pedido correspondientes a los pedidos realizados por el profesor especificado.
      */
     List<Pedido> findByProfesores(Profesor profesores);

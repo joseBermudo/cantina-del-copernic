@@ -36,7 +36,7 @@ public interface VentasServiceInterface {
      *
      * @param pedido Pedido a agregar.
      */
-    public void addPedidos(Pedido pedido);
+    public Pedido addPedidos(Pedido pedido);
 
     /**
      *
