@@ -1,33 +1,24 @@
 package cat.copernic.cantinadelcopernic.DAO;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
-import org.junit.jupiter.api.Test;
+
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import cat.copernic.cantinadelcopernic.DAO.BocadilloSemanaDAO;
-import cat.copernic.cantinadelcopernic.DAO.PedidoDAO;
-import cat.copernic.cantinadelcopernic.DAO.RecetaDAO;
-import cat.copernic.cantinadelcopernic.modelo.BocadilloSemana;
 import cat.copernic.cantinadelcopernic.modelo.Pedido;
-import cat.copernic.cantinadelcopernic.modelo.Profesor;
-import cat.copernic.cantinadelcopernic.modelo.Receta;
 import cat.copernic.cantinadelcopernic.moduloVentas.servicios.VentasService;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Test;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import org.springframework.beans.factory.annotation.Autowired;
 
-/**
- *
- * @author joseb
- */
 @SpringBootTest
 public class VentasServiceTest {
 
@@ -46,9 +37,6 @@ public class VentasServiceTest {
     @InjectMocks
     private VentasService ventasService;
 
-    /**
-     *
-     */
     @Test
     public void testListarPedidos() {
         // Creamos una lista de pedidos de prueba
@@ -61,9 +49,6 @@ public class VentasServiceTest {
         assertEquals(pedidos, ventasService.listarPedidos());
     }
 
-    /**
-     *
-     */
     @Test
     public void testAddPedidos() {
         // Creamos un pedido de prueba
