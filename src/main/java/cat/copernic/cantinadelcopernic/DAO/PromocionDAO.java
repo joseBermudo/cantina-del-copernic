@@ -11,7 +11,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 /**
- *
+ * Interficie que aplica el repositorio Jpa de la entidad promocion
  * @author joseb
  */
 public interface PromocionDAO extends JpaRepository<Promocion,Integer> {

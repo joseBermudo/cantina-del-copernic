@@ -19,7 +19,11 @@ import cat.copernic.cantinadelcopernic.modelo.Contenedor;
 
         }
 
-        public static Contenedor getInstance() {
+    /**
+     *
+     * @return
+     */
+    public static Contenedor getInstance() {
             if (instance == null) {
                 instance = new Contenedor();
             }
@@ -27,11 +31,19 @@ import cat.copernic.cantinadelcopernic.modelo.Contenedor;
             return instance;
         }
 
-        public static void setInformacion(String idcontenedor) {
+    /**
+     *
+     * @param idcontenedor
+     */
+    public static void setInformacion(String idcontenedor) {
             getInstance().setIdcontenedor(idcontenedor);
         }
 
-        public static String getInformacion() {
+    /**
+     *
+     * @return
+     */
+    public static String getInformacion() {
             return getInstance().getIdcontenedor();
         }
 

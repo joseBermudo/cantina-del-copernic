@@ -4,13 +4,22 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-
+/**
+ *
+ * @author joseb
+ */
 @Configuration //Indica al sistema que és una classe de configuració
 public class ConfiguracioWeb implements WebMvcConfigurer {
 
     /*En aquest mètode definirem les pàgines que mostrarem a l'usuari quan es produeixi un esdeveniment,
      *sense passar per un controlador.
     */
+
+    /**
+     *
+     * @param registre
+     */
+
     @Override
     public void addViewControllers(ViewControllerRegistry registre) {
         registre.addViewController("login").setViewName("login"); //Mostrem la pàgina incial que reanomenen com a index, quan encara no ens hem autenticat

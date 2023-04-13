@@ -21,7 +21,8 @@ import java.util.List;
 import lombok.Data;
 
 /**
- *
+ * Clade entidad Bebida.
+ * Hace referencia a la tabla SQL bebida.
  * @author joseb
  */
 @Data
@@ -29,25 +30,27 @@ import lombok.Data;
 @Table(name = "bebida")
 public class Bebida implements Serializable {
 
+    //Versiond de la instancia.
     private static final long serialVersionUID = 1L;
     
-    @Id //Indica al sistema que l'atribut idgos és la clau primària de la BBDD
+    //Id de la bebida.
+    @Id 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="idbebida")
     private int id;
     
+    //Nombre de la bebida.
     @Column(name="nombre")
     @NotEmpty
     private String nombre;
     
+    //Descripción de la bebida.
     @Column(name="descripcion")
     private String desc;
+    
+    //Precio de la bebida.
     @NotNull
     @Column(name="precio")
     private Double precio;
-//    
-//    
-//    @OneToMany(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "pedido_id_pedido")
-//    private List<Pedido> pedido;
+
 }

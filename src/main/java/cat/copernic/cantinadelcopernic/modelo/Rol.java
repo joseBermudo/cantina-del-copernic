@@ -18,23 +18,28 @@ import java.util.List;
 import lombok.Data;
 
 /**
- *
+ * Clase entidad que representa el Rol.
+ * Hace referencia a la tabla SQL roles.
  * @author joseb
  */
 @Data
 @Entity
 @Table(name = "roles")
 public class Rol implements Serializable {
-
+    
+    //Version de la instancia
     private static final long serialVersionUID = 1L;
-
+    
+    //Id del rol.
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idroles")
     private int idroles;
-
+    
+    //Nombre del rol.
     private String nombre;
-
+    
+    //Lista de ModulosRol, instancia que relaciona los Modulos con los Roles.
     @OneToMany(mappedBy = "rol", cascade = CascadeType.ALL)
     private List<ModuloRol> modulosRoles;
 

@@ -10,9 +10,14 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.CrudRepository;
 
 /**
- *
+ *Interficie que aplica el JpaRepositorio de la entidad Bebida
  * @author joseb
  */
 public interface BebidaDAO extends JpaRepository<Bebida,Integer>{
+    /**
+     * 
+     * @param nombre nombre por el cual se busca la bebida
+     * @return  lista de bebidas tiene el nombre especificaso.
+     */
     List<Bebida> findByNombre(String nombre);
 }

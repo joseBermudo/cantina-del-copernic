@@ -22,6 +22,12 @@ public class ControladorVerSugerencia {
     @Autowired
     private SugerenciaService SugerenciaService;
     
+    /**
+     *
+     * @param sugerencia
+     * @param model
+     * @return
+     */
     @GetMapping("/verSuggeriment/{idSugerencia}")
     /**
      * función que cargar la página que mustra la información de la sugerencia

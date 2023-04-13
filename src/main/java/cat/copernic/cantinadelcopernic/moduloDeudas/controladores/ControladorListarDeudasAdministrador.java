@@ -127,6 +127,7 @@ public class ControladorListarDeudasAdministrador {
      * Edita una deuda en particular.
      *
      * @param deuda La deuda a editar.
+     * @param model
      *
      * @return Una redirección al listado de deudas actualizado.
      */

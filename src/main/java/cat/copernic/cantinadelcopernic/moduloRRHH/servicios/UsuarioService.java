@@ -43,6 +43,12 @@ public class UsuarioService implements UsuarioServiceInterface, UserDetailsServi
          return this.usuarioDAO.findById(usuario.getCorreo()).orElse(null);
    }
     
+    /**
+     *
+     * @param username
+     * @return
+     * @throws UsernameNotFoundException
+     */
     @Override
     @Transactional(readOnly=true) //Consulta només de lectura
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
