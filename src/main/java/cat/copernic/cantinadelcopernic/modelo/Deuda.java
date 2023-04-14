@@ -23,8 +23,7 @@ import lombok.Data;
  * Esta clase representa la entidad deuda, la cual se utiliza para registrar la
  * cantidad de dinero
  *
- * que un profesor adeuda a la institución educativa. La clase está anotada con
- * @Data para generar
+ * que un profesor adeuda a la institución educativa. 
  *
  * automáticamente los métodos getter, setter, equals, hashCode y toString. La
  * clase también está
