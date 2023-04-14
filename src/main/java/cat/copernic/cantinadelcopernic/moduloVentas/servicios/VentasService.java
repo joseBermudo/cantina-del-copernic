@@ -51,6 +51,7 @@ public class VentasService implements VentasServiceInterface {
      * Añade un nuevo pedido.
      *
      * @param pedido el pedido a añadir.
+     * @return 
      */
     @Override
     @Transactional
