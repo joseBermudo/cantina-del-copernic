@@ -29,39 +29,71 @@ import lombok.Data;
  *
  * @author marku
  */
+/**
+ *
+ * La clase BocadilloSemana representa un bocadillo que se ofrecerá como
+ * "bocadillo de la semana" en el menú. Esta clase está mapeada a la tabla
+ * "bocadillo_semana" en la base de datos.
+ */
 @Data
 @Entity
 @Table(name = "bocadillo_semana")
-public class BocadilloSemana implements Serializable{
-   
+public class BocadilloSemana implements Serializable {
+
+    /**
+     * El identificador único del bocadillo de la semana.
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idbocadillo_semana;
-    
+
+    /**
+     * El precio del bocadillo de la semana.
+     */
     @NotNull
     private double precio;
 
+    /**
+     * La ruta de la imagen del bocadillo de la semana.
+     */
     private String imagen;
-    
+
+    /**
+     * La fecha en que se ofrecerá el bocadillo de la semana. Debe ser igual o
+     * posterior a la fecha actual.
+     */
     @FutureOrPresent
     private LocalDate fecha;
-    
+
+    /**
+     * El nombre del bocadillo de la semana. No puede estar vacío y debe tener
+     * una longitud máxima de 45 caracteres.
+     */
     @NotEmpty
     @Size(max = 45)
     private String nombre;
-    
+
+    /**
+     * La descripción del bocadillo de la semana. No puede estar vacía y debe
+     * tener una longitud máxima de 500 caracteres.
+     */
     @NotEmpty
     @Size(max = 500)
     private String descripcion;
-      
 
+    /**
+     * La receta del bocadillo de la semana. Cada bocadillo de la semana tiene
+     * una única receta asociada.
+     */
     @ManyToOne()
-    @JoinColumn(name = "receta_idreceta") 
+    @JoinColumn(name = "receta_idreceta")
     private Receta receta;
-    
 
-    
-    @OneToMany(mappedBy = "bocadilloSemana", cascade = CascadeType.REMOVE) 
+    /**
+     * La lista de pedidos realizados del bocadillo de la semana. Cada bocadillo
+     * de la semana puede tener múltiples pedidos asociados. Los pedidos
+     * asociados se eliminarán en cascada al eliminar el bocadillo de la semana.
+     */
+    @OneToMany(mappedBy = "bocadilloSemana", cascade = CascadeType.REMOVE)
     private List<Pedido> pedido;
 }
-
