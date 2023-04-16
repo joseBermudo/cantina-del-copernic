@@ -21,27 +21,27 @@ public interface SugerenciaServiceInterface {
     
     /**
      * metdo para añadir una sugerencia a la base de datos
-     * @param sugerencia 
+     * @param sugerencia  sugerencia que se va añadir a la base de datos
      */
     public void anadirSugerencia(Sugerencia sugerencia);
     
     /**
      * metodo para eliminar una sugerencia de la base de datos
-     * @param sugerencia 
+     * @param sugerencia sugerencia que se va eliminar de la basde de datos
      */
     public void eliminarSugerencia(Sugerencia sugerencia);
     
     /**
      * metodo para recuperar una sugerencia de la base de datos 
-     * @param sugerencia
+     * @param sugerencia sugerencia que se va buscar en la base de datos
      * @return devuelve una sugerencia
      */
     public Sugerencia buscarSugerencia(Sugerencia sugerencia); 
     
     /**
      * metodo para recupear una lista de sugerencias de un profesor en especifico
-     * @param profesor
-     * @return 
+     * @param profesor profesor del qual se va abuscar las sugerencias
+     * @return devuelve una lista de sugerncias
      */
     public List<Sugerencia> listarSugerenciasProfesor(Profesor profesor);
     
