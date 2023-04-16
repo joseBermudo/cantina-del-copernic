@@ -37,7 +37,7 @@ public class SugerenciaService implements SugerenciaServiceInterface {
     @Transactional
     /**
      * metodo que se utiliza para añadir y ediar sugerencias de la base de datos
-     * @param sugerencia
+     * @param sugerencia objeto que representa la sugerencia a añadir
      */
     public void anadirSugerencia(Sugerencia sugerencia) {
         this.sugerenciaDAO.save(sugerencia); 
@@ -47,7 +47,7 @@ public class SugerenciaService implements SugerenciaServiceInterface {
     @Transactional
     /**
      * metodo que elimina una sugerencia de la base de datos
-     * @param sugerencia
+     * @param sugerencia objeto que representa la sugerencia a eliminar
      */
     public void eliminarSugerencia(Sugerencia sugerencia) {
          this.sugerenciaDAO.delete(sugerencia);
@@ -57,7 +57,7 @@ public class SugerenciaService implements SugerenciaServiceInterface {
     @Transactional(readOnly=true)
     /**
      * metodo que busca una sugerencia en la base de datos
-     * @param sugerencia
+     * @param sugerencia  objeto que representa la sugerencia a buscar
      * @return la sugerencioa encontrada 
      */
     public Sugerencia buscarSugerencia(Sugerencia sugerencia) {
@@ -68,7 +68,7 @@ public class SugerenciaService implements SugerenciaServiceInterface {
     @Override
     /**
      * metodo que busca las sugerencia especificas de un profesor
-     * @param profesor
+     * @param profesor objeto que representa el profesor del que se busacn las sugerencias
      * @return lista de las sugerencias del profesor
      */
     public List<Sugerencia> listarSugerenciasProfesor(Profesor profesor) {
