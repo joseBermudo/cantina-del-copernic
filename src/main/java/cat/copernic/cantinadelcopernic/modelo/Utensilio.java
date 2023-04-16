@@ -4,7 +4,6 @@
  */
 package cat.copernic.cantinadelcopernic.modelo;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -27,6 +26,13 @@ import lombok.Data;
  *
  * @author marku
  */
+/**
+ *
+ * La clase Utensilio representa un utensilio que se puede encontrar en un
+ * contenedor en el sistema.
+ *
+ * Esta clase está mapeada a la tabla "utensilio" en la base de datos.
+ */
 @Data
 @Entity
 @Table(name = "utensilio")
@@ -34,21 +40,34 @@ public class Utensilio implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    /**
+     *
+     * El identificador único del utensilio.
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idutensilio")
     private int idutensilio;
-
+    /**
+     *
+     * El nombre del utensilio. No puede estar vacío.
+     */
     @NotEmpty
     @Column(name = "nombre")
     private String nombre;
-
+    /**
+     *
+     * La cantidad de unidades del utensilio. No puede ser nulo.
+     */
     @NotNull
     @Column(name = "cantidad")
     private int cantidad;
-
+    /**
+     *
+     * El contenedor donde se encuentra el utensilio. Cada utensilio debe tener
+     * un contenedor asociado.
+     */
     @ManyToOne
-    @JoinColumn(name = "contenedor_idcontenedor") 
+    @JoinColumn(name = "contenedor_idcontenedor")
     private Contenedor contenedor;
-
 }

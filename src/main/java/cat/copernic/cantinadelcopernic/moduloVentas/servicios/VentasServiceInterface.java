@@ -35,8 +35,9 @@ public interface VentasServiceInterface {
      * Agrega un nuevo pedido a la base de datos.
      *
      * @param pedido Pedido a agregar.
+     * @return 
      */
-    public void addPedidos(Pedido pedido);
+    public Pedido addPedidos(Pedido pedido);
 
     /**
      *
