@@ -4,7 +4,6 @@
  */
 package controller;
 
-
 import java.util.ArrayList;
 import java.util.List;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
@@ -51,30 +50,28 @@ public class TestControllerListaRecetas {
      * @throws Exception
      */
     @Test
-public void testPage() throws Exception {
-    List<Receta> recetas = new ArrayList<>();
-    // Agregar recetas a la lista
+    public void testPage() throws Exception {
+        List<Receta> recetas = new ArrayList<>();
+        // Agregar recetas a la lista
 
-    // Crear instancia del controlador
-    ControladorListaRecetas controller = new ControladorListaRecetas();
+        // Crear instancia del controlador
+        ControladorListaRecetas controller = new ControladorListaRecetas();
 
-    // Mockear el servicio
-    ProduccionService mockServicio = Mockito.mock(ProduccionService.class);
-    Mockito.when(mockServicio.obtenerRecetas()).thenReturn(recetas);
+        // Mockear el servicio
+        ProduccionService mockServicio = Mockito.mock(ProduccionService.class);
+        Mockito.when(mockServicio.obtenerRecetas()).thenReturn(recetas);
 
-    // Setear el servicio mockeado en el controlador
-    controller.setProServ(mockServicio);
+        // Setear el servicio mockeado en el controlador
+        controller.setProServ(mockServicio);
 
-    // Crear instancia del objeto mockMvc para realizar las pruebas
-    mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
+        // Crear instancia del objeto mockMvc para realizar las pruebas
+        mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
 
-    // Realizar la peticiÃ³n GET a /listaRecetas y comprobar el resultado
-    mockMvc.perform(get("/listaRecetas"))
-            .andExpect(status().isOk())
-            .andExpect(view().name("/paginasProduccion/listaRecetas"))
-            .andExpect(model().attribute("recetas", recetas));
-}
-
-    
+        // Realizar la peticiÃ³n GET a /listaRecetas y comprobar el resultado
+        mockMvc.perform(get("/listaRecetas"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("/paginasProduccion/listaRecetas"))
+                .andExpect(model().attribute("recetas", recetas));
+    }
 
 }
