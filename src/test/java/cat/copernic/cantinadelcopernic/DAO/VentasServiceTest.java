@@ -1,11 +1,9 @@
 package cat.copernic.cantinadelcopernic.DAO;
 
-
 import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
 import java.util.List;
-
 
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -19,24 +17,31 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import org.springframework.beans.factory.annotation.Autowired;
 
+// Anotación para indicar que esta es una clase de pruebas que usa Spring Boot
 @SpringBootTest
 public class VentasServiceTest {
+// Inyección de dependencia del servicio de ventas
 
     @Autowired
     private VentasService ventasSer;
 
+// Mock del DAO de pedidos
     @Mock
     private PedidoDAO pedidoDAO;
 
+// Mock del DAO de bocadillos de la semana
     @Mock
     private BocadilloSemanaDAO bocaSemanaDAO;
 
+// Mock del DAO de recetas
     @Mock
     private RecetaDAO recetaDAO;
 
+// Objeto de la clase VentasService que se va a probar
     @InjectMocks
     private VentasService ventasService;
 
+// Test para el método listarPedidos
     @Test
     public void testListarPedidos() {
         // Creamos una lista de pedidos de prueba
@@ -49,10 +54,11 @@ public class VentasServiceTest {
         assertEquals(pedidos, ventasService.listarPedidos());
     }
 
+// Test para el método addPedidos
     @Test
     public void testAddPedidos() {
         // Creamos un pedido de prueba
-        Pedido pedido =ventasSer.listarPedidos().get(0);
+        Pedido pedido = ventasSer.listarPedidos().get(0);
         pedido.setId_pedido(110);
         // Cuando se llame al método save del pedidoDAO, no hacemos nada
         when(pedidoDAO.save(pedido)).thenAnswer(invocation -> invocation.getArgument(0));
@@ -61,6 +67,4 @@ public class VentasServiceTest {
         // Comprobamos que el método save del pedidoDAO ha sido llamado una vez
         verify(pedidoDAO, times(1)).save(pedido);
     }
-
-    // Se pueden implementar más tests para los demás métodos de la clase VentasService
 }

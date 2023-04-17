@@ -25,9 +25,6 @@ public class testListar {
     @Autowired
     private SugerenciaService sugerenciaService;
     
-    /**
-     *
-     */
     @Test
     public void testListar(){
         
