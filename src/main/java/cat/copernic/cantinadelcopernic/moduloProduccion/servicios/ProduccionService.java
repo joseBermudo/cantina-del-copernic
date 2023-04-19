@@ -23,11 +23,11 @@ public class ProduccionService implements ProduccionServiceInterface {
     
     //DAO de Receta.
     @Autowired
-    RecetaDAO recetaDAO;
+    private RecetaDAO recetaDAO;
     
     //DAO de Bebida.
     @Autowired
-    BebidaDAO bebidaDAO;
+    private BebidaDAO bebidaDAO;
     
     /**
      * Lee todas la recetas de la base de datos.
